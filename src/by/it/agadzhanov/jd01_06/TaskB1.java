@@ -14,7 +14,8 @@ public class TaskB1 {
     }
 
     private static boolean vowelCheck(char a) {
-        if (a=='а' || a=='о' || a=='у' || a=='э' || a=='ы' || a=='я' || a=='ё' || a=='ю' || a=='е' || a=='и')
+        if (a=='а' || a=='о' || a=='у' || a=='э' || a=='ы' || a=='я' || a=='ё' || a=='ю' || a=='е' || a=='и'
+                || a=='А' || a=='О' || a=='У' || a=='Э' || a=='Я' || a=='Ё' || a=='Ю' || a=='Е' || a=='И')
             return true;
         else return false;
     }
