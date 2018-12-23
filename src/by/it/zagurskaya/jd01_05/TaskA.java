@@ -2,8 +2,6 @@ package by.it.zagurskaya.jd01_05;
 
 import static java.lang.Math.*;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-
 public class TaskA {
     public static void main(String[] arg) {
         step1();
