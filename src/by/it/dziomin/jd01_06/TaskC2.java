@@ -17,14 +17,13 @@ public class TaskC2 {
         long timeEnd = System.currentTimeMillis();
 
 //        System.out.println(slow);
-        System.out.println("slow/miliseconds: " + (timeEnd-timeBegin));
+        System.out.println("slow/miliseconds: " + (timeEnd - timeBegin));
         timeBegin = System.currentTimeMillis();
         String fast = fast(Poem.text);
         timeEnd = System.currentTimeMillis();
 
 //        System.out.println(fast);
-        System.out.println("fast/miliseconds: " + (timeEnd-timeBegin));
-
+        System.out.println("fast/miliseconds: " + (timeEnd - timeBegin));
 
 
     }
