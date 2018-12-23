@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_04;
+package by.it.a_khmelev.jd01_04;
 
 
 import org.junit.Test;

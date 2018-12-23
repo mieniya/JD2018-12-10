@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_01;
+package by.it.a_khmelev.jd01_01;
 
 import java.util.Arrays;
 
