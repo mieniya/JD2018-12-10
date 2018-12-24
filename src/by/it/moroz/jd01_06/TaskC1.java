@@ -1,6 +1,9 @@
 package by.it.moroz.jd01_06;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TaskC1 {
 
     public static void main(String[] args) {
@@ -12,24 +15,19 @@ public class TaskC1 {
             wordArray[i] = wordArray[i].trim();
         }
         int max = findMax(wordArray);
-        char ch = ' ';
 
-        for (int i = 1; i < wordArray.length; i++) {
+        for (int i = 0; i < wordArray.length; i++) {
             StringBuilder sb = new StringBuilder(wordArray[i]);
-            //while (sb.length() != max) {
-                for (int j = 1; j < sb.length()-1; j++) {
-                    if(sb.charAt(j)==ch ){
-                        sb.insert(j+1, ' ');
-                    }
-                   // else if (sb.charAt(j+1)==ch && sb.charAt(j+2)!=ch){
-                    //    sb.insert(j+2, ' ');
-                    //    j++;
-                   // }
-                   // else sb.insert(j+3, ' ');
-                    //j=j+2;
+            while (sb.length() != max) {
+                Pattern pat1 = Pattern.compile("[\\w]+[ ]");
+                Matcher mat1 = pat1.matcher(sb);
+                if (mat1.find()){
+                    int position = mat1.start()+1;
+                    sb.insert(position, ' ');
+                    continue;
                 }
 
-           // }
+            }
 
         }
         for (int i = 0; i < wordArray.length; i++) {
@@ -40,14 +38,10 @@ public class TaskC1 {
 
 
     static int findMax(String[] arr) {
-        if (0 == arr.length) {
-            return arr[0].length();
-        } else {
             int max = arr[0].length();
             for (int i = 1; i < arr.length; i++) {
                 if (max < arr[i].length()) max = arr[i].length();
             }
             return max;
-        }
     }
 }
