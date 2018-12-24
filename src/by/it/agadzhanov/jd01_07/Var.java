@@ -1,4 +1,8 @@
 package by.it.agadzhanov.jd01_07;
 
-public class Var {
+abstract class Var {
+    @Override
+    public String toString() {
+        return "Какая-то непонятная переменная";
+    }
 }
