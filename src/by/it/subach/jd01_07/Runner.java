@@ -1,0 +1,9 @@
+package by.it.subach.jd01_07;
+
+public class Runner {
+    public static void main(String[] args) {
+        double  [] test = {1, 2 , 3, 4, 5, 6, 7, 8};
+        Var vector = new Vector(test);
+        System.out.println(vector);
+    }
+}
