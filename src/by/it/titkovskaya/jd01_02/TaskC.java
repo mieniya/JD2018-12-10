@@ -15,7 +15,9 @@ public class TaskC {
         int[][] mas = new int[n][n];
         boolean isNFound = false;
         boolean isMinusNFound = false;
-        while (!isNFound && !isMinusNFound) {
+        while (!isNFound || !isMinusNFound) {
+            isNFound = false;
+            isMinusNFound = false;
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     mas[i][j] = -n + (int) (Math.random() * (2 * n + 1));

@@ -8,9 +8,8 @@ public class TaskA1 {
         String reg = "[а-яёА-ЯЁ]{4,}";
         System.out.println(Poem.text);
         Pattern pattern=Pattern.compile(reg);
-        Matcher matcher = pattern.matcher(Poem.text);
         StringBuilder sb=new StringBuilder(Poem.text);
-
+        Matcher matcher = pattern.matcher(sb);
         while (matcher.find()){
             int start = matcher.start();
             sb.setCharAt(start+3,'#');
