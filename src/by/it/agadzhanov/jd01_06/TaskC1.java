@@ -33,8 +33,8 @@ public class TaskC1 {
             String line = matcherNewline2.group();
             Matcher matcherOneSpace = oneSpace.matcher(line);
             int start1 = 0;
-            while (matcherOneSpace.find(start1) && matcherNewline2.group().length() < maxLineLength) {
-                line = line.replaceFirst(" {1}", "  ");
+            while (matcherOneSpace.find(start1) && line.length() < maxLineLength) {
+                line = line.replace(matcherOneSpace.group(), "  ");
                 start1 = matcherOneSpace.end()+1;
             }
             if (line.length() == maxLineLength)
@@ -44,7 +44,7 @@ public class TaskC1 {
             int start2 = 0;
             while (matcherTwoSpaces.find(start2) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {2}", "   ");
-                start2 = matcherOneSpace.end()+1;
+                start2 = matcherTwoSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -53,7 +53,7 @@ public class TaskC1 {
             int start3 = 0;
             while (matcherThreeSpaces.find(start3) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {3}", "    ");
-                start3 = matcherOneSpace.end()+1;
+                start3 = matcherThreeSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -62,7 +62,7 @@ public class TaskC1 {
             int start4 = 0;
             while (matcherFourSpaces.find(start4) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {4}", "     ");
-                start4 = matcherOneSpace.end()+1;
+                start4 = matcherFourSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -71,7 +71,7 @@ public class TaskC1 {
             int start5 = 0;
             while (matcherFiveSpaces.find(start5) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {5}", "      ");
-                start5 = matcherOneSpace.end()+1;
+                start5 = matcherFiveSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -80,16 +80,16 @@ public class TaskC1 {
             int start6 = 0;
             while (matcherSixSpaces.find(start6) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {6}", "       ");
-                start6 = matcherOneSpace.end()+1;
+                start6 = matcherSixSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
 
-            Matcher matcherSevenSpace = sevenSpaces.matcher(line);
+            Matcher matcherSevenSpaces = sevenSpaces.matcher(line);
             int start7 = 0;
-            while (matcherSevenSpace.find(start7) && matcherNewline2.group().length() < maxLineLength) {
+            while (matcherSevenSpaces.find(start7) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {7}", "        ");
-                start7 = matcherOneSpace.end()+1;
+                start7 = matcherSevenSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -98,7 +98,7 @@ public class TaskC1 {
             int start8 = 0;
             while (matcherEightSpaces.find(start8) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {8}", "         ");
-                start8 = matcherOneSpace.end()+1;
+                start8 = matcherEightSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -107,7 +107,7 @@ public class TaskC1 {
             int start9 = 0;
             while (matcherNineSpaces.find(start9) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {9}", "          ");
-                start9 = matcherOneSpace.end()+1;
+                start9 = matcherNineSpaces.end()+1;
             }
             if (line.length() == maxLineLength)
                 continue;
@@ -116,7 +116,7 @@ public class TaskC1 {
             int start10 = 0;
             while (matcherTenSpaces.find(start10) && matcherNewline2.group().length() < maxLineLength) {
                 line = line.replaceFirst(" {10}", "           ");
-                start10 = matcherOneSpace.end()+1;
+                start10 = matcherTenSpaces.end()+1;
             }
             System.out.println(line);
         }
