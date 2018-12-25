@@ -7,6 +7,14 @@ public class Scalar extends Var {
         this.value = value;
     }
 
+    Scalar(Scalar scalar) {
+        this.value = scalar.value;
+    }
+
+    Scalar(String s){
+        this.value = Double.parseDouble(s);
+    }
+
     @Override
     public String toString() {
         return Double.toString(value);
