@@ -13,11 +13,9 @@ public class TaskA {
         for (int i = 0; i < mas.length; i++) {
             mas[i] = scanner.nextInt();
         }
-
         step1(mas);
         step2(mas);
         step3(mas);
-
     }
 
     static void step1(int[] mas) {

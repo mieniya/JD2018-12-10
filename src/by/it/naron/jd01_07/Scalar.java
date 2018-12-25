@@ -15,10 +15,6 @@ package by.it.naron.jd01_07;
           this.value=scalar.value;
      }
 
-
-
-
-
      @Override
      public String toString() {
          return Double.toString(value);
