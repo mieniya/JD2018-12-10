@@ -21,7 +21,7 @@ public class Runner {
         System.out.println(b3);
 
         System.out.println("This is from class Matrix");
-        Var c1 = new Matrix("{ { 1.0, 2.0 }, { 3.0, 4.0 } }");
+        Var c1 = new Matrix(new double[][] { { 1.0, 2.0 }, { 3.0, 4.0 } });
         System.out.println(c1);
 
 
