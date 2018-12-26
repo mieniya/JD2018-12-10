@@ -25,6 +25,8 @@ public class Runner {
         System.out.println(c1);
         Var c2 = new Matrix(c1);
         System.out.println(c2);
+        Var c3 = new Matrix(" { { 1.0, 2.0 }, { 3.0, 4.0 } }");
+        System.out.println(c3);
 
 
 
