@@ -9,7 +9,7 @@ public class Runner {
         System.out.println(a2);
         Scalar scalar = new Scalar(3.14);
         Var a3 = new Scalar(scalar);
-        System.out.println(a3);
+        System.out.println(a1);
 
         System.out.println("This is from class Vector");
         Var b1 = new Vector(new double[]{1,2,4});
@@ -21,8 +21,10 @@ public class Runner {
         System.out.println(b3);
 
         System.out.println("This is from class Matrix");
-        Var c1 = new Matrix(new double[][] { { 1.0, 2.0 }, { 3.0, 4.0 } });
+        Matrix c1 = new Matrix(new double[][] { { 1.0, 2.0 }, { 3.0, 4.0 } });
         System.out.println(c1);
+        Var c2 = new Matrix(c1);
+        System.out.println(c2);
 
 
 

@@ -1,4 +1,5 @@
 package by.it.naron.jd01_07;
+import java.util.Arrays;
 
  class Matrix extends Var {
      private double [][] value;
@@ -6,11 +7,16 @@ package by.it.naron.jd01_07;
 
      Matrix(double[ ][ ] value){
          this.value = value;
-     };
+     }
 
-     Matrix(Matrix matrix){};
+     Matrix(Matrix matrix){
+         this.value = new double[matrix.value.length][];
+         System.arraycopy(matrix.value, 0, this.value, 0, this.value.length);
 
-     Matrix(String strMatrix){};
+
+     }
+
+     Matrix(String strMatrix){}
 
 
 
