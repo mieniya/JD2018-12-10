@@ -17,8 +17,12 @@ public class Runner {
         Vector vector = new Vector(new double[]{1,2,4});
         Var b2 = new Vector(vector);
         System.out.println(b2);
-        Var b3 = new Vector("1,2,4");
+        Var b3 = new Vector("{1.0, 2.0, 4.0}");
         System.out.println(b3);
+
+        System.out.println("This is from class Matrix");
+        Var c1 = new Matrix("{ { 1.0, 2.0 }, { 3.0, 4.0 } }");
+        System.out.println(c1);
 
 
 
