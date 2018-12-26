@@ -1,4 +1,4 @@
-package by.it.skosirskiy.jd01_060;
+package by.it.skosirskiy.jd01_06;
 
 
 import org.junit.Test;

@@ -6,26 +6,49 @@ import java.util.regex.Pattern;
 public class TaskB2 {
     public static void main(String[] args) {
 
-        String str=Poem.text;
-
-        str = str.replaceAll("\\p{Punct}", " ");
-        str = str.trim();
-        int count=0;
-
-
-        Pattern pattern = Pattern.compile("[а-яА-яёЁ]{4,}");
-        Matcher matcher = pattern.matcher(str);
-
+        String text=Poem.text;
+        text=text.replace("\n"," ");
+        text=text.replace(" - "," ");
+        text=text.replace(", "," ");
+        text=text.replace("..."," ");
+        text=text.replace(": "," ");
+        text=text.replace("! "," ");
+        text=text.replace("!","");
 
 
-
-
-        for (int i = 0; i < str.length(); i++) {
-            if(str.charAt(i)=='\n'){
-                count++;
-            }
+        String[] arrayText= text.split("\\.");
+        for (int i = 0; i < arrayText.length; i++) {
+            arrayText[i]=arrayText[i].trim();
         }
-        System.out.println(count);
+
+        sort(arrayText);
+
+        for (int i = 0; i < arrayText.length; i++) {
+            System.out.print(arrayText[i]+'\n');
+        }
+
+
+    }
+
+    private static void sort(String[] arrayText) {
+
+        boolean complete;
+
+        do {
+            complete=false;
+            for (int i = 0; i < arrayText.length-1; i++) {
+
+                if (arrayText[i].length() > arrayText[i + 1].length()) {
+                    String buf;
+                    buf=arrayText[i];
+                    arrayText[i]=arrayText[i+1];
+                    arrayText[i+1]=buf;
+                    complete=true;
+                }
+            }
+
+        }while (complete);
+
 
     }
 }
