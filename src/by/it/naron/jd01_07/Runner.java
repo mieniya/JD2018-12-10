@@ -10,7 +10,6 @@ public class Runner {
         Scalar scalar = new Scalar(3.14);
         Var a3 = new Scalar(scalar);
         System.out.println(a1);
-
         System.out.println("This is from class Vector");
         Var b1 = new Vector(new double[]{1,2,4});
         System.out.println(b1);
@@ -19,20 +18,13 @@ public class Runner {
         System.out.println(b2);
         Var b3 = new Vector("{1.0, 2.0, 4.0}");
         System.out.println(b3);
-
+        //{ { 1.0, 2.0 }, { 3.0, 4.0 } }
         System.out.println("This is from class Matrix");
         Matrix c1 = new Matrix(new double[][] { { 1.0, 2.0 }, { 3.0, 4.0 } });
         System.out.println(c1);
         Var c2 = new Matrix(c1);
         System.out.println(c2);
-        Var c3 = new Matrix(" { { 1.0, 2.0 }, { 3.0, 4.0 } }");
+        Matrix c3 = new Matrix( "{{ 1.0, 2.0 }, { 3.0, 4.0 }}");
         System.out.println(c3);
-
-
-
-
-
-
-
         }
 }

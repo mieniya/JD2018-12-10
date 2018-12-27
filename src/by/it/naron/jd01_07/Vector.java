@@ -32,8 +32,6 @@ package by.it.naron.jd01_07;
     delimeter = ", ";
    }
    sb.append("}");
-
-
    return sb.toString();
   }
  }

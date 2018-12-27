@@ -16,8 +16,6 @@ import java.util.Arrays;
 
      //    { { 1.0, 2.0 }, { 3.0, 4.0 } }
 
-
-
      Matrix(String strMatrix){
          strMatrix = strMatrix.replaceAll("[{|}]{2,}", "");
          String[] stringValue = strMatrix.split("[}][\\s]?,[\\s]?[{]");
@@ -34,12 +32,6 @@ import java.util.Arrays;
              }
          }
      }
-
-
-
-
-
-
      @Override
      public String toString() {
          StringBuilder sb  =new StringBuilder("{{");
