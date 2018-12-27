@@ -14,5 +14,10 @@ public class Runner {
         double [][] matrix = {{1, 2, 3}, {4, 5, 6}};
         Matrix m = new Matrix(matrix);
         m.toString();
+
+        String strMatrix = "{{1, 2, 3}, {4, 5, 6}}";
+        Matrix m1 = new Matrix(strMatrix);
+        m1.toString();
+        System.out.println(m1);
     }
 }
