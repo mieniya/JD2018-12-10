@@ -1,8 +1,6 @@
 package by.it.skosirskiy.jd01_07;
 
-class Scalar extends AbstractVar {
-
-
+class Scalar extends Var {
     private double value;
 
     Scalar(double value) {
@@ -16,8 +14,6 @@ class Scalar extends AbstractVar {
     Scalar(Scalar scalar){
         this.value=scalar.value;
     }
-
-
 
     @Override
     public String toString() {

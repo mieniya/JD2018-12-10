@@ -1,10 +1,9 @@
 package by.it.skosirskiy.jd01_07;
 
-abstract class AbstractVar {
-
+abstract class Var {
 
     @Override
     public String toString() {
-        return " Это класс AbstractVar";
+        return "Это класс Var";
     }
 }
