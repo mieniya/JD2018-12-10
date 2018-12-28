@@ -2,7 +2,7 @@ package by.it.agadzhanov.jd01_07;
 
 import java.util.Arrays;
 
-class Matrix extends Var{
+class Matrix extends Var {
 
     private double[][] value;
 
@@ -11,43 +11,44 @@ class Matrix extends Var{
     }
 
     Matrix(Matrix matrix) {
-        this.value=matrix.value;
+        this.value = matrix.value;
     }
 
     Matrix(String strMatrix) {
-        strMatrix=strMatrix.replaceAll("[{]"," ");
-        strMatrix=strMatrix.replaceAll("[}]"," ");
-        strMatrix=strMatrix.trim();
+        strMatrix = strMatrix.replaceAll("[{]", " ");
+        strMatrix = strMatrix.replaceAll("[}]", " ");
+        strMatrix = strMatrix.trim();
         String[] strMatrixRows = strMatrix.split(" , ");
 
         //finding number of columns
-        String[] exampleRow=strMatrixRows[0].split(",");
-        int columnNumber=exampleRow.length;
+        String[] exampleRow = strMatrixRows[0].split(",");
+        int columnNumber = exampleRow.length;
 
-        double[][] matrixElements=new double[strMatrixRows.length][columnNumber];
+        //filling the matrix with elements of double type
+        double[][] matrixElements = new double[strMatrixRows.length][columnNumber];
         for (int i = 0; i < strMatrixRows.length; i++) {
-            String[] rowMas=strMatrixRows[i].split(",");
+            String[] rowMas = strMatrixRows[i].split(",");
             for (int j = 0; j < columnNumber; j++) {
-                double[] doubleMas=new double[columnNumber];
-                doubleMas[j]=Double.parseDouble(rowMas[j]);
-                matrixElements[i][j]=doubleMas[j];
+                double[] doubleMas = new double[columnNumber];
+                doubleMas[j] = Double.parseDouble(rowMas[j]);
+                matrixElements[i][j] = doubleMas[j];
             }
         }
-        this.value=matrixElements;
+        this.value = matrixElements;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb=new StringBuilder("{ { ");
-        String delimiter="";
+        StringBuilder sb = new StringBuilder("{ { ");
+        String delimiter = "";
         for (int i = 0; i < value.length; i++) {
             for (int j = 0; j < value[0].length; j++) {
-                if (j==0)
-                    delimiter="";
+                if (j == 0)
+                    delimiter = "";
                 sb.append(delimiter).append(value[i][j]);
-                delimiter=", ";
+                delimiter = ", ";
             }
-            if (i<=value.length-2) {
+            if (i <= value.length - 2) {
                 sb.append(" }, { ");
             }
         }
