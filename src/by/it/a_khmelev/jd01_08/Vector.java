@@ -17,7 +17,7 @@ public class Vector extends Var {
     }
 
     Vector(String str) {
-        String[] val = str.replace("{", "").replace("}", "").split(",\\s+");
+        String[] val = str.replace("{", "").replace("}", "").split(",\\s*");
         value = new double[val.length];
         for (int i = 0; i < value.length; i++) {
             value[i] = Double.parseDouble(val[i]);
