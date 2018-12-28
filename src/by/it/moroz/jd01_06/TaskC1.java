@@ -1,5 +1,6 @@
 package by.it.moroz.jd01_06;
 
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,14 +12,21 @@ public class TaskC1 {
         String[] wordArray = text.split("[\n]+");
 
         for (int i = 0; i < wordArray.length; i++) {
-            wordArray[i]=wordArray[i].trim();
+            wordArray[i] = wordArray[i].trim();
         }
         int max = findMax(wordArray);
 
-        for (int i = 1; i < wordArray.length; i++) {
-            while (wordArray[i].length() != max) {
+        for (int i = 0; i < wordArray.length; i++) {
+            StringBuilder sb = new StringBuilder(wordArray[i]);
+            while (sb.length() != max) {
+                Pattern pat1 = Pattern.compile("[\\w]+[ ]");
+                Matcher mat1 = pat1.matcher(sb);
+                if (mat1.find()){
+                    int position = mat1.start()+1;
+                    sb.insert(position, ' ');
+                    continue;
+                }
 
-                   // wordArray[i] = wordArray[i].replaceAll("[ ]?", "  ");
             }
 
         }
@@ -29,15 +37,11 @@ public class TaskC1 {
     }
 
 
-    static int findMax(String[ ] arr){
-        if (0==arr.length) {
-            return arr[0].length();
-        } else {
+    static int findMax(String[] arr) {
             int max = arr[0].length();
             for (int i = 1; i < arr.length; i++) {
-                if (max<arr[i].length()) max=arr[i].length();
+                if (max < arr[i].length()) max = arr[i].length();
             }
             return max;
-        }
     }
 }
