@@ -23,28 +23,27 @@ class Scalar extends Var {
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
-            double res=this.value+((Scalar) other).value;
-            return new Scalar(res);
+            double sum=this.value+((Scalar) other).value;
+            return new Scalar(sum);
         }
-        return other.add(this);
-        //other Vector or Matrix
+        else return other.add(this); //если other был вектором или матрицей, то add ищем в соответствующем классе
     }
 
     @Override
     public Var sub(Var other) {
         if (other instanceof Scalar) {
-            double res=this.value-((Scalar) other).value;
-            return new Scalar(res);
+            double sub=this.value-((Scalar) other).value;
+            return new Scalar(sub);
         }
         Scalar minus=new Scalar(-1);
-        return other.add(this.mul((minus)));
+        return other.mul(minus).add(this); //5-{1,2,3} --> -1*{1,2,3}+5
     }
 
     @Override
     public Var mul(Var other) {
         if (other instanceof Scalar) {
-            double res=this.value*((Scalar) other).value;
-            return new Scalar(res);
+            double product=this.value*((Scalar) other).value;
+            return new Scalar(product);
         }
         return other.mul(this);
     }
@@ -52,8 +51,8 @@ class Scalar extends Var {
     @Override
     public Var div(Var other) {
         if (other instanceof Scalar) {
-            double res=this.value/((Scalar) other).value;
-            return new Scalar(res);
+            double div=this.value/((Scalar) other).value;
+            return new Scalar(div);
         }
         return super.div(other);
     }
