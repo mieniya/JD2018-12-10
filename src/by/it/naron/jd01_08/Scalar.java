@@ -17,28 +17,44 @@ class Scalar extends Var {
 
     @Override
     public Var add(Var other) {
-         if (other instanceof Scalar){
-             double res = this.value+((Scalar) other).value;
-         }
-
-
-        return other.add(this);
+        if (other instanceof Scalar){
+            double sum = this.value + ((Scalar)other).value;
+            return new Scalar(sum);
+        }else {
+            //5+vector--> vector.add(5)-если other был вектором, то add ищем в векторе
+            //5+matrix--> matrix.add(5)-если matrix был матрицей, то add ищем в матрице
+           return other.add(this);
+        }
     }
 
     @Override
     public Var sub(Var other) {
-         Scalar minus = new Scalar(-1);
-        return super.add(this.mul(minus));
-    }
+        if (other instanceof Scalar){
+            double sub = this.value - ((Scalar)other).value;
+            return new Scalar(sub);
+        }else {
+            return new Scalar(-1).mul(other).add(this);
+            //5-(1,2,3)-->1*(1,2,3)+5
+        }
+     }
 
     @Override
     public Var mul(Var other) {
-        return super.mul(other);
+        if (other instanceof Scalar){
+            double mul = this.value * ((Scalar)other).value;
+            return new Scalar(mul);
+        }else {
+            return other.mul(this);
+        }
     }
 
     @Override
     public Var div(Var other) {
-        return super.div(other);
+         if (other instanceof Scalar){
+             double div = this.value/((Scalar)other).value;
+             return new Scalar(div);
+         }
+         return super.div(other);
     }
 
     @Override
