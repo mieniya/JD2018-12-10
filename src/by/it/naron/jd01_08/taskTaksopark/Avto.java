@@ -2,6 +2,17 @@ package by.it.naron.jd01_08.taskTaksopark;
 
 /**
  * Created by ����� on 27.03.2018.
+ *
+ *              1.Avto(предок)
+ *
+ * 2.legkovieAvto                          2.GryzovieAvto
+ *          (наследуют поля методы и конструктор Avto)
+ *
+ * 3.1-AvariinieAvto                        3.1-Furi
+ * 3.2-GonochnieAvto                        3.2-Kran
+ * 3.3-taxi                                 3.3-Samosval
+ * (наследуют LegkovieAvto)                 (extends GryzovieAvto)
+ *
  */
 public abstract class Avto implements Comparable<Avto>{
 
@@ -45,9 +56,9 @@ public abstract class Avto implements Comparable<Avto>{
     }
 
     private int price;                  //поля класса
-    private double rashodTopliva;
-    private String tipTopliva;
-    private int kolvoSeats;
+    private double rashodTopliva;       //расход топлива
+    private String tipTopliva;          // тип топлива
+    private int kolvoSeats;            //колличество сидений
 
 
 
