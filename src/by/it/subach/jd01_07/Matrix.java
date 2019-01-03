@@ -1,6 +1,8 @@
 package by.it.subach.jd01_07;
 
 
+import java.util.Arrays;
+
 class Matrix extends Var {
     private double [][] value;
 
@@ -9,7 +11,9 @@ class Matrix extends Var {
     }
 
     Matrix(Matrix matrix){
-        value = matrix.value;
+//        value = matrix.value;
+        this.value = Arrays.copyOf(matrix.value, matrix.value.length);
+
     }
 
     Matrix(String strMatrix){
