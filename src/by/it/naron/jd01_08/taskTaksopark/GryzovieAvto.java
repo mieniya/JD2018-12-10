@@ -6,7 +6,7 @@ package by.it.naron.jd01_08.taskTaksopark;
 public class GryzovieAvto extends Avto{
 
     //поля класса
-    private int countDriver;
+    private int countDriver;        //колличество водителей
     private int vesAvto;
     private int countKoles;
 

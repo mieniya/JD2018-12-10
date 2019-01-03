@@ -6,7 +6,7 @@ package by.it.naron.jd01_08.taskTaksopark;
 public class GonochnieAvto extends LegkovieAvto {
 
     //поля класса
-    private boolean spiler;
+    private boolean spiler;     //спойлер
 
     //конструкторы класса
 

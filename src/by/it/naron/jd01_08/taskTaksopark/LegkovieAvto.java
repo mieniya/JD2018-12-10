@@ -6,7 +6,7 @@ package by.it.naron.jd01_08.taskTaksopark;
 public class LegkovieAvto extends Avto{
 
     //поля класса
-    private int countPassagir;
+    private int countPassagir;          //колличество мест для пассажиров
 
     //конструкторы класса
     public LegkovieAvto(int countPassagir) {

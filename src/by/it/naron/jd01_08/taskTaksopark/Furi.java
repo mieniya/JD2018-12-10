@@ -6,7 +6,7 @@ package by.it.naron.jd01_08.taskTaksopark;
 public class Furi extends GryzovieAvto {
 
     //поля класса
-    private boolean polypritchep;
+    private boolean polypritchep;       //полуприцеп
 
     //конструкторы класса
     public Furi(int price, double rashodTopliva, String tipTopliva, int kolvoSeats, int countDriver, int vesAvto, int countKoles, boolean polypritchep) {

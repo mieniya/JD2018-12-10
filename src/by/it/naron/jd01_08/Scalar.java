@@ -3,7 +3,11 @@ package by.it.naron.jd01_08;
 class Scalar extends Var {
     private double value;
 
-     Scalar(double value) {
+    public double getValue() {
+        return value;
+    }
+
+    Scalar(double value) {
         this.value = value;
     }
 

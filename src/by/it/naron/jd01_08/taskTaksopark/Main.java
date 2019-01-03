@@ -9,6 +9,7 @@ import java.util.List;
 public class Main {                                     //таксапарк название метода
     public static void main(String[] args) {
 
+        //создание объекта
         Taxi taxiCarVolga = new Taxi(9000,11.5,"Petrol",4,2,true);
         AvariinieAvto carMedichine = new AvariinieAvto(5000,6.2,"Diezel",4,2,false,false,true);
         GonochnieAvto carFerrari = new GonochnieAvto(25000,15.6,"Petrol",2,1,true);

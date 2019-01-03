@@ -6,9 +6,9 @@ package by.it.naron.jd01_08.taskTaksopark;
 public class AvariinieAvto extends LegkovieAvto{
 
     //поля класса
-    private boolean bochka;
-    private boolean avtoak;
-    private boolean katalka;
+    private boolean bochka;         //бочка  - для пожарной машины
+    private boolean avtoak;         //автозак - для милицейской машины
+    private boolean katalka;        //каталка - для машины скорой помощи
 
     //конструкторы класса
 
