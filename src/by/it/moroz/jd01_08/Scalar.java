@@ -53,7 +53,6 @@ class Scalar extends Var {
         return other.div(this);
     }
 
-    @Override
     protected double getValue() {
         return value;
     }
