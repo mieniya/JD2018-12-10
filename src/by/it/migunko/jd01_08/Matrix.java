@@ -128,27 +128,5 @@ public class Matrix extends Var{
             return super.div(other);
     }
 
-    public String toString () {
-        StringBuilder line = new StringBuilder();
-        line.append('{');
-        for (int i = 0; i < value.length; i++) {
-            line.append('{');
-            String space = "";
-            for (int j = 0; j < value[i].length; j++) {
-                line.append(space);
-                line.append(value[i][j]);
-                space = ", ";
-            }
-            line.append('}');
-            if (i < value.length - 1)
-                line.append(space);
-        }
 
-        line.append('}');
-        return line.toString();
-    }
-
-    public double[][] getValue() {
-        return value;
-    }
 }

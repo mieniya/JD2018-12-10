@@ -19,7 +19,6 @@ public class Test_jd01_08 {
     public void testTaskA0_constructors__Scalar() throws Exception {
         Test_jd01_08 ok = run("", false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
-
         Constructor c = ok.aClass.getDeclaredConstructor(double.class);
         System.out.println("Создание переменной типа Scalar на основе числа 0.12345");
         Object scalar = c.newInstance(0.12345);
@@ -52,7 +51,6 @@ public class Test_jd01_08 {
         assertEquals("Не было получено ожидаемое значение 0.12345", scalar.toString(), "0.12345");
         System.out.println("выполнено успешно. Scalar=" + scalar);
     }
-
 
     @Test(timeout = 5000)
     public void testTaskA1_add__Scalar() throws Exception {
@@ -114,7 +112,6 @@ public class Test_jd01_08 {
         double res = Double.parseDouble(v3.toString());
         assertEquals("Операция 1.23 / 4.56 работает некорректно", 0.269736842105263, res, 1e-10);
     }
-
 
     @Test(timeout = 5000)
     public void testTaskB0_constructors__Vector() throws Exception {

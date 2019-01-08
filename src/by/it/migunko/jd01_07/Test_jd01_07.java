@@ -119,7 +119,6 @@ public class Test_jd01_07 {
         assertEquals("Не было получено ожидаемое значение {{1.0, 2.0}, {3.0, 4.0}}", matrix.toString().replaceAll(" ",""), "{{1.0,2.0},{3.0,4.0}}");
         System.out.println("выполнено успешно. Matrix="+matrix);
     }
-
     @Test(timeout = 5000)
     public void testTaskC2_Matrix__Matrix() throws Exception {
         Test_jd01_07 ok=run("",false);
@@ -215,13 +214,11 @@ public class Test_jd01_07 {
         return null;
     }
 
-
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
     private static Test_jd01_07 run(String in) {
         return run(in, true);
     }
-
     private static Test_jd01_07 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();

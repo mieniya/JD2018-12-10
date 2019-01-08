@@ -29,19 +29,5 @@ public class Matrix extends Var{
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder("{");
-        String delimetr = "{";
-        for (int i = 0; i < value.length; i++) {
-            for (int j = 0; j < value.length; j++) {
-                builder.append(delimetr).append(value[i][j]);
-                delimetr = ", ";
-            }
-            delimetr = ", {";
-            builder.append("}");
-        }
-        builder.append("}");
-        return builder.toString();
-    }
+
 }
