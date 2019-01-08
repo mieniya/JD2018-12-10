@@ -48,7 +48,6 @@ public class Test_jd01_07 {
     public void testTaskA3_String__Scalar() throws Exception {
         Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
-
         Constructor c=ok.aClass.getDeclaredConstructor(String.class);
         System.out.println("Создание переменной типа Scalar на основе строки 0.12345");
         Object scalar=c.newInstance("0.12345");

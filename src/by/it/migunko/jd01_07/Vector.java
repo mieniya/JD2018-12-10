@@ -16,7 +16,6 @@ class Vector extends Var{
             value[i]=Double.parseDouble(strValues[i]);
         }
     }
-
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder("{");
