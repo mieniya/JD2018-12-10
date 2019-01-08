@@ -1,5 +1,6 @@
 package by.it.kushnerov.jd01_04;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TaskC {
@@ -28,12 +29,14 @@ public class TaskC {
     }
 
      static void mergeSort(double[] array){
-        mergeSort(array,0,array.length);
-    }
+         double[] result = mergeSort(array, 0, array.length-1);
+         for (int i = 0; i < array.length; i++) {
+             array[i] = result[i];
+         }
+     }
 
     private static double[] mergeSort(double[] array, int left, int right){
-        right = array.length;
-        if (right <= left) return array;
+        if (right == left) return array;
         int mid = (left + right)/2;
         return merge(mergeSort(array,left,mid),mergeSort(array,mid+1,right));
     }
@@ -43,29 +46,24 @@ public class TaskC {
         double[] result=new double[len];
         int i1 = 0;
         int i2 = 0;
-        for (int i = 0; i < len; i++) {
-            if (i1 == part1.length){
-                result[i] = part2[i2];
-                i2++;
-            }else if (i2 == part2.length){
-                result[i] = part1[i1];
-                i1++;
-            }else {
-                if (part1[i1] < part2[i2]){
-                    result[i] = part1[i1];
-                    i1++;
-                }else{
-                    result[i] = part2[i2];
-                    i2++;
-                }
+        int i = 0;
+        while(i1+i2<len){
+            if (i2 == part2.length || i1 < part1.length && part1[i1] <part2[i2]){
+                result[i++] = part1[i1++];
+            } else {
+                result[i++] = part2[i2++];
             }
         }
+
         return result;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String line = scanner.nextLine();
-        buildOneDimArray(line);
+        double[] mas = {1,2,3,46,76,44,123,1,1};
+        mergeSort(mas);
+        System.out.println(Arrays.toString(mas));
+//        Scanner scanner = new Scanner(System.in);
+//        String line = scanner.nextLine();
+//        buildOneDimArray(line);
     }
 }
