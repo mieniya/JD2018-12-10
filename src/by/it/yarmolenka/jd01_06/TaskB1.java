@@ -8,7 +8,7 @@ public class TaskB1 {
         Pattern pt = Pattern.compile("[А-Яа-яЁё]+");
         Matcher mc = pt.matcher(Poem.text);
         while (mc.find()) {
-            if (firstConsnonatLastVowel(mc.group())) System.out.println(mc.group());
+            if (firstConsonantLastVowel(mc.group())) System.out.println(mc.group());
         }
     }
 
