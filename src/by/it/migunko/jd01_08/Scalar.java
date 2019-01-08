@@ -6,11 +6,9 @@ public class Scalar extends Var {
     public Scalar(double value) {
         this.value = value;
     }
-
     public Scalar(Scalar scalar) {
         this.value = scalar.getValue();
     }
-
     public Scalar (String strScalar) {
         this.value = Double.parseDouble(strScalar);
     }
