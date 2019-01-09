@@ -3,7 +3,8 @@ package by.it.subach.jd01_09;
 abstract class Var implements Operation{
     private double value;
 
-    public static Var createVar(String operand) {
+    static Var createVar(String operand) {
+        operand = operand.trim();
         if(operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         else if(operand.matches(Patterns.VECTOR))
@@ -16,8 +17,6 @@ abstract class Var implements Operation{
         System.err.print("переменная " + operand + " не определена");
 
         return null;
-
-
     }
 
 

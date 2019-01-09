@@ -13,7 +13,7 @@ public class ConsoleRunner {
         Parcer parcer = new Parcer();
         Printer printer = new Printer();
 
-        while(!(expression = scanner.nextLine()).equals("END")){
+        while(!(expression = scanner.nextLine()).equals("end")){
             Var result = parcer.calc(expression);
             printer.print(result);
         }
