@@ -1,8 +1,6 @@
 package by.it.subach.jd01_08;
 
 
-import by.it.subach.jd01_08.Var;
-
 import java.util.Arrays;
 
 class Matrix extends Var {

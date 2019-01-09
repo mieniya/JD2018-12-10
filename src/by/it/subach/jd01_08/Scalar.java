@@ -1,7 +1,5 @@
 package by.it.subach.jd01_08;
 
-import by.it.subach.jd01_08.Var;
-
 public class Scalar extends Var {
 
     public double getValue() {
