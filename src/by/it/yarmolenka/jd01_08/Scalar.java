@@ -11,8 +11,45 @@ public class Scalar extends Var {
         this.value = scalar.value;
     }
 
-    Scalar(String s){
+    Scalar(String s) {
         this.value = Double.parseDouble(s);
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    @Override
+    public Var add(Var other) {
+        if (other instanceof Scalar) {
+            return new Scalar(this.value + ((Scalar) other).value);
+        }
+        return other.add(this);
+    }
+
+    @Override
+    public Var sub(Var other) {
+        if (other instanceof Scalar) {
+            return new Scalar(this.value - ((Scalar) other).value);
+        }
+        Scalar minus = new Scalar(-1);
+        return this.add(other.mul(minus));
+    }
+
+    @Override
+    public Var mul(Var other) {
+        if (other instanceof Scalar) {
+            return new Scalar(this.value * ((Scalar) other).value);
+        }
+        return other.mul(this);
+    }
+
+    @Override
+    public Var div(Var other) {
+        if (other instanceof Scalar) {
+            return new Scalar(this.value / ((Scalar) other).value);
+        }
+        return super.div(other);
     }
 
     @Override

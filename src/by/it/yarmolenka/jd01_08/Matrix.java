@@ -1,6 +1,7 @@
 package by.it.yarmolenka.jd01_08;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,20 +35,91 @@ public class Matrix extends Var {
 
         //убираем лишние символы из одномерных массивов и переносим данные в матрицу this
         for (int i = 0; i < list.size(); i++) {
-            String buff = list.get(i).replace("{","");
-            buff = buff.replace("}","");
+            String buff = list.get(i).replace("{", "");
+            buff = buff.replace("}", "");
             String[] str = buff.split(",");
             for (int i1 = 0; i1 < str.length; i1++) {
                 str[i1] = str[i1].trim();
             }
-            for (int j = 0; j<str.length;j++){
+            for (int j = 0; j < str.length; j++) {
                 this.value[i][j] = Double.parseDouble(str[j]);
             }
         }
+    }
 
+    @Override
+    public Var add(Var other) {
+        if (other instanceof Scalar) {
+            double[][] res = new double[this.value.length][this.value[0].length];
+            for (int i = 0; i < res.length; i++) {
+                res[i] = Arrays.copyOf(this.value[i], this.value[i].length);
+            }
+            for (int i = 0; i < res.length; i++)
+                for (int j = 0; j < res[i].length; j++)
+                    res[i][j] += ((Scalar) other).getValue();
+            return new Matrix(res);
+        } else if (other instanceof Matrix)
+            if (this.value.length == ((Matrix) other).value.length &&
+                    this.value[0].length == ((Matrix) other).value[0].length) {
+                double[][] res = new double[this.value.length][this.value[0].length];
+                for (int i = 0; i < res.length; i++) {
+                    for (int j = 0; j < res[0].length; j++) {
+                        res[i][j] = this.value[i][j] + ((Matrix) other).value[i][j];
+                    }
+                }
+                return new Matrix(res);
+            }
 
+        return super.add(other);
+    }
 
+    @Override
+    public Var sub(Var other) {
+        if (other instanceof Scalar) {
+            Scalar min = new Scalar(-1);
+            return this.add(other.mul(min));
+        } else if (other instanceof Matrix)
+            if (this.value.length == ((Matrix) other).value.length &&
+                    this.value[0].length == ((Matrix) other).value[0].length) {
+                Scalar min = new Scalar(-1);
+                return this.add(other.mul(min));
+            }
 
+        return super.add(other);
+    }
+
+    @Override
+    public Var mul(Var other) {
+        if (other instanceof Scalar) {
+            double[][] res = new double[this.value.length][this.value[0].length];
+            for (int i = 0; i < res.length; i++) {
+                res[i] = Arrays.copyOf(this.value[i], this.value[i].length);
+            }
+            for (int i = 0; i < res.length; i++)
+                for (int j = 0; j < res[i].length; j++)
+                    res[i][j] *= ((Scalar) other).getValue();
+            return new Matrix(res);
+        } else if (other instanceof Matrix) {
+            if (this.value[0].length == ((Matrix) other).value.length) {
+                double[][] res = new double[this.value.length][((Matrix) other).value[0].length];
+                for (int i = 0; i < res.length; i++)
+                    for (int j = 0; j < res[i].length; j++)
+                        for (int k = 0; k < this.value[0].length; k++)
+                            res[i][j] += this.value[i][k] * ((Matrix) other).value[k][j];
+                return new Matrix(res);
+            }
+        } else if (other instanceof Vector) {
+            if (this.value[0].length == ((Vector) other).getValue().length){
+                double[] res = new double[this.value.length];
+                for (int i = 0; i < res.length; i++) {
+                    for (int j = 0; j<this.value[0].length;j++){
+                        res[i]+=this.value[i][j]*((Vector) other).getValue()[j];
+                    }
+                }
+                return new Vector(res);
+            }
+        }
+        return super.mul(other);
     }
 
     @Override
