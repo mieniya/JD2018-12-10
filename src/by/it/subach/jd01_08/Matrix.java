@@ -53,8 +53,7 @@ class Matrix extends Var {
                 }
                 return new Matrix(res);
             }
-        }
-        else if (other instanceof Scalar) {
+        } else if (other instanceof Scalar) {
             double res[][] = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
@@ -70,10 +69,10 @@ class Matrix extends Var {
     @Override
     public Var sub(Var other) {
         Scalar minus = new Scalar(-1);
-        if(other instanceof Scalar){
+        if (other instanceof Scalar) {
             return this.add(other.mul(minus));
         }
-        if(other instanceof Matrix){
+        if (other instanceof Matrix) {
             return this.add(other.mul(minus));
         }
         return super.sub(other);
@@ -81,8 +80,8 @@ class Matrix extends Var {
 
     @Override
     public Var mul(Var other) {
-        if(other instanceof Scalar){
-            double [][] res = Arrays.copyOf(this.value, this.value.length);
+        if (other instanceof Scalar) {
+            double[][] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res[i].length; j++) {
                     res[i][j] *= ((Scalar) other).getValue();
@@ -91,10 +90,10 @@ class Matrix extends Var {
             return new Matrix(res);
         }
 
-        if(other instanceof Vector){
+        if (other instanceof Vector) {
             int vectorLength = ((Vector) other).getValue().length;
-            if(this.value.length == vectorLength){
-                double [] res = new double[vectorLength];
+            if (this.value.length == vectorLength) {
+                double[] res = new double[vectorLength];
                 for (int i = 0; i < value.length; i++) {
                     for (int j = 0; j < value.length; j++) {
                         res[i] += value[i][j] * ((Vector) other).getValue()[j];
@@ -104,9 +103,9 @@ class Matrix extends Var {
             }
         }
 
-        if(other instanceof Matrix){
-            if(this.value[0].length == ((Matrix) other).value.length){
-                double [][] res = new double[this.value.length][((Matrix) other).value[0].length];
+        if (other instanceof Matrix) {
+            if (this.value[0].length == ((Matrix) other).value.length) {
+                double[][] res = new double[this.value.length][((Matrix) other).value[0].length];
                 for (int i = 0; i < this.value.length; i++) {
                     for (int j = 0; j < ((Matrix) other).value.length; j++) {
                         double sum = 0;
@@ -118,7 +117,7 @@ class Matrix extends Var {
                 }
                 return new Matrix(res);
             }
-            }
+        }
 
         return super.mul(other);
     }
