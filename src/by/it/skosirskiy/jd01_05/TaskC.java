@@ -13,19 +13,23 @@ public class TaskC {
         double min=5.33;
         double max=9;
         double step=0;
+        int count2=0;
         int count=0;
         double proiz=1;
         double sredneegeo;
         int element=(int)(random()*(minElement+1)+(maxElemnt-minElement));
 
        double[] array = new double[element];
+
         step=(max-min)/element;
+        count2=(int) max/element;
 
         do {
             min=min+step;
-            array[count]=random()*(min+1)+(max-min);
+            array[count]=cbrt(pow(random()*(min+1)+(max-min),2)+4.5);
             count++;
-        } while (min<=max);
+            count2++;
+        } while (!(count2==element));
 
 
 
@@ -51,7 +55,7 @@ public class TaskC {
             }
         }
 
-        System.out.println("Массив 2");
+        System.out.println("Массив 2 из элементов массива А > 3.5");
         for (int i = 0; i < newArray.length; i++) {
             System.out.printf("%2s%3d%4s%8f", " A[", i, "] =", newArray[i]);
             i++;
