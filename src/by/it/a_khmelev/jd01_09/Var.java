@@ -40,7 +40,6 @@ abstract class Var implements Operation {
             return new Vector(operand);
         else if (operand.matches(Patterns.MATRIX))
             return new Matrix(operand);
-        //TODO Replace errors
         System.err.println("Переменная "+operand+" не определена");
         return null;
     }
