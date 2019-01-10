@@ -54,7 +54,7 @@ class Matrix extends Var {
                 return new Matrix(res);
             }
         } else if (other instanceof Scalar) {
-            double res[][] = Arrays.copyOf(this.value, this.value.length);
+            double [][] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
                     res[i][j] += ((Scalar) other).getValue();
