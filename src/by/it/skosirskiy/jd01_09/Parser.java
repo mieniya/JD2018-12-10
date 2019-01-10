@@ -8,7 +8,7 @@ public class Parser {
     Var calc(String expression){
         String [] operand = expression.split(Patterns.OPERATION);
         Var one=Var.createVar(operand[0]);
-        Var two=Var.createVar(operand[0]);
+        Var two=Var.createVar(operand[1]);
         if (one == null || two == null)
             return null; //TODO create error
         Pattern p = Pattern.compile(Patterns.OPERATION);
@@ -17,7 +17,7 @@ public class Parser {
 
             String operation = m.group();
             switch (operation){
-                case "+": return one.add(two);
+                case "+":return one.add(two);
                 case "-":return  one.sub(two);
                 case "*":return  one.mul(two);
                 case "/":return  one.div(two);
