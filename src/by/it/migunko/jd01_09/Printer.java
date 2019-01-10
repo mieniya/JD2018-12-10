@@ -1,4 +1,8 @@
 package by.it.migunko.jd01_09;
 
-public class Printer {
+class Printer {
+    public void print(Var result) {
+        if (result != null)
+            System.out.println(result);
+    }
 }

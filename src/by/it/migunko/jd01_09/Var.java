@@ -29,4 +29,15 @@ abstract class Var implements Operation {
         System.out.println("Деление " + this + " на " + other + " невозможно");
         return null;
     }
+    static Var createVar(String operand) {
+        operand=operand.trim();
+        if (operand.matches(Patterns.SCALAR))
+            return new Scalar(operand);
+        else if (operand.matches(Patterns.VECTOR))
+            return new Vector(operand);
+        else if (operand.matches(Patterns.MATRIX))
+            return new Matrix(operand);
+        System.err.println("Переменная "+operand+" не определена");
+        return null;
+    }
 }
