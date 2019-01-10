@@ -16,7 +16,6 @@ class Vector extends Var{
             value[i]=Double.parseDouble(strValues[i]);
         }
     }
-
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder("{");
@@ -26,7 +25,7 @@ class Vector extends Var{
             delimetr=", ";
 
         }
-     sb.append("}");
+        sb.append("}");
         return sb.toString();
     }
 }

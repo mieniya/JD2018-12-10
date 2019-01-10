@@ -1,8 +1,9 @@
 package by.it.migunko.jd01_07;
 
+
 abstract class Var {
-     @Override
-     public String toString() {
-         return "какая-то переменная";
-     }
- }
+    @Override
+    public String toString() {
+        return "какая-то переменная";
+    }
+}
