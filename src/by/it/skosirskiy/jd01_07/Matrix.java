@@ -27,13 +27,13 @@ public class Matrix extends Var {
             kolrows++;
         }
 
-        String[] newMatrix = str.replaceAll("[^,0-9]", "").split(",");
-        int columns = newMatrix.length / kolrows; // shctchik elment v matrice
+        String[] strMatrix = str.replaceAll("[^,0-9]", "").split(",");
+        int columns = strMatrix.length / kolrows; // shctchik elment v matrice
         this.value = new double[kolrows][columns];
-        for (int k = 0; k < newMatrix.length; k++) {
+        for (int k = 0; k < strMatrix.length; k++) {
             for (int i = 0; i < kolrows; i++) {
                 for (int j = 0; j < columns; j++) {
-                    value[i][j] = Double.parseDouble(newMatrix[k]);
+                    value[i][j] = Double.parseDouble(strMatrix[k]);
                     k++;
                 }
             }
