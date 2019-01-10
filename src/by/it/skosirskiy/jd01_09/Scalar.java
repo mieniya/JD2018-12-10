@@ -11,6 +11,11 @@ class Scalar extends Var {
         this.value = value;
     }
 
+    Scalar(Scalar scalar){
+        this.value=scalar.value;
+    }
+    Scalar(String str){ value=Double.parseDouble(str);}  //this.value=Double.parseDouble(str);
+
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar){
@@ -56,13 +61,13 @@ class Scalar extends Var {
 
 
 
-    Scalar(String str){
-        this.value=Double.parseDouble(str);
-    }
 
-    Scalar(Scalar scalar){
-        this.value=scalar.value;
-    }
+
+
+
+
+
+
 
     @Override
     public String toString() {
