@@ -1,5 +1,6 @@
 package by.it.migunko.jd01_07;
 
+
 public class Runner {
     public static void main(String[] args){
         Scalar var1=new Scalar(3.1415);
