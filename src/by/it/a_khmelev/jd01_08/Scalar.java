@@ -20,8 +20,6 @@ class Scalar extends Var {
         value=Double.parseDouble(strValue);
     }
 
-
-
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {

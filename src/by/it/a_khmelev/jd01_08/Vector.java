@@ -46,60 +46,6 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
-        if (other instanceof Scalar) {
-            double[] res = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i] -= ((Scalar) other).getValue();
-            }
-            return new Vector(res);
-        }
-        else if (other instanceof Vector) {
-            if (this.value.length==((Vector) other).value.length) {
-                double[] res = Arrays.copyOf(this.value, this.value.length);
-                for (int i = 0; i < res.length; i++) {
-                    res[i]-=((Vector) other).value[i];
-                }
-                return new Vector(res);
-            }
-        }
-        return super.sub(other);
-    }
-
-    @Override
-    public Var mul(Var other) {
-        if (other instanceof Scalar) {
-            double[] res = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i] *= ((Scalar) other).getValue();
-            }
-            return new Vector(res);
-        }
-        else if (other instanceof Vector) {
-            if (this.value.length==((Vector) other).value.length) {
-                double res = 0;
-                for (int i = 0; i < this.value.length; i++) {
-                    res+=this.value[i]*((Vector) other).value[i];
-                }
-                return new Scalar(res);
-            }
-        }
-        return super.mul(other);
-    }
-
-    @Override
-    public Var div(Var other) {
-        if (other instanceof Scalar) {
-            double[] res = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i] /= ((Scalar) other).getValue();
-            }
-            return new Vector(res);
-        }
-        return super.div(other);
-    }
-
-    @Override
     public String toString() {
         StringBuilder out = new StringBuilder("{");
         String delimiter = "";
