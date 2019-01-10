@@ -4,7 +4,7 @@ import static java.lang.Math.*;
 
 public class TaskC {
     public static void main(String[] args) {
-        // step1();
+        step1();
         step2();
     }
 
@@ -15,7 +15,6 @@ public class TaskC {
         double geom = 1;
         int j = 0;
         System.out.println("массив ARRAY");
-
         for (int i = 0; i <= 27; i++) {
             double x = 5.33 + delta * i;
             double z = pow((x * x + 4.5), 1.0 / 3);
@@ -33,11 +32,10 @@ public class TaskC {
         }
         double sredGeom = pow(geom, 1.0 / j);
         System.out.println("среднее геометрическое" + sredGeom);
-
     }
 
     private static void step2() {
-        double[] array = new double[31];
+        double[] array = new double[30];
         int quantityNewMAs = arrayNamberAndquantityNewMas(array);
         double[] arrNew = new double[quantityNewMAs];
         arrayNewMas(array, arrNew);
@@ -48,7 +46,6 @@ public class TaskC {
 
     public static int arrayNamberAndquantityNewMas(double[] array) {
         int quantity = 0;
-
         for (int i = 0; i < array.length; i++) {
             array[i] = 103 + (int) (Math.random() * 348);
             if (array[i] * 0.1 > i) {
@@ -72,16 +69,23 @@ public class TaskC {
         int col = 0;
         System.out.println(name);
         topLine(cols);
-        System.out.printf("\u2551");
         for (int i = 0; i < array.length; i++) {
             System.out.printf("[%-3d]=%-5.1f\u2551", i, array[i]);
             col++;
-            if ((0 == col % cols) || (array.length - 1 == i)) {
+            if ((0 == col % cols) && (col != array.length)) {
                 System.out.println();
                 midlleLine(cols);
-                System.out.printf("\u2551");
+                if (col != array.length) {
+                    System.out.printf("\u2551");
+                }
+            }
+            if ((col == array.length) && (array.length % cols) != 0) {
+                for (int j = 0; j < cols - ((array.length) % cols); j++) {
+                    System.out.printf("           \u2551");
+                }
             }
         }
+        lowleLine(cols);
         System.out.println();
     }
 
@@ -92,13 +96,16 @@ public class TaskC {
         for (int i = 0; i < cols; i++) {
             if (cols - 1 == i) {
                 symbol = "\u2557";
+            } else {
+                symbol = "\u2566";
             }
-            else { symbol = "\u2566";}
             System.out.printf("\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + symbol);
             col++;
         }
         System.out.println();
+        System.out.printf("\u2551");
     }
+
     public static void midlleLine(int cols) {
         int col = 0;
         String symbol = new String("\u256C");
@@ -106,8 +113,26 @@ public class TaskC {
         for (int i = 0; i < cols; i++) {
             if (cols - 1 == i) {
                 symbol = "\u2563";
+            } else {
+                symbol = "\u256C";
             }
-            else { symbol = "\u256C";}
+            System.out.printf("\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + symbol);
+            col++;
+        }
+        System.out.println();
+    }
+
+    public static void lowleLine(int cols) {
+        int col = 0;
+        String symbol = new String("\u256C");
+        System.out.println();
+        System.out.printf("\u255A");
+        for (int i = 0; i < cols; i++) {
+            if (cols - 1 == i) {
+                symbol = "\u255D";
+            } else {
+                symbol = "\u2569";
+            }
             System.out.printf("\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + "\u2550" + symbol);
             col++;
         }
@@ -130,7 +155,6 @@ public class TaskC {
             }
             last--;
         } while (swap);
-
     }
 }
 
