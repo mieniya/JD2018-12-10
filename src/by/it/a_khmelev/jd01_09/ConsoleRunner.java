@@ -12,6 +12,5 @@ public class ConsoleRunner {
             Var result=parcer.calc(expression);
             printer.print(result);
         }
-
     }
 }
