@@ -8,10 +8,11 @@ public class TaskC {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         step1(n);
-        //int[][] masM = {{1, -2, -2, 6}, {-1, 2, -2, 2}, {-2, -2, -6, -2}, {1, 2, -2, 6}};
-        step2(step1(n));
+      //  int[][] masM = {{1, -2, -2, 6}, {-1, 2, -2, 2}, {-2, -2, -6, -2}, {1, 2, -2, 6}};
+         step2(step1(n));
         //step2(masM);
-        //step13();
+       // step3(masM);
+        step3(step1(n));
     }
 
     private static int[][] step1(int n) {
@@ -49,39 +50,118 @@ public class TaskC {
         boolean ij1 = false;
         boolean ij2 = false;
         int sum = 0;
-        for (int i = 0; i < mas.length; i++){
+        for (int i = 0; i < mas.length; i++) {
             for (int j = 0; j < mas[i].length; j++) {
                 if (mas[i][j] > 0 & ij1 == false) {
                     ij1 = true;
-                   } else if (mas[i][j]>0 & ij1 == true & ij2 == false) {
-                    ij2=true;
-                }
-                else if (ij1 == true & ij2 == false) sum=sum+mas[i][j];
-            };
-        ij1 = false;
-        ij2 = false;
-    }
+                } else if (mas[i][j] > 0 & ij1 == true & ij2 == false) {
+                    ij2 = true;
+                } else if (ij1 == true & ij2 == false) sum = sum + mas[i][j];
+            }
+            ;
+            ij1 = false;
+            ij2 = false;
+        }
         System.out.println("Сумма элементов " + sum);
         return sum;
     }
 
-    private static void step131(int[][] mas) {
+    private static int[][] step3(int[][] mas) {
+        int maxElement = maxElementMas(mas);
+        printMas(mas);
+        boolean[] delRow = new boolean[mas.length];
+        boolean[] delCol = new boolean[mas[0].length];
+
+        //заполняем delRow и delCol
+        for (int i = 0; i < mas[0].length; i++) {
+            for (int j = 0; j < mas.length; j++) {
+                if (mas[i][j] == maxElement) {
+                    delRow[i] = true;
+                    delCol[j] = true;
+                }
+            }
+        }
+//        System.out.println("Массив delrow");
+//        printArray(delRow);
+//        System.out.println("Массив delcol");
+//        printArray(delCol);
+
+        int lenghtNewMasI=mas.length-amountTrue(delRow);
+        int lenghtNewMasJ=mas[0].length-amountTrue(delCol);
+
+        int[][] newMas = new int[lenghtNewMasI][lenghtNewMasJ];
+        int newMasI=0;
+        for (int i = 0; i < mas.length; i++) {
+            if (delRow[i]==false) {
+                int newMasJ=0;
+                for (int j = 0; j < mas[0].length; j++) {
+                    if (delCol[j] == false) {
+                        newMas[newMasI][newMasJ]=mas[i][j];
+                        newMasJ++;
+                    }
+                }
+                newMasI++;
+            }
+        }
+        System.out.println("Массив new");
+        printMas(newMas);
+        return newMas;
+    }
+
+    public static int maxElementMas(int[][] mas) {
         int maxElement;
-        int k = 0;
-        int m = mas.length;
-        int[][] newMas = new int[m][m];
-        int[][] masIJ = new int[m][2];
-        maxElement = mas[1][1];
-        for (int i = 0; i < mas[i].length; i++) {
-            for (int j = 0; j < mas[j].length; j++) {
+        maxElement = mas[0][0];
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
                 if (mas[i][j] > maxElement) {
                     maxElement = mas[i][j];
                 }
             }
         }
+        return maxElement;
     }
 
-    static int[][] step3(int[][] mas) {
+    public static int amountMaxElementMas(int[][] mas) {
+        int maxElement = maxElementMas(mas);
+        int amout = 0;
+        //maxElement = mas[0][0];
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
+                if (mas[i][j] == maxElement) {
+                    amout++;
+                }
+            }
+        }
+        return amout;
+    }
+
+    public static void printMas(int[][] mas) {
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
+                System.out.print(mas[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int amountTrue(boolean[] mas) {
+        int amout = 0;
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i] == true) {
+                amout++;
+            }
+        }
+        return amout;
+    }
+
+    public static void printArray(boolean[] mas) {
+        for (int i = 0; i < mas.length; i++) {
+            System.out.print(mas[i] + " ");
+        }
+        System.out.println();
+    }
+
+    static int[][] step113(int[][] mas) {
         boolean[] delCol = new boolean[mas[0].length];
         boolean[] delRov = new boolean[mas.length];
         //fin max
