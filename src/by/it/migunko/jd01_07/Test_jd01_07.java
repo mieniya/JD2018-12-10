@@ -1,6 +1,5 @@
 package by.it.migunko.jd01_07;
 
-
 import org.junit.Test;
 
 import java.io.*;
@@ -49,7 +48,6 @@ public class Test_jd01_07 {
     public void testTaskA3_String__Scalar() throws Exception {
         Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
-
         Constructor c=ok.aClass.getDeclaredConstructor(String.class);
         System.out.println("Создание переменной типа Scalar на основе строки 0.12345");
         Object scalar=c.newInstance("0.12345");
@@ -58,8 +56,6 @@ public class Test_jd01_07 {
         assertEquals("Не было получено ожидаемое значение 0.12345", scalar.toString(), "0.12345");
         System.out.println("выполнено успешно. Scalar="+scalar);
     }
-
-
 
     @Test(timeout = 5000)
     public void testTaskB1_double__Vector() throws Exception {
@@ -119,7 +115,6 @@ public class Test_jd01_07 {
         assertEquals("Не было получено ожидаемое значение {{1.0, 2.0}, {3.0, 4.0}}", matrix.toString().replaceAll(" ",""), "{{1.0,2.0},{3.0,4.0}}");
         System.out.println("выполнено успешно. Matrix="+matrix);
     }
-
     @Test(timeout = 5000)
     public void testTaskC2_Matrix__Matrix() throws Exception {
         Test_jd01_07 ok=run("",false);
@@ -215,13 +210,11 @@ public class Test_jd01_07 {
         return null;
     }
 
-
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
     private static Test_jd01_07 run(String in) {
         return run(in, true);
     }
-
     private static Test_jd01_07 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
@@ -289,7 +282,6 @@ public class Test_jd01_07 {
                 strOut.toString().equals(str));
         return this;
     }
-
     private Test_jd01_07 include(String str) {
         assertTrue("ERROR:Строка не найдена: " + str + "\n", strOut.toString().contains(str));
         return this;
