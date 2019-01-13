@@ -1,8 +1,9 @@
 package by.it.moroz.jd01_10;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.Arrays;
+
 
 public class PrintMath {
 
@@ -13,19 +14,48 @@ public class PrintMath {
         for (Method method : methods) {
             String name = method.getName();
             int modifiers = method.getModifiers();
-            StringBuilder mm = new StringBuilder();
-            if (Modifier.isPublic(modifiers)) mm.append("public ");
+
             Class<?> returnType = method.getReturnType();
             String ret = returnType.getSimpleName();
+            if (Modifier.isPublic(modifiers) & !Modifier.isStatic(modifiers)) {
+                StringBuilder mm = new StringBuilder();
+                mm.append("public ");
+                System.out.printf("%s%s %s", mm, ret, name);
+            }
+            if (Modifier.isPublic(modifiers) & Modifier.isStatic(modifiers)) {
+                StringBuilder mm = new StringBuilder();
+                mm.append("public static ");
+                System.out.printf("%s%s %s", mm, ret, name);
+            }
             Class<?>[] parameterTypes = method.getParameterTypes();
-            System.out.printf("%s%s %s(????)\n", mm, ret, name);
-            //for (Class<?> parameterType : parameterTypes){
-            //    System.out.printf("%s", parameterType.getSimpleName());
-            //}
-            //System.out.printf(")\n");
-
+            if (parameterTypes.length == 1)
+                System.out.printf("(%s)\n", parameterTypes[0]);
+            else if (parameterTypes.length == 2)
+                System.out.printf("(%s,%s)\n", parameterTypes[0], parameterTypes[1]);
+            else if (parameterTypes.length == 3)
+                System.out.printf("(%s,%s,%s)\n", parameterTypes[0], parameterTypes[1], parameterTypes[2]);
+            else if (parameterTypes.length == 4)
+                System.out.printf("(%s,%s,%s,%s)\n", parameterTypes[0], parameterTypes[1], parameterTypes[2], parameterTypes[3]);
+            else if (parameterTypes.length == 0)
+                System.out.printf("()\n");
 
         }
-
+        Field[] fields = mathClass.getFields();
+        for (Field field : fields) {
+            String name = field.getName();
+            int modifiers = field.getModifiers();
+            Class<?> type = field.getType();
+            String ret = type.getSimpleName();
+            if (Modifier.isPublic(modifiers) & !Modifier.isStatic(modifiers)) {
+                StringBuilder mm = new StringBuilder();
+                mm.append("public ");
+                System.out.printf("%s%s %s\n", mm, ret, name);
+            }
+            if (Modifier.isPublic(modifiers) & Modifier.isStatic(modifiers)) {
+                StringBuilder mm = new StringBuilder();
+                mm.append("public static ");
+                System.out.printf("%s%s %s\n", mm, ret, name);
+            }
+        }
     }
 }
