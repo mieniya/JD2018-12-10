@@ -21,7 +21,6 @@ public class BeanTester {
                                 declaredMethod.getAnnotation(Param.class).a(),
                                 declaredMethod.getAnnotation(Param.class).b()));
             }
-
         }
     }
 }

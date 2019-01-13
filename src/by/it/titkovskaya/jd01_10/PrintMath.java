@@ -19,17 +19,16 @@ public class PrintMath {
                 String ret = returnType.getSimpleName();
                 int parameterCount = method.getParameterCount();
                 Class<?>[] parameterTypes = method.getParameterTypes();
-                if (parameterCount == 1) {
-                    for (Class<?> parameterType : parameterTypes) {
-                        System.out.printf("%s%s %s(%s)\n", mm, ret, name, parameterType.getSimpleName());
+                for (int i = 0; i < parameterTypes.length; i++) {
+                    if (parameterCount == 1) {
+                        System.out.printf("%s%s %s(%s)\n", mm, ret, name, parameterTypes[i]);
                     }
-                }
-                if (parameterCount == 2) {
-                    for (int i = 0; i < parameterTypes.length; i++) {
+                    if (parameterCount == 2) {
                         System.out.printf("%s%s %s(%s,%s)\n", mm, ret, name, parameterTypes[i], parameterTypes[i + 1]);
                         i++;
                     }
-                } else System.out.printf("%s%s %s()\n", mm, ret, name);
+                }
+                if (parameterCount!=1 && parameterCount!=2)  System.out.printf("%s%s %s()\n", mm, ret, name);
             }
         }
         Field[] fields = mathClass.getFields();
