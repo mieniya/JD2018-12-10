@@ -16,7 +16,7 @@ public class Matrix extends Var {
     }
 
     public Matrix(String strMatrix) {
-        Pattern pattern = Pattern.compile("[{][0-9, ]+[}]");
+        Pattern pattern = Pattern.compile("[{][0-9., ]+[}]");
         StringBuilder sb = new StringBuilder(strMatrix);
         Matcher matcher = pattern.matcher(sb);
         int rowsQuantity = 0;
