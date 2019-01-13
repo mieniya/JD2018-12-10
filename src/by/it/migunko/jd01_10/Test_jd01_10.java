@@ -231,7 +231,6 @@ public class Test_jd01_10 {
             System.out.println("Проверка метода " + method.getName() + " завершена.");
             System.out.flush();
         }
-
         assertTrue("Ожидается, что число аннотированных методов будет 3 или больше", countAnnotation >= 3);
         assertTrue("Ожидается, что не все методы аннотировны", countAnnotation < methods.length);
         System.out.println("OK");
