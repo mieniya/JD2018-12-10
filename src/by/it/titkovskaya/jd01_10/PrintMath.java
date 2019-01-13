@@ -17,18 +17,14 @@ public class PrintMath {
                 if (Modifier.isStatic(modifiers)) mm.append("static ");
                 Class<?> returnType = method.getReturnType();
                 String ret = returnType.getSimpleName();
-                int parameterCount = method.getParameterCount();
                 Class<?>[] parameterTypes = method.getParameterTypes();
-                for (int i = 0; i < parameterTypes.length; i++) {
-                    if (parameterCount == 1) {
-                        System.out.printf("%s%s %s(%s)\n", mm, ret, name, parameterTypes[i]);
-                    }
-                    if (parameterCount == 2) {
-                        System.out.printf("%s%s %s(%s,%s)\n", mm, ret, name, parameterTypes[i], parameterTypes[i + 1]);
-                        i++;
-                    }
+                StringBuilder paramTypes = new StringBuilder();
+                String delimiter = "";
+                for (Class<?> parameterType : parameterTypes) {
+                    paramTypes.append(delimiter).append(parameterType);
+                    delimiter=",";
                 }
-                if (parameterCount!=1 && parameterCount!=2)  System.out.printf("%s%s %s()\n", mm, ret, name);
+                System.out.printf("%s%s %s(%s)\n", mm, ret, name, paramTypes);
             }
         }
         Field[] fields = mathClass.getFields();
