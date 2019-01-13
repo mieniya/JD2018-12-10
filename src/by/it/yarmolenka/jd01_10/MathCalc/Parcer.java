@@ -21,9 +21,9 @@ class Parcer {
             String operation = m.group();
             switch (operation){
                 case "+": return Add.addVarVar(one, two);
-//                case "-": return one.sub(two);
-//                case "*": return one.mul(two);
-//                case "/": return one.div(two);
+                case "-": return Sub.subVarVar(one, two);
+                case "*": return Mul.mulVarVar(one, two);
+                case "/": return Div.divVarVar(one, two);
             }
         }
         return null;
