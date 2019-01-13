@@ -1,9 +1,20 @@
-package by.it.dziomin.jd01_09;
+package by.it.dziomin.jd01_09.jd01_09_withoutNewInstance;
 
 public abstract class Var implements Operation {
 
 
     public abstract String toString();
+
+    public boolean isScalar(){
+        return false;
+    }
+    public boolean isVector(){
+        return false;
+    }
+    public boolean isMatrix(){
+        return false;
+    }
+
 
     @Override
     public Var add(Var other) {
