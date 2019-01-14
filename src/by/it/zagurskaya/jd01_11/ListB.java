@@ -1,7 +1,8 @@
 package by.it.zagurskaya.jd01_11;
 
 import java.util.*;
-class ListA<E> implements List<E> {
+
+class ListB<E> implements List<E> {
 
     private E[] elements = (E[]) new Object[0];
     private int size = 0;
@@ -9,7 +10,16 @@ class ListA<E> implements List<E> {
 
     @Override
     public E get(int index) {
+
         return elements[index];
+    }
+// не работает???
+    @Override
+    public E set(int index, E element) {
+                //elements[index] = e;
+        System.arraycopy(element,0,elements,index,1);
+        return elements[index];
+       // return null;
     }
 
     @Override
@@ -23,6 +33,29 @@ class ListA<E> implements List<E> {
     }
 
     @Override
+    public void add(int index, E element) {
+        // надо ли увеличиваь массив
+        if (size == elements.length) {
+            elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
+        }
+        elements[index] = element;
+    }
+
+//    @Override
+//    public boolean addAll(Collection<? extends E> c) {
+//           size ++= c.size();
+//            elements =  System.arraycopy(c,0,elements,elements.length,c.size());
+//
+//        return true;
+//    }
+
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
+    
+    @Override
     public boolean remove(Object o) {
         int index = indexOf(o);
         if (index>-1){
@@ -31,7 +64,6 @@ class ListA<E> implements List<E> {
         } else
         return false;
     }
-
 
     @Override
     public E remove(int index) {
@@ -42,7 +74,7 @@ class ListA<E> implements List<E> {
     }
 
     @Override
-    public int indexOf(Object o) {
+       public int indexOf(Object o) {
         for (int i = 0; i < size; i++) {
             if (elements[i].equals(o))
                 return i;
@@ -62,8 +94,6 @@ class ListA<E> implements List<E> {
         out.append("]");
         return out.toString();
     }
-
-
 
     @Override
     public int size() {
@@ -101,11 +131,6 @@ class ListA<E> implements List<E> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
     public boolean addAll(int index, Collection<? extends E> c) {
         return false;
     }
@@ -123,17 +148,6 @@ class ListA<E> implements List<E> {
     @Override
     public void clear() {
 
-    }
-
-
-    @Override
-    public E set(int index, E element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, E element) {
-        
     }
 
 
