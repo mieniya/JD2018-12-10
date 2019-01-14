@@ -19,7 +19,7 @@ public class Runner {
         System.out.println(b);
         System.out.println("-------------------------------------------------------");
 
-        List<String> a = new ListA<>();
+        List<String> a = new ListB<>();
         a.add("one");
         a.add("two");
         a.add("three");
@@ -30,6 +30,16 @@ public class Runner {
         System.out.println(a.size());
         a.remove("one");
         System.out.println(a);
+        a.add(null);
+        a.add("4");
+        a.add("5");
+        a.add("6");
+        System.out.println(a);
+        System.out.println(a.size());
+        a.add(0, "neshta");
+        System.out.println(a);
+        System.out.println(a.size());
+
 
 
     }
