@@ -5,7 +5,7 @@ import java.util.*;
 class ListB<E> implements List<E> {
 
     private E[] elements = (E[]) new Object[0];
-    private int size = 0;
+    private int countElementsInCollection = 0;
 
 
     @Override
@@ -13,70 +13,79 @@ class ListB<E> implements List<E> {
 
         return elements[index];
     }
-// не работает???
+
     @Override
     public E set(int index, E element) {
-                //elements[index] = e;
-        System.arraycopy(element,0,elements,index,1);
-        return elements[index];
-       // return null;
+        E replacedElement = elements[index];
+        elements[index] = element;
+        return replacedElement;
     }
 
     @Override
     public boolean add(E e) {
         // надо ли увеличиваь массив
-        if (size == elements.length) {
+        if (countElementsInCollection == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
-                    }
-        elements[size++] = e;
+        }
+        elements[countElementsInCollection++] = e;
         return true;
     }
 
     @Override
     public void add(int index, E element) {
         // надо ли увеличиваь массив
-        if (size == elements.length) {
+        if (countElementsInCollection == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
         }
+        countElementsInCollection++;
+        System.arraycopy(elements, index, elements, index + 1, countElementsInCollection - index - 1);
         elements[index] = element;
     }
 
-//    @Override
-//    public boolean addAll(Collection<? extends E> c) {
-//           size ++= c.size();
-//            elements =  System.arraycopy(c,0,elements,elements.length,c.size());
-//
-//        return true;
-//    }
-
-
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        if (c.size() == 0) {
+            return false;
+        }
+
+        if (countElementsInCollection + c.size() >= elements.length) {
+            elements = Arrays.copyOf(elements, elements.length + c.size());
+        }
+
+        System.arraycopy(c.toArray(), 0, elements, countElementsInCollection, c.size());
+        countElementsInCollection += c.size();
+
+        return true;
     }
-    
+
+//
+//    @Override
+//    public boolean addAll(Collection<? extends E> c) {
+//        return false;
+//    }
+
     @Override
     public boolean remove(Object o) {
         int index = indexOf(o);
-        if (index>-1){
+        if (index > -1) {
             remove(index);
             return true;
         } else
-        return false;
+            return false;
     }
 
     @Override
     public E remove(int index) {
-        E retIndex=elements[index];
-        System.arraycopy(elements,index+1,elements,index,size-index-1);
-        size--;
-        return retIndex;
+        E elementInArrayAtIndex = elements[index];
+        System.arraycopy(elements, index + 1, elements, index, countElementsInCollection - index - 1);
+        countElementsInCollection--;
+        return elementInArrayAtIndex;
     }
 
     @Override
-       public int indexOf(Object o) {
-        for (int i = 0; i < size; i++) {
-            if (elements[i].equals(o))
+    public int indexOf(Object o) {
+        for (int i = 0; i < countElementsInCollection; i++) {
+            if (Objects.equals(elements[i], equals(o)))
                 return i;
         }
         return -1;
@@ -84,10 +93,10 @@ class ListB<E> implements List<E> {
 
     @Override
     public String toString() {
-        StringBuilder out =new StringBuilder("[");
+        StringBuilder out = new StringBuilder("[");
         //[1, 2, 3, 4]
-        String delimiter="";
-        for (int i = 0; i < size; i++) {
+        String delimiter = "";
+        for (int i = 0; i < countElementsInCollection; i++) {
             out.append(delimiter).append(elements[i]);
             delimiter = ", ";
         }
@@ -97,7 +106,7 @@ class ListB<E> implements List<E> {
 
     @Override
     public int size() {
-        return size;
+        return countElementsInCollection;
     }
 
     @Override

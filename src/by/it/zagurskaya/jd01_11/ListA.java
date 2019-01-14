@@ -1,6 +1,7 @@
 package by.it.zagurskaya.jd01_11;
 
 import java.util.*;
+
 class ListA<E> implements List<E> {
 
     private E[] elements = (E[]) new Object[0];
@@ -17,7 +18,7 @@ class ListA<E> implements List<E> {
         // надо ли увеличиваь массив
         if (size == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
-                    }
+        }
         elements[size++] = e;
         return true;
     }
@@ -25,20 +26,20 @@ class ListA<E> implements List<E> {
     @Override
     public boolean remove(Object o) {
         int index = indexOf(o);
-        if (index>-1){
+        if (index > -1) {
             remove(index);
             return true;
         } else
-        return false;
+            return false;
     }
 
 
     @Override
     public E remove(int index) {
-        E retIndex=elements[index];
-        System.arraycopy(elements,index+1,elements,index,size-index-1);
+        E elementInArrayAtIndex = elements[index];
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
-        return retIndex;
+        return elementInArrayAtIndex;
     }
 
     @Override
@@ -52,9 +53,9 @@ class ListA<E> implements List<E> {
 
     @Override
     public String toString() {
-        StringBuilder out =new StringBuilder("[");
+        StringBuilder out = new StringBuilder("[");
         //[1, 2, 3, 4]
-        String delimiter="";
+        String delimiter = "";
         for (int i = 0; i < size; i++) {
             out.append(delimiter).append(elements[i]);
             delimiter = ", ";
@@ -62,7 +63,6 @@ class ListA<E> implements List<E> {
         out.append("]");
         return out.toString();
     }
-
 
 
     @Override
@@ -133,7 +133,7 @@ class ListA<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        
+
     }
 
 

@@ -1,5 +1,6 @@
 package by.it.zagurskaya.jd01_11;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Runner {
@@ -20,14 +21,16 @@ public class Runner {
         aNew.add("1"); //5
         aNew.add("2");
         aNew.add("3");
-         System.out.println(a);
-        System.out.println(a.get(4));
-        a.set(2,"5Object");
+        // System.out.println(a);
+        //System.out.println(a.get(4));
+        // a.set(2,"5Object");
+       // System.out.println(a);
+        //a.add(2,"10");
         System.out.println(a);
-        a.add(2,"10");
-        System.out.println(a);
+        System.out.println("---------");
         a.addAll(aNew);
         System.out.println(a);
+        System.out.println("add empty collection | " + a.addAll(Collections.emptyList()));
 
         System.out.println("===================================");
 
@@ -44,11 +47,19 @@ public class Runner {
         b.remove("5Object");
         b.remove(5);
         System.out.println(b);
-        System.out.println(b.get(4));
+        //System.out.println(b.get(4));
+
         //b.set(2,"5Object");
+        //System.out.println(b);
+
+        //b.add(2,"10");
        // System.out.println(b);
-        b.add(2,"10");
-        System.out.println(b);
+        System.out.println("---------");
+//        b.add("any");
+//        b.addAll(Collections.singleton("111111111111111111111111111111111"));
+        b.addAll(aNew);
+        System.out.println(a);
+        System.out.println("add empty collection | " + b.addAll(Collections.emptyList()));
 
     }
 }
