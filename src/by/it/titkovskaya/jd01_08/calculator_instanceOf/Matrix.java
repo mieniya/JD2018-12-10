@@ -7,6 +7,10 @@ public class Matrix extends Var {
 
     private double[][] value;
 
+    public double[][] getValue() {
+        return value;
+    }
+
     Matrix(double[][] value) {
         this.value = value;
     }
@@ -35,6 +39,8 @@ public class Matrix extends Var {
             }
         }
     }
+
+    //============================ Addition =============================
 
     @Override
     public Var add(Var other) {
@@ -71,6 +77,8 @@ public class Matrix extends Var {
         return super.add(other);
     }
 
+    //============================ Subtraction =============================
+
     @Override
     public Var sub(Var other) {
         return other.subCross(this);
@@ -95,10 +103,10 @@ public class Matrix extends Var {
     @Override
     public Var subCross(Matrix other) {
         if (this.value.length == other.value.length && this.value[0].length == other.value[0].length) {
-            double[][] res = new double[this.value.length][this.value[0].length];
+            double[][] res = new double[other.value.length][other.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res[0].length; j++) {
-                    res[i][j] = this.value[i][j] - other.value[i][j];
+                    res[i][j] = other.value[i][j] - this.value[i][j];
                 }
             }
             return new Matrix(res);
@@ -106,10 +114,11 @@ public class Matrix extends Var {
         return super.sub(other);
     }
 
+    //============================ Multiplication =============================
 
     @Override
     public Var mul(Var other) {
-        return other.divCross(this);
+        return other.mulCross(this);
     }
 
     @Override
@@ -134,17 +143,17 @@ public class Matrix extends Var {
             }
             return new Vector(res);
         }
-        return super.mul(other);
+        return super.mulCross(other);
     }
 
     @Override
     public Var mulCross(Matrix other) {
-        if (this.value.length == other.value.length && this.value[0].length == other.value[0].length) {
-            double[][] res = new double[value.length][other.value[0].length];
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < other.value[0].length; j++) {
-                    for (int k = 0; k < other.value.length; k++) {
-                        res[i][j] = res[i][j] + this.value[i][k] * other.value[k][j];
+        if (other.value.length == this.value.length && other.value[0].length == this.value[0].length) {
+            double[][] res = new double[other.value.length][this.value[0].length];
+            for (int i = 0; i < other.value.length; i++) {
+                for (int j = 0; j < this.value[0].length; j++) {
+                    for (int k = 0; k < this.value.length; k++) {
+                        res[i][j] = res[i][j] + other.value[i][k] * this.value[k][j];
                     }
                 }
             }
@@ -153,10 +162,35 @@ public class Matrix extends Var {
         return super.mulCross(other);
     }
 
+    //============================ Division =============================
+
     @Override
     public Var div(Var other) {
-        return super.div(other);
+        return other.divCross(this);
     }
+
+    @Override
+    public Var divCross(Scalar other) {
+        double[][] res = new double[this.value.length][this.value[0].length];
+        for (int i = 0; i < res.length; i++) {
+            for (int j = 0; j < res[0].length; j++) {
+                res[i][j] = this.value[i][j] / other.getValue();
+            }
+        }
+        return new Matrix(res);
+    }
+
+    @Override
+    public Var divCross(Vector other) {
+        return super.divCross(other);
+    }
+
+    @Override
+    public Var divCross(Matrix other) {
+        return super.divCross(other);
+    }
+
+    //============================ toString =============================
 
     @Override
     public String toString() {

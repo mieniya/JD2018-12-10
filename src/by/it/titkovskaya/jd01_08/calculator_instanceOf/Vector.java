@@ -27,6 +27,8 @@ public class Vector extends Var {
         }
     }
 
+    //============================ Addition =============================
+
     @Override
     public Var add(Var other) {
         return other.addCross(this);
@@ -55,11 +57,10 @@ public class Vector extends Var {
 
     @Override
     public Var addCross(Matrix other) {
-        return super.add(other);
+        return super.addCross(other);
     }
 
-
-
+    //============================ Subtraction =============================
 
     @Override
     public Var sub(Var other) {
@@ -78,9 +79,9 @@ public class Vector extends Var {
     @Override
     public Var subCross(Vector other) {
         if (this.value.length == other.value.length) {
-            double[] res = Arrays.copyOf(this.value, this.value.length);
+            double[] res = Arrays.copyOf(other.value, other.value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] -= other.value[i];
+                res[i] -= this.value[i];
             }
             return new Vector(res);
         }
@@ -92,7 +93,7 @@ public class Vector extends Var {
         return super.subCross(other);
     }
 
-
+    //============================ Multiplication =============================
 
     @Override
     public Var mul(Var other) {
@@ -111,10 +112,10 @@ public class Vector extends Var {
     @Override
     public Var mulCross(Vector other) {
         if (this.value.length == other.value.length) {
-            double[] res = Arrays.copyOf(this.value, this.value.length);
+            double[] res = Arrays.copyOf(other.value, other.value.length);
             double mulResult = 0;
             for (int i = 0; i < res.length; i++) {
-                res[i] *= other.value[i];
+                res[i] *= this.value[i];
                 mulResult += res[i];
             }
             return new Scalar(mulResult);
@@ -124,10 +125,10 @@ public class Vector extends Var {
 
     @Override
     public Var mulCross(Matrix other) {
-        return super.mulCross(other);
+        return other.mulCross(this);
     }
 
-
+    //============================ Division =============================
 
     @Override
     public Var div(Var other) {
@@ -138,7 +139,7 @@ public class Vector extends Var {
     public Var divCross(Scalar other) {
         double[] res = Arrays.copyOf(this.value, this.value.length);
         for (int i = 0; i < res.length; i++) {
-            res[i]/=other.getValue();
+            res[i] /= other.getValue();
         }
         return new Vector(res);
     }
@@ -153,6 +154,7 @@ public class Vector extends Var {
         return super.divCross(other);
     }
 
+    //============================ toString =============================
 
     @Override
     public String toString() {
