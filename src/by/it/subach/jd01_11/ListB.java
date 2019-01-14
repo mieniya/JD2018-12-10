@@ -1,17 +1,16 @@
 package by.it.subach.jd01_11;
 
-import com.sun.deploy.util.SyncAccess;
 
 import java.util.*;
 
 class ListB<T> implements List<T> {
 
-    private T[] elements = (T[])new Object[0];
+    private T[] elements = (T[]) new Object[0];
     private int size = 0;
 
     @Override
     public boolean add(T t) {
-        if(size == elements.length){
+        if (size == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
         }
         elements[size++] = t;
@@ -21,7 +20,7 @@ class ListB<T> implements List<T> {
     @Override
     public T remove(int index) {
         T rem = elements[index];
-        System.arraycopy(elements,index+1, elements, index, size - index-1);
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
         return rem;
     }
@@ -41,10 +40,10 @@ class ListB<T> implements List<T> {
     @Override
     public void add(int index, T element) {
 
-            elements = Arrays.copyOf(elements, size+1);
-            System.arraycopy(elements, index, elements, index+1, size-index);
-            size++;
-            elements[index] = element;
+        elements = Arrays.copyOf(elements, size + 1);
+        System.arraycopy(elements, index, elements, index + 1, size - index);
+        size++;
+        elements[index] = element;
     }
 
     @Override
@@ -52,14 +51,14 @@ class ListB<T> implements List<T> {
         Object[] res = c.toArray();
         elements = Arrays.copyOf(elements, size + res.length);
         System.arraycopy(res, 0, elements, size, res.length);
-        size+=res.length;
+        size += res.length;
         return true;
     }
 
 
     @Override
     public String toString() {
-        T [] res = Arrays.copyOf(elements, size);
+        T[] res = Arrays.copyOf(elements, size);
         return Arrays.toString(res);
     }
 
