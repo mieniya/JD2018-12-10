@@ -1,5 +1,6 @@
 package by.it.skosirskiy.jd01_10;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -15,14 +16,29 @@ public class PrintMath {
             if (Modifier.isPrivate(modifiers)) mm.append("private ");
             if (Modifier.isProtected(modifiers)) mm.append("protected ");
             if (Modifier.isStatic(modifiers)) mm.append("static ");
+
             Class<?> returnType = method.getReturnType();
             String ret = returnType.getSimpleName();
-            if (Modifier.isStatic(modifiers))
-                System.out.printf("%s%s %s\n", mm, ret, name);
+
+            int parameterCount = method.getParameterCount();
+            Class<?>[] parameterTypes = method.getParameterTypes();
+
+            for (int i = 0; i < parameterTypes.length; i++) {
+                if (parameterCount == 1) {System.out.printf("%s%s %s(%s)\n", mm, ret, name, parameterTypes[i]);}
+
+                if (parameterCount == 2) {
+                    System.out.printf("%s%s %s(%s,%s)\n", mm, ret, name, parameterTypes[i], parameterTypes[i + 1]);
+                    i++;
+                }
+            }
+
+            if (parameterCount!=1 && parameterCount!=2)  System.out.printf("%s%s %s()\n", mm, ret, name);
         }
-
-
-
+        Field[] fields = ss.getFields();
+        for (Field field : fields) {
+            Class<?> type = field.getType();
+            System.out.printf("%s %s\n", type.getName(), field.getName());
+        }
 
 
     }
