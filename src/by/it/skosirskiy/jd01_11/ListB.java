@@ -10,14 +10,14 @@ import java.util.*;
 
         @Override
         public boolean addAll(Collection<? extends T> c) {
-            if (!c.isEmpty()) {
+
 
                 T[] array = (T[]) c.toArray();
                 elements = Arrays.copyOf(elements, elements.length + array.length);
                 System.arraycopy(array, 0, elements, size, array.length);
                 size += array.length;
-                return true;
-            }
+
+
             return false;
         }
         @Override
@@ -36,9 +36,12 @@ import java.util.*;
 
         @Override
         public boolean add(T t) {
-            if(size== elements.length)
-                elements= Arrays.copyOf(elements, (size*3)/2+1);
-            elements[size++]=t;
+            if (!contains(t)) {
+                if (size == elements.length)
+                    elements = Arrays.copyOf(elements, (size * 3) / 2 + 1);
+                elements[size++] = t;
+                return true;
+            }
             return false;
         }
 

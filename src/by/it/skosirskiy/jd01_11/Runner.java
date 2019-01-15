@@ -9,6 +9,8 @@ public class Runner {
         List<String> arList=new ArrayList<>();
         List<String> a1 = new ListB<>();
         List<String> a2 = new ListB<>();
+      //  List<> b1 = new SetC<>();
+        //List<String> b2 = new SetC<>();
         a1.add("1asd");
         a1.add("2asd");
 
