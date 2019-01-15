@@ -1,4 +1,4 @@
-package by.it.zagurskaya.jd01_11.calc;
+package by.it.zagurskaya.calc;
 
 public class Runner {
     private static void print(Var var) {System.out.println(var);}

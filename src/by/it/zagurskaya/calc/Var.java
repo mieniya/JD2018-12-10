@@ -1,4 +1,4 @@
-package by.it.zagurskaya.jd01_11.calc;
+package by.it.zagurskaya.calc;
 
 //public class Var extends Object{
 //  public Var(){
@@ -10,7 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 abstract class Var implements Operation {
-    private static Map<String,Var> vars = new HashMap<>();
+    private static Map<String, Var> vars = new HashMap<>();
+
+    public static Map<String, Var> getVars() {
+        return vars;
+    }
 
     static Var saveVar(String name, Var var){
         vars.put(name,var);

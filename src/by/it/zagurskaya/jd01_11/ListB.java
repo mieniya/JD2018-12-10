@@ -79,7 +79,7 @@ class ListB<E> implements List<E> {
     @Override
     public int indexOf(Object o) {
         for (int i = 0; i < countElementsInCollection; i++) {
-            if (Objects.equals(elements[i], equals(o)))
+            if (Objects.equals(elements[i], o))
                 return i;
         }
         return -1;

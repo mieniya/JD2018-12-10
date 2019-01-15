@@ -3,7 +3,7 @@ package by.it.zagurskaya.jd01_11;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RunnerB {
+public class RunnerС {
     public static void main(String[] args) {
         Set<String> states = new HashSet<>();
         Set<String> statesDel = new HashSet<>();
@@ -22,8 +22,8 @@ public class RunnerB {
 //        states.remove("France");
 //        System.out.println(states);
 //contains
-//        System.out.println(states.contains("France"));
-//        System.out.println(states.contains("mm"));
+        System.out.println("contains [France] is true: " + states.contains("France"));
+        System.out.println("contains [mm] is false: " + states.contains("mm"));
 //isEmpty
         System.out.println(states.isEmpty());
         System.out.println(statesDel.isEmpty());
@@ -42,6 +42,7 @@ public class RunnerB {
         statesMain.add("Germany");
         statesMain.add("France");
         statesMain.add("Italy");
+        statesMain.add("Deutsh");
         statesMain.add("France");
 
         System.out.printf("Set contains %d elements \n", statesMain.size());    // 3
@@ -50,8 +51,8 @@ public class RunnerB {
 //        statesMain.remove("France");
 //        System.out.println(statesMain);
 //contains-
-//        System.out.println(statesMain.contains("France"));
-//        System.out.println(statesMain.contains("mm"));
+        System.out.println("contains [France] is true: " + statesMain.contains("France"));
+        System.out.println("contains [mm] is false: " + statesMain.contains("mm"));
 // isEmpty+
         System.out.println(statesMain.isEmpty());
         System.out.println(statesMainDell.isEmpty());

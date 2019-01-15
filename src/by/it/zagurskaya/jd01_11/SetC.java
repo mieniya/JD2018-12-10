@@ -7,33 +7,31 @@ class SetC<E> implements Set<E> {
     private E[] elements = (E[]) new Object[0];
     private int countElementsInCollection = 0;
 
+
     @Override
     public int size() {
         return countElementsInCollection;
     }
 
     @Override
-    public boolean add(E e) {
-        // надо ли увеличиваь массив
+    public boolean add(E element) {
+        if (contains(element)) {
+            return false;
+        }
+
         if (countElementsInCollection == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
         }
-        for (int i = 0; i < elements.length; i++) {
-            // не отрабатывает сравнение
-            if (Objects.equals(elements[i], equals(e))) {
-//            if (elements[i].equals(e)) {
-                return false;
-            }
-        }
-        elements[countElementsInCollection++] = e;
+
+        elements[countElementsInCollection++] = element;
         return true;
     }
 
     @Override
-    public boolean remove(Object o) {
-        for (int i = 0; i < elements.length; i++) {
+    public boolean remove(Object object) {
+        for (int i = 0; i < countElementsInCollection; i++) {
             // не отрабатывает сравнение
-            if (Objects.equals(elements[i], equals(o))) {
+            if (Objects.equals(elements[i], object)) {
                 System.arraycopy(elements, i + 1, elements, i, countElementsInCollection - i - 1);
                 countElementsInCollection--;
                 return true;
@@ -43,11 +41,11 @@ class SetC<E> implements Set<E> {
     }
 
     @Override
-    public boolean contains(Object o) {
-        for (int i = 0; i < elements.length; i++) {
+    public boolean contains(Object object) {
+        for (int i = 0; i < countElementsInCollection; i++) {
             // не отрабатывает сравнение
-            if (Objects.equals(elements[i], equals(o))) {
-                 return true;
+            if (Objects.equals(elements[i], object)) {
+                return true;
             }
         }
         return false;
@@ -55,24 +53,33 @@ class SetC<E> implements Set<E> {
 
     @Override
     public boolean isEmpty() {
-        return countElementsInCollection==0? true:false;
+        return countElementsInCollection == 0;
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> c) {
-        if (c.size() == 0) {
+    public boolean addAll(Collection<? extends E> collection) {
+        if (collection.size() == 0) {
             return false;
         }
 
-        if (countElementsInCollection + c.size() >= elements.length) {
-            elements = Arrays.copyOf(elements, elements.length + c.size());
+        if (countElementsInCollection + collection.size() >= elements.length) {
+            elements = Arrays.copyOf(elements, elements.length + collection.size());
         }
 
-        System.arraycopy(c.toArray(), 0, elements, countElementsInCollection, c.size());
-        countElementsInCollection += c.size();
+        // System.arraycopy(collection.toArray(), 0, elements, countElementsInCollection, collection.size());
+        int oldCountElementsInCollection = countElementsInCollection;
+        for (E element : collection) {
+            if (!contains(element)) {
+                elements[countElementsInCollection] = element;
+                countElementsInCollection = countElementsInCollection + 1;
+            }
 
-        return true;
+        }
+
+
+        return oldCountElementsInCollection != countElementsInCollection;
     }
+
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder("[");
@@ -103,7 +110,12 @@ class SetC<E> implements Set<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object o : c) {
+            if (!contains(o)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -113,11 +125,14 @@ class SetC<E> implements Set<E> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        int oldSize = size();
+        for (Object o : c) {
+            remove(o);
+        }
+        return oldSize != size();
     }
 
     @Override
     public void clear() {
-
     }
 }
