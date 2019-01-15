@@ -9,8 +9,8 @@ public class BeanTester {
         Class ss = Bean.class;
         Constructor beanConstructor = ss.getConstructor();
         Bean bean = (Bean) beanConstructor.newInstance();
-        Method[] methoos= ss.getDeclaredMethods();
-        for (Method method : methoos) {
+        Method[] methods= ss.getDeclaredMethods();
+        for (Method method : methods) {
             if(method.isAnnotationPresent(Param.class)){
                 Param annotation = method.getAnnotation(Param.class);
                 double result=(double) method.invoke(bean, annotation.a(), annotation.b());
