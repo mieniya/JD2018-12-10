@@ -58,12 +58,6 @@ class ListB<E> implements List<E> {
         return true;
     }
 
-//
-//    @Override
-//    public boolean addAll(Collection<? extends E> c) {
-//        return false;
-//    }
-
     @Override
     public boolean remove(Object o) {
         int index = indexOf(o);
