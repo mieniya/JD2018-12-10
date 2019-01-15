@@ -7,6 +7,18 @@ public class Runner {
     public static void main(String[] args) {
         List<String> myList = new ListA<>();
         List<String> arList=new ArrayList<>();
+        List<String> a1 = new ListB<>();
+        List<String> a2 = new ListB<>();
+        a1.add("1asd");
+        a1.add("2asd");
+
+
+        a2.add("5asd");
+        a2.add("6asd");
+        a2.add("7asd");
+
+        a1.addAll(a2);
+        System.out.println(a1);
 
         myList.add("First");
         arList.add("First");
@@ -26,6 +38,8 @@ public class Runner {
         arList.remove(3);
         System.out.println("remove index myList:"+myList+"\narList:"+arList);
         System.out.println("get index myList(0):"+myList.get(0)+"\narlist(0):"+arList.get(0));
+
+
 
     }
 

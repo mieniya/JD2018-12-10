@@ -10,8 +10,15 @@ import java.util.*;
 
         @Override
         public boolean addAll(Collection<? extends T> c) {
-
-            return false;
+            elements = Arrays.copyOf(elements, (size+c.size()));
+            Iterator iter = c.iterator();
+            int counter = size;
+            while (iter.hasNext()) {
+                this.set(counter, (T) iter.next());
+                counter++;
+            }
+            size+=c.size();
+            return true;
         }
 
         @Override
@@ -100,7 +107,7 @@ import java.util.*;
         @Override
         public int size() {
 
-            return 0;
+            return elements.length;
         }
 
         @Override
