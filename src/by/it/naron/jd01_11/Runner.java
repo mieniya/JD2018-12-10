@@ -45,23 +45,23 @@ public class Runner {
         System.out.println(setMain.isEmpty());
 
 
-//        Set<String> set2 = new SetC<>();
-//        set2.add("one");
-//        set2.add("two");
-//        set2.add("232123");
-//
-//        Set<String> set3 = new SetC<>();
-//        set3.add("two");
-//        set3.add("4444");
-//        set3.add("55555");
-//        set3.add("4444");
-//        System.out.println(set3);
-//        set2.addAll(set3);
-//        System.out.println(set2);
-//        set2.removeAll(set3);
-//        System.out.println(set2);
-//        set2.clear();
-//        System.out.println(set2);
+        Set<String> set2 = new SetC<>();
+        set2.add("one");
+        set2.add("two");
+        set2.add("232123");
+
+        Set<String> set3 = new SetC<>();
+        set3.add("two");
+        set3.add("4444");
+        set3.add("55555");
+        set3.add("4444");
+        System.out.println(set3);
+        set2.addAll(set3);
+        System.out.println(set2);
+        set2.removeAll(set3);
+        System.out.println(set2);
+        set2.clear();
+        System.out.println(set2);
 
     }
 }
