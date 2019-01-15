@@ -113,7 +113,6 @@ public class Test_jd01_11 {
         assertEquals("ошибка addAll", e.toString(), a.toString());
         System.out.println("  addAll(List<?> c) ok: " + a);
         System.out.flush();
-
         System.out.println("\nB. Диагностика необязательных к реализации методов:");
         if (e.contains(null) != a.contains(null) ||
                 e.contains(0) != a.contains(0) ||
