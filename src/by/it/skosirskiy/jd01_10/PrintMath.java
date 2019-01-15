@@ -12,27 +12,32 @@ public class PrintMath {
             String name = method.getName();
             int modifiers = method.getModifiers();
             StringBuilder mm = new StringBuilder();
-            if (Modifier.isPublic(modifiers)) mm.append("public ");
-            if (Modifier.isPrivate(modifiers)) mm.append("private ");
-            if (Modifier.isProtected(modifiers)) mm.append("protected ");
-            if (Modifier.isStatic(modifiers)) mm.append("static ");
+            if (Modifier.isPublic(modifiers)) {
+                mm.append("public ");
 
-            Class<?> returnType = method.getReturnType();
-            String ret = returnType.getSimpleName();
+                if (Modifier.isPrivate(modifiers)) mm.append("private ");
+                if (Modifier.isProtected(modifiers)) mm.append("protected ");
+                if (Modifier.isStatic(modifiers)) mm.append("static ");
 
-            int parameterCount = method.getParameterCount();
-            Class<?>[] parameterTypes = method.getParameterTypes();
+                Class<?> returnType = method.getReturnType();
+                String ret = returnType.getSimpleName();
 
-            for (int i = 0; i < parameterTypes.length; i++) {
-                if (parameterCount == 1) {System.out.printf("%s%s %s(%s)\n", mm, ret, name, parameterTypes[i]);}
+                int parameterCount = method.getParameterCount();
+                Class<?>[] parameterTypes = method.getParameterTypes();
 
-                if (parameterCount == 2) {
-                    System.out.printf("%s%s %s(%s,%s)\n", mm, ret, name, parameterTypes[i], parameterTypes[i + 1]);
-                    i++;
+                for (int i = 0; i < parameterTypes.length; i++) {
+                    if (parameterCount == 1) {
+                        System.out.printf("%s%s %s(%s)\n", mm, ret, name, parameterTypes[i]);
+                    }
+
+                    if (parameterCount == 2) {
+                        System.out.printf("%s%s %s(%s,%s)\n", mm, ret, name, parameterTypes[i], parameterTypes[i + 1]);
+                        i++;
+                    }
                 }
-            }
 
-            if (parameterCount!=1 && parameterCount!=2)  System.out.printf("%s%s %s()\n", mm, ret, name);
+                if (parameterCount != 1 && parameterCount != 2) System.out.printf("%s%s %s()\n", mm, ret, name);
+            }
         }
         Field[] fields = ss.getFields();
         for (Field field : fields) {
