@@ -2,7 +2,7 @@ package by.it.naron.jd01_11;
 
 import java.util.*;
 
-public class ListA<T> implements List<T> {
+public class ListB<T> implements List<T> {
 
     private T[] elements = (T[]) new Object[]{};
 
@@ -21,11 +21,6 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public T get(int index) {
-        return elements[index];
-    }
-
-    @Override
     public boolean add(T element) {
         if(size == elements.length){
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
@@ -34,14 +29,6 @@ public class ListA<T> implements List<T> {
 
         return true;
     }
-
-    @Override
-    public boolean remove(Object o) {
-        int index = indexOf(o);
-        if (index >= 0) remove(index);
-        return index >= 0;
-    }
-
     @Override
     public T remove(int index) {
         T result = elements[index];
@@ -50,28 +37,70 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public int indexOf(Object o) {
-        for (int i = 0; i < elements.length; i++) {
-            if(elements[i].equals(o)){
-                return i;
-            }
-        }
-        return -1;
+    public T get(int index) {
+        return elements[index];
+    }
+
+    @Override
+    public T set(int index, T element) {
+        T temp = elements[index];
+        elements[index] = element;
+        return temp;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
+    }
+
+    @Override
+    public void add(int index, T element) {
+        if (size == elements.length) {
+            elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
+        }
+        System.arraycopy(elements, index, elements, index + 1, size++ - index);
+        elements[index] = element;
+    }
+    @Override
+    public boolean addAll(Collection<? extends T> coll) {
+        T[] array = (T[]) coll.toArray();
+        elements = Arrays.copyOf(elements, elements.length + array.length);
+        System.arraycopy(array, 0, elements, size, array.length);
+        size += array.length;
+        return array.length == 0;
+    }
+
+    public int indexOf(Object o) {
+        int result = -1;
+        if (o != null) {
+            for (int i = 0; i < size; i++){
+                if (o.equals(elements[i])){
+                    result = i;
+                }
+            }
+        } else {
+            for (int i = 0; i < size; i++){
+                if (elements[i] != null){
+                    result = i;
+                }
+            }
+        }
+        return result;
+    }
+
+    public boolean contains(Object o) {
+        return indexOf(o) >= 0;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
-    public boolean contains(Object o) {
-        return false;
+    public void clear() {
+        elements = Arrays.copyOf(elements, 0);
+        size = 0;
     }
 
     @Override
@@ -81,7 +110,7 @@ public class ListA<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(elements, size);
     }
 
     @Override
@@ -90,14 +119,13 @@ public class ListA<T> implements List<T> {
     }
 
 
-
     @Override
-    public boolean containsAll(Collection<?> c) {
+    public boolean remove(Object o) {
         return false;
     }
 
     @Override
-    public boolean addAll(Collection<? extends T> c) {
+    public boolean containsAll(Collection<?> c) {
         return false;
     }
 
@@ -116,22 +144,7 @@ public class ListA<T> implements List<T> {
         return false;
     }
 
-    @Override
-    public void clear() {
 
-    }
-
-
-
-    @Override
-    public T set(int index, T element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, T element) {
-
-    }
 
     @Override
     public int lastIndexOf(Object o) {
