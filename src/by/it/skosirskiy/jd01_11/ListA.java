@@ -85,12 +85,12 @@ public class ListA<T> implements List<T> {
     @Override
     public int size() {
 
-        return 0;
+        return elements.length;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return elements.length==0;
     }
 
     @Override

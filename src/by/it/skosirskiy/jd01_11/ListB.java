@@ -10,15 +10,20 @@ import java.util.*;
 
         @Override
         public boolean addAll(Collection<? extends T> c) {
-            elements = Arrays.copyOf(elements, (size+c.size()));
-            Iterator iter = c.iterator();
-            int counter = size;
-            while (iter.hasNext()) {
-                this.set(counter, (T) iter.next());
-                counter++;
+            if (!c.isEmpty()) {
+
+                T[] array = (T[]) c.toArray();
+                elements = Arrays.copyOf(elements, elements.length + array.length);
+                System.arraycopy(array, 0, elements, size, array.length);
+                size += array.length;
+                return true;
             }
-            size+=c.size();
-            return true;
+            return false;
+        }
+        @Override
+        public Iterator<T> iterator() {
+
+            return  null;
         }
 
         @Override
@@ -107,12 +112,12 @@ import java.util.*;
         @Override
         public int size() {
 
-            return elements.length;
+            return size;
         }
 
         @Override
         public boolean isEmpty() {
-            return false;
+            return (elements.length==0);
         }
 
         @Override
@@ -120,14 +125,11 @@ import java.util.*;
             return false;
         }
 
-        @Override
-        public Iterator<T> iterator() {
-            return null;
-        }
+
 
         @Override
         public Object[] toArray() {
-            return new Object[0];
+            return Arrays.copyOf(elements, size);
         }
 
         @Override

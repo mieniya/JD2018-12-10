@@ -18,7 +18,7 @@ public class Runner {
         a2.add("7asd");
 
         a1.addAll(a2);
-        System.out.println(a1);
+        System.out.println("res "+a1);
 
         myList.add("First");
         arList.add("First");
