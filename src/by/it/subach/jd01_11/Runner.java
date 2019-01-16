@@ -39,30 +39,37 @@ public class Runner {
 //        System.out.println(a);
 //        System.out.println(a.size());
 
-        HashSet<String> hash = new HashSet();
-        hash.add("one");
-        hash.add("two");
-        hash.add("three");
-        System.out.println(hash.size());
-        System.out.println(hash.toString());
+//        HashSet<String> hash = new HashSet();
+//        hash.add("one");
+//        hash.add("two");
+//        hash.add("three");
+//        System.out.println(hash.size());
+//        System.out.println(hash.toString());
 
-        SetC<String> test = new SetC<>();
-        test.add("one");
-        test.add("two");
-        test.add("three");
-        test.add("three");
-        test.add("four");
-        test.add("five");
+//        SetC<String> test = new SetC<>();
+//        test.add("one");
+//        test.add("two");
+//        test.add("three");
+//        test.add("three");
+//        test.add("four");
+//        test.add("five");
 
+
+        SetC<Integer> test3 = new SetC<>();
+        test3.add(2);
+        test3.add(3);
         SetC<Integer> test2 = new SetC<>();
         test2.add(2);
         test2.add(3);
         test2.add(4);
         test2.add(2);
 
-        System.out.println(test.toString());
-        System.out.println(test.size());
+//        System.out.println(test.toString());
+//        System.out.println(test.size());
 
+        System.out.println(test2.toString());
+//        test2.remove(2);
+        test2.remove(3);
         System.out.println(test2.toString());
     }
 }
