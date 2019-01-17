@@ -4,25 +4,18 @@ import java.util.*;
 
 public class SetC<T> extends ListA<T> implements Set<T> {
 
-    private T[] elements = (T[]) new Object[]{};
-    private int size = 0;
-
     @Override
     public boolean add(T o) {
         checkSize();
 
         boolean isUnique = !contains(o);
         if (isUnique) {
-            elements[size++] = o;
+            elements()[size()] = o;
+            setSize(size() + 1);
             return true;
         }
 
         return false;
-    }
-
-    @Override
-    public int size() {
-        return this.size;
     }
 
     @Override
@@ -32,7 +25,7 @@ public class SetC<T> extends ListA<T> implements Set<T> {
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return size() == 0;
     }
 
     @Override
@@ -71,18 +64,6 @@ public class SetC<T> extends ListA<T> implements Set<T> {
     public void clear() {
         setElements((T[]) new Object[]{});
         setSize(0);
-    }
-
-    protected T[] elements() {
-        return this.elements;
-    }
-
-    protected void setElements(T[] elements) {
-        this.elements = elements;
-    }
-
-    protected void setSize(int size) {
-        this.size = size;
     }
 
     //   ---------Fiction------------
