@@ -2,7 +2,7 @@ package by.it.subach.jd01_12;
 
 import java.util.*;
 
-public class TaskB2 {
+public class TaskB3 {
 
     public static void main(String[] args) {
 
@@ -25,12 +25,16 @@ public class TaskB2 {
         List<String> peoples1 = new ArrayList<>(Arrays.asList(namesArr));
         List<String> peoples2 = new LinkedList<>(Arrays.asList(namesArr));
 
-
+        long startArrList = System.nanoTime();
         String lastManStanding1 = process((ArrayList<String>) peoples1);
-        String lastManStanding2 = process((LinkedList<String>) peoples2);
+        long finishArrList = System.nanoTime();
 
-        System.out.println(lastManStanding1);
-        System.out.println(lastManStanding2);
+        long startLinkedList = System.nanoTime();
+        String lastManStanding2 = process((LinkedList<String>) peoples2);
+        long finishLinkedList = System.nanoTime();
+
+        System.out.println(finishArrList - startArrList);
+        System.out.println(finishLinkedList - startLinkedList);
 
     }
 
@@ -80,5 +84,4 @@ public class TaskB2 {
         return killArray.get(0);
 
     }
-
 }
