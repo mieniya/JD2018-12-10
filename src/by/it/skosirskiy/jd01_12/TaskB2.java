@@ -5,24 +5,57 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class TaskB2 {
-    private static String process(ArrayList<String> peoples){
-        return "";
-    }
-    static int count=0;
+
+    private static int count=0;
+    private static int count1=0;
     static String process(LinkedList<String> peoples){
+
         Iterator<String> iterator = peoples.iterator();
-
         while (iterator.hasNext()){
-            if(count==0) iterator.next();
+            if(count1==0) iterator.next();
             if (!iterator.hasNext()){
-                System.out.println("first break");
+  //              System.out.println("first break");
                 break;
-
             }
             iterator.next();
             if(!iterator.hasNext()) {
-                System.out.println("second break");
+      //          System.out.println("second break");
+                if(iterator.hasNext()) iterator.remove();
+                else
                 break;}
+            iterator.remove();
+            count1=0;
+            while (iterator.hasNext()){
+                iterator.next();
+                count1=1;
+                if (iterator.hasNext())
+                {
+                    iterator.next();
+                    iterator.remove();
+                    count1=0;
+                }
+            }
+            process(peoples);
+
+        }
+        return peoples.element();
+    }
+
+    static String process(ArrayList<String> peoples){
+
+        Iterator<String> iterator = peoples.iterator();
+        while (iterator.hasNext()){
+            if(count==0) iterator.next();
+            if (!iterator.hasNext()){
+      //          System.out.println("first break");
+                break;
+            }
+            iterator.next();
+            if(!iterator.hasNext()) {
+         //       System.out.println("second break");
+                if(iterator.hasNext()) iterator.remove();
+                else
+                    break;}
             iterator.remove();
             count=0;
             while (iterator.hasNext()){
@@ -35,32 +68,63 @@ public class TaskB2 {
                     count=0;
                 }
             }
-
             process(peoples);
-
-
+            break;
         }
-
-
-        return peoples.element();
+        peoples.trimToSize();
+        return peoples.get(0);
     }
 
     public static void main(String[] args) {
 
         LinkedList<String> linkedList = new LinkedList<>();
-        linkedList.add("111");
-        linkedList.add("222");
-        linkedList.add("333");
-        linkedList.add("444");
-        linkedList.add("555");
-        linkedList.add("666");
-        linkedList.add("777");
-        linkedList.add("888");
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        linkedList.add("1");
+        linkedList.add("2");
+        linkedList.add("3");
+        linkedList.add("4");
+        linkedList.add("5");
+        linkedList.add("6");
+        linkedList.add("7");
+        linkedList.add("8");
+        linkedList.add("9");
+        linkedList.add("10");
+        linkedList.add("11");
+        linkedList.add("12");
+        linkedList.add("13");
+        linkedList.add("14");
+        linkedList.add("15");
+        linkedList.add("16");
+        linkedList.add("17");
+        linkedList.add("18");
+
+        arrayList.add("1");
+        arrayList.add("2");
+        arrayList.add("3");
+        arrayList.add("4");
+        arrayList.add("5");
+        arrayList.add("6");
+        arrayList.add("7");
+        arrayList.add("8");
+        arrayList.add("9");
+        arrayList.add("10");
+        arrayList.add("11");
+        arrayList.add("12");
+        arrayList.add("13");
+        arrayList.add("14");
+        arrayList.add("15");
+        arrayList.add("16");
+        arrayList.add("17");
+        arrayList.add("18");
+
+        System.out.println("linked "+process(linkedList));
+        System.out.println("array "+process(arrayList));
 
 
 
 
-        System.out.println(process(linkedList));
+
 
     }
 }
