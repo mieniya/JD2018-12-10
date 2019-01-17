@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class PrintMath {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         Class<Math> ss = Math.class;
         Method[] methods = ss.getDeclaredMethods();
         for (Method method : methods) {
@@ -21,7 +21,5 @@ public class PrintMath {
             if (Modifier.isStatic(modifiers))
                 System.out.printf("%s%s %s(????)\n", mm, ret, name);
         }
-
-
     }
 }
