@@ -5,32 +5,44 @@ import java.util.*;
 public class TackC1 {
 
     public static void main(String[] args) {
-//        List<String> list = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
-        HashMap<String, Integer> map = new HashMap<>();
+        TreeMap<Integer, String> mapTree = new TreeMap<>();
         Random random = new Random();
-
 
         while (true) {
             String name = scanner.next();
             if (name.equals("end")) break;
             else {
                 name = name.replaceAll("[,]", "");
-                map.put(name, random.nextInt( ));
+                mapTree.put(random.nextInt(99), name);
             }
         }
 
-        int hash = random.nextInt();
-        System.out.println(map.toString());
+        for (Map.Entry entry : mapTree.entrySet()) {
+            System.out.println(entry);
+        }
 
+        System.out.println();
+        HashMap<String, Integer> mapHash = new HashMap<>();
+        for (Map.Entry<Integer, String> entry : mapTree.entrySet()) {
+            mapHash.putIfAbsent(entry.getValue(), entry.getKey());
+        }
 
+        for (Map.Entry entry : mapHash.entrySet()) {
+            System.out.println(entry);
+        }
 
+        System.out.println();
 
+        mapTree = new TreeMap<>();
+        for (Map.Entry<String, Integer> entry : mapHash.entrySet()) {
+            mapTree.put(entry.getValue(), entry.getKey());
+        }
 
-//        System.out.println(k);
-//        System.out.println(list.toString());
-
+        for (Map.Entry<Integer, String> entry : mapTree.entrySet()) {
+            System.out.println(entry);
+        }
 
     }
 }
