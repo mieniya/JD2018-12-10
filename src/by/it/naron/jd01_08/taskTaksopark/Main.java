@@ -6,7 +6,7 @@ import java.util.List;
 /**
  *
  */
-public class Main {                                     //таксапарк название метода
+public class Main {                                     //таксопарк название метода
     public static void main(String[] args) {
 
         //создание объекта

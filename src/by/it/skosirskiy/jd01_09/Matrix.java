@@ -16,12 +16,13 @@ public class Matrix extends Var {
     Matrix(double[][] value) {
         this.value = value;
     }
-    Matrix(Matrix matrix1){
 
-        this.value= matrix1.value;
+    Matrix(Matrix matrix1) {
+
+        this.value = matrix1.value;
     }
 
-    Matrix(String str){
+    Matrix(String str) {
         Pattern pattern = Pattern.compile("[{][0-9 ,]*[}]");
         StringBuilder sb = new StringBuilder(str);
         Matcher matcher = pattern.matcher(sb);
@@ -48,21 +49,21 @@ public class Matrix extends Var {
 
     @Override
     public Var add(Var other) {
-        if (other instanceof Scalar){
-            double [][]res=new double[this.value.length][this.value[0].length];
+        if (other instanceof Scalar) {
+            double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j]=this.value[i][j]+((Scalar) other).getValue();
+                    res[i][j] = this.value[i][j] + ((Scalar) other).getValue();
                 }
             }
             return new Matrix(res);
         }
-        if(other instanceof Matrix){
-            if (this.value.length==((Matrix) other).value.length && this.value[0].length==((Matrix) other).value[0].length){
+        if (other instanceof Matrix) {
+            if (this.value.length == ((Matrix) other).value.length && this.value[0].length == ((Matrix) other).value[0].length) {
                 double[][] res = new double[this.value.length][this.value[0].length];
                 for (int i = 0; i < res.length; i++) {
                     for (int j = 0; j < res[0].length; j++) {
-                        res[i][j]=this.value[i][j]+((Matrix) other).value[i][j];
+                        res[i][j] = this.value[i][j] + ((Matrix) other).value[i][j];
                     }
                 }
                 return new Matrix(res);
@@ -74,21 +75,21 @@ public class Matrix extends Var {
 
     @Override
     public Var sub(Var other) {
-        if (other instanceof Scalar){
-            double [][]res=new double[this.value.length][this.value[0].length];
+        if (other instanceof Scalar) {
+            double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j]=this.value[i][j]-((Scalar) other).getValue();
+                    res[i][j] = this.value[i][j] - ((Scalar) other).getValue();
                 }
             }
             return new Matrix(res);
         }
-        if(other instanceof Matrix){
-            if (this.value.length==((Matrix) other).value.length && this.value[0].length==((Matrix) other).value[0].length){
+        if (other instanceof Matrix) {
+            if (this.value.length == ((Matrix) other).value.length && this.value[0].length == ((Matrix) other).value[0].length) {
                 double[][] res = new double[this.value.length][this.value[0].length];
                 for (int i = 0; i < res.length; i++) {
                     for (int j = 0; j < res[0].length; j++) {
-                        res[i][j]=this.value[i][j]-((Matrix) other).value[i][j];
+                        res[i][j] = this.value[i][j] - ((Matrix) other).value[i][j];
                     }
                 }
                 return new Matrix(res);
@@ -101,33 +102,33 @@ public class Matrix extends Var {
 
     @Override
     public Var mul(Var other) {
-        if (other instanceof Scalar){
-            double [][]res=new double[this.value.length][this.value[0].length];
+        if (other instanceof Scalar) {
+            double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j]=this.value[i][j]*((Scalar) other).getValue();
+                    res[i][j] = this.value[i][j] * ((Scalar) other).getValue();
                 }
             }
             return new Matrix(res);
         }
-        if (other instanceof Vector){
-            if (this.value[0].length==((Vector) other).getValue().length){
+        if (other instanceof Vector) {
+            if (this.value[0].length == ((Vector) other).getValue().length) {
                 double[] res = new double[((Vector) other).getValue().length];
                 for (int i = 0; i < res.length; i++) {
                     for (int j = 0; j < ((Vector) other).getValue().length; j++) {
-                        res[i]=res[i]+this.value[i][j]*((Vector) other).getValue()[j];
+                        res[i] = res[i] + this.value[i][j] * ((Vector) other).getValue()[j];
                     }
                 }
                 return new Vector(res);
             }
         }
-        if (other instanceof Matrix){
-            if (this.value.length==((Matrix) other).value.length && this.value[0].length==((Matrix) other).value[0].length){
-                double[][] res= new double[value.length][((Matrix) other).getValue().length];
+        if (other instanceof Matrix) {
+            if (this.value.length == ((Matrix) other).value.length && this.value[0].length == ((Matrix) other).value[0].length) {
+                double[][] res = new double[value.length][((Matrix) other).getValue().length];
                 for (int i = 0; i < value.length; i++) {
                     for (int j = 0; j < ((Matrix) other).value.length; j++) {
                         for (int k = 0; k < ((Matrix) other).value.length; k++) {
-                            res[i][j]=res[i][j]+this.value[i][k]*((Matrix) other).value[k][j];
+                            res[i][j] = res[i][j] + this.value[i][k] * ((Matrix) other).value[k][j];
                         }
                     }
 
