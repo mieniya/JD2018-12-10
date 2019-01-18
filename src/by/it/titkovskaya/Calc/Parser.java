@@ -7,8 +7,10 @@ class Parser {
 
     Var calc(String expression) {
         String[] operands = expression.trim().split(Patterns.OPERATION);
-        Var one = Var.createVar(operands[0]);
         Var two = Var.createVar(operands[1]);
+
+        Var one = Var.createVar(operands[0]);
+
         if (one == null || two == null) {
             System.err.println("Операция " + expression + " невозможна");
             return null;//TODO create error
