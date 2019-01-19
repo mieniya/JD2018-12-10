@@ -27,7 +27,7 @@ public class TaskA {
 //                System.out.printf("element: %s\n", element);
             }
             System.out.printf(" name %s\n" +
-                                "class: %s\n" +
+                                " class: %s\n" +
                                     " line: %d\n", name, className, lineNumber);
 
 
