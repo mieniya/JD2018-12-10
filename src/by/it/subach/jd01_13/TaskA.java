@@ -15,7 +15,7 @@ public class TaskA {
             String name = e.getClass().getName();
             String className = "none";
             int lineNumber = -1;
-            System.out.printf(" name: %s\n", name);
+//            System.out.printf(" name: %s\n", name);
 
             StackTraceElement[] stackTrace = e.getStackTrace();
             for (StackTraceElement element : stackTrace) {
