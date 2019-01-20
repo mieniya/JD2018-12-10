@@ -10,7 +10,17 @@ public class TaskA {
             else Integer.parseInt("привет");
         }
         catch (Exception e){
-            System.out.println(e);
+            StackTraceElement[] stackTrace = e.getStackTrace();
+            for (StackTraceElement element : stackTrace) {
+                if(TaskA.class.getName().equals(element.getClassName())){
+                    String name= e.getClass().getName();
+                    String className = element.getClassName();
+                    int number = element.getLineNumber();
+                    System.out.printf(" name: %s\n"+"class: %s\n"+" line: %s\n", name, className, number);
+                }
+
+            }
+
 
         }
 
