@@ -1,47 +1,52 @@
 package by.it.titkovskaya.Calc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 abstract class Var implements Operation {
 
-    static Var createVar(String operand) {
-        operand=operand.trim().replace("\\s","");
+    private static Map<String, Var> vars = new HashMap<>();
+
+    static Var createVar(String operand) throws CalcException {
+        operand = operand.trim().replace("\\s", "");
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
-        if (operand.matches(Patterns.VECTOR))
+        else if (operand.matches(Patterns.VECTOR))
             return new Vector(operand);
-        if (operand.matches(Patterns.MATRIX))
+        else if (operand.matches(Patterns.MATRIX))
             return new Matrix(operand);
-        System.err.println("Переменная "+operand+" не определена");
-        return null;
+        else if (vars.containsKey(operand))
+            return vars.get(operand);
+        throw new CalcException("Переменная " + operand + " не определена");
+    }
+
+    static void saveVar(String nameVar, Var value) {
+        vars.put(nameVar, value);
     }
 
     @Override
-    public Var add(Var other) {
-        System.out.println("Сложение " + this + " и " + other + " невозможно");
-        return null;
+    public Var add(Var other) throws CalcException {
+        throw new CalcException("Сложение " + this + " и " + other + " невозможно");
     }
 
     @Override
-    public Var sub(Var other) {
-        System.out.println("Вычитание " + this + " и " + other + " невозможно");
-        return null;
+    public Var sub(Var other) throws CalcException {
+        throw new CalcException("Вычитание " + this + " и " + other + " невозможно");
     }
 
     @Override
-    public Var mul(Var other) {
-        System.out.println("Умножение " + this + " на " + other + " невозможно");
-        return null;
+    public Var mul(Var other) throws CalcException {
+        throw new CalcException("Умножение " + this + " на " + other + " невозможно");
     }
 
     @Override
-    public Var div(Var other) {
-        System.out.println("Деление " + this + " на " + other + " невозможно");
-        return null;
+    public Var div(Var other) throws CalcException {
+        throw new CalcException("Деление " + this + " на " + other + " невозможно");
     }
 
     @Override
     public String toString() {
         return "Какая-то непонятная переменная";
     }
-
 
 }

@@ -28,7 +28,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
@@ -36,19 +36,19 @@ public class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
-            if (this.value.length == ((Vector) other).value.length) {
-                double[] res = Arrays.copyOf(this.value, this.value.length);
-                for (int i = 0; i < res.length; i++) {
-                    res[i] += ((Vector) other).value[i];
-                }
-                return new Vector(res);
+            if (this.value.length != ((Vector) other).value.length)
+                throw new CalcException("Сложение векторов разной длины невозможно");
+            double[] res = Arrays.copyOf(this.value, this.value.length);
+            for (int i = 0; i < res.length; i++) {
+                res[i] += ((Vector) other).value[i];
             }
+            return new Vector(res);
         }
         return super.add(other);
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
@@ -56,19 +56,19 @@ public class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
-            if (this.value.length == ((Vector) other).value.length) {
-                double[] res = Arrays.copyOf(this.value, this.value.length);
-                for (int i = 0; i < res.length; i++) {
-                    res[i] -= ((Vector) other).value[i];
-                }
-                return new Vector(res);
+            if (this.value.length != ((Vector) other).value.length)
+                throw new CalcException("Вычитание векторов разной длины невозможно");
+            double[] res = Arrays.copyOf(this.value, this.value.length);
+            for (int i = 0; i < res.length; i++) {
+                res[i] -= ((Vector) other).value[i];
             }
+            return new Vector(res);
         }
         return super.sub(other);
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
@@ -76,25 +76,28 @@ public class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
-            if (this.value.length == ((Vector) other).value.length) {
-                double[] res = Arrays.copyOf(this.value, this.value.length);
-                double mulResult = 0;
-                for (int i = 0; i < res.length; i++) {
-                    res[i] *= ((Vector) other).value[i];
-                    mulResult += res[i];
-                }
-                return new Scalar(mulResult);
+            if (this.value.length != ((Vector) other).value.length) {
+                throw new CalcException("Умножение векторов разной длины невозможно");
             }
+            double[] res = Arrays.copyOf(this.value, this.value.length);
+            double mulResult = 0;
+            for (int i = 0; i < res.length; i++) {
+                res[i] *= ((Vector) other).value[i];
+                mulResult += res[i];
+            }
+            return new Scalar(mulResult);
         }
         return super.mul(other);
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
+            if (((Scalar) other).getValue()==0)
+                throw new CalcException("Деление на ноль невозможно");
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i]/=((Scalar) other).getValue();
+                res[i] /= ((Scalar) other).getValue();
             }
             return new Vector(res);
         }
