@@ -5,7 +5,7 @@ public class CalcExeption extends  Exception {
         super();
     }
 
-    public CalcExeption(String message) {
+    CalcExeption(String message) {
         super("ERROR: "+message);
     }
 

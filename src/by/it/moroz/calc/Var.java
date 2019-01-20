@@ -21,9 +21,8 @@ public abstract class Var implements Operation  {
         }
     }
 
-    public static void sortVar() {
-        Map<String, Var> sorted = new TreeMap<>();
-        sorted.putAll(remember);
+    static void sortVar() {
+        Map<String, Var> sorted = new TreeMap<>(remember);
         Set<Map.Entry<String, Var>> entries = sorted.entrySet();
         for (Map.Entry<String, Var> entry : entries) {
             System.out.println(entry.getKey()+"="+entry.getValue());
