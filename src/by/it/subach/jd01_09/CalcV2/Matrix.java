@@ -1,19 +1,20 @@
 package by.it.subach.jd01_09.CalcV2;
 
-
 import java.util.Arrays;
 
 class Matrix extends Var {
     private double[][] value;
+
+    public double[][] getValue() {
+        return value;
+    }
+    Scalar minus = new Scalar(-1);
 
     Matrix(double[][] value) {
         this.value = new double[value.length][value[0].length];
         for (int i = 0; i < value.length; i++) {
             System.arraycopy(value[i], 0, this.value[i], 0, value[i].length);
         }
-
-//        this.value = Arrays.copyOf(value, value.length);
-//        this.value = value;
     }
 
     Matrix(Matrix matrix) {
@@ -40,87 +41,67 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException{
+        return other.add2(this);
+    }
 
-        if (other instanceof Matrix) {
-            if (this.value.length == ((Matrix) other).value.length &&
-                    this.value[0].length == ((Matrix) other).value[0].length) {
-                double[][] res = Arrays.copyOf(((Matrix) other).value, ((Matrix) other).value.length);
-                for (int i = 0; i < res.length; i++) {
-                    for (int j = 0; j < res.length; j++) {
-                        res[i][j] += this.value[i][j];
-                    }
-                }
-                return new Matrix(res);
-            }
-        } else if (other instanceof Scalar) {
-            double [][] res = Arrays.copyOf(this.value, this.value.length);
+    @Override
+    public Var sub(Var other) throws CalcException{
+        return other.sub2(this);
+    }
+
+    @Override
+    public Var mul(Var other) throws CalcException{
+        return other.mul2(this);
+    }
+
+    @Override
+    public Var div(Var other) throws CalcException{
+        return other.div2(this);
+    }
+
+    //    Matrix + Matrix
+    @Override
+    public Var add2(Matrix other) throws CalcException{
+        if (this.value.length == other.value.length &&
+                this.value[0].length == other.value[0].length) {
+            double[][] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j] += ((Scalar) other).getValue();
+                    res[i][j] += other.value[i][j];
                 }
             }
             return new Matrix(res);
         }
-
         return super.add(other);
     }
 
+
+    //    Matrix - Matrix
     @Override
-    public Var sub(Var other) {
-        Scalar minus = new Scalar(-1);
-        if (other instanceof Scalar) {
-            return this.add(other.mul(minus));
-        }
-        if (other instanceof Matrix) {
-            return this.add(other.mul(minus));
-        }
-        return super.sub(other);
+    public Var sub2(Matrix other) throws CalcException{
+        return other.add(this.mul(minus));
     }
 
+    //    Matrix * Matrix
     @Override
-    public Var mul(Var other) {
-        if (other instanceof Scalar) {
-            double[][] res = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < res.length; i++) {
-                for (int j = 0; j < res[i].length; j++) {
-                    res[i][j] *= ((Scalar) other).getValue();
+    public Var mul2(Matrix other) throws CalcException{
+        if (other.value[0].length == (this.getValue().length)) {
+            double[][] res = new double[other.value.length][this.value[0].length];
+            for (int i = 0; i < other.value.length; i++) {
+                for (int j = 0; j < this.value.length; j++) {
+                    double sum = 0;
+                    for (int k = 0; k < other.value[j].length; k++) {
+                        sum += other.value[i][k] * this.value[k][j];
+                    }
+                    res[i][j] = sum;
                 }
             }
             return new Matrix(res);
         }
-
-        if (other instanceof Vector) {
-            int vectorLength = ((Vector) other).getValue().length;
-            if (this.value.length == vectorLength) {
-                double[] res = new double[vectorLength];
-                for (int i = 0; i < value.length; i++) {
-                    for (int j = 0; j < value.length; j++) {
-                        res[i] += value[i][j] * ((Vector) other).getValue()[j];
-                    }
-                }
-                return new Vector(res);
-            }
-        }
-
-        if (other instanceof Matrix) {
-            if (this.value[0].length == ((Matrix) other).value.length) {
-                double[][] res = new double[this.value.length][((Matrix) other).value[0].length];
-                for (int i = 0; i < this.value.length; i++) {
-                    for (int j = 0; j < ((Matrix) other).value.length; j++) {
-                        double sum = 0;
-                        for (int k = 0; k < ((Matrix) other).value[j].length; k++) {
-                            sum += this.value[i][k] * ((Matrix) other).value[k][j];
-                        }
-                        res[i][j] = sum;
-                    }
-                }
-                return new Matrix(res);
-            }
-        }
-
-        return super.mul(other);
+        return super.mul(this);
     }
+
 
     @Override
     public String toString() {

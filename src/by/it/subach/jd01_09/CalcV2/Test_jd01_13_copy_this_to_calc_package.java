@@ -1,4 +1,4 @@
-package by.it.subach.jd01_13;
+package by.it.subach.jd01_09.CalcV2;
 
 
 import org.junit.Test;
