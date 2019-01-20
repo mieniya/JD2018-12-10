@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class ConsoleRunner {
     public static void main(String[] args) {
         String expression;
-        Scanner sc = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         Parcer parcer = new Parcer();
         Printer printer = new Printer();
-        while(!(expression=sc.nextLine()).equals("end")){
+        while(!(expression=scan.nextLine()).equals("end")){
             Var result = parcer.calc(expression);
             printer.print(result);
         }
