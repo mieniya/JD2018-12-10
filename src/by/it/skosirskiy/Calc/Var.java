@@ -2,14 +2,21 @@ package by.it.skosirskiy.Calc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 abstract class Var implements Operation {
 
-    private static Map<String,Var> vars= new HashMap<>();
 
+    //private static Map<String,Var> vars= new HashMap<>();
+    private static TreeMap<String,Var> vars=  new TreeMap<>();
     static Var saveVar(String name, Var var){
         vars.put(name, var);
         return var;
+    }
+
+    public static void printvar(){
+        System.out.println(vars);
     }
 
     static Var createVar(String operand){
