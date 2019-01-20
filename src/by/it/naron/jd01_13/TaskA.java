@@ -24,8 +24,6 @@ public class TaskA {
                                     "line: %d", name,clName,number);
                     break;
                 }
-
-
             }
 
 
