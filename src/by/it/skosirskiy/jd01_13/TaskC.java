@@ -1,40 +1,42 @@
 package by.it.skosirskiy.jd01_13;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class TaskC {
-    static int index=0;
-    public static Scanner scanner= new Scanner(System.in);
-    public static List<Double> linkedList = new LinkedList<>();
-
-    static void readData(Scanner scanner) throws InterruptedException {
-        try {
-
-            linkedList.add(scanner.nextDouble());
-        }
-        catch (Exception e){
-
-            index++;
-           Thread.sleep(100);
-        return;
-        }
-
-
-
-    }
+    private static List<Double> list = new ArrayList<>();
+    private static String chislo;
 
     public static void main(String[] args) throws Exception {
+        Scanner scanner= new Scanner(System.in);
+        int index=0;
+        while (!(index==4)) {
+            chislo=scanner.next();
+            try {
+                readData();
 
-      //  Scanner scanner= new Scanner(System.in);
+            }
+            catch (Exception e){
+                index++;
+                Thread.sleep(100);
+                Collections.reverse(list);
+                for (Double element : list){
+                    System.out.print(element+" ");
+                }
+                Collections.reverse(list);
+                System.out.println();
+            }
+        }
+        throw new Exception();
+    }
+    static void readData() throws Exception {
+        try {
+            list.add(Double.parseDouble(chislo));        }
+        catch (Exception e){
 
-        while (!(index==5)) {
-            readData(scanner);
+
+            throw new Exception();
 
         }
-        System.out.println(linkedList);
     }
 }
