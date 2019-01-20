@@ -7,7 +7,6 @@ public class CalcException extends Exception {
     public String getMsg() {
         return msg;
     }
-
     public CalcException(String message) {
         this.msg = "ERROR:" + message;
     }
