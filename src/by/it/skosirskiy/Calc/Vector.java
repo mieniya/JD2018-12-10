@@ -43,12 +43,14 @@ class Vector extends Var {
         }
 
         else if (other instanceof Vector){
+            if (this.value.length == ((Vector) other).value.length){
             double[] res=Arrays.copyOf(value,value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i]=res[i]+((Vector)other).value[i];
 
             }
             return new Vector(res);
+            }
         }
 
         return super.add(other);
@@ -64,13 +66,15 @@ class Vector extends Var {
             return  new Vector(res);
         }
 
-        else if (other instanceof Vector){
-            double[] res=Arrays.copyOf(value,value.length);
-            for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]-((Vector)other).value[i];
+        else if (other instanceof Vector) {
+            if (this.value.length == ((Vector) other).value.length) {
+                double[] res = Arrays.copyOf(value, value.length);
+                for (int i = 0; i < res.length; i++) {
+                    res[i] = res[i] - ((Vector) other).value[i];
 
+                }
+                return new Vector(res);
             }
-            return new Vector(res);
         }
 
         return super.sub(other);
@@ -86,15 +90,17 @@ class Vector extends Var {
             return  new Vector(res);
         }
 
-        else if (other instanceof Vector){
-            double[] res=Arrays.copyOf(value,value.length);
-            double mul=0;
-            for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]*((Vector)other).value[i];
-                mul=mul+res[i];
+        else if (other instanceof Vector) {
+            if (this.value.length == ((Vector) other).value.length) {
+                double[] res = Arrays.copyOf(value, value.length);
+                double mul = 0;
+                for (int i = 0; i < res.length; i++) {
+                    res[i] = res[i] * ((Vector) other).value[i];
+                    mul = mul + res[i];
 
+                }
+                return new Scalar(mul);
             }
-            return new Scalar(mul);
         }
 
         return super.mul(other);
