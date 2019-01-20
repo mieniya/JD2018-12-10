@@ -47,13 +47,12 @@ class Scalar extends Var {
     @Override
     public Var div(Var other) throws CalcExeption {
         if (other instanceof Scalar){
-            double z = ((Scalar) other).value;
-            if(z==0)
+            if(((Scalar) other).value==0)
                 throw new CalcExeption("Деление на ноль");
-            else {double res = this.value/z;
+            else {double res = this.value/((Scalar) other).value;
             return new Scalar(res);}
         }
-        return other.div(this);
+        return super.div(other);
     }
 
     protected double getValue() {

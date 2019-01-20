@@ -3,6 +3,8 @@ package by.it.moroz.calc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public abstract class Var implements Operation  {
 
@@ -10,6 +12,22 @@ public abstract class Var implements Operation  {
 
     static void saveVar(String name, Var var){
         remember.put(name, var);
+    }
+
+    static void printVar() {
+        Set<Map.Entry<String, Var>> entries = remember.entrySet();
+        for (Map.Entry<String, Var> entry : entries) {
+            System.out.println(entry.getKey()+"="+entry.getValue());
+        }
+    }
+
+    public static void sortVar() {
+        Map<String, Var> sorted = new TreeMap<>();
+        sorted.putAll(remember);
+        Set<Map.Entry<String, Var>> entries = sorted.entrySet();
+        for (Map.Entry<String, Var> entry : entries) {
+            System.out.println(entry.getKey()+"="+entry.getValue());
+        }
     }
 
     public static Var createVar(String operand) throws CalcExeption {
@@ -21,6 +39,7 @@ public abstract class Var implements Operation  {
         throw new CalcExeption("Переменная "+operand+" неопределена.");
         //return null;
     }
+
 
     @Override
     public Var add(Var other) throws CalcExeption {

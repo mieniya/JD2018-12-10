@@ -6,13 +6,11 @@ public class Matrix extends Var {
     private double[][] value;
 
     public Matrix(double[][] value) {
-        //this.value = new double[value.length][value.length];
-        /*for (int i = 0; i < value.length; i++) {
-            for (int j = 0; j < value.length; j++) {
-                System.arraycopy(value[i][j], 0, this.value[i][j], 0, value[i].length);
-            }
-        }*/
-        this.value = value.clone();
+        this.value = new double[value.length][value[0].length];
+        for (int i = 0; i < value.length; i++) {
+                System.arraycopy(value[i], 0, this.value[i], 0, value[i].length);
+        }
+        //this.value = value.clone();
     }
 
     public Matrix(Matrix matrix) {
@@ -23,16 +21,17 @@ public class Matrix extends Var {
         strMatrix = strMatrix.replaceAll("\\{", "");
         strMatrix = strMatrix.substring(0, strMatrix.length() - 2);
         String[] row = strMatrix.split("},");
-        String[][] str1 = new String[row.length][row.length];
         for (int i = 0; i < row.length; i++) {
             row[i] = row[i].trim();
-            String[] single_int = row[i].split(",");
-            System.arraycopy(single_int, 0, str1[i], 0, single_int.length);
+            //String[] single_int = row[i].split(",");
+            //System.arraycopy(single_int, 0, str1[i], 0, single_int.length);
         }
-        this.value = new double[str1.length][str1[0].length];
-        for (int i = 0; i < str1.length; i++) {
-            for (int j = 0; j < str1[0].length; j++) {
-                value[i][j] = Double.parseDouble(str1[i][j]);
+        this.value = new double[row.length][];
+        for (int i = 0; i < row.length; i++) {
+            String[] single_int = row[i].split(",");
+            this.value[i]= new double[single_int.length];
+            for (int j = 0; j < value[i].length; j++) {
+                value[i][j] = Double.parseDouble(single_int[j]);
             }
         }
     }
@@ -68,7 +67,7 @@ public class Matrix extends Var {
             Scalar minus = new Scalar(-1);
             return this.add(other.mul(minus));
         } else if (other instanceof Matrix) {
-            if (this.value.length == ((Matrix) other).value.length || this.value[0].length == ((Matrix) other).value[0].length) {
+            if (this.value.length == ((Matrix) other).value.length && this.value[0].length == ((Matrix) other).value[0].length) {
                 double[][] res = new double[this.value.length][this.value[0].length];
                 for (int i = 0; i < res.length; i++) {
                     for (int j = 0; j < res.length; j++) {
