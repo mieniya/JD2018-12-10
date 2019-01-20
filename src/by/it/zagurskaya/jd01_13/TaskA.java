@@ -12,7 +12,7 @@ public class TaskA {
             Integer.parseInt("привет");
     } catch (NullPointerException | NumberFormatException e) {
             String name = e.getClass().getName();
-            System.out.printf(" name: %s\n", name);
+           // System.out.printf(" name: %s\n", name);
 
             StackTraceElement[] stackTrace = e.getStackTrace();
             for (StackTraceElement element: stackTrace){
