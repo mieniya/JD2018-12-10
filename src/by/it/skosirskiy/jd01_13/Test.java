@@ -6,33 +6,31 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TaskC {
+public class Test {
     static int index=0;
-    public static Scanner scanner= new Scanner(System.in);
     public static List<Double> linkedList = new LinkedList<>();
 
-    static void readData(Scanner scanner) throws InterruptedException {
+    static void readData() throws InterruptedException {
         try {
-
+            Scanner scanner= new Scanner(System.in);
             linkedList.add(scanner.nextDouble());
         }
         catch (Exception e){
 
             index++;
-           Thread.sleep(100);
-        return;
+            Thread.sleep(100);
+
         }
 
 
 
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws InterruptedException {
 
-      //  Scanner scanner= new Scanner(System.in);
 
         while (!(index==5)) {
-            readData(scanner);
+            readData();
 
         }
         System.out.println(linkedList);
