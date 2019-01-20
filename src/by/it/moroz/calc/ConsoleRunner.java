@@ -11,7 +11,12 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         while (!(input=scanner.nextLine().toLowerCase()).equals("end")){
-            Var result = parser.calc(input);
+            Var result = null;
+            try {
+                result = parser.calc(input);
+            } catch (CalcExeption calcExeption) {
+                calcExeption.printStackTrace();
+            }
             printer.print(result);
         }
     }
