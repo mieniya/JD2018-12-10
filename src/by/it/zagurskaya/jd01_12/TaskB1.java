@@ -14,7 +14,7 @@ public class TaskB1 {
             expression = expression.replaceAll("\\s[\\s]+", " ");
             wordList.addAll(Arrays.asList(expression.split(regAllWord)));
         }
-        
+
         Map<String, Integer> varMap = new HashMap<>();
         for (String wordString : wordList) {
             if (varMap.containsKey(wordString)) {
