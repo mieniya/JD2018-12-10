@@ -10,6 +10,7 @@ public class TaskC1 {
         String str;
 
         while((!(str= scanner.next()).equals("end"))){
+
             int key=0;
 
             key=random();
@@ -18,6 +19,8 @@ public class TaskC1 {
             }
 
         }
+        System.out.println();
+        System.out.println();
 
 
 
