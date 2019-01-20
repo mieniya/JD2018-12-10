@@ -1,4 +1,4 @@
-package by.it.dziomin.jd01_10.calculatorWithoutNewInstance;
+package by.it.dziomin.сalculator;
 
 public class Patterns {
 
