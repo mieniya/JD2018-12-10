@@ -9,7 +9,7 @@ public class ConsoleRunner {
     public static final String PRINTVAR = "printvar";
     public static final String END = "end";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalcException {
         String expression;
         Scanner scanner = new Scanner(System.in);
         Parcer parcer = new Parcer();
