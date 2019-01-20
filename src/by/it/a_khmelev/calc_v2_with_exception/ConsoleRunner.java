@@ -7,11 +7,11 @@ public class ConsoleRunner {
     public static void main(String[] args) {
         String expression;
         Scanner scanner = new Scanner(System.in);
-        Parcer parcer=new Parcer();
-        Printer printer=new Printer();
+        Parcer parcer = new Parcer();
+        Printer printer = new Printer();
 
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
-            Var result= null;
+            Var result;
             try {
                 result = parcer.calc(expression);
                 printer.print(result);
