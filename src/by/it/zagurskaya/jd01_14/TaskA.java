@@ -3,6 +3,7 @@ package by.it.zagurskaya.jd01_14;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TaskA {
 
@@ -50,6 +51,17 @@ public class TaskA {
 
     private static double readBinaryFileWithInt(String path, List<Integer> list, double sum) {
         //read
+        InputStream inputStream = new InputStream() {
+            @Override
+            public int read() throws IOException {
+                return 0;
+            }
+        };
+
+        DataInputStream dataInputStream = new DataInputStream(inputStream);
+
+
+
         try (DataInputStream dis = new DataInputStream(new FileInputStream(path))) {
             while (dis.available() > 0) {
                 int i = dis.readInt();

@@ -10,11 +10,10 @@ import java.util.regex.Pattern;
 public class TaskB {
     public static void main(String[] args) {
         String path = getPath(TaskA.class, "text.txt");
-        String exeption = null;
-        System.out.println("words="+readTextFileWithWord(path, exeption)+", marks="+readTextFileWithMark(path,exeption));
-
+        String result = "words=" + readTextFileWithWord(path) + ", marks=" + readTextFileWithMark(path);
+        System.out.println(result);
+        printToFile(result);
     }
-
     private static String getPath(Class<?> clazz, String filename) {
         String path = clazz.getName();
         path = path.replace(clazz.getSimpleName(), "");
@@ -23,51 +22,47 @@ public class TaskB {
                 + File.separator + "src" + File.separator + path;
         return path + filename;
     }
-
-    private static String readTextFileWithWord(String path, String value) {
+    private static String readTextFileWithWord(String path) {
         String regAllWord = " ";
-        BufferedReader br = null;
         List<String> wordList = new ArrayList<>();
-        try {
-            br = new BufferedReader(new FileReader(path));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            while ((value = br.readLine()) != null) {
-                value = value.replaceAll("[\\n,:;.]", " ");
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            for (String value = br.readLine(); value != null; value = br.readLine()) {
+                value = value.replaceAll("[\\n,:!-;.]", " ");
                 value = value.replaceAll("\\s[\\s]+", " ");
                 wordList.addAll(Arrays.asList(value.split(regAllWord)));
             }
-        } catch (NullPointerException | IOException e) {
-            System.err.print("конец файла");
+            System.out.println("конец файла");
+        } catch (IOException e) {
+            System.err.println("что-то пошло не так, т.к. " + e.getMessage());
         }
         return Integer.toString(wordList.size());
     }
-
-    private static String readTextFileWithMark(String path, String value) {
-        String reg = "[,:;.]";
+    private static String readTextFileWithMark(String path) {
+        String reg = "[,:!;.]";
         Pattern pattern = Pattern.compile(reg);
-        BufferedReader br = null;
         List<String> markList = new ArrayList<>();
-        try {
-            br = new BufferedReader(new FileReader(path));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            while ((value = br.readLine()) != null) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            for (String value = br.readLine(); value != null; value = br.readLine()) {
                 Matcher matcher = pattern.matcher(value);
                 while (matcher.find()) {
                     String mark = matcher.group();
                     markList.add(mark);
-                   // System.out.println(word);
                 }
             }
-        } catch (NullPointerException | IOException e) {
-            System.err.print("конец файла");
+            System.out.println("конец файла");
+        } catch (IOException e) {
+            System.err.println("что-то пошло не так, т.к. " + e.getMessage());
         }
         return Integer.toString(markList.size());
+    }
+    private static void printToFile(String result) {
+        String txtOut = getPath(TaskA.class, "resultTaskB.txt");
+        try (PrintWriter out = new PrintWriter(new FileWriter(txtOut))) {
+            out.println(result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
