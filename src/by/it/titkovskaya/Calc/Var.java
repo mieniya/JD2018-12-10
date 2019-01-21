@@ -2,6 +2,7 @@ package by.it.titkovskaya.Calc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 abstract class Var implements Operation {
 
@@ -22,6 +23,12 @@ abstract class Var implements Operation {
 
     static void saveVar(String nameVar, Var value) {
         vars.put(nameVar, value);
+    }
+
+    public static void showVar() {
+        for (Map.Entry<String, Var> varEntry : vars.entrySet()) {
+            System.out.println(varEntry.getKey()+"="+varEntry.getValue());
+        }
     }
 
     @Override

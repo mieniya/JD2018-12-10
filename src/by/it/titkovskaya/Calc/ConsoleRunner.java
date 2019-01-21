@@ -10,6 +10,10 @@ public class ConsoleRunner {
         Printer printer = new Printer();
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
             try {
+                if (expression.equals("printvar")){
+                    Var.showVar();
+                    expression = scanner.nextLine();
+                }
                 Var result = parser.calc(expression);
                 printer.print(result);
             } catch (CalcException e) {
