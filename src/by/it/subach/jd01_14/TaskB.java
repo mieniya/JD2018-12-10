@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskB {
+
     static String getPath(Class<?> clazz, String filename) {
         String path = clazz.getName();
         String simpleName = clazz.getSimpleName();
