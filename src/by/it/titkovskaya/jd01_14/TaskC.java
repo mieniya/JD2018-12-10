@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 формате file:имя_файла или dir:имя_каталога.
  Продублировать вывод в консоль в файл resultTaskC.txt
  */
+
 public class TaskC {
     public static void main(String[] args) {
         String dir = System.getProperty("user.dir") + "/src/"
@@ -20,8 +21,6 @@ public class TaskC {
         File dirs = new File(pathDirs);
         File result = new File(TaskA.getPath(TaskC.class, "resultTaskC.txt"));
         showContentAndPrintToFile(dirs, result);
-
-
     }
 
     private static void showContentAndPrintToFile(File dirs, File result) {
@@ -31,7 +30,7 @@ public class TaskC {
                 for (File catalog : listDirs) {
                     if (catalog.isFile()) {
                         System.out.println("   file:" + catalog.getName());
-                        out.println("   file:" + catalog.getName());
+                        out.println("file:" + catalog.getName());
                     } else if (catalog.isDirectory()) {
                         System.out.println("dir:" + catalog.getName());
                         out.println("dir:" + catalog.getName());

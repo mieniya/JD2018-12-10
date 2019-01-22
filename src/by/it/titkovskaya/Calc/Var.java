@@ -3,6 +3,7 @@ package by.it.titkovskaya.Calc;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 abstract class Var implements Operation {
 
@@ -27,6 +28,13 @@ abstract class Var implements Operation {
 
     public static void showVar() {
         for (Map.Entry<String, Var> varEntry : vars.entrySet()) {
+            System.out.println(varEntry.getKey()+"="+varEntry.getValue());
+        }
+    }
+
+    public static void showSortVar() {
+        Map<String, Var> sortVars = new TreeMap<>(vars);
+        for (Map.Entry<String, Var> varEntry : sortVars.entrySet()) {
             System.out.println(varEntry.getKey()+"="+varEntry.getValue());
         }
     }
