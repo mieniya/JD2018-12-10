@@ -70,6 +70,8 @@ public class Matrix extends Var {
                 }
                 return new Matrix(resMatr);
             }
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Сложение не возможно");
         }
         return super.add(other);
     }
@@ -85,17 +87,21 @@ public class Matrix extends Var {
             }
             return new Matrix(res);
         } else if (other instanceof Matrix) {
-            if (this.value.length == ((Matrix) other).value.length) {
+            if ((this.value.length == ((Matrix) other).value.length)&(this.value[0].length == ((Matrix) other).value[0].length)) {
                 double[][] res = makeMatrixCopy(value);
                 for (int i = 0; i < res.length; i++) {
                     if (this.value.length == res[i].length) {
                         for (int j = 0; j < res[i].length; j++) {
                             res[i][j] = res[i][j] - ((Matrix) other).value[i][j];
                         }
+                    } else {
+                        throw new CalcException("Вычитание не возможно");
                     }
                 }
                 return new Matrix(res);
             }
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Вычитание не возможно");
         }
         return super.sub(other);
     }

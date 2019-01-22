@@ -34,7 +34,6 @@ abstract class Var implements Operation {
         throw new CalcException("Переменная не определена" + operand);
     }
 
-///Он убрал return ??????
     @Override
     public Var add(Var other) throws CalcException {
         throw new CalcException("Сложение " + this + "на" + other + "невозможно");

@@ -48,6 +48,8 @@ public class Vector extends Var {
                 }
                 return new Vector(res);
             }
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Сложение не возможно");
         }
         return super.add(other);
     }
@@ -69,6 +71,8 @@ public class Vector extends Var {
                 }
                 return new Vector(res);
             }
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Вычитание не возможно");
         }
         return super.sub(other);
     }
@@ -90,6 +94,8 @@ public class Vector extends Var {
                 }
                 return new Scalar(vectorMultVector);
             }
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Умножение не возможно");
         }
         return super.mul(other);
     }
@@ -102,6 +108,10 @@ public class Vector extends Var {
                 res[i] = res[i] / ((Scalar) other).getValue();
             }
             return new Vector(res);
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Деление не возможно");
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Деление не возможно");
         }
         return super.div(other);
     }
