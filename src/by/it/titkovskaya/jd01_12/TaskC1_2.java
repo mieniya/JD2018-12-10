@@ -13,54 +13,58 @@ TaskC1. Нужно ввести с консоли текст до строки e
  Затем нужно «сжать» список C1, удаляя дублирующийся наименования объектов.
  Выведите полученный ассоциативный массив в консоль
  */
-public class TaskC1 {
+public class TaskC1_2 {
     public static void main(String[] args) {
         Long t = System.nanoTime();
         Scanner scanner = new Scanner(System.in);
         String line;
-        Map<Long, String> map = new HashMap<>();
+        Map<Long, String> map = new TreeMap<>();
         while (!(line = scanner.nextLine()).equalsIgnoreCase("end")){
             map.put(System.nanoTime(),line);
         }
-
-        Iterator<String> iterator = map.values().iterator();
-        Set<String> mapValues = new HashSet<>();
-        while (iterator.hasNext()){
-            if (!mapValues.add(iterator.next())){
+        Collection<String> mapValues = map.values();
+        Iterator<String> iterator = mapValues.iterator();
+        while (iterator.hasNext()) {
+            if (Collections.frequency(mapValues, iterator.next()) > 1) {
                 iterator.remove();
             }
         }
         for (Map.Entry<Long, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey()+"="+entry.getValue());
+            System.out.println(entry.getKey() + "=" + entry.getValue());
         }
         Long tA = System.nanoTime() - t;
         System.out.println(tA);
     }
 }
 /*
-ttt
-ggg
-yyy
-sss
-ddd
-ttt
-nnn
-hhh
-ttt
-ddd
-sss
-aaa
-qqq
-eee
-mmm
-iii
-aaa
-zzz
-zzz
-mmm
-xxx
-ppp
-ooo
-end
 
+1672635027
+        String line;
+        StringBuilder sb = new StringBuilder();
+        Scanner scanner = new Scanner(System.in);
+        while (!(line = scanner.nextLine()).equals("end")) {
+            sb.append(" ").append(line);
+        }
+        String[] values = sb.toString().split("[^A-zА-яЁё']+");
+        Map<Long, String> map = new TreeMap<>();
+        for (String value : values) {
+            map.put(System.nanoTime() / 1000, value);
+        }
+
+
+Collection<String> mapValues = map.values();
+        for (Iterator<String> iterator=mapValues.iterator(); iterator.hasNext();){
+            if (Collections.frequency(mapValues,iterator.next())>1){
+                iterator.remove();
+            }
+        }
+
+
+Iterator<Map.Entry<Long,String>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<Long,String> entry=iterator.next();
+            if (map.containsValue(entry.getValue())){
+                iterator.remove();
+            }
+        }
  */
