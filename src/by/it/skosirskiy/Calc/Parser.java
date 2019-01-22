@@ -11,6 +11,8 @@ public class Parser {
 
         if (expression.contains("printvar")) {
             Var.printvar();}
+        else if (expression.contains("sortvar")) {
+            Var.sortvar();}
         else {
             Var two = Var.createVar(operand[1]);
             if (expression.contains("=")) {

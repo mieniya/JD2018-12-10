@@ -1,15 +1,12 @@
 package by.it.skosirskiy.Calc;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 
 abstract class Var implements Operation {
 
 
-    //private static Map<String,Var> vars= new HashMap<>();
-    private static TreeMap<String,Var> vars=  new TreeMap<>();
+
+    private static HashMap<String,Var> vars=  new HashMap<>();
     static Var saveVar(String name, Var var){
         vars.put(name, var);
         return var;
@@ -17,6 +14,10 @@ abstract class Var implements Operation {
 
     public static void printvar(){
         System.out.println(vars);
+    }
+    public static void sortvar(){
+        TreeMap<String, Var> treeMap = new TreeMap<>(vars);
+        System.out.println(treeMap);
     }
 
     static Var createVar(String operand) throws CalcException{
