@@ -9,15 +9,15 @@ import java.util.Objects;
 public class TaskC {
 
     public static void main(String[] args) {
-        String name = System.getProperty("user.dir") + ".src.by.it.moroz";
-        name = name.replace(".", File.separator);
+        String name = System.getProperty("user.dir") + "/src/by/it/moroz";
+        name = name.replace("/", File.separator);
 
-        File fileName = getFilesAndDirectories(name);
+        File fileName = new File(name);
+        getFilesAndDirectories(name, fileName);
         printToFile(fileName);
     }
 
-    private static File getFilesAndDirectories(String name) {
-        File fileName = new File(name);
+    private static void getFilesAndDirectories(String name, File fileName) {
         File[] list = fileName.listFiles();
         assert list != null;
         for (File file : list) {
@@ -33,7 +33,6 @@ public class TaskC {
             if (file.isFile())
                 System.out.println("file:" + file.getName());
         }
-        return fileName;
     }
 
     private static void printToFile(File fileName) {
