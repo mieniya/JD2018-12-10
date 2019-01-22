@@ -18,7 +18,7 @@ public class TaskC {
         File buf = new File(dir(TaskC.class));
         File file = new File(buf.getParent());
         printAllFolderNameAndFilename(file);
-
+        
     }
     private static void printAllFolderNameAndFilename(File file) {
         try (PrintWriter out2 = new PrintWriter(new FileWriter(dir(TaskC.class) + "resultTaskC.txt"));
