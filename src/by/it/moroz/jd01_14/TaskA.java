@@ -8,9 +8,31 @@ public class TaskA {
 
     public static void main(String[] args) {
 
-        String path = getPath(TaskA.class, "dataTaskA.bin");
+        String path = getPath("dataTaskA.bin");
         System.out.println(path);
 
+        writeBinaryFileWithInt(path);
+        List<Integer> list = new ArrayList<>();
+        double sum=0;
+        sum = readBinaryFileWithInt(path, list, sum);
+        printToConsole(list, sum);
+        printToFile(list, sum);
+    }
+
+    private static double readBinaryFileWithInt(String path, List<Integer> list, double sum) {
+        try(DataInputStream dis = new DataInputStream(new FileInputStream(path))) {
+            while (dis.available()>0){
+                int i = dis.readInt();
+                list.add(i);
+                sum+=i;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sum;
+    }
+
+    private static void writeBinaryFileWithInt(String path) {
         try (
                 FileOutputStream fileOutputStream = new FileOutputStream(path);
                 DataOutputStream dataOutputStream = new DataOutputStream(fileOutputStream)) {
@@ -22,40 +44,33 @@ public class TaskA {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        List<Integer> list = new ArrayList<>();
-        double sum=0;
-
-        try(DataInputStream dis = new DataInputStream(new FileInputStream(path))) {
-            while (dis.available()>0){
-                int i = dis.readInt();
-                list.add(i);
-                sum+=i;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    private static void printToConsole(List<Integer> list, double sum) {
+        for (Integer integer : list) {
+            System.out.print(integer+" ");
         }
-        //System.out.println(list);
-        //System.out.println("\navg="+sum/list.size());
+        System.out.println("\navg="+sum/list.size());
+    }
 
-        String txtOut = getPath(TaskA.class, "resultTaskA.txt");
+    private static void printToFile(List<Integer> list, double sum) {
+        String txtOut = getPath("resultTaskA.txt");
         try(PrintWriter out = new PrintWriter(new FileWriter(txtOut))) {
             for (Integer integer : list) {
-                System.out.print(integer+" ");
+               out.print(integer+" ");
             }
-            System.out.println("\navg="+sum/list.size());
+            out.println("\navg="+sum/list.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    static String getPath(Class<?> clazz, String fileName) {
-        String name = clazz.getName();
-        String simpleName = clazz.getSimpleName();
+    private static String getPath(String fileName) {
+        String name = TaskA.class.getName();
+        String simpleName = TaskA.class.getSimpleName();
         name = name.replace(simpleName, "");
         name = name.replace(".", File.separator);
         name = System.getProperty("user.dir") + File.separator + "src" + File.separator + name;
-        //System.out.println(name);
         return name + fileName;
     }
 
