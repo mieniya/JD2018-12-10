@@ -44,10 +44,13 @@ abstract class Var implements Operation {
     }
 
     static void saveVarToFile() {
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(varsFile, true))) {
+        try (BufferedWriter out =
+                     new BufferedWriter(
+                             new FileWriter(varsFile, true))) {
             for (Map.Entry<String, Var> entry : vars.entrySet()) {
                 out.write(String.format("%s=%s\n", entry.getKey(), entry.getValue()));
             }
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +58,6 @@ abstract class Var implements Operation {
 
     static void loadVarFromFile() {
         if (!new File(varsFile).exists()) return;
-
         Parser parser = new Parser();
         try (BufferedReader reader = new BufferedReader(new FileReader(varsFile))) {
             for (; ; ) {

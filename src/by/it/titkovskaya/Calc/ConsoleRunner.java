@@ -11,13 +11,11 @@ public class ConsoleRunner {
 
         Var.loadVarFromFile();
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
-            if (expression.equalsIgnoreCase("printvar")){
+            if (expression.equalsIgnoreCase("printvar")) {
                 Var.showVar();
-            }
-            if (expression.equalsIgnoreCase("sortvar")){
+            } else if (expression.equalsIgnoreCase("sortvar")) {
                 Var.showSortVar();
-            }
-            else try {
+            } else try {
                 Var result = parser.calc(expression);
                 printer.print(result);
             } catch (CalcException e) {

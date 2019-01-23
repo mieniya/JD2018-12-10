@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Log {
+class Log {
 
     private static String filename = System.getProperty("user.dir")+""+
             "/src/by/it/titkovskaya/Calc/"+
@@ -15,7 +15,7 @@ public class Log {
 
     static void toLog(String logLine){
         try (BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))) {
-            out.write(logLine);
+            out.write(logLine+"\n");
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
