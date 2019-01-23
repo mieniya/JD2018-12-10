@@ -13,6 +13,7 @@ import java.io.PrintWriter;
  */
 
 public class TaskC {
+
     public static void main(String[] args) {
         String dir = System.getProperty("user.dir") + "/src/"
                 + TaskC.class.getName().replace(TaskC.class.getSimpleName(), "")
@@ -43,11 +44,3 @@ public class TaskC {
         }
     }
 }
-
-/*
-        System.out.println(dir);
-        System.out.println(files.getParent());
-        System.out.println(System.getProperty("user.dir"));
-        System.out.println(TaskC.class.getSimpleName());
-        System.out.println(TaskC.class.getName());
- */

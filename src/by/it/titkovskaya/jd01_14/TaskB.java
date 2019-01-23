@@ -16,10 +16,10 @@ public class TaskB {
 
     public static void main(String[] args) {
         File file = new File(TaskA.getPath(TaskB.class, "text.txt"));
-        String wordsRregex = "[^?!()\":;,.\\s-]+";
+        String wordsRegex = "[^?!()\":;,.\\s-]+";
         String punctRegex = "[?!()\":;,.-]+";
         int matchesCount = 0;
-        int wordsCount = readFileAndFindMatches(file, wordsRregex, matchesCount);
+        int wordsCount = readFileAndFindMatches(file, wordsRegex, matchesCount);
         int punctuationCount = readFileAndFindMatches(file, punctRegex, matchesCount);
         System.out.println("words=" + wordsCount);
         System.out.println("punctuation marks=" + punctuationCount);
