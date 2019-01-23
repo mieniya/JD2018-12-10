@@ -33,15 +33,14 @@ public class TaskC_2 {
             for (File catalog : listDirs) {
                 if (catalog.isFile()) {
                     System.out.println("   file:" + catalog.getName());
-                    sb.append("\nfile:").append(catalog.getName());
+                    sb.append("   file:").append(catalog.getName()).append("\n");
                 } else if (catalog.isDirectory()) {
                     System.out.println("dir:" + catalog.getName());
-                    sb.append("\ndir:").append(catalog.getName());
+                    sb.append("dir:").append(catalog.getName()).append("\n");
                     showContent(catalog);
                 }
             }
         }
-
     }
 
     private static void printToFile(StringBuilder sb, File result) {

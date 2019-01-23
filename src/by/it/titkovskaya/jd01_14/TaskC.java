@@ -20,26 +20,26 @@ public class TaskC {
         String pathDirs = (new File(dir)).getParent();
         File dirs = new File(pathDirs);
         File result = new File(TaskA.getPath(TaskC.class, "resultTaskC.txt"));
-        showContentAndPrintToFile(dirs, result);
-    }
-
-    private static void showContentAndPrintToFile(File dirs, File result) {
         try (PrintWriter out = new PrintWriter(new FileWriter(result))) {
-            File[] listDirs = dirs.listFiles();
-            if (listDirs != null) {
-                for (File catalog : listDirs) {
-                    if (catalog.isFile()) {
-                        System.out.println("   file:" + catalog.getName());
-                        out.println("file:" + catalog.getName());
-                    } else if (catalog.isDirectory()) {
-                        System.out.println("dir:" + catalog.getName());
-                        out.println("dir:" + catalog.getName());
-                        showContentAndPrintToFile(catalog, result);
-                    }
-                }
-            }
+            showContentAndPrintToFile(dirs, out, result);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void showContentAndPrintToFile(File dirs, PrintWriter out, File result) {
+        File[] listDirs = dirs.listFiles();
+        if (listDirs != null) {
+            for (File catalog : listDirs) {
+                if (catalog.isFile()) {
+                    System.out.println("   file:" + catalog.getName());
+                    out.println("   file:" + catalog.getName());
+                } else if (catalog.isDirectory()) {
+                    System.out.println("dir:" + catalog.getName());
+                    out.println("dir:" + catalog.getName());
+                    showContentAndPrintToFile(catalog, out, result);
+                }
+            }
         }
     }
 }

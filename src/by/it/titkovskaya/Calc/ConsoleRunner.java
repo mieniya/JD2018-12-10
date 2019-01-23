@@ -8,6 +8,8 @@ public class ConsoleRunner {
         Scanner scanner = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
+
+        Var.loadVarFromFile();
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
             if (expression.equalsIgnoreCase("printvar")){
                 Var.showVar();
@@ -22,5 +24,6 @@ public class ConsoleRunner {
                 printer.showError(e);
             }
         }
+        Var.saveVarToFile();
     }
 }

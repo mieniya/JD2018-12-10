@@ -14,7 +14,7 @@ words=123, punctuation marks=15
 
 public class TaskB {
     public static void main(String[] args) {
-        File file = new File(TaskA.getPath(TaskB.class, "TaskB.txt"));
+        File file = new File(TaskA.getPath(TaskB.class, "text.txt"));
         StringBuilder sb = readTextFile(file);
         int wordsCount = getMatchesCount(sb, "[^?!()\":;,.\\s-]+");
         int punctuationCount = getMatchesCount(sb, "[?!()\":;,.-]+");
@@ -57,7 +57,7 @@ public class TaskB {
         return punctuationCount;
     }
 
-    static void printToFile(int wordsCount, int punctCount) {
+    private static void printToFile(int wordsCount, int punctCount) {
         String result = TaskA.getPath(TaskB.class, "resultTaskB.txt");
         File resultTask = new File(result);
         try (PrintWriter out = new PrintWriter(new FileWriter(resultTask))) {

@@ -23,12 +23,7 @@ public class TaskC1_2 {
             map.put(System.nanoTime(),line);
         }
         Collection<String> mapValues = map.values();
-        Iterator<String> iterator = mapValues.iterator();
-        while (iterator.hasNext()) {
-            if (Collections.frequency(mapValues, iterator.next()) > 1) {
-                iterator.remove();
-            }
-        }
+        mapValues.removeIf(s -> Collections.frequency(mapValues, s) > 1);
         for (Map.Entry<Long, String> entry : map.entrySet()) {
             System.out.println(entry.getKey() + "=" + entry.getValue());
         }
