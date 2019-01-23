@@ -1,24 +1,14 @@
 package by.it.zagurskaya.jd01_15;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-
-import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class TaskA {
-    public static void main(String[] args) throws IOException {
-        int[][] arr = new int[6][4];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = -15+(int)(Math.random());
 
-            }
-        }
-        String filename = getPath(TaskA.class,"matrix.txt");
-        BufferedWriter out = new BufferedWriter(new FileWriter(filename));
-       }
 
     private static String getPath(Class<?> clazz, String filename) {
         String path = clazz.getName();
@@ -27,5 +17,69 @@ public class TaskA {
         path = System.getProperty("user.dir")
                 + File.separator + "src" + File.separator + path;
         return path + filename;
+    }
+
+    public static void main(String[] args) {
+        String filename = getPath(TaskA.class, "matrix.txt");
+        int[][] arr = new int[6][4];
+        generate(arr);
+        printTxt(arr, filename);
+        readTxt(arr, filename);
+        showArray(arr);
+    }
+
+    private static void showArray(int[][] arr) {
+        for (int[] row : arr) {
+            for (int element : row) {
+                System.out.printf("%3d ", element);
+            }
+            System.out.println();
+        }
+    }
+
+    private static void readTxt(int[][] arr, String filename) {
+        try (BufferedReader in =
+                     new BufferedReader(
+                             new FileReader(filename)
+                     )
+        ) {
+            int i = 0;
+            for (; ; ) {
+                String line = in.readLine();
+                if (line == null) break;
+                String[] sRow = line.trim().split("\\s+");
+                for (int j = 0; j < sRow.length; j++) {
+                    arr[i][j] = Integer.parseInt(sRow[j]);
+                }
+                i++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void printTxt(int[][] arr, String filename) {
+        try (PrintWriter out =
+                     new PrintWriter(
+                             new FileWriter(filename)
+                     )
+        ) {
+            for (int[] row : arr) {
+                for (int element : row) {
+                    out.printf("%3d ", element);
+                }
+                out.println();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void generate(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = -15 + (int) (31 * Math.random());
+            }
+        }
     }
 }
