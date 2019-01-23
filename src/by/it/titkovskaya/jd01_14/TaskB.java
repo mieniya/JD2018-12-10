@@ -57,7 +57,7 @@ public class TaskB {
         return punctuationCount;
     }
 
-    private static void printToFile(int wordsCount, int punctCount) {
+    static void printToFile(int wordsCount, int punctCount) {
         String result = TaskA.getPath(TaskB.class, "resultTaskB.txt");
         File resultTask = new File(result);
         try (PrintWriter out = new PrintWriter(new FileWriter(resultTask))) {
