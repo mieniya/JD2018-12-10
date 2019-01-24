@@ -1,5 +1,8 @@
 package by.it.titkovskaya.jd01_14;
 
+import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /*
 В классе TaskB нужно выполнить следующие шаги:
  В файле с текстом TaskB.txt нужно подсчитать общее количество знаков
@@ -9,44 +12,44 @@ words=123, punctuation marks=15
  Продублировать вывод в консоль в файл resultTaskB.txt
  */
 
-import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+public class TaskB_1 {
 
-public class TaskB_2 {
+    private static int wordsCount=0;
+    private static int punctuationCount=0;
 
     public static void main(String[] args) {
         long t = System.nanoTime();
-        File file = new File(TaskA.getPath(TaskB.class, "text.txt"));
-        String wordsRegex = "[^?!()\":;,.\\s-]+";
-        String punctRegex = "[?!()\":;,.-]+";
-        int matchesCount = 0;
-        int wordsCount = readFileAndFindMatches(file, wordsRegex, matchesCount);
-        int punctuationCount = readFileAndFindMatches(file, punctRegex, matchesCount);
+        File file = new File(TaskA.getPath(TaskB_1.class, "text.txt"));
+        readFileAndFindMatches(file);
         System.out.println("words=" + wordsCount);
         System.out.println("punctuation marks=" + punctuationCount);
         printToFile(wordsCount, punctuationCount);
         System.out.println(System.nanoTime() - t);
     }
 
-    private static int readFileAndFindMatches(File file, String regex, int matchesCount) {
+    private static void readFileAndFindMatches(File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while (reader.ready()) {
                 String line = reader.readLine();
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(line);
-                while (matcher.find()) {
-                    matchesCount++;
-                }
+                wordsCount=findMatches(line, "[^?!()\":;,.\\s-]+", wordsCount);
+                punctuationCount=findMatches(line, "[?!()\":;,.-]+", punctuationCount);
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static int findMatches(String line, String regex, int matchesCount) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(line);
+        while (matcher.find()) {
+            matchesCount++;
         }
         return matchesCount;
     }
 
     private static void printToFile(int wordsCount, int punctCount) {
-        String result = TaskA.getPath(TaskB.class, "resultTaskB.txt");
+        String result = TaskA.getPath(TaskB_1.class, "resultTaskB.txt");
         File resultTask = new File(result);
         try (PrintWriter out = new PrintWriter(new FileWriter(resultTask))) {
             out.println("words=" + wordsCount);
@@ -55,5 +58,4 @@ public class TaskB_2 {
             e.printStackTrace();
         }
     }
-
 }

@@ -16,40 +16,72 @@ public class TaskB {
 
     public static void main(String[] args) {
         File file = new File(TaskA.getPath(TaskB.class, "text.txt"));
-        String wordsRegex = "[^?!()\":;,.\\s-]+";
-        String punctRegex = "[?!()\":;,.-]+";
-        int matchesCount = 0;
-        int wordsCount = readFileAndFindMatches(file, wordsRegex, matchesCount);
-        int punctuationCount = readFileAndFindMatches(file, punctRegex, matchesCount);
-        System.out.println("words=" + wordsCount);
-        System.out.println("punctuation marks=" + punctuationCount);
+        String text = readTextFile(file);
+        int wordsCount = getMatchesCount(text, "[^?!()\":;,.\\s-]+");
+        int punctuationCount = getMatchesCount(text, "[?!()\":;,.-]+");
+        System.out.println("words="+wordsCount);
+        System.out.println("punctuation marks="+punctuationCount);
         printToFile(wordsCount, punctuationCount);
     }
 
-    private static int readFileAndFindMatches(File file, String regex, int matchesCount) {
+    private static String readTextFile(File file) {
+        StringBuilder sb = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while (reader.ready()) {
-                String line = reader.readLine();
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(line);
-                while (matcher.find()) {
-                    matchesCount++;
-                }
+                sb.append(reader.readLine()).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return matchesCount;
+        return sb.toString();
+    }
+
+    private static int getMatchesCount(String text, String regex) {
+        int wordsCount = 0;
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            wordsCount++;
+        }
+        return wordsCount;
     }
 
     private static void printToFile(int wordsCount, int punctCount) {
         String result = TaskA.getPath(TaskB.class, "resultTaskB.txt");
         File resultTask = new File(result);
         try (PrintWriter out = new PrintWriter(new FileWriter(resultTask))) {
-            out.println("words=" + wordsCount);
-            out.println("punctuation marks=" + punctCount);
+            out.println("words="+wordsCount);
+            out.println("punctuation marks="+punctCount);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
+
+
+/*
+    private static String readTextFile(File file) {
+        StringBuilder sb = new StringBuilder();
+        int b;
+        FileReader is = null;
+        try {
+            is = new FileReader(file);
+            while ((b = is.read()) != -1) {
+                sb.append((char) b);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (is!=null){
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
+    }
+
+ */
