@@ -18,7 +18,11 @@ public class TaskA {
     private static void writeToFile(ArrayList<Integer> list, double sum) {
         String path2 = getPath(TaskA.class, "resultTaskA.txt");
         try (
-                PrintWriter pw = new PrintWriter(new FileWriter(new File(path2)))
+                PrintWriter pw = new PrintWriter(
+                        new FileWriter(
+                                new File(path2)
+                        )
+                )
         ) {
             for (Integer integer : list) {
                 pw.print(integer + " ");
@@ -38,8 +42,11 @@ public class TaskA {
 
     private static double readBinaryFileCountSum(String path, ArrayList<Integer> list, double sum) {
         try (
-                FileInputStream fis = new FileInputStream(new File(path));
-                DataInputStream dis = new DataInputStream(fis)
+                DataInputStream dis = new DataInputStream(
+                        new FileInputStream(
+                                new File(path)
+                        )
+                )
         ) {
             while (dis.available() > 0) {
                 int i = dis.readInt();
@@ -54,8 +61,9 @@ public class TaskA {
 
     private static void writeIntsToBinFile(String path) {
         try (
-                FileOutputStream fos = new FileOutputStream(path);
-                DataOutputStream dos = new DataOutputStream(fos)
+                DataOutputStream dos = new DataOutputStream(
+                        new FileOutputStream(path)
+                )
         ) {
             for (int i = 0; i < 20; i++) {
                 dos.writeInt((int) (Math.random() * 51));
