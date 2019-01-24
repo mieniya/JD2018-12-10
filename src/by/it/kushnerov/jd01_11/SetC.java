@@ -28,7 +28,7 @@ public class SetC<E> implements Set<E> {
             System.arraycopy(elements, i + 1, elements, i, size - i - 1);
             size--;
         }
-        return true;
+        return (i > -1);
     }
 
     private int indexOf(Object o) {
