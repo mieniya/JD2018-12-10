@@ -1,50 +1,75 @@
 package by.it.subach.jd01_15;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+
+import java.io.*;
 
 public class TaskB {
     /**
-     * This program delete all JavaDocs
-     *
-     *
-     *
-     *
-     *
-     *
+     * This program delete all JavaDocs,
+     * oneLine comments,
+     * and manyLine comments...
      * Or not delete =)
+     *
      * @param
      */
 
     static String getPath(Class<?> clazz, String filename) {
         String path = clazz.getName();
-        String simpleName = clazz.getSimpleName();
+        String simpleName = clazz.getSimpleName();         //worked too
         path = path.replace(simpleName, "");
         path = path.replace(".", File.separator);
         path = System.getProperty("user.dir") + File.separator + "src" + File.separator + path;
         return path + filename;
     }
 
+/*
+some comment 1
+
+ */
+
     public static void main(String[] args) throws IOException {
 
         String path = getPath(TaskB.class, "TaskB.java");
         System.out.println(path);
-
-//        oneRow comment also must be delete
-
-        String testString1 = "/** Very smart JavaDoc*/\n great code. Fucking great CODE!!!";
-        String testString2 = "// Very smart one row comment\n great code. Fucking great CODE again!!!";
-        String testString3 = "/* Very smart many row comment \n*/\n great code. Fucking great CODE again and again!!!";
-
-//        Stream<String> streamFromFiles = Files.b(Paths.get("TaskB.java")).filter("/*" :: equals);
-
+        StringBuilder sb = new StringBuilder();
 
 /*
-          and manyRow comments must die!!!
 
+some comment 2
  */
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            int c;
+            while ((c = reader.read()) != -1) {
+                if (c == 47) {
+                    if (reader.read() == 47) {
+                            while (reader.read() != 13) {
+                                reader.read();
+                        }
+                    } else
+                        while (reader.read() != 47) {
+                            reader.read();
+                        }
+                }
+                if (c != 47)
+                    sb.append((char) c);
+            }
+//            some comment 3
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getPath(TaskB.class, "TaskB.txt")));
+        writer.write(sb.toString());
+        writer.close();
+//          some comment 4
+        System.out.println(sb);
     }
 }
+
+
+
+
+
+
