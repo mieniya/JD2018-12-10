@@ -1,8 +1,6 @@
 package by.it.moroz.jd01_15;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class TaskC {
