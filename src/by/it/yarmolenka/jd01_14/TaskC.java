@@ -9,21 +9,21 @@ public class TaskC {
         String path = System.getProperty("user.dir");
         String del = File.separator;
         path = path + del + "src" + del + "by" + del + "it" + del + "yarmolenka";
-        File file = new File(path);
-        StringBuilder listOfFiles = getFileList(file);
+        StringBuilder listOfFiles = getFileList(path);
         System.out.println(listOfFiles);
         writeFileList(listOfFiles);
     }
 
-    private static StringBuilder getFileList(File file) {
+    private static StringBuilder getFileList(String path) {
         StringBuilder sb = new StringBuilder();
+        File file = new File(path);
         if (file.isFile()) sb.append("file:").append(file.getName()).append("\n");
         else {
             sb.append("dir:").append(file.getName()).append("\n");
             File[] files = file.listFiles();
             if (files != null)
                 for (File file1 : files) {
-                    sb.append(getFileList(file1));
+                    sb.append(getFileList(file1.getPath()));
                 }
         }
         return sb;

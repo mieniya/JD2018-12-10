@@ -8,26 +8,21 @@ public class TaskB {
     public static void main(String[] args) {
         String path = TaskA.getPath(TaskB.class, "text.txt");
         File f = new File(path);
-
-
-        StringBuilder sb = stringBufferFromFile(f);
-
+        StringBuilder sb = stringBuilderFromFile(f);
         int words = countWords(sb);
         int symbols = countSymbols(sb);
-
         System.out.printf("words=%d, punctuation marks=%d\n", words, symbols);
-
         WriteResultInFile(words, symbols);
     }
 
-    private static StringBuilder stringBufferFromFile(File file) {
+    private static StringBuilder stringBuilderFromFile(File file) {
         StringBuilder fromFile = new StringBuilder();
-        int b;
+        String b;
         try (
-                FileReader fr = new FileReader(file)
+                BufferedReader br = new BufferedReader(new FileReader(file))
         ) {
-            while ((b = fr.read()) != -1)
-                fromFile.append((char) b);
+            while (!((b = br.readLine()) == null))
+                fromFile.append(b).append("\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
