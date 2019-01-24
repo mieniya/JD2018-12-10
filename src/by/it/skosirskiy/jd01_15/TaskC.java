@@ -13,15 +13,25 @@ import java.util.Scanner;
 
 public class TaskC {
     static String src = System.getProperty("user.dir")+"\\src\\by\\it\\skosirskiy\\";
-    static String dir = src+"jd01_15\\TaskC.java";
+    static String dir = src+"jd01_15\\";
     static String line;
+
+    private static void printFolderNameAndFilename(File file) {
+            for (File item : file.listFiles()) {
+                if (item.isDirectory()) {
+                    System.out.println("dir:" + item.getName());
+                } else {
+                    System.out.println("file:" + item.getName());
+                   }
+            }
+    }
 
     public static void main(String[] args) {
         File file = new File(dir);
 
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("стартовый каталог"+file);
+        System.out.println("стартовый каталог: "+file);
         while (!(line = scan.nextLine()).equals("end")){
 
             if (line.equals("cd ..")){
@@ -29,10 +39,13 @@ public class TaskC {
                 System.out.println(file);
 
             }
-            else {
-                line.replace("cd ","");
-                openFolder(line, file);
+            else if(line.equals("dir")){
+                printFolderNameAndFilename(file);
             }
+                else    {line=line.replace("cd ","");
+                System.out.println(line);
+                file=openFolder(line, file);}
+                }
         }
 
 
@@ -40,11 +53,11 @@ public class TaskC {
 
 
 
-    }
+
 
     private static File openFolder(String string, File file) {
-        file = new File(file.getAbsoluteFile()+string);
-    return file;
+       File file1 = new File(file.getAbsoluteFile()+"\\"+string);
+    return file1;
     }
 
 

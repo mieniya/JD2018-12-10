@@ -9,10 +9,10 @@ public class Test {
     public static void main(String[] args) {
 
 
-        File file = new File(dir);
+        String str= "cd jd01";
+        str=str.replace("cd ","");
+        System.out.println(str);
 
-
-        System.out.println(file.getAbsolutePath());
 
 
     }
