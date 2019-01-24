@@ -1,4 +1,4 @@
-package by.it.dziomin.сalculator.interfaces;
+package by.it.dziomin.calculator.interfaces;
 
 public interface IVar {
 

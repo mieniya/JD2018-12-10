@@ -1,13 +1,14 @@
-package by.it.dziomin.сalculator;
+package by.it.dziomin.calculator;
 
 public class CalcException extends Exception {
 
     private String msg;
 
-    public String getMsg() {
+    String getMsg() {
         return msg;
     }
     public CalcException(String message) {
+        Logger.printToFile("ERROR:" + message);
         this.msg = "ERROR:" + message;
     }
 

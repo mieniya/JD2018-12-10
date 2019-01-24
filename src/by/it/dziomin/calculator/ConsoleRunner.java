@@ -1,4 +1,4 @@
-package by.it.dziomin.сalculator;
+package by.it.dziomin.calculator;
 
 import java.util.Scanner;
 
@@ -10,6 +10,7 @@ public class ConsoleRunner {
         String input;
         Printer printer = new Printer();
         Parser pars = new Parser();
+        Logger.printToFile("ERROR:");
         while (!(input = sc.nextLine()).equalsIgnoreCase("END")) {
             try {
                 printer.print(pars.calc(input));

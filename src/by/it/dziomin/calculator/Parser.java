@@ -1,6 +1,6 @@
-package by.it.dziomin.сalculator;
+package by.it.dziomin.calculator;
 
-import by.it.dziomin.сalculator.vars.Var;
+import by.it.dziomin.calculator.vars.Var;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,15 +15,16 @@ class Parser {
             one = Var.createVar(operands[0]);
             two = Var.createVar(operands[1]);
         } else {
-            throw new CalcException("Не определены операнды");
+
+            throw new CalcException("Не определены операнды!");
         }
 
         if (one == null) {
-            throw new CalcException("Первый операнд не определен");
+            throw new CalcException("Первый операнд не определен!");
         }
 
         if (two == null) {
-            throw new CalcException("Второй операнд не определен");
+            throw new CalcException("Второй операнд не определен!");
         }
 
         Matcher matcher = pattern.matcher(expression);

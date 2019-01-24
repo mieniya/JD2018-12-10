@@ -1,8 +1,8 @@
-package by.it.dziomin.сalculator.vars;
+package by.it.dziomin.calculator.vars;
 
-import by.it.dziomin.сalculator.CalcException;
-import by.it.dziomin.сalculator.Patterns;
-import by.it.dziomin.сalculator.interfaces.*;
+import by.it.dziomin.calculator.CalcException;
+import by.it.dziomin.calculator.Patterns;
+import by.it.dziomin.calculator.interfaces.*;
 
 public abstract class Var implements IVar, IAdd, IDiv, IMul, ISub {
 

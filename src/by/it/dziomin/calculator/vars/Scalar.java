@@ -1,6 +1,6 @@
-package by.it.dziomin.сalculator.vars;
+package by.it.dziomin.calculator.vars;
 
-import by.it.dziomin.сalculator.CalcException;
+import by.it.dziomin.calculator.CalcException;
 
 public class Scalar extends Var {
 
@@ -67,7 +67,7 @@ public class Scalar extends Var {
     public Var div(Var other) throws CalcException {
         if (other.isScalar()) {
             if (((Scalar) other).value==0){
-                throw new CalcException("Деление на ноль не возможно!");
+                throw new CalcException("Деление на ноль невозможно!");
             }
             double result = this.value / ((Scalar) other).value;
             return new Scalar(result);
