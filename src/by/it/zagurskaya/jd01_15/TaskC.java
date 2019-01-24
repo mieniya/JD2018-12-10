@@ -1,9 +1,11 @@
 package by.it.zagurskaya.jd01_15;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,8 +16,8 @@ public class TaskC {
     private static final String DIR = "dir";
     private static final String END = "end";
 
-    public static void main(String[] args) {
-        Path currentPath = Paths.get(getPath(TaskC.class));   // google = java get Path from string
+    public static void main(String[] args) throws IOException {
+        Path currentPath = Paths.get(getPath(TaskC.class));
         File currentClassPathFile = currentPath.toFile();
 
 
@@ -73,35 +75,64 @@ public class TaskC {
         }
     }
 
-    private static Path getDIR(Path path) {
-        Path currentClassPath = path;   // google = java get Path from string
+    private static Path getDIR(Path path) throws IOException {
+        Path currentClassPath = path;
         File currentClassPathFile = currentClassPath.toFile();
         List<String> fileInfoStrings = new ArrayList<>();
         File[] inputFiles = currentClassPathFile.listFiles();
+        BasicFileAttributes attr = Files.readAttributes(path, BasicFileAttributes.class);
+
+//        System.out.println("lastAccessTime: " + attr.lastAccessTime());
+//        System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
+
+        String modifailTime = attr.lastModifiedTime().toString();
+        modifailTime = modifailTime.replace("T","  ");
+        modifailTime = modifailTime.split("\\.", 2)[0];
+
+        System.out.printf("%-11s",modifailTime);
+        System.out.printf("%-11s","   <DIR>    ");
+        System.out.printf("%-11s","           ");
+        System.out.printf("%-11s",".");
+        System.out.println();
+        System.out.printf("%-11s",modifailTime);
+        System.out.printf("%-11s","   <DIR>    ");
+        System.out.printf("%-11s","           ");
+        System.out.printf("%-11s","..");
+        System.out.println();
+
         for (File inputFile : inputFiles) {
-            fileInfoStrings.addAll(getFileInfoStrings(inputFile));
+            getFileInfoStrings(inputFile);
         }
         return path;
     }
 
-    private static List<String> getFileInfoStrings(File file) {
-        List<String> fileInfoStrings = new ArrayList<>();
+    private static void getFileInfoStrings(File file) throws IOException {
+        Path directoryPath = Paths.get(file.getAbsolutePath());
+        BasicFileAttributes attr = Files.readAttributes(directoryPath, BasicFileAttributes.class);
 
         if (file.isDirectory()) {
-            String dirInfoString = "dir:" + file.getName();
-            System.out.println(dirInfoString);
-            ///????????????
-            //System.out.println(Files.getAttribute());
-            fileInfoStrings.add(dirInfoString);
-            File[] insideDirectoryFiles = file.listFiles();
-            for (File item : insideDirectoryFiles) {
-                fileInfoStrings.addAll(getFileInfoStrings(item));
-            }
+
+            String modifailTime = attr.lastModifiedTime().toString();
+            modifailTime = modifailTime.replace("T","  ");
+            modifailTime = modifailTime.split("\\.", 2)[0];
+            // Не правильно показывает время?????
+            System.out.printf("%-11s",modifailTime);
+            System.out.printf("%-11s","   <DIR>    ");
+            System.out.printf("%-11s","           ");
+            System.out.printf("%-11s",file.getName());
+            System.out.println();
+
         } else {
-            String fileInfoString = "file:" + file.getName();
-            System.out.println(fileInfoString);
-            fileInfoStrings.add(fileInfoString);
+            String modifailTime = attr.lastModifiedTime().toString();
+            modifailTime = modifailTime.replace("T","  ");
+            modifailTime = modifailTime.split("\\.", 2)[0];
+
+            System.out.printf("%-11s",modifailTime);
+            System.out.printf("           ");
+            System.out.printf("%,11d",attr.size());
+            System.out.printf(" ");
+            System.out.printf("%-11s",file.getName());
+            System.out.println();
         }
-        return fileInfoStrings;
     }
 }
