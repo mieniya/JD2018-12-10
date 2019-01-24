@@ -1,16 +1,18 @@
 package by.it.skosirskiy.Calc;
 
+import by.it.skosirskiy.Calc.Parcer;
+
+import java.io.*;
 import java.util.*;
 
 abstract class Var implements Operation {
 
-
+    private static String operand = System.getProperty("user.dir") + "" +
+            "/src/by/it/skosirskiy/Calc/" +
+            "operand.txt";
 
     private static HashMap<String,Var> vars=  new HashMap<>();
-    static Var saveVar(String name, Var var){
-        vars.put(name, var);
-        return var;
-    }
+
 
     public static void printvar(){
         System.out.println(vars);
@@ -31,6 +33,46 @@ abstract class Var implements Operation {
         else if (vars.containsKey(operand)) return vars.get(operand);
 
         throw new CalcException("Невозможно создать "+operand);
+
+    }
+
+    static void saveVar(String nameVar, Var value) {
+        vars.put(nameVar, value);
+    }
+    static void saveVarToFile() {
+        try (
+                BufferedWriter out =
+                        new BufferedWriter(
+                                new FileWriter(operand, true)
+                        )
+        ) {
+            for (Map.Entry<String, by.it.skosirskiy.Calc.Var> entry : vars.entrySet()) {
+                out.write(String.format("%s=%s\n", entry.getKey(), entry.getValue()));
+            }
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    static void loadVarFromFile() {
+        if (!new File(operand).exists()) return;
+
+        Parcer parcer = new Parcer();
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(operand)
+        )) {
+            for (; ; ) {
+                String s = reader.readLine();
+                if (s == null)
+                    return;
+                parcer.calc(s);
+
+            }
+        } catch (IOException | by.it.skosirskiy.Calc.CalcException e) {
+            e.printStackTrace();
+        }
 
     }
 

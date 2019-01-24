@@ -9,9 +9,9 @@ public class ConsoleRunner {
         Scanner scan = new Scanner(System.in);
         String line;
 
-        Parser parser= new Parser();
+        Parcer parser= new Parcer();
         Printer printer = new Printer();
-
+//        Var.loadVarFromFile();
         while (!(line = scan.nextLine()).equals("end")){
 
             try {
@@ -19,11 +19,13 @@ public class ConsoleRunner {
                 printer.print(result);
             } catch (CalcException e) {
                 System.out.println(e.getMessage());
+                printer.showError(e);
 
             }
 
 
         }
+        by.it.skosirskiy.Calc.Var.saveVarToFile();
 
     }
 

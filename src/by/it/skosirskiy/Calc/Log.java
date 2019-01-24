@@ -1,4 +1,4 @@
-package by.it.a_khmelev.calc_v3_with_log_and_savevars;
+package by.it.skosirskiy.Calc;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,9 +6,12 @@ import java.io.IOException;
 
 public class Log {
 
+
+
     private static String filename = System.getProperty("user.dir") + "" +
-            "/src/by/it/a_khmelev/calc_v3_with_log_and_savevars/" +
+            "/src/by/it/skosirskiy/Calc/" +
             "log.txt";
+
 
     private Log() {
     }
@@ -18,14 +21,16 @@ public class Log {
                 BufferedWriter out =
                         new BufferedWriter(
                                 new FileWriter(filename, true)
-                        )
+                        );
+
         ) {
-            out.write(logLine);
+            out.write(logLine+"\n");
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 
 }

@@ -3,7 +3,7 @@ package by.it.skosirskiy.Calc;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+public class Parcer {
 
     Var calc(String expression) throws CalcException{
         String[] operand = expression.split(Patterns.OPERATION);
@@ -15,9 +15,9 @@ public class Parser {
             Var.sortvar();}
         else {
             Var two = Var.createVar(operand[1]);
-            if (expression.contains("=")) {
-                return Var.saveVar(operand[0], two);
-            }
+//            if (expression.contains("=")) {
+//                return Var.saveVar(operand[0], two);
+//            }
             Var one = Var.createVar(operand[0]);
 
             if (one == null || two == null)
