@@ -15,43 +15,52 @@ TaskC1. Нужно ввести с консоли текст до строки e
  */
 public class TaskC1 {
     public static void main(String[] args) {
-        String line;
-        StringBuilder sb = new StringBuilder();
+        Long t = System.nanoTime();
         Scanner scanner = new Scanner(System.in);
-        while (!(line = scanner.nextLine()).equals("end")) {
-            sb.append(" ").append(line);
+        String line;
+        Map<Long, String> map = new HashMap<>();
+        while (!(line = scanner.nextLine()).equalsIgnoreCase("end")){
+            map.put(System.nanoTime(),line);
         }
-        String[] values = sb.toString().split("[^A-zА-яЁё']+");
-        Map<Long, String> map = new TreeMap<>();
-        for (String value : values) {
-            map.put(System.nanoTime() / 1000, value);
-        }
-        Collection<String> mapValues = map.values();
-        Iterator<String> iterator = mapValues.iterator();
-        while (iterator.hasNext()) {
-            if (Collections.frequency(mapValues, iterator.next()) > 1) {
+
+        Iterator<String> iterator = map.values().iterator();
+        Set<String> mapValues = new HashSet<>();
+        while (iterator.hasNext()){
+            if (!mapValues.add(iterator.next())){
                 iterator.remove();
             }
         }
         for (Map.Entry<Long, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + "=" + entry.getValue());
+            System.out.println(entry.getKey()+"="+entry.getValue());
         }
+        Long tA = System.nanoTime() - t;
+        System.out.println(tA);
     }
 }
 /*
-Collection<String> mapValues = map.values();
-        for (Iterator<String> iterator=mapValues.iterator(); iterator.hasNext();){
-            if (Collections.frequency(mapValues,iterator.next())>1){
-                iterator.remove();
-            }
-        }
+ttt
+ggg
+yyy
+sss
+ddd
+ttt
+nnn
+hhh
+ttt
+ddd
+sss
+aaa
+qqq
+eee
+mmm
+iii
+aaa
+zzz
+zzz
+mmm
+xxx
+ppp
+ooo
+end
 
-
-Iterator<Map.Entry<Long,String>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry<Long,String> entry=iterator.next();
-            if (map.containsValue(entry.getValue())){
-                iterator.remove();
-            }
-        }
  */

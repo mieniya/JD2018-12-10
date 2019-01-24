@@ -21,7 +21,7 @@ abstract class Var implements Operation {
         return var;
     }
 
-    public static Var createVar(String operand) {
+    public static Var createVar(String operand) throws CalcException {
         operand = operand.trim();
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
@@ -31,48 +31,27 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         if (vars.containsKey(operand))
                 return vars.get(operand);
-        System.err.println("ПЕременная не опредеклена");
-        return null;
-    }
-
-//    static Var createVar (String strVar){
-//        if (strVar.matches(Patterns.SCALAR))
-//            return new Scalar(strVar);
-//        else
-//        if (strVar.matches(Patterns.VECTOR))
-//            return new Vector(strVar);
-//        else
-//        if (strVar.matches(Patterns.MATRIX))
-//            return new Matrix(strVar);
-//        else
-//            if (vars.containsKey(strVar))
-//                return vars.get(strVar);
-//        //return null;
-//        return Var;
-//    }
-
-    @Override
-    public Var add(Var other) {
-        System.out.println("Сложение " + this + "на" + other + "невозможно");
-        return null;
+        throw new CalcException("Переменная не определена" + operand);
     }
 
     @Override
-    public Var sub(Var other) {
-        System.out.println("Вычитание " + this + "на" + other + "невозможно");
-        return null;
+    public Var add(Var other) throws CalcException {
+        throw new CalcException("Сложение " + this + "на" + other + "невозможно");
     }
 
     @Override
-    public Var div(Var other) {
-        System.out.println("Деление " + this + "на" + other + "невозможно");
-        return null;
+    public Var sub(Var other) throws CalcException {
+        throw new CalcException("Вычитание " + this + "на" + other + "невозможно");
     }
 
     @Override
-    public Var mul(Var other) {
-        System.out.println("Умножение " + this + "на" + other + "невозможно");
-        return null;
+    public Var div(Var other) throws CalcException {
+        throw new CalcException("Деление " + this + "на" + other + "невозможно");
+    }
+
+    @Override
+    public Var mul(Var other) throws CalcException {
+        throw new CalcException("Умножение " + this + "на" + other + "невозможно");
     }
 
     @Override
