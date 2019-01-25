@@ -37,8 +37,7 @@ public class TaskC {
                 file = file.getParentFile();
                 System.out.println(file + ">");
             } else if (input.matches("cd [A-z0-9_ .]+")) {
-                String path = file.getPath();
-                file = new File(path, input.replace("cd ",""));
+                file = new File(file, input.replace("cd ",""));
                 System.out.println(file + ">");
             } else {
                 System.out.println("Данная команда приложением не поддерживается");
