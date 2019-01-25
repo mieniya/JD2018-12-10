@@ -64,13 +64,6 @@ class Scalar extends Var {
 
 
 
-
-
-
-
-
-
-
     @Override
     public String toString() {
         return Double.toString(value);

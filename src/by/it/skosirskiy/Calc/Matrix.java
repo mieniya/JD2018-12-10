@@ -21,7 +21,7 @@ public class Matrix extends Var {
     }
 
     Matrix(String str) {
-        Pattern pattern = Pattern.compile("[{][0-9 ,]*[}]");
+        Pattern pattern = Pattern.compile("[{][0-9 ,.]*[}]");
         StringBuilder sb = new StringBuilder(str);
         Matcher matcher = pattern.matcher(sb);
 
@@ -32,6 +32,7 @@ public class Matrix extends Var {
         }
 
         String[] strMatrix = str.replaceAll("[^,0-9]", "").split(",");
+
         int columns = strMatrix.length / kolrows; // shctchik elment v matrice
         this.value = new double[kolrows][columns];
         for (int k = 0; k < strMatrix.length; k++) {

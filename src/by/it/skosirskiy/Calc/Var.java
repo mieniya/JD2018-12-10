@@ -25,8 +25,8 @@ abstract class Var implements Operation {
     }
 
     static Var createVar(String operand) throws CalcException{
-        operand.replace(" ","");
-        operand=operand.trim().replace("\\s+","");
+
+        operand=operand.trim().replace("\\s+","").replace(" ","");
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         else if (operand.matches(Patterns.VECTOR))
@@ -81,6 +81,8 @@ abstract class Var implements Operation {
 
 
     }
+
+
 
     static void loadVarFromFile() {
         if (!new File(varsFile).exists()) return;

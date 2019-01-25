@@ -3,7 +3,7 @@ package by.it.skosirskiy.Calc;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Parcer {
+class Parcer  extends CalcException{
 
     Var calc(String expression) throws CalcException{
         String[] operand = expression.split(Patterns.OPERATION);
