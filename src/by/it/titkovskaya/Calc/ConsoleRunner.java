@@ -8,13 +8,20 @@ public class ConsoleRunner {
         Scanner scanner = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
+
+        Var.loadVarFromFile();
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
-            try {
+            if (expression.equalsIgnoreCase("printvar")) {
+                Var.showVar();
+            } else if (expression.equalsIgnoreCase("sortvar")) {
+                Var.showSortVar();
+            } else try {
                 Var result = parser.calc(expression);
                 printer.print(result);
             } catch (CalcException e) {
                 printer.showError(e);
             }
         }
+        Var.saveVarToFile();
     }
 }
