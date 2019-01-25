@@ -28,20 +28,28 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value + ((Scalar) other).value;
             return new Scalar(res);
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Действие не реализовано");
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Действие не реализовано");
         }
         return other.add(this);
         // other Vector or Matrix;
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value - ((Scalar) other).value;
             return new Scalar(res);
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Действие не реализовано");
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Действие не реализовано");
         }
         Scalar minus = new Scalar(-1);
         return other.add(this.mul(minus));
@@ -49,20 +57,30 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
-            double res = this.value /((Scalar) other).value;
+            if (((Scalar) other).value == 0)
+                throw new CalcException("Деление на ноль");
+            double res = this.value / ((Scalar) other).value;
             return new Scalar(res);
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Действие не возможно");
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Действие не возможно");
         }
         return super.div(other);
         // other Vector or Matrix;
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value * ((Scalar) other).value;
             return new Scalar(res);
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Действие не реализовано");
+        } else if ((other instanceof Matrix)) {
+            throw new CalcException("Действие не реализовано");
         }
         return other.mul(this);
         // other Vector or Matrix;
