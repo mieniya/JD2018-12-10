@@ -14,7 +14,7 @@ TaskC. Нужно написать в TaskC программу, которая �
  Числа нужно выводить без форматирования, через пробел, в порядке обратном вводу.
  После 5 допущенных ошибок программа должна завершиться, пробрасывая ошибку в JVM.
  */
-public class TaskC_1 {
+public class TaskC2 {
 
     private static LinkedList<Object> numbers = new LinkedList<>();
     private static String input;
@@ -24,9 +24,14 @@ public class TaskC_1 {
         Scanner scanner = new Scanner(System.in);
         while (countException<5){
             input = scanner.nextLine();
-            readData();
+            try {
+                readData();
+            }
+            catch (Exception e){
+                countException++;
+            }
         }
-        if (countException==5) throw new Exception();
+        throw new Exception();
     }
 
     private static void readData() throws Exception{
@@ -34,11 +39,11 @@ public class TaskC_1 {
             input = input.trim().replace(" ", "").replace(",", ".");
             numbers.addFirst(Double.parseDouble(input));
         } catch (NumberFormatException e){
-            countException++;
             Thread.sleep(100);
             for (Object o : numbers) {
                 System.out.print(o+" ");
             }
+            throw new Exception();
         }
     }
 }
