@@ -11,12 +11,17 @@ public class TaskC {
         File start = new File(startPos);
         Scanner scanner = new Scanner(System.in);
         String command;
-        while (!((command = scanner.nextLine()).equalsIgnoreCase("end"))){
-            if (command.equals("cd ..")){
-                start.getParentFile();
+        while (!((command = scanner.nextLine()).equalsIgnoreCase("end"))) {
+            if (command.equals("cd ..")) {
+                System.out.println(start.getParentFile().toPath());
             }
-            if (command.equals("dir")){
+            if (command.equals("dir")) {
 
+            }
+            if (command.matches("cd [A-Za-z\\p{Punct}]+")) {
+                String[] com = command.split(" ");
+                System.out.println(com[1]);
+                
             }
 
         }

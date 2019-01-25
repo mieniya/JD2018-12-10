@@ -1,19 +1,17 @@
 package by.it.moroz.jd01_15;
 
-/*some commentary
+/**
+ * File for delete all commentaries
+ * and JavaDoc
  */
 
 import java.io.*;
 
 public class TaskB {
 
-    /**
-     * This file for delete all commentaries
-     * and JavaDoc
-     */
-
-
     public static void main(String[] args) {
+        /*some commentary
+         */
 
         String path = getPath("TaskB.java");
         StringBuilder sb = new StringBuilder();
