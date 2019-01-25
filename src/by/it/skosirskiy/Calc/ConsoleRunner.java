@@ -11,7 +11,7 @@ public class ConsoleRunner {
 
         Parcer parser= new Parcer();
         Printer printer = new Printer();
-//        Var.loadVarFromFile();
+        Var.loadVarFromFile();
         while (!(line = scan.nextLine()).equals("end")){
 
             try {
@@ -20,13 +20,11 @@ public class ConsoleRunner {
             } catch (CalcException e) {
                 System.out.println(e.getMessage());
                 printer.showError(e);
-
             }
 
 
         }
-        by.it.skosirskiy.Calc.Var.saveVarToFile();
-
+        Var.saveVarToFile();
     }
 
 }

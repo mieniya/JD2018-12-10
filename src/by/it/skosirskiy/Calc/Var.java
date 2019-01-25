@@ -1,18 +1,20 @@
 package by.it.skosirskiy.Calc;
 
-import by.it.skosirskiy.Calc.Parcer;
-
 import java.io.*;
 import java.util.*;
 
 abstract class Var implements Operation {
-
-    private static String operand = System.getProperty("user.dir") + "" +
+    private static String varsFile = System.getProperty("user.dir") + "" +
             "/src/by/it/skosirskiy/Calc/" +
-            "operand.txt";
+            "vars.txt";
+
 
     private static HashMap<String,Var> vars=  new HashMap<>();
 
+    static void saveVar(String name, Var var){
+        vars.put(name, var);
+
+    }
 
     public static void printvar(){
         System.out.println(vars);
@@ -23,6 +25,7 @@ abstract class Var implements Operation {
     }
 
     static Var createVar(String operand) throws CalcException{
+        operand.replace(" ","");
         operand=operand.trim().replace("\\s+","");
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
@@ -36,45 +39,6 @@ abstract class Var implements Operation {
 
     }
 
-    static void saveVar(String nameVar, Var value) {
-        vars.put(nameVar, value);
-    }
-    static void saveVarToFile() {
-        try (
-                BufferedWriter out =
-                        new BufferedWriter(
-                                new FileWriter(operand, true)
-                        )
-        ) {
-            for (Map.Entry<String, by.it.skosirskiy.Calc.Var> entry : vars.entrySet()) {
-                out.write(String.format("%s=%s\n", entry.getKey(), entry.getValue()));
-            }
-            out.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-    static void loadVarFromFile() {
-        if (!new File(operand).exists()) return;
-
-        Parcer parcer = new Parcer();
-        try (BufferedReader reader = new BufferedReader(
-                new FileReader(operand)
-        )) {
-            for (; ; ) {
-                String s = reader.readLine();
-                if (s == null)
-                    return;
-                parcer.calc(s);
-
-            }
-        } catch (IOException | by.it.skosirskiy.Calc.CalcException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     @Override
@@ -98,6 +62,42 @@ abstract class Var implements Operation {
     @Override
     public Var div(Var other) throws CalcException {
         throw new CalcException("Операция деления "+this+"/"+other+"невозможна");
+
+    }
+    static void saveVarToFile() {
+        try (
+                BufferedWriter out =
+                        new BufferedWriter(
+                                new FileWriter(varsFile, true)
+                        )
+        ) {
+            for (Map.Entry<String, Var> entry : vars.entrySet()) {
+                out.write(String.format("%s=%s\n", entry.getKey(), entry.getValue()));
+            }
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    static void loadVarFromFile() {
+        if (!new File(varsFile).exists()) return;
+
+        Parcer parcer = new Parcer();
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(varsFile)
+        )) {
+            for (; ; ) {
+                String s = reader.readLine();
+                if (s == null)
+                    return;
+                parcer.calc(s);
+            }
+        } catch (IOException | CalcException e) {
+            e.printStackTrace();
+        }
 
     }
 }
