@@ -23,12 +23,11 @@ public class TaskC {
     public static void main(String[] args) throws Exception {
         String path = getPath(TaskC.class);
         File file = new File(path);
-        cmdAppIsRunning(path, file);
+        cmdAppIsRunning(file);
     }
 
-    private static void cmdAppIsRunning(String path, File file) throws IOException {
+    private static void cmdAppIsRunning(File file) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Test_jd01_15.java");
         System.out.println(file + ">");
         String input;
         while (!((input = reader.readLine()).equalsIgnoreCase("end"))) {
@@ -38,8 +37,8 @@ public class TaskC {
                 file = file.getParentFile();
                 System.out.println(file + ">");
             } else if (input.matches("cd [A-z0-9_ .]+")) {
-                path = path.replace(file.getName(), input.replace("cd ",""));
-                file = new File(path);
+                String path = file.getPath();
+                file = new File(path, input.replace("cd ",""));
                 System.out.println(file + ">");
             } else {
                 System.out.println("Данная команда приложением не поддерживается");
