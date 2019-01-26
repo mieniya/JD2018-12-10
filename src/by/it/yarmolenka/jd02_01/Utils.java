@@ -7,14 +7,14 @@ class Utils {
 
     public static void sleep(int timeout) {
         try {
-            Thread.sleep(timeout/500);
+            Thread.sleep(timeout/5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    static String getRandomGood() {
-        int goodNumber = getRandom(1, Goods.goods.size());
+    static String getRandomGoods() {
+        int goodNumber = getRandom(1, Goods.priceList.size());
         switch (goodNumber){
             case 1: return "хлеб";
             case 2: return "молоко";

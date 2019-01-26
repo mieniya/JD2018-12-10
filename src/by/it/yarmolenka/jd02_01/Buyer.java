@@ -6,19 +6,23 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     Buyer(int number) {
         super("buyer №" + number);
-    }
-
-    Buyer(int number, boolean retired) {
-        super("buyer №" + number);
-        this.retired = retired;
+        Dispatcher.totalBuyersCount++;
+        if (Utils.getRandom(1, 4) == 1) {
+            this.retired = true;
+            Dispatcher.totalRetiredCount++;
+            this.setName(this.getName() + "(retired)");
+        }
     }
 
     @Override
     public void run() {
         enterToMarket();
         takeBasket();
-        chooseGoods();
-        putGoodsToBasket();
+        int quantity = Utils.getRandom(1, 4);
+        for (int i = 0; i < quantity; i++) {
+            chooseGoods();
+            putGoodsToBasket();
+        }
         goOut();
     }
 
@@ -26,19 +30,22 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     public void enterToMarket() {
         System.out.println(this.getName() + " entered the market");
         Dispatcher.buyersCount++;
+        System.out.flush();
     }
 
     @Override
     public void chooseGoods() {
         int timeout = Utils.getRandom(500, 2000);
-        System.out.println(this.getName() + " is choosing goods " + timeout + " milliseconds");
-        Utils.sleep(retired ? (int) (timeout * 1.5) :timeout);
+        System.out.println(this.getName() + " is choosing priceList " + timeout + " milliseconds");
+        Utils.sleep(retired ? (int) (timeout * 1.5) : timeout);
+        System.out.flush();
     }
 
     @Override
     public void goOut() {
         System.out.println(this.getName() + " exited the market");
         Dispatcher.buyersCount--;
+        System.out.flush();
     }
 
     @Override
@@ -46,18 +53,17 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         System.out.println(this.getName() + " took basket");
         int timeToTakeBasket = Utils.getRandom(100, 200);
         Utils.sleep(retired ? (int) (timeToTakeBasket * 1.5) : timeToTakeBasket);
+        System.out.flush();
     }
 
     @Override
     public void putGoodsToBasket() {
-        int quantity = Utils.getRandom(1, 4);
-        for (int i = 0; i < quantity; i++) {
-            String good = Utils.getRandomGood();
-            System.out.println(this.getName() + " взял " + good);
-            int timeToTakeGood = Utils.getRandom(100,200);
-            Utils.sleep(retired? (int) (timeToTakeGood * 1.5) :timeToTakeGood);
-            double price = Goods.goods.get(good);
-            this.basket.goods.put(good, price);
-        }
+        String goods = Utils.getRandomGoods();
+        System.out.println(this.getName() + " took " + goods);
+        System.out.flush();
+        int timeToTakeGoods = Utils.getRandom(100, 200);
+        Utils.sleep(retired ? (int) (timeToTakeGoods * 1.5) : timeToTakeGoods);
+        double price = Goods.priceList.get(goods);
+        this.basket.goods.put(goods, price);
     }
 }
