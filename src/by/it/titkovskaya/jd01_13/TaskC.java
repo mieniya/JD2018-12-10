@@ -22,16 +22,10 @@ public class TaskC {
 
     public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(System.in);
-        while (countException<5){
+        while (true){
             input = scanner.nextLine();
-            try {
-                readData();
-            }
-            catch (Exception e){
-                countException++;
-            }
+            readData();
         }
-        throw new Exception();
     }
 
     private static void readData() throws Exception{
@@ -39,11 +33,13 @@ public class TaskC {
             input = input.trim().replace(" ", "").replace(",", ".");
             numbers.addFirst(Double.parseDouble(input));
         } catch (NumberFormatException e){
+            countException++;
+            if (countException>5)
+                throw e;
             Thread.sleep(100);
             for (Object o : numbers) {
                 System.out.print(o+" ");
             }
-            throw new Exception();
         }
     }
 }
