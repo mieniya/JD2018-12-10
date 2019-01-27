@@ -14,13 +14,13 @@ class Parcer  extends CalcException{
         else if (expression.contains("sortvar")) {
             Var.sortvar();}
         else {
+            if(!(operand.length==2)){throw new CalcException("не коррекнтый вод "+operand[0]);}
             Var two = Var.createVar(operand[1]);
             if (expression.contains("=")) {
                  Var.saveVar(operand[0], two);
                 return two;
             }
             Var one = Var.createVar(operand[0]);
-
             if (one == null || two == null)
                 return null; //TODO create error
             Pattern p = Pattern.compile(Patterns.OPERATION);

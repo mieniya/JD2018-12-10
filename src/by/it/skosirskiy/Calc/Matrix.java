@@ -11,7 +11,7 @@ public class Matrix extends Var {
         return value;
     }
 
-    Matrix(double[][] value) {
+    private Matrix(double[][] value) {
         this.value = value;
     }
 

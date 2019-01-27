@@ -21,7 +21,7 @@ import java.io.*;
             countLineLog++;
             file.write(str+" "+var+"\n");
             file.flush();
-            if(countLineLog>3){deleteLineLog();}
+            if(countLineLog>50){deleteLineLog();}
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,7 +60,7 @@ import java.io.*;
             countLineLog++;
             out.write(logLine+"\n");
             out.flush();
-            if(countLineLog>3){deleteLineLog();}
+            if(countLineLog>50){deleteLineLog();}
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -16,10 +16,10 @@ abstract class Var implements Operation {
 
     }
 
-    public static void printvar(){
+    static void printvar(){
         System.out.println(vars);
     }
-    public static void sortvar(){
+    static void sortvar(){
         TreeMap<String, Var> treeMap = new TreeMap<>(vars);
         System.out.println(treeMap);
     }
@@ -86,8 +86,8 @@ abstract class Var implements Operation {
 
     static void loadVarFromFile() {
         if (!new File(varsFile).exists()) return;
-
-        Parcer parcer = new Parcer();
+        Parcer parcer;
+        parcer = new Parcer();
         try (BufferedReader reader = new BufferedReader(
                 new FileReader(varsFile)
         )) {
