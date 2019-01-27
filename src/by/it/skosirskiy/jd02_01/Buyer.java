@@ -16,8 +16,6 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         Dispatcher.counterBuyer--;
     }
 
-
-
     @Override
     public void enterToMarket() {
         System.out.println(this+" enter to Market");
