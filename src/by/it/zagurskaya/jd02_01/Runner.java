@@ -11,7 +11,7 @@ public class Runner {
         System.out.println("Market opened");
 
         int number = 0;
-        for (int time = 1; time <= 120 ; time++) {
+        for (int time = 1; time <= 120; time++) {
             int count = Util.getRandom(2);
             for (int i = 0; i < count; i++) {
                 Buyer buyer = new Buyer(++number);
