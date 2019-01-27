@@ -28,7 +28,7 @@ public class Runner {
             Integer nu2 = enteredBuyers.pollLast();
             if (nu1 != null) n1 = nu1; else throw new NullPointerException();
             if (nu2 != null) n2 = nu2; else throw new NullPointerException();
-            System.out.printf("%5d   |%28d    |%12d    |%46d    |\n", i, nu1, nu2, n1 + n2);
+            System.out.printf("%6d   |%28d    |%12d    |%46d    |\n", i, nu1, nu2, n1 + n2);
         }
     }
 
