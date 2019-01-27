@@ -3,9 +3,9 @@ package by.it.zagurskaya.jd02_01;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Backet {
+public class Basket {
 
-    Map<String, Double> map = new HashMap<>();
+    private Map<String, Double> map = new HashMap<>();
 
     public void put(Map<String, Double> goods) {
         map.putAll(goods);
