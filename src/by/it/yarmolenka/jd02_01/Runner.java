@@ -36,26 +36,7 @@ public class Runner {
         int max_entries = 8;
         System.out.println("Market is open");
         for (int i = 1; i <= 120; i++) {
-            int sec = i % 60;
-            int num = -1;
-            if (sec <= 30) {
-                if (Dispatcher.buyersCount < 10 + sec) {
-                    num = (sec + 10 - Dispatcher.buyersCount) > max_entries ? max_entries :
-                            (Utils.getRandom(sec + 10 - Dispatcher.buyersCount, max_entries));
-                }
-            } else {
-                if (Dispatcher.buyersCount > 40 + 30 - sec)
-                    num = 0;
-            }
-            if (num == -1) num = Utils.getRandom(0, max_entries);
-            numberOfBuyers.offerFirst(Dispatcher.buyersCount);
-            enteredBuyers.offerFirst(num);
-            for (int j = 0; j < num; j++) {
-                Buyer buyer = new Buyer(number++);
-                listOfBuyers.add(buyer);
-                buyer.start();
-            }
-            Utils.sleep(1000);
+            enteringBuyers(max_entries, i);
         }
         for (Buyer buyer : listOfBuyers) {
             try {
@@ -65,5 +46,28 @@ public class Runner {
             }
         }
         System.out.println("Market is closed");
+    }
+
+    private static void enteringBuyers(int max_entries, int i) {
+        int sec = i % 60;
+        int num = -1;
+        if (sec <= 30) {
+            if (Dispatcher.buyersCount < 10 + sec) {
+                num = (sec + 10 - Dispatcher.buyersCount) > max_entries ? max_entries :
+                        (Utils.getRandom(sec + 10 - Dispatcher.buyersCount, max_entries));
+            }
+        } else {
+            if (Dispatcher.buyersCount > 40 + 30 - sec)
+                num = 0;
+        }
+        if (num == -1) num = Utils.getRandom(0, max_entries);
+        numberOfBuyers.offerFirst(Dispatcher.buyersCount);
+        enteredBuyers.offerFirst(num);
+        for (int j = 0; j < num; j++) {
+            Buyer buyer = new Buyer(number++);
+            listOfBuyers.add(buyer);
+            buyer.start();
+        }
+        Utils.sleep(1000);
     }
 }
