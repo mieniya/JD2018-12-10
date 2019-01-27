@@ -23,7 +23,7 @@ class Log {
                     return;
                 else{
                     logList.addLast(s);
-                    if (logList.size()>10)
+                    if (logList.size()>50)
                         logList.removeFirst();
                 }
             }
@@ -35,7 +35,7 @@ class Log {
     static void toLog(String logLine){
         loadLogFromFile();
         logList.addLast(logLine);
-        if (logList.size()<=10){
+        if (logList.size()<=50){
             try (BufferedWriter out = new BufferedWriter(new FileWriter(filename,true))) {
                 out.write(logLine+"\n");
                 out.flush();
