@@ -1,7 +1,7 @@
-package by.it.dziomin.сalculator.vars;
+package by.it.dziomin.calculator.vars;
 
 
-import by.it.dziomin.сalculator.CalcException;
+import by.it.dziomin.calculator.CalcException;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

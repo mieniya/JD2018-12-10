@@ -1,6 +1,6 @@
-package by.it.dziomin.сalculator;
+package by.it.dziomin.calculator;
 
-import by.it.dziomin.сalculator.vars.Var;
+import by.it.dziomin.calculator.vars.Var;
 
 public class Printer {
 
