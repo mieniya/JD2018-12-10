@@ -4,7 +4,7 @@ class Cashier implements Runnable {
 
     private String name;
 
-    public Cashier(int number) {
+    Cashier(int number) {
         name = "Cashier №" + number;
     }
 
