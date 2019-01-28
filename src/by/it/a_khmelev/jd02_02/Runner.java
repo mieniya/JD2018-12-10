@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Runner {
-    static List<Thread> threads = new ArrayList<>();
+    private static List<Thread> threads = new ArrayList<>();
 
     public static void main(String[] args) {
         //for (int k = 0; k < 1000; k++) {
@@ -16,7 +16,7 @@ public class Runner {
             cashier.start();
         }
 
-        for (int time = 1; Dispatcher.marketOpened(); time++) {
+        while (Dispatcher.marketOpened()) {
             int count = Util.getRandom(2);
             for (int i = 0; i < count; i++)
                 if (Dispatcher.marketOpened()) {
