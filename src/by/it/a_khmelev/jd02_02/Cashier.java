@@ -9,14 +9,13 @@ class Cashier implements Runnable {
     }
 
     @Override
-    @SuppressWarnings("all")
     public void run() {
         System.out.println(this + " opened");
         while (!Dispatcher.planComplete()) {
             Buyer buyer = DequeBuyer.poll();
             if (buyer != null) {
                 System.out.println(this + " service " + buyer);
-                synchronized (buyer) {
+                synchronized (buyer.getMonitor()) {
                     buyer.notify();
                 }
             } else {

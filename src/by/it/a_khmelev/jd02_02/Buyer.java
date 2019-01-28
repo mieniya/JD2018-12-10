@@ -1,6 +1,12 @@
 package by.it.a_khmelev.jd02_02;
 
+import org.omg.CORBA.Object;
+
 public class Buyer extends Thread implements IBuyer {
+
+    Object getMonitor(){
+        return (Object) this;
+    }
 
     Buyer(int number) {
         super("Buyer №"+number);
