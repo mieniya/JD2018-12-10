@@ -1,9 +1,14 @@
 package by.it.zagurskaya.jd02_02;
 
+import org.omg.CORBA.Object;
+
 import java.util.Map;
 import java.util.Set;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
+    Object getMonitor(){
+        return (Object) this;
+    }
 
     private Basket basket = new Basket();
     private boolean pensioner = Util.getRandom(3) == 0;
@@ -11,16 +16,19 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     private double speedRate = pensioner ? (double) Util.getRandom(14, 16) / 10 : 1;
 
     Buyer(int number) {
+
         super("Buyer №" + number);
+        Dispatcher.newBuyer();
     }
 
     @Override
     public void run() {
         enterToMarket();
         chooseGoods();
+        goToQueue();
         goOut();
         System.out.flush();
-        Dispatcher.counterBuyer--;
+        Dispatcher.buyerComplete();
     }
 
     @Override
@@ -41,6 +49,18 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             timeout = timeout - pickDelayTime;
         }
         System.out.println(this + " chose goods");
+    }
+    @Override
+    public void goToQueue() {
+        System.out.println(this+" go to Queue");
+        DequeBuyer.add(this);
+        synchronized (this){
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

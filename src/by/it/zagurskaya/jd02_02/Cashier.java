@@ -1,13 +1,28 @@
 package by.it.zagurskaya.jd02_02;
 
-public class Cashier  implements Runnable{
+class Cashier implements Runnable {
+
     private String name;
-    public Cashier (int number) {
-        name = "Casher №" + number;
+
+    Cashier(int number) {
+        name = "Cashier №" + number;
     }
+
     @Override
     public void run() {
-
+        System.out.println(this + " opened");
+        while (!Dispatcher.planComplete()) {
+            Buyer buyer = DequeBuyer.poll();
+            if (buyer != null) {
+                System.out.println(this + " service " + buyer);
+                synchronized (buyer.getMonitor()) {
+                    buyer.notify();
+                }
+            } else {
+                Util.sleep(1);
+            }
+        }
+        System.out.println(this + " closed");
     }
 
     @Override
