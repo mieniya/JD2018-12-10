@@ -12,43 +12,25 @@ public class Market {
         System.out.println("Market opened");
         GoodsInMarket.checkTheGoods(GoodsInMarket.goods);
         int num = 0;
-        for (int i = 1; i <= 120; i++) {
-            int count = Util.getRandom(0, 2);
-            if (i < 30) {
-                if(i<15){
-                    for (int j = 0; j < 2; j++) {
-                        newBuyer(++num);
+        for (int min = 1; min <= 2; min++) {
+            for (int sec = 1; sec <= 60; sec++) {
+                if (sec < 30) {
+                    if (Util.counterBuyer <= sec + 10) {
+                        int count = Util.getRandom(0, 2);
+                        for (int j = 0; j < count; j++) {
+                            newBuyer(++num);
+                        }
                     }
-                } else if (Util.counterBuyer <= i + 10) {
-                    for (int j = 0; j < count; j++) {
-                        newBuyer(++num);
-                    }
-                }
-            } else if (i < 60) {
-                if (Util.counterBuyer <= 40 + (30 - i)) {
-                    for (int j = 0; j < count; j++) {
-                        newBuyer(++num);
-                    }
-                }
-            } else if (i < 90) {
-                if(i<75){
-                    for (int j = 0; j < 2; j++) {
-                        newBuyer(++num);
-                    }
-                } else if (Util.counterBuyer <= i - 50) {
-                    for (int j = 0; j < count; j++) {
-                        newBuyer(++num);
+                } else {
+                    if (Util.counterBuyer <= 40 + (30 - sec)) {
+                        int count = Util.getRandom(0, 2);
+                        for (int j = 0; j < count; j++) {
+                            newBuyer(++num);
+                        }
                     }
                 }
-            } else {
-                if (Util.counterBuyer <=40+(90-i)){
-                    for (int j = 0; j < count; j++) {
-                        newBuyer(++num);
-                    }
-                }
+                Util.sleep(1000);
             }
-            System.out.println(i + " " + Util.counterBuyer);
-            Util.sleep(1000);
         }
         for (Buyer buyer : buyers) {
             try {
@@ -57,8 +39,6 @@ public class Market {
                 e.printStackTrace();
             }
         }
-        //while (Util.counterBuyer > 0)
-        // Util.sleep(1);
         System.out.println("Market closed");
     }
 

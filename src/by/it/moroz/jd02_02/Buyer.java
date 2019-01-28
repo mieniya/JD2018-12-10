@@ -1,9 +1,10 @@
-package by.it.moroz.jd02_01;
+package by.it.moroz.jd02_02;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     Buyer(int num) {
         super("Buyer №" + num);
+        Util.newBuyer();
     }
 
     private boolean pensioner;
@@ -23,22 +24,23 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             chooseGoods(good);
             putGoodsToBasket(good);
         }
+        goToQueue();
         goOut();
         System.out.flush();
-        Util.counterBuyer--;
+        Util.buyerComplete();
     }
 
     @Override
     public void enterToMarket() {
         if (pensioner)
-            Util.sleep((int) (15 * 1.5));
-        else Util.sleep(15);
+            Util.sleep((int) (10 * 1.5));
+        else Util.sleep(10);
         System.out.println(this + " enter to Market");
     }
 
     @Override
     public void chooseGoods(String good) {
-        int time = Util.getRandom(7500, 30000);
+        int time = Util.getRandom(5000, 20000);
         if (pensioner)
             Util.sleep((int) (time * 1.5));
         else
@@ -47,10 +49,23 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
+    public void goToQueue() {
+        System.out.println(this+" go to queue");
+        DequeBuyers.add(this);
+        synchronized (this){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
     public void goOut() {
         if (pensioner)
-            Util.sleep((int) (15 * 1.5));
-        else Util.sleep(15);
+            Util.sleep((int) (10 * 1.5));
+        else Util.sleep(10);
         System.out.println(this + " go out from Market");
     }
 
@@ -61,7 +76,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void takeBasket() {
-        int time = Util.getRandom(1500, 3000);
+        int time = Util.getRandom(1000, 2000);
         if (pensioner)
             Util.sleep((int) (time * 1.5));
         else
@@ -71,7 +86,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void putGoodsToBasket(String good) {
-        int time = Util.getRandom(1500, 3000);
+        int time = Util.getRandom(1000, 2000);
         if (!pensioner)
             Util.sleep(time);
         else
