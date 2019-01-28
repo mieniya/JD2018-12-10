@@ -9,6 +9,7 @@ class Cashier implements Runnable {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void run() {
         System.out.println(this + " opened");
         while (!Dispatcher.planComplete()) {
