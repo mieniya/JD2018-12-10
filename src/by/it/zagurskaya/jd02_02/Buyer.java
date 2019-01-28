@@ -1,7 +1,5 @@
 package by.it.zagurskaya.jd02_02;
 
-import org.omg.CORBA.Object;
-
 import java.util.Map;
 import java.util.Set;
 
