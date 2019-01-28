@@ -9,7 +9,7 @@ class Util {
 
     static void sleep(int time){
         try {
-            Thread.sleep(time/50);
+            Thread.sleep(time/K_SPEED);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
