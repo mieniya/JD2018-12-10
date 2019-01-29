@@ -49,7 +49,9 @@ class Util {
     }
 
     static int getCounterBuyerInMarket(){
-        return counterBuyerInMarket;
+        synchronized (MONITOR) {
+            return counterBuyerInMarket;
+        }
     }
 
 }
