@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
     Object getMonitor(){
-        return (Object) this;
+        return this;
     }
 
     private Basket basket = new Basket();
@@ -51,8 +51,8 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void goToQueue() {
         System.out.println(this+" go to Queue");
-        DequeBuyer.add(this);
         synchronized (this){
+            DequeBuyer.add(this);
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -97,5 +97,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 //        }
 //        return iterator.next();
         return set.stream().skip(index).findFirst().orElseThrow(IllegalArgumentException::new);
+    }
+
+    public double getBill() {
+        return basket.show().values().stream().mapToDouble(value -> value).sum();
     }
 }

@@ -1,37 +1,42 @@
 package by.it.zagurskaya.jd02_02;
 
 import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.LinkedBlockingQueue;
 
 class Cashier implements Runnable {
 
     private static Deque<Cashier> q = new LinkedBlockingDeque<>();
-    private volatile static int index = 0;
+    private static Integer index = 0;
+
+    private static final Object lock = new Object();
+
+    private Thread thisThread;
 
     private String name;
 
     Cashier() {
-        name = "Cashier №" + index++;
+        synchronized (lock) {
+            name = "Cashier #" + ++index;
+        }
         q.addLast(this);
     }
 
     @Override
     public void run() {
-        System.out.println(this + " opened");
+        System.out.println("++++++++++++++++++++++++++ " + this + " opened");
         while (!Dispatcher.planComplete()) {
 
-            synchronized (){
-                if (/* если нужна подмога */) {
-                    Thread cashier = new Thread(new Cashier());
-                    cashier.start();
-                }
-            }
+            synchronized (lock) {
+                if ((((DequeBuyer.getDequeBuyerSize() - 1) / 5) + 1) > q.size()) {
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>> " + DequeBuyer.getDequeBuyerSize() + " = " + q.size());
 
-            synchronized (){
-                if (/* если кассир лишний и не последний */) {
+                    Cashier cashier = new Cashier();
+                    Thread cashierThread = new Thread(cashier);
+                    cashier.setThread(cashierThread);
+                    cashierThread.start();
+                }
+                if ((((DequeBuyer.getDequeBuyerSize() - 1) / 5) + 1) < q.size()) {
+                    System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<< " + DequeBuyer.getDequeBuyerSize() + " = " + q.size());
                     q.remove(this);
                     break;
                 }
@@ -39,15 +44,17 @@ class Cashier implements Runnable {
 
             Buyer buyer = DequeBuyer.poll();
             if (buyer != null) {
-                System.out.println(this + " service " + buyer);
+                System.out.println(this + " service " + buyer + ". Bill = " + buyer.getBill());
                 synchronized (buyer.getMonitor()) {
-                    buyer.notify();
+                    buyer.notifyAll();
                 }
             } else {
-                Util.sleep(1);
+                Util.sleep(10);
             }
+            Util.sleep(500);
         }
-        System.out.println(this + " closed");
+        q.remove(this);
+        System.out.println("-------------------------- " + this + " closed");
     }
 
     @Override
@@ -56,7 +63,11 @@ class Cashier implements Runnable {
     }
 
     public Thread getThread() {
-        return Thread.currentThread();
+        return thisThread;
+    }
+
+    public void setThread(Thread thisThread) {
+        this.thisThread = thisThread;
     }
 
     public static Deque<Cashier> getQ() {

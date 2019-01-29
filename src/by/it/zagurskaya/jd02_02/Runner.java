@@ -3,20 +3,20 @@ package by.it.zagurskaya.jd02_02;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Runner {
 
     private static List<Thread> threads = new ArrayList<>();
 
     public static void main(String[] args) {
-        //for (int k = 0; k < 1000; k++) {
         System.out.println("Market opened");
-        int number = 0;
-//        for (int i = 1; i <= 2; i++) {
-        Thread cashier = new Thread(new Cashier());
-        cashier.start();
 
+        Cashier cashier = new Cashier();
+        Thread cashierThread = new Thread(cashier);
+        cashier.setThread(cashierThread);
+        cashierThread.start();
+
+        int number = 0;
         while (Dispatcher.marketOpened()) {
             int count = Util.getRandom(2);
             for (int i = 0; i < count; i++)
@@ -36,13 +36,14 @@ public class Runner {
             }
         }
 
-        // if проверить, что кассир последний, что достигнуто кол-во покупателей,
-        // сделать -> дождаться окончания кассира
-        // или
-        // что достигнуто кол-во обработанных покупателей == 100. wait(100ms)
-        // сделать -> дождаться окончания работы всех кассиров из Q
+        for (Cashier c : Cashier.getQ()) {
+            try {
+                c.getThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         System.out.println("Market closed");
-//    }
     }
 }
