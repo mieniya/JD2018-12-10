@@ -19,6 +19,7 @@ class Util {
     private static volatile int counterBuyerInMarket=0;
     private static volatile int counterBuyerComplete=0;
     private static final Object MONITOR = new Object();
+    static final Object PRINTER = new Object();
 
     private static final int plan = 100;
 

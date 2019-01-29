@@ -11,11 +11,11 @@ class Cashier implements Runnable {
         name = "Cashier №" + number;
     }
 
-    static List<Thread> workedCashiers = new ArrayList<>();
-
     @Override
     public void run() {
-        System.out.println(this + " opened");
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " opened");
+        }
         while (!Util.planComplete()) {
             Buyer pensioner = DequeBuyers.poll(DequeBuyers.pensionerDeque);
             if (pensioner != null) {
@@ -23,25 +23,22 @@ class Cashier implements Runnable {
             } else {
                 Buyer buyer = DequeBuyers.poll(DequeBuyers.buyerDeque);
                 if (buyer != null)
-                serveTheBuyer(buyer);
+                    serveTheBuyer(buyer);
                 else Util.sleep(1);
             }
         }
-        for (Buyer buyer : Buyer.buyers) {
-            try {
-                buyer.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " closed");
         }
-        System.out.println(this + " closed");
     }
 
     private void serveTheBuyer(Buyer buyer) {
         int time = Util.getRandom(2000, 5000);
         Util.sleep(time);
-        System.out.println(this + " service " + buyer);
-        buyer.takeCheck();
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " service " + buyer);
+            buyer.takeCheck();
+        }
         synchronized (buyer.getMonitor()) {
             buyer.notify();
         }

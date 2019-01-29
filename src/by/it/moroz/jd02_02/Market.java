@@ -9,9 +9,9 @@ public class Market {
         int numBuyer = 0;
         int numCashier = 1;
         for (int i = 1; i <= 2; i++) {
-            Thread cashier1 = new Thread(new Cashier(numCashier++));
-            Cashier.workedCashiers.add(cashier1);
-            cashier1.start();
+            Thread cashier = new Thread(new Cashier(numCashier++));
+            Buyer.threads.add(cashier);
+            cashier.start();
         }
         while (Util.marketOpened()) {
             for (int sec = 1; sec <= 60; sec++) {
@@ -25,9 +25,9 @@ public class Market {
                 Util.sleep(1000);
             }
         }
-        for (Thread workedCashier : Cashier.workedCashiers) {
+        for (Thread thread : Buyer.threads) {
             try {
-                workedCashier.join();
+                thread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

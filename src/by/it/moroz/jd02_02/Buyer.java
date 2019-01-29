@@ -15,7 +15,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         Util.newBuyer();
     }
 
-    static List<Buyer> buyers = new ArrayList<>();
+    static List<Thread> threads = new ArrayList<>();
 
     private boolean pensioner;
     private Basket basket = new Basket();
@@ -26,7 +26,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void run() {
-        buyers.add(this);
+        threads.add(this);
         enterToMarket();
         takeBasket();
         int count = Util.getRandom(1, 4);
@@ -42,14 +42,14 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     void takeCheck() {
-        int sum=0;
-        for (Map.Entry<String, Integer> pair : basket.basket.entrySet()) {
-            System.out.printf("%-15s ------- %5d\n",pair.getKey(),pair.getValue());
-            sum+=pair.getValue();
-        }
-        System.out.println("=============================");
-        System.out.printf("%-15s ------- %5d\n","Total",sum);
-        System.out.println("=============================");
+            int sum = 0;
+            for (Map.Entry<String, Integer> pair : basket.basket.entrySet()) {
+                System.out.printf("%-15s ------- %5d\n", pair.getKey(), pair.getValue());
+                sum += pair.getValue();
+            }
+            System.out.println("=============================");
+            System.out.printf("%-15s ------- %5d\n", "Total", sum);
+            System.out.println("=============================");
     }
 
     @Override
@@ -57,7 +57,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         if (pensioner)
             Util.sleep(30);
         else Util.sleep(15);
-        Printer.print(this + " enter to Market");
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " enter to Market");
+        }
     }
 
     @Override
@@ -67,12 +69,16 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             Util.sleep((int) (time * 1.5));
         else
             Util.sleep(time);
-        Printer.print(this + " chose " + good);
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " chose " + good);
+        }
     }
 
     @Override
     public void goToQueue() {
-        Printer.print(this+" go to queue");
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " go to queue");
+        }
         if (pensioner)
             DequeBuyers.add(DequeBuyers.pensionerDeque, this);
         else
@@ -91,7 +97,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         if (pensioner)
             Util.sleep(30);
         else Util.sleep(15);
-        Printer.print(this + " go out from Market");
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " go out from Market");
+        }
     }
 
     @Override
@@ -106,7 +114,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             Util.sleep((int) (time * 1.5));
         else
             Util.sleep(time);
-        Printer.print(this + " took the basket");
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " took the basket");
+        }
     }
 
     @Override
@@ -116,7 +126,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             Util.sleep(time);
         else
             Util.sleep((int) (time * 1.5));
-        Printer.print(this + " put " + good + " to basket");
+        synchronized (Util.PRINTER) {
+            System.out.println(this + " put " + good + " to basket");
+        }
         basket.putGoodInBasket(basket.basket, good, GoodsInMarket.getPrice(GoodsInMarket.goods, good));
     }
 }
