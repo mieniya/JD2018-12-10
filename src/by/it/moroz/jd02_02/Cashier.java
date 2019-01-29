@@ -1,8 +1,5 @@
 package by.it.moroz.jd02_02;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Cashier implements Runnable {
 
     private String name;
