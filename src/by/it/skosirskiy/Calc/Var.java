@@ -1,26 +1,32 @@
 package by.it.skosirskiy.Calc;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.io.*;
+import java.util.*;
 
 abstract class Var implements Operation {
+    private static String varsFile = System.getProperty("user.dir") + "" +
+            "/src/by/it/skosirskiy/Calc/" +
+            "vars.txt";
 
 
-    //private static Map<String,Var> vars= new HashMap<>();
-    private static TreeMap<String,Var> vars=  new TreeMap<>();
-    static Var saveVar(String name, Var var){
+    private static HashMap<String,Var> vars=  new HashMap<>();
+
+    static void saveVar(String name, Var var){
         vars.put(name, var);
-        return var;
+
     }
 
-    public static void printvar(){
+    static void printvar(){
         System.out.println(vars);
+    }
+    static void sortvar(){
+        TreeMap<String, Var> treeMap = new TreeMap<>(vars);
+        System.out.println(treeMap);
     }
 
     static Var createVar(String operand) throws CalcException{
-        operand=operand.trim().replace("\\s+","");
+
+        operand=operand.trim().replace("\\s+","").replace(" ","");
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         else if (operand.matches(Patterns.VECTOR))
@@ -32,6 +38,7 @@ abstract class Var implements Operation {
         throw new CalcException("Невозможно создать "+operand);
 
     }
+
 
 
     @Override
@@ -55,6 +62,44 @@ abstract class Var implements Operation {
     @Override
     public Var div(Var other) throws CalcException {
         throw new CalcException("Операция деления "+this+"/"+other+"невозможна");
+
+    }
+    static void saveVarToFile() {
+        try (
+                BufferedWriter out =
+                        new BufferedWriter(
+                                new FileWriter(varsFile, true)
+                        )
+        ) {
+            for (Map.Entry<String, Var> entry : vars.entrySet()) {
+                out.write(String.format("%s=%s\n", entry.getKey(), entry.getValue()));
+            }
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+    static void loadVarFromFile() {
+        if (!new File(varsFile).exists()) return;
+        Parcer parcer;
+        parcer = new Parcer();
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(varsFile)
+        )) {
+            for (; ; ) {
+                String s = reader.readLine();
+                if (s == null)
+                    return;
+                parcer.calc(s);
+            }
+        } catch (IOException | CalcException e) {
+            e.printStackTrace();
+        }
 
     }
 }
