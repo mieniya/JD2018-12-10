@@ -63,7 +63,7 @@ public class Cashier implements Runnable {
 
     //метод для вывода работы кассы с определённым покупателем в консоль
     private void cashiersWorkToConsole(Buyer buyer, String s) {
-        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSize of queue: " +
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSize of queue: " +
                 BuyerQueue.getQueueSize());
         System.out.println(s + this + " service " + buyer);
         double price = 0;
@@ -74,7 +74,7 @@ public class Cashier implements Runnable {
         price = (int) Math.round(price * 10) / 10.0;
         System.out.println(s + buyer + " totally paid = " + price);
         Dispatcher.increaseOverallPrice(price);
-        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tMarket's cashier: " +
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tMarket's cashier: " +
                 Dispatcher.getOverallPrice());
     }
 
@@ -83,19 +83,19 @@ public class Cashier implements Runnable {
         String s;
         switch (this.numberOfCashier) {
             case 1:
-                s = "";
+                s = "\t\t\t";
                 break;
             case 2:
-                s = "\t\t\t\t\t";
+                s = "\t\t\t\t\t\t\t\t";
                 break;
             case 3:
-                s = "\t\t\t\t\t\t\t\t\t\t";
+                s = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 break;
             case 4:
-                s = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                s = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 break;
             case 5:
-                s = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                s = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 break;
             default:
                 s = "";
