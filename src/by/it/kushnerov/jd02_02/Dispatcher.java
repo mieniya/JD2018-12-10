@@ -1,4 +1,4 @@
-package by.it.kushnerov.jd02_01;
+package by.it.kushnerov.jd02_02;
 
 class Dispatcher {
 

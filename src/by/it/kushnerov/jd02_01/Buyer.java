@@ -1,18 +1,30 @@
 package by.it.kushnerov.jd02_01;
 
-public class Buyer extends Thread implements IBuyer {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-    public Buyer(int number) {
+public class Buyer extends Thread implements IBuyer, IUseBacket {
+
+    boolean pensioneer = false;
+
+    Buyer(int number) {
         super("Buyer №"+number);
+        if (number % 4 == 0){
+           pensioneer = true;
+           this.setName(this.getName() + " pensioner");
+        }
     }
 
     @Override
-    public void run(){
+    public void run() {
         enterToMarket();
+        takeBasket();
         chooseGoods();
+        putGoodsToBasket();
         goOut();
         System.out.flush();
-
+        Dispatcher.counterBuyer--;
     }
 
     @Override
@@ -21,16 +33,41 @@ public class Buyer extends Thread implements IBuyer {
     }
 
     @Override
+    public void takeBasket(){
+        int timeout = Util.getRandom(100,200);
+        System.out.println(this+" take basket "+timeout);
+        Util.sleep((pensioneer) ? (int)(timeout*1.5) : timeout);
+        System.out.println(this+"took basket");
+    }
+
+    @Override
     public void chooseGoods() {
         int timeout = Util.getRandom(500, 2000);
-        System.out.println(this+"chose goods"+timeout+"mileseconds");
-        Util.sleep(timeout);
+        System.out.println(this+" choose goods "+timeout);
+        Util.sleep((pensioneer) ? (int)(timeout*1.5) : timeout);
         System.out.println(this+" chose goods");
     }
 
     @Override
+    public void putGoodsToBasket(){
+        int timeout = Util.getRandom(100,200);
+        int amount = Util.getRandom(1,4);
+        Random random = new Random();
+        List<String> keys = new ArrayList<>(Goods.goods.keySet());
+        String randomKey;
+        StringBuilder sb = new StringBuilder("");
+        System.out.println(this+" puts goods to the basket "+timeout);
+        for (int i = 0; i < amount; i++) {
+            randomKey = keys.get(random.nextInt(keys.size()));
+            sb.append(randomKey).append(" ");
+        }
+        Util.sleep((pensioneer) ? (int)(timeout*1.5) : timeout);
+        System.out.println(this+" put "+sb.toString()+" to the basket");
+    }
+
+    @Override
     public void goOut() {
-        System.out.println("go out of the market");
+        System.out.println(this+" go out from market");
     }
 
     @Override
