@@ -2,18 +2,24 @@ package by.it.subach.jd02_02;
 
 public class Buyer extends Thread implements IByuer, IUseBasket {
 
-    Buyer(int number) {
-        super("Buyer №" + number);
+    Object getMonitor() {
+        return (Object) this;
     }
 
-    double speed = 1;
-    static int pens;
-    boolean pensioneer;
+    Buyer(int number) {
+        super("Buyer №" + number);
+        Dispatcher.newBuyer();
+    }
+
+    // my fields
+    private double speed = 1;       //коэфициент скорости (если пенсионер, то умножаем на 1.5
+    static int pens;        //кол-во пенсионеров
+    private boolean pensioneer;     //пенсионер ли?
 
     @Override
     public void run() {
         checkAge();
-        if(pensioneer)      speed = 1.5;
+        if (pensioneer) speed = 1.5;
         enterToMarket();
         Thread.yield();
         takeBasket();
@@ -22,20 +28,17 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
             chooseGoods();
             putGoodsToBasket();
         }
+        goToQueue();
         goOut();
         Thread.yield();
         System.out.flush();
-        Dispatcher.counterBuyer--;
+//        Dispatcher.counterBuyer--;
     }
 
     @Override
     public void enterToMarket() {
-//        Dispatcher.counterBuyer++;
-//        if(pensioneer)
-//            System.out.println(this + " pensioneer enter to Market");
-//        else
-//            System.out.println(this + " enter to Market");
-        System.out.flush();
+        System.out.println(this + " enter to Market");
+//        System.out.flush();
     }
 
     @Override
@@ -43,15 +46,26 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
         int timeout = (int) (Util.getRandom(500, 2000) * speed);
         int value = Util.getRandom(Util.products.length - 1);
         String good = Util.products[value];
-//        System.out.println(this + " choose " + good + ". Cost: " + Util.priceList.get(good) + " in " + timeout + " msec");
+        System.out.println(this + " choose " + good + ". Cost: " + Util.priceList.get(good) + " in " + timeout + " msec");
         Util.sleep(timeout);
     }
 
-
+    @Override
+    public void goToQueue() {
+        System.out.println(this + " go to queue");
+        DequeBuyer.add(this);
+        synchronized (this){
+            try {
+                this.wait();
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void goOut() {
-//        System.out.println(this + " go out from market\n");
+        System.out.println(this + " go out from market\n");
         System.out.flush();
 //        Dispatcher.counterBuyer--;
         Util.sleep(200);
@@ -60,19 +74,19 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
     @Override
     public void takeBasket() {
         int timeout = (int) (Util.getRandom(100, 200) * speed);
-//        System.out.println(this + " take the basket in " + timeout + " msec");
+        System.out.println(this + " take the basket in " + timeout + " msec");
         Util.sleep(timeout);
     }
 
     @Override
     public void putGoodsToBasket() {
         int timeout = (int) (Util.getRandom(100, 200) * speed);
-//        System.out.println(this + " put good to basket " + timeout + " msec");
+        System.out.println(this + " put good to basket " + timeout + " msec");
         Util.sleep(timeout);
 
     }
 
-    public void checkAge() {
+    private void checkAge() {
         if (Math.random() < 0.25) {
             pensioneer = true;
             pens++;
@@ -81,8 +95,8 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
 
     @Override
     public String toString() {
-        if(pensioneer)      return this.getName() + " пенсионер";
-        else                return this.getName();
+        if (pensioneer) return this.getName() + " пенсионер";
+        else return this.getName();
     }
 
 
