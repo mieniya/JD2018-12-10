@@ -1,4 +1,4 @@
-package by.it.zagurskaya.jd02_02;
+package by.it.zagurskaya.jd02_03;
 
 import java.util.Map;
 import java.util.Set;
@@ -51,7 +51,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void goToQueue() {
         System.out.println(this+" go to Queue");
-        synchronized (this){//избавиться от synchronized???????
+        synchronized (this){ //избавиться от synchronized??????? сдесь опрвдан, сдесь есть смысл синхронайса
             DequeBuyer.add(this);
             try {
                 this.wait();
