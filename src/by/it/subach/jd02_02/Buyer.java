@@ -2,8 +2,8 @@ package by.it.subach.jd02_02;
 
 public class Buyer extends Thread implements IByuer, IUseBasket {
 
-    Object getMonitor() {
-        return (Object) this;
+    Buyer getMonitor() {
+        return this;
     }
 
     Buyer(int number) {
@@ -13,7 +13,7 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
 
     // my fields
     private double speed = 1;       //коэфициент скорости (если пенсионер, то умножаем на 1.5
-    static int pens;        //кол-во пенсионеров
+    static int pens;                //кол-во пенсионеров
     private boolean pensioneer;     //пенсионер ли?
 
     @Override
@@ -21,7 +21,6 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
         checkAge();
         if (pensioneer) speed = 1.5;
         enterToMarket();
-        Thread.yield();
         takeBasket();
         int goodsCount = Util.getRandom(1, 4);
         for (int i = 1; i <= goodsCount; i++) {
@@ -30,14 +29,14 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
         }
         goToQueue();
         goOut();
-        Thread.yield();
         System.out.flush();
+        Dispatcher.buyerComplete();
 //        Dispatcher.counterBuyer--;
     }
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " enter to Market");
+//        System.out.println(this + " enter to Market");
 //        System.out.flush();
     }
 
@@ -46,13 +45,13 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
         int timeout = (int) (Util.getRandom(500, 2000) * speed);
         int value = Util.getRandom(Util.products.length - 1);
         String good = Util.products[value];
-        System.out.println(this + " choose " + good + ". Cost: " + Util.priceList.get(good) + " in " + timeout + " msec");
+//        System.out.println(this + " choose " + good + ". Cost: " + Util.priceList.get(good) + " in " + timeout + " msec");
         Util.sleep(timeout);
     }
 
     @Override
     public void goToQueue() {
-        System.out.println(this + " go to queue");
+//        System.out.println(this + " go to queue");
         DequeBuyer.add(this);
         synchronized (this){
             try {
@@ -65,23 +64,23 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
 
     @Override
     public void goOut() {
-        System.out.println(this + " go out from market\n");
-        System.out.flush();
+//        System.out.println(this + " go out from market\n");
+//        System.out.flush();
 //        Dispatcher.counterBuyer--;
-        Util.sleep(200);
+//        Util.sleep(200);
     }
 
     @Override
     public void takeBasket() {
         int timeout = (int) (Util.getRandom(100, 200) * speed);
-        System.out.println(this + " take the basket in " + timeout + " msec");
+//        System.out.println(this + " take the basket in " + timeout + " msec");
         Util.sleep(timeout);
     }
 
     @Override
     public void putGoodsToBasket() {
         int timeout = (int) (Util.getRandom(100, 200) * speed);
-        System.out.println(this + " put good to basket " + timeout + " msec");
+//        System.out.println(this + " put good to basket " + timeout + " msec");
         Util.sleep(timeout);
 
     }

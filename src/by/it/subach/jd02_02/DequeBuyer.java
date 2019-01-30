@@ -4,7 +4,11 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 class DequeBuyer {
-    private static  final Object MONITOR = new Object();
+    private static  final Integer MONITOR = 0 ;
+
+    static  Integer getMonitor(){
+        return MONITOR;
+    }
 
     private static Deque<Buyer> q = new LinkedList<>();
 
@@ -19,4 +23,13 @@ class DequeBuyer {
             return q.pollFirst();
         }
     }
+
+    static int getBuyerSize(){
+        synchronized (MONITOR) {
+            return q.size();
+        }
+    }
+
+
+
 }

@@ -1,11 +1,12 @@
-package by.it.subach.jd02_02;
+package by.it.subach.jd02_02.origin;
 
 class Dispatcher {
 
-    static final int K_SPEED = 10;
-    static volatile int counterBuyerInShop = 0;
+    static final int K_SPEED = 100;
+    private static volatile int counterBuyerInShop = 0;
     private static volatile int counterBuyerComplete = 0;
     private static final Object MON = new Object();
+
     private static final int plan = 100;
 
     static void newBuyer() {
@@ -27,11 +28,11 @@ class Dispatcher {
         }
     }
 
-    static boolean marketOpen() {
+    static boolean marketOpened() {
         synchronized (MON) {
-            return counterBuyerInShop + counterBuyerComplete < plan;
+            return counterBuyerInShop +
+                    counterBuyerComplete
+                    < plan;
         }
     }
-
-
 }
