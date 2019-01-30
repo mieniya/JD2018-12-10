@@ -4,6 +4,7 @@ public class CalcException extends Exception {
 
 
     public CalcException() {
+        super("ERROR: ");
     }
 
     public CalcException(String message) {
