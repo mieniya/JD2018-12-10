@@ -3,7 +3,7 @@ package by.it.a_khmelev.jd02_02;
 public class Buyer extends Thread implements IBuyer {
 
     Object getMonitor(){
-        return (Object) this;
+        return this;
     }
 
     Buyer(int number) {
