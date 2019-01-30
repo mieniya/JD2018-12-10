@@ -11,9 +11,9 @@ class Scalar extends Var {
         this.value = value;
     }
 
-    Scalar(Scalar scalar){
-        this.value=scalar.value;
-    }
+//    Scalar(Scalar scalar){
+//        this.value=scalar.value;
+//    }
     Scalar(String str){ value=Double.parseDouble(str);}  //this.value=Double.parseDouble(str);
 
     @Override
@@ -59,13 +59,6 @@ class Scalar extends Var {
         else
             return super.div(other);
     }
-
-
-
-
-
-
-
 
 
 
