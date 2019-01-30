@@ -1,12 +1,12 @@
 package by.it.zagurskaya.jd02_03;
 
 
-import java.util.Deque;
+import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
 class DequeBuyer {
 
-    private static Deque<Buyer> q = new LinkedBlockingDeque<>(20);
+    private static BlockingDeque<Buyer> q = new LinkedBlockingDeque<>(30);
 
     static  void add(Buyer buyer) {
             q.addLast(buyer);
