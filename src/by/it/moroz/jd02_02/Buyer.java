@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
 
-    Object getMonitor(){
+    Object getMonitor() {
         return this;
     }
 
@@ -41,15 +41,19 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         Util.buyerComplete();
     }
 
-    void takeCheck() {
-            int sum = 0;
-            for (Map.Entry<String, Integer> pair : basket.basket.entrySet()) {
-                System.out.printf("%-15s ------- %5d\n", pair.getKey(), pair.getValue());
-                sum += pair.getValue();
-            }
-            System.out.println("=============================");
-            System.out.printf("%-15s ------- %5d\n", "Total", sum);
-            System.out.println("=============================");
+    void takeCheck(String whichCashier) {
+        int sum = 0;
+        System.out.println(whichCashier+"*****************************");
+        for (Map.Entry<String, Integer> pair : basket.basket.entrySet()) {
+            System.out.printf(whichCashier+"%-15s ------- %5d\n", pair.getKey(), pair.getValue());
+            sum += pair.getValue();
+        }
+        Util.moreProceeds(sum);
+        System.out.println(whichCashier+"=============================");
+        System.out.printf(whichCashier+"%-15s ------- %5d\n", "Total", sum);
+        System.out.println(whichCashier+"=============================");
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+
+                "Market's proceeds: "+Util.getProceeds());
     }
 
     @Override
@@ -82,8 +86,8 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         if (pensioner)
             DequeBuyers.add(DequeBuyers.pensionerDeque, this);
         else
-            DequeBuyers.add(DequeBuyers.buyerDeque,this);
-        synchronized (this){
+            DequeBuyers.add(DequeBuyers.buyerDeque, this);
+        synchronized (this) {
             try {
                 wait();
             } catch (InterruptedException e) {

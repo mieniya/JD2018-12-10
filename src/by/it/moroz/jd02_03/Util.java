@@ -1,5 +1,7 @@
 package by.it.moroz.jd02_03;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 class Util {
 
     static int getRandom (int from, int to){
@@ -16,43 +18,50 @@ class Util {
     }
 
     private static final int K_SPEED=100;
-    private static volatile int counterBuyerInMarket=0;
-    private static volatile int counterBuyerComplete=0;
-    private static final Object MONITOR = new Object();
-    static final Object PRINTER = new Object();
+    private static AtomicInteger counterBuyerInMarket=new AtomicInteger(0);
+    private static AtomicInteger counterBuyerComplete=new AtomicInteger(0);
+    private static AtomicInteger counterCashiers = new AtomicInteger(0);
+    private static AtomicInteger proceeds = new AtomicInteger(0);
 
     private static final int plan = 100;
 
     static boolean planComplete(){
-        synchronized (MONITOR) {
-            return counterBuyerComplete == plan;
-        }
+            return counterBuyerComplete.get() == plan;
     }
 
     static boolean marketOpened(){
-        synchronized (MONITOR) {
-            return counterBuyerInMarket + counterBuyerComplete < plan;
-        }
+            return counterBuyerInMarket.get() + counterBuyerComplete.get() < plan;
 
     }
 
     static void newBuyer(){
-        synchronized (MONITOR) {
-            counterBuyerInMarket++;
-        }
+            counterBuyerInMarket.incrementAndGet();
+
     }
 
     static void buyerComplete(){
-        synchronized (MONITOR) {
-            counterBuyerInMarket--;
-            counterBuyerComplete++;
-        }
+            counterBuyerInMarket.decrementAndGet();
+            counterBuyerComplete.incrementAndGet();
     }
 
     static int getCounterBuyerInMarket(){
-        synchronized (MONITOR) {
-            return counterBuyerInMarket;
-        }
+            return counterBuyerInMarket.get();
+    }
+
+    static int getCountCashiers() {
+            return counterCashiers.get();
+    }
+
+    static void newCashier(){
+            counterCashiers.incrementAndGet();
+    }
+
+    static void moreProceeds(int cash){
+            proceeds.getAndAdd(cash);
+    }
+
+    static int getProceeds(){
+            return proceeds.get();
     }
 
 }

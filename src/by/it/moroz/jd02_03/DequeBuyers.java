@@ -2,19 +2,25 @@ package by.it.moroz.jd02_03;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class DequeBuyers {
 
-    static Deque<Buyer> buyerDeque = new LinkedList<>();
+    static BlockingDeque<Buyer> buyerDeque = new LinkedBlockingDeque<>(30);
 
-    static Deque<Buyer> pensionerDeque = new LinkedList<>();
+    static BlockingDeque<Buyer> pensionerDeque = new LinkedBlockingDeque<>(30);
 
-    static synchronized void add (Deque<Buyer> buyers, Buyer buyer){
+    static void add (Deque<Buyer> buyers, Buyer buyer){
             buyers.addLast(buyer);
     }
 
-    static synchronized Buyer poll(Deque<Buyer> buyers){
+    static Buyer poll(Deque<Buyer> buyers){
             return buyers.pollFirst();
+    }
+
+    static int getCountAllBuyer (){
+        return buyerDeque.size()+pensionerDeque.size();
     }
 
 }

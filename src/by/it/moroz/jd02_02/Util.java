@@ -18,6 +18,9 @@ class Util {
     private static final int K_SPEED=100;
     private static volatile int counterBuyerInMarket=0;
     private static volatile int counterBuyerComplete=0;
+    private static volatile int counterCashiers = 0;
+    static volatile int numCashiers=0;
+    private static volatile int proceeds = 0;
     private static final Object MONITOR = new Object();
     static final Object PRINTER = new Object();
 
@@ -55,4 +58,27 @@ class Util {
         }
     }
 
+    static int getCountCashiers() {
+        synchronized (MONITOR){
+            return counterCashiers;
+        }
+    }
+
+    static void newCashier(){
+        synchronized (MONITOR){
+            counterCashiers++;
+        }
+    }
+
+    static void moreProceeds(int cash){
+        synchronized (MONITOR) {
+            proceeds += cash;
+        }
+    }
+
+    static int getProceeds(){
+        synchronized (MONITOR){
+            return proceeds;
+        }
+    }
 }

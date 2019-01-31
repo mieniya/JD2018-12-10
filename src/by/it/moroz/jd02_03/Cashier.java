@@ -3,15 +3,25 @@ package by.it.moroz.jd02_03;
 class Cashier implements Runnable {
 
     private String name;
+    private int numCashier;
+
+    private Printer printer = new Printer();
 
     Cashier(int number) {
+        Util.newCashier();
         name = "Cashier №" + number;
+        this.numCashier = number;
     }
 
     @Override
     public void run() {
-        synchronized (Util.PRINTER) {
+        try {
+            printer.semaphore.acquire();
             System.out.println(this + " opened");
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            printer.semaphore.release();
         }
         while (!Util.planComplete()) {
             Buyer pensioner = DequeBuyers.poll(DequeBuyers.pensionerDeque);
@@ -24,17 +34,30 @@ class Cashier implements Runnable {
                 else Util.sleep(1);
             }
         }
-        synchronized (Util.PRINTER) {
+        try {
+            printer.semaphore.acquire();
             System.out.println(this + " closed");
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            printer.semaphore.release();
         }
     }
 
     private void serveTheBuyer(Buyer buyer) {
         int time = Util.getRandom(2000, 5000);
         Util.sleep(time);
-        synchronized (Util.PRINTER) {
-            System.out.println(this + " service " + buyer);
-            buyer.takeCheck();
+        String whichCashier = whichCashier();
+        try {
+            printer.semaphore.acquire();
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                    "Buyers in queue: "+ DequeBuyers.getCountAllBuyer());
+            System.out.println(whichCashier + this + " service " + buyer);
+            buyer.takeCheck(whichCashier);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            printer.semaphore.release();
         }
         synchronized (buyer.getMonitor()) {
             buyer.notify();
@@ -44,5 +67,29 @@ class Cashier implements Runnable {
     @Override
     public String toString() {
         return name;
+    }
+
+    private String whichCashier() {
+        String console;
+        switch (this.numCashier) {
+            case 1:
+                console = "";
+                break;
+            case 2:
+                console = "\t\t\t\t\t\t\t\t";
+                break;
+            case 3:
+                console = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                break;
+            case 4:
+                console = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                break;
+            case 5:
+                console = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                break;
+            default:
+                console = "";
+        }
+        return console;
     }
 }

@@ -17,4 +17,8 @@ class DequeBuyers {
             return buyers.pollFirst();
     }
 
+    static  synchronized int getCountAllBuyer (){
+        return buyerDeque.size()+pensionerDeque.size();
+    }
+
 }
