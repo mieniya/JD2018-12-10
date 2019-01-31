@@ -8,7 +8,7 @@ class DequeBuyer {
 
     private static BlockingDeque<Buyer> q = new LinkedBlockingDeque<>(30);
 
-    static  void add(Buyer buyer) {
+    static  synchronized void add(Buyer buyer) {
             q.addLast(buyer);
     }
 

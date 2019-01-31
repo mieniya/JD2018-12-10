@@ -2,9 +2,15 @@ package by.it.zagurskaya.jd02_03;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
-    Object getMonitor(){
+    private static final boolean[] BUYER_PLACES = new boolean[20];
+    private static final Semaphore SEMAPHORE = new Semaphore(20, true);
+    private static volatile AtomicInteger parkingNumber = new AtomicInteger(0);
+
+    Object getMonitor() {
         return this;
     }
 
@@ -35,23 +41,47 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
-    public void chooseGoods() {
-        takeBucket();
-        int timeout = Util.getRandom(500, 2000);
-        System.out.println(this + " chose goods " + timeout + " milliseconds");
-
-        while (timeout > 0) {
-            int pickDelayTime = (int) (Util.getRandom(100, 200) * speedRate);
-            Util.sleep(pickDelayTime);
-            putGoodsToBucket();
-            timeout = timeout - pickDelayTime;
+    public void chooseGoods()  {
+                try {
+            SEMAPHORE.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        System.out.println(this + " chose goods");
+
+        System.out.println("симофор начал");
+        synchronized (BUYER_PLACES) {
+            for (int i = 0; i < 20; i++) {
+                if (!BUYER_PLACES[i]) {//Если место свободно
+                    BUYER_PLACES[i] = true;  //занимаем его
+                    parkingNumber.set( i );
+                    takeBucket();
+                    int timeout = Util.getRandom(500, 2000);
+                    System.out.println(this + " chose goods " + timeout + " milliseconds");
+
+                    while (timeout > 0) {
+                        int pickDelayTime = (int) (Util.getRandom(100, 200) * speedRate);
+                        Util.sleep(pickDelayTime);
+                        putGoodsToBucket();
+                        timeout = timeout - pickDelayTime;
+                    }
+                    System.out.println(this + " chose goods");
+                    break;
+                }
+            }
+        }
+
     }
+
     @Override
     public void goToQueue() {
-        System.out.println(this+" go to Queue");
-        synchronized (this){ //избавиться от synchronized??????? сдесь опрвдан, сдесь есть смысл синхронайса
+
+        synchronized (BUYER_PLACES) {
+            BUYER_PLACES[parkingNumber.get()] = false;//Освобождаем место
+        }
+        SEMAPHORE.release();
+        System.out.println("симофор отпустил");
+        System.out.println(this + " go to Queue");
+        synchronized (this) { //избавиться от synchronized??????? сдесь опрвдан, сдесь есть смысл синхронайса
             DequeBuyer.add(this);
             try {
                 this.wait();

@@ -1,6 +1,8 @@
 package by.it.zagurskaya.jd02_03;
 
 import java.util.Deque;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 
 class Cashier implements Runnable {
@@ -15,9 +17,9 @@ class Cashier implements Runnable {
     private String name;
 
     Cashier() {
-        synchronized (lock) {
+//        synchronized (lock) {
             name = "Cashier #" + ++index;
-        }
+//        }
         q.addLast(this);
     }
 
@@ -26,32 +28,37 @@ class Cashier implements Runnable {
         System.out.println("++++++++++++++++++++++++++ " + this + " opened");
         while (!Dispatcher.planComplete()) {
 
-            synchronized (lock) { //подумать
+//            synchronized (lock) { //подумать
                 if ((((DequeBuyer.getDequeBuyerSize() - 1) / 5) + 1) > q.size()) {
                     System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>> " + DequeBuyer.getDequeBuyerSize() + " = " + q.size());
 
+                    ExecutorService cashiers = Executors.newFixedThreadPool(5);
                     Cashier cashier = new Cashier();
-                    Thread cashierThread = new Thread(cashier);
-                    cashier.setThread(cashierThread);
-                    cashierThread.start();
+                    cashiers.execute(cashier);
+//
+//                    Cashier cashier = new Cashier();
+//                    Thread cashierThread = new Thread(cashier);
+//                    cashier.setThread(cashierThread);
+//                    cashierThread.start();
                 }
                 if ((((DequeBuyer.getDequeBuyerSize() - 1) / 5) + 1) < q.size()) {
                     System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<< " + DequeBuyer.getDequeBuyerSize() + " = " + q.size());
                     q.remove(this);
                     break;
                 }
-            }
+//            }
 
             Buyer buyer = DequeBuyer.poll();
             if (buyer != null) {
                 System.out.println(this + " service " + buyer + ". Bill = " + buyer.getBill());
                 synchronized (buyer.getMonitor()) {
+//                    buyer.getMonitor().notify();
                     buyer.notifyAll();
                 }
             } else {
                 Util.sleep(10);
             }
-            Util.sleep(500);
+            Util.sleep(700);
         }
         q.remove(this);
         System.out.println("-------------------------- " + this + " closed");
