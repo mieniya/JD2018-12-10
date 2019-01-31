@@ -48,7 +48,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] resSkal = makeMatrixCopy(value);
             for (int i = 0; i < resSkal.length; i++) {
@@ -70,12 +70,14 @@ public class Matrix extends Var {
                 }
                 return new Matrix(resMatr);
             }
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Сложение не возможно");
         }
         return super.add(other);
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = makeMatrixCopy(value);
             for (int i = 0; i < res.length; i++) {
@@ -85,24 +87,28 @@ public class Matrix extends Var {
             }
             return new Matrix(res);
         } else if (other instanceof Matrix) {
-            if (this.value.length == ((Matrix) other).value.length) {
+            if ((this.value.length == ((Matrix) other).value.length)&(this.value[0].length == ((Matrix) other).value[0].length)) {
                 double[][] res = makeMatrixCopy(value);
                 for (int i = 0; i < res.length; i++) {
                     if (this.value.length == res[i].length) {
                         for (int j = 0; j < res[i].length; j++) {
                             res[i][j] = res[i][j] - ((Matrix) other).value[i][j];
                         }
+                    } else {
+                        throw new CalcException("Вычитание не возможно");
                     }
                 }
                 return new Matrix(res);
             }
+        } else if ((other instanceof Vector)) {
+            throw new CalcException("Вычитание не возможно");
         }
         return super.sub(other);
     }
 
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
@@ -138,7 +144,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 

@@ -134,5 +134,6 @@ class SetC<E> implements Set<E> {
 
     @Override
     public void clear() {
+        countElementsInCollection = 0;
     }
 }

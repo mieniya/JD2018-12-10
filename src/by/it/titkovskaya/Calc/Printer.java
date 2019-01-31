@@ -7,6 +7,11 @@ class Printer {
     }
 
     void showError(CalcException e) {
-        System.err.println(e.getMessage());
+        Log.toLog(e.getMessage());
+    }
+
+    void showCalculationInfo(String expression, Var result) {
+        if (result != null)
+            Log.toLog(expression.replace("=", "")+"="+result);
     }
 }
