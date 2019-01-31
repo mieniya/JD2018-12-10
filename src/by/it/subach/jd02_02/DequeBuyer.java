@@ -15,6 +15,7 @@ class DequeBuyer {
     static void add(Buyer buyer) {
         synchronized (MONITOR) {
             q.addLast(buyer);
+            Util.sleep(1000);
         }
     }
 
@@ -24,7 +25,7 @@ class DequeBuyer {
         }
     }
 
-    static int getBuyerSize(){
+    static int getQueueSize(){
         synchronized (MONITOR) {
             return q.size();
         }

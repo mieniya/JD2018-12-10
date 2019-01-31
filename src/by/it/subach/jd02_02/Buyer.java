@@ -21,12 +21,12 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
         checkAge();
         if (pensioneer) speed = 1.5;
         enterToMarket();
-        takeBasket();
-        int goodsCount = Util.getRandom(1, 4);
-        for (int i = 1; i <= goodsCount; i++) {
-            chooseGoods();
-            putGoodsToBasket();
-        }
+//        takeBasket();
+//        int goodsCount = Util.getRandom(1, 4);
+//        for (int i = 1; i <= goodsCount; i++) {
+//            chooseGoods();
+//            putGoodsToBasket();
+//        }
         goToQueue();
         goOut();
         System.out.flush();
@@ -42,9 +42,11 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
 
     @Override
     public void chooseGoods() {
-        int timeout = (int) (Util.getRandom(1000, 4000) * speed);        //500, 2000
+        int timeout = (int) (Util.getRandom(500, 2000) * speed);        //500, 2000
         int value = Util.getRandom(Util.products.length - 1);
         String good = Util.products[value];
+        Basket basket = new Basket();
+
 //        System.out.println(this + " choose " + good + ". Cost: " + Util.priceList.get(good) + " in " + timeout + " msec");
         Util.sleep(timeout);
     }
@@ -71,15 +73,16 @@ public class Buyer extends Thread implements IByuer, IUseBasket {
 
     @Override
     public void takeBasket() {
-        int timeout = (int) (Util.getRandom(1000, 2000) * speed);        //100, 200
+        int timeout = (int) (Util.getRandom(100, 200) * speed);        //100, 200
 //        System.out.println(this + " take the basket in " + timeout + " msec");
         Util.sleep(timeout);
     }
 
     @Override
     public void putGoodsToBasket() {
-        int timeout = (int) (Util.getRandom(1000, 2000) * speed);         //100, 200
-//        System.out.println(this + " put good to basket " + timeout + " msec");
+        int timeout = (int) (Util.getRandom(100, 200) * speed);         //100, 200
+        System.out.println(this + " put good to basket " + timeout + " msec");
+
         Util.sleep(timeout);
 
     }
