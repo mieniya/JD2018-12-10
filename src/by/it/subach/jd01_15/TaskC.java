@@ -2,75 +2,71 @@ package by.it.subach.jd01_15;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class TaskC {
 
-    static String currentPath = getPath(TaskC.class, "");
+    private static String currentPath = getPath(TaskC.class, "");
 
     public static void main(String[] args) {
-        Pattern pattern = Pattern.compile("([cd]) (\\w+)");
-        System.out.println(currentPath);
         Scanner scanner = new Scanner(System.in);
+        System.out.println(currentPath);
+        Pattern pattern = Pattern.compile("(cd) (\\w+)");
 
-        while(true){
-            String str = scanner.nextLine();
-            Matcher matcher = pattern.matcher(str);
-
-            if (str.equals("cd ..")){
-                System.out.println(getParentDir(currentPath));
-            }
-
-            if(matcher.find()){
+        while (true) {
+            String input = scanner.nextLine();
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.find()) {
                 String name = matcher.group(2);
-                System.out.println(getSomeDir(name));
-            }
-
-            if(str.equals("dir")){
+                getUp(name);
+            } else if (input.equals("cd ..")) {
+                getDown(currentPath);
+            } else if (input.equals("dir")) {
                 viewDirectory(currentPath);
-            }
+            } else if (input.equals("end")) break;
 
-            if (str.equalsIgnoreCase("end")) break;
+            else System.out.println("Wrong command!");
         }
+
     }
 
-    private static void viewDirectory(String path){
+    private static void getDown(String path) {
         File file = new File(path);
-        File[] files = file.listFiles();
-        for (File f : files) {
-            long lastMod = f.lastModified();
-            Date date = new Date(lastMod);
-            SimpleDateFormat format = new SimpleDateFormat("dd.mm.yyyy  hh:mm");
-            String out = format.format(date);
-            System.out.println(out);
-
-
-        }
-//        String[] list = file.list();
-//        for (String s : list) {
-//
-//            System.out.println(s);
-//        }
-
+        currentPath = file.getParent();
+        if (currentPath != null) System.out.println(currentPath);
+        else System.out.println("You are in the root directory!");
     }
 
-    private static String getParentDir(String path){
-        File parentDir = new File(path);
-        currentPath = parentDir.getParent();
-        if(currentPath == null){
-            return "You are in root directory";
-        }
-        return currentPath;
-    }
-
-    private static String getSomeDir (String name){
+    private static void getUp(String name) {
         currentPath = currentPath + File.separator + name;
-        return currentPath;
+        System.out.println(currentPath);
+    }
+
+    private static void viewDirectory(String path) {
+        File file = new File(path);
+        String lastModifiedDate;
+        String isDir;
+        String name;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy     hh:mm");
+        File[] files = file.listFiles();
+        if (files == null) throw new AssertionError();
+        for (File f : files) {
+            name = f.getName();
+            Long l = f.lastModified();
+            Date date = new Date(l);
+            lastModifiedDate = sdf.format(date);
+            if (f.isDirectory())
+                isDir = "<DIR>";
+            else {
+                long length = f.length();
+                isDir = length + " byte";
+            }
+            System.out.printf("%s    %10s          %s\n", lastModifiedDate, isDir, name);
+        }
+
     }
 
 
@@ -82,6 +78,4 @@ public class TaskC {
         path = System.getProperty("user.dir") + File.separator + "src" + File.separator + path;
         return path + filename;
     }
-
-
 }
