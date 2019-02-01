@@ -11,6 +11,10 @@ public class CalcTest {
     }
     @Test
     public void testSub() throws Exception {
-     
+
+    }
+    @Test
+    public void testMul() throws Exception {
+   
     }
 }
