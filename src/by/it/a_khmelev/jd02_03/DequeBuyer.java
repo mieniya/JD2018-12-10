@@ -8,7 +8,7 @@ class DequeBuyer {
     private static BlockingDeque<Buyer> q = new LinkedBlockingDeque<>(20);
 
     static void add(Buyer buyer) {
-        //ошибка №3 add(this) кидает ошибку
+        //ошибка №2 add(this) кидает ошибку когда очередь полна
         try {
             q.putLast(buyer);
         } catch (InterruptedException e) {
