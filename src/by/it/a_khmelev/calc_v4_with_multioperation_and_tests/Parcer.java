@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 class Parcer {
 
     //добавил комментарии, изменил результат на String
-    //также еще посмотрите Test_jd02_04 - ваш нужно написать по аналогии примеры из задания в свои тесты
+    //также еще посмотрите Test_jd02_04 - вам нужно написать по аналогии примеры из задания в свои тесты
 
     private HashMap<String,Integer> prior=new HashMap<String, Integer>(){
         {
