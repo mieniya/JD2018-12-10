@@ -12,7 +12,7 @@ public class ConsoleRunner {
 
         Var.loadVarFromFile();
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
-            Var result;
+            String result;
             try {
                 result = parcer.calc(expression);
                 printer.print(result);

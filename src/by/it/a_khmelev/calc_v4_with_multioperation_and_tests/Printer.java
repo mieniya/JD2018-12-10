@@ -2,7 +2,7 @@ package by.it.a_khmelev.calc_v4_with_multioperation_and_tests;
 
 class Printer {
 
-    void print(Var result) {
+    void print(String result) {
         if (result != null)
             System.out.println(result);
     }
