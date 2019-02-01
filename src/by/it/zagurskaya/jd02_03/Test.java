@@ -1,10 +1,12 @@
 package by.it.zagurskaya.jd02_03;
 
+import java.util.Arrays;
+
 public class Test {
 
 
     public static void main(String[] args) {
-        boolean test[] = new boolean[10];
+        Boolean test[] = new Boolean[10];
         test[0] = true;
         test[1] = false;
         test[2] = true;
@@ -15,8 +17,8 @@ public class Test {
         test[7] = true;
         test[8] = true;
         test[9] = true;
-        int b;
-//        b = test.stream().filter(b -> b == false).count();
+
+        System.out.println(Arrays.stream(test).filter(b -> !b).count());
     }
 
 }
