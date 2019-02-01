@@ -9,4 +9,8 @@ public class CalcTest {
     public void testAdd() throws Exception {
 
     }
+    @Test
+    public void testSub() throws Exception {
+     
+    }
 }
