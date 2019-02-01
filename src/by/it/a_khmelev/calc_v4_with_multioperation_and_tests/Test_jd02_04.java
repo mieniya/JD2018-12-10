@@ -12,6 +12,8 @@ public class Test_jd02_04 {
         String actualA = parcer.calc("A=2+5.3");
         assertEquals("7.3",actualA);
     }
+
+    @Test
     public void b() throws Exception {
         Parcer parcer=new Parcer();
         //тут ваши выражения
