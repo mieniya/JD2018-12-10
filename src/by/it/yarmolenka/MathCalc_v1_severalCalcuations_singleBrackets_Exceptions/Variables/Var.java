@@ -22,15 +22,17 @@ public abstract class Var {
         if (s.matches(Patterns.SCALAR)) return new Scalar(s);
         if (s.matches(Patterns.VECTOR)) return new Vector(s);
         if (s.matches(Patterns.MATRIX)) return new Matrix(s);
-        throw new CalcException("не знаю переменную " + s);
+        throw new CalcException("неизвестная переменная " + s);
     }
 
     public static void addVar(String s, Var two) {
         list.put(s.trim(), two);
     }
 
-    public static Var getVariable(String s) {
+    public static Var getVariable(String s) throws CalcException {
+        if (list.containsKey(s))
         return list.get(s);
+        else throw new CalcException("неизвестная переменная " + s);
     }
 
     public static void saveVarsToFile() {
