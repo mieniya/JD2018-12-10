@@ -19,9 +19,10 @@ public class Cashier implements Runnable {
 
     @Override
     public void run() {
-        synchronized (Dispatcher.LOCK_CONSOLE) {
-            System.out.println(this + " opened");
-        }
+        try {
+            Dispatcher.semaphoreConsole.acquire();
+        System.out.println(this + " opened");
+        Dispatcher.semaphoreConsole.release();
         while (!Dispatcher.planComplete() &&
                 BuyerQueue.queue.size() >= (Dispatcher.cashiersCount.get() - 1) * 5
         ) {
@@ -31,16 +32,19 @@ public class Cashier implements Runnable {
             }
         }
         Dispatcher.cashiersCount.decrementAndGet();
-        synchronized (Dispatcher.LOCK_CONSOLE) {
-            System.out.println(this + " closed");
+        Dispatcher.semaphoreConsole.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+            System.out.println(this + " closed");
+        Dispatcher.semaphoreConsole.release();
     }
 
-    private void cashierServiceBuyer(Buyer buyer) {
+    private void cashierServiceBuyer(Buyer buyer) throws InterruptedException {
         String s = getShiftForConsole();
-        synchronized (Dispatcher.LOCK_CONSOLE) {
+        Dispatcher.semaphoreConsole.acquire();
             cashierWorkToConsole(buyer, s);
-        }
+        Dispatcher.semaphoreConsole.release();
         int time = Utils.getRandom(2000, 5000);
         Utils.sleep(buyer.retired ? (int) (time * 1.5) : time);
         Dispatcher.semaphore.release();

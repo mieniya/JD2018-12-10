@@ -12,7 +12,8 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void run() {
-        enterToMarket();
+        try {
+            enterToMarket();
         takeBasket();
         Goods goods = new Goods();
         int priceListSize = goods.getPriceListSize();
@@ -22,13 +23,16 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         }
         goToQueue();
         goOut();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void goToQueue() {
+    private void goToQueue() throws InterruptedException {
         Dispatcher.semaphoreBuyers.release();
-        synchronized (Dispatcher.LOCK_CONSOLE) {
-            System.out.println(this + " went to queue");
-        }
+        Dispatcher.semaphoreConsole.acquire();
+        System.out.println(this + " went to queue");
+        Dispatcher.semaphoreConsole.release();
         BuyerQueue.putToQueue(this);
         try {
             Dispatcher.semaphore.acquire();
@@ -45,41 +49,41 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
-    public void enterToMarket() {
-        synchronized (Dispatcher.LOCK_CONSOLE) {
-            System.out.println(this + " entered the market");
-        }
+    public void enterToMarket() throws InterruptedException {
+        Dispatcher.semaphoreConsole.acquire();
+        System.out.println(this + " entered the market");
+        Dispatcher.semaphoreConsole.release();
     }
 
     @Override
-    public void chooseGoods() {
+    public void chooseGoods() throws InterruptedException {
         int time = Utils.getRandom(500, 2000);
         Utils.sleep(this.retired ? (int) (time * 1.5) : time);
-        synchronized (Dispatcher.LOCK_CONSOLE) {
+        Dispatcher.semaphoreConsole.acquire();
             System.out.println(this + " is choosing goods");
-        }
+        Dispatcher.semaphoreConsole.release();
     }
 
     @Override
-    public void goOut() {
+    public void goOut() throws InterruptedException {
         Dispatcher.semaphoreBaskets.release();
         Dispatcher.buyersCount.decrementAndGet();
         Dispatcher.buyersComplete.incrementAndGet();
-        synchronized (Dispatcher.LOCK_CONSOLE) {
+        Dispatcher.semaphoreConsole.acquire();
             System.out.println(this + " exited the market");
-        }
+        Dispatcher.semaphoreConsole.release();
     }
 
     @Override
-    public void takeBasket() {
+    public void takeBasket() throws InterruptedException {
         try {
             Dispatcher.semaphoreBaskets.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        synchronized (Dispatcher.LOCK_CONSOLE) {
+        Dispatcher.semaphoreConsole.acquire();
             System.out.println(this + " took basket");
-        }
+        Dispatcher.semaphoreConsole.release();
         int time = Utils.getRandom(100, 200);
         Utils.sleep(this.retired ? (int) (time * 1.5) : time);
         try {
@@ -90,11 +94,11 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
-    public void putGoodsToBasket(Goods listOfGoods, int listSize) {
+    public void putGoodsToBasket(Goods listOfGoods, int listSize) throws InterruptedException {
         String goods = Utils.getRandomGoods(listSize);
-        synchronized (Dispatcher.LOCK_CONSOLE) {
+        Dispatcher.semaphoreConsole.acquire();
             System.out.println(this + " took " + goods);
-        }
+        Dispatcher.semaphoreConsole.release();
         int time = Utils.getRandom(100, 200);
         Utils.sleep(this.retired ? (int) (time * 1.5) : time);
         int price = listOfGoods.getPrice(goods);

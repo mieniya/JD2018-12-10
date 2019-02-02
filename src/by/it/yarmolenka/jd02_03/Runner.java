@@ -13,9 +13,13 @@ public class Runner {
 
 
     public static void main(String[] args) {
-        synchronized (Dispatcher.LOCK_CONSOLE) {
-            System.out.println("Market is open");
+        try {
+            Dispatcher.semaphoreConsole.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        System.out.println("Market is open");
+        Dispatcher.semaphoreConsole.release();
         ExecutorService cashiers = Executors.newFixedThreadPool(5);
         ExecutorService buyers = Executors.newFixedThreadPool(100);
         cashiers.execute(new Cashier(Dispatcher.cashiersNumber.getAndIncrement()));
@@ -30,9 +34,13 @@ public class Runner {
         cashiers.shutdown();
         while (!buyers.isTerminated()) Utils.sleep(1);
         while (!cashiers.isTerminated()) Thread.yield();
-        synchronized (Dispatcher.LOCK_CONSOLE) {
-            System.out.println("Market is closed");
+        try {
+            Dispatcher.semaphoreConsole.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        System.out.println("Market is closed");
+        Dispatcher.semaphoreConsole.release();
         marketStatistics();      //вывод статистики
     }
 

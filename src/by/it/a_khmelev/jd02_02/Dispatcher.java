@@ -24,7 +24,7 @@ class Dispatcher {
 
     static boolean planComplete() {
         synchronized (MON) {
-            return counterBuyerComplete >= plan;
+            return counterBuyerComplete == plan;
         }
     }
 

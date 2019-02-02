@@ -15,7 +15,7 @@ class Dispatcher {
     static Semaphore semaphore = new Semaphore(0);
     static Semaphore semaphoreBuyers = new Semaphore(20);
     static Semaphore semaphoreBaskets = new Semaphore(50);
-    static final Object LOCK_CONSOLE = new Object();     //монитор для корректного вывода в консоль
+    static Semaphore semaphoreConsole = new Semaphore(1);
 
     static boolean planComplete() {
         return buyersComplete.get() == plan;
