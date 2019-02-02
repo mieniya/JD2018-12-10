@@ -1,11 +1,12 @@
-package by.it.titkovskaya.jd02_02;
+package by.it.titkovskaya.jd02_03;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     protected static boolean pensioner = false;
-    static HashMap<Buyer, Double> buyerTotalSum = new HashMap<>();
+    static ConcurrentHashMap <Buyer, Double> buyerTotalSum = new ConcurrentHashMap<>();
+
     boolean iWait;
 
     Object getMonitor() {
@@ -41,20 +42,36 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void takeBasket() {
-        int timeout = Util.getRandom(100, 200);
-        timeout = pensioner ? (timeout * 3 / 2) : timeout;
-        Util.sleep(timeout);
-        System.out.printf(" %-48s   %-22s   %-22s   %-22s\n", this + " took a basket", "", "", "");
-        Dispatcher.totalTimeSpent += (double) timeout / 1000;
+        try {
+            Dispatcher.semaphoreTakingBaskets.acquire();
+            int timeout = Util.getRandom(100, 200);
+            timeout = pensioner ? (timeout * 3 / 2) : timeout;
+            Util.sleep(timeout);
+            System.out.printf(" %-48s   %-22s   %-22s   %-22s\n", this + " took a basket", "", "", "");
+            Dispatcher.getTotalTimeSpent().addAndGet(timeout / 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            Dispatcher.semaphoreTakingBaskets.release();
+        }
     }
 
     @Override
     public void chooseGoods() {
-        int timeout = Util.getRandom(500, 2000);
-        timeout = pensioner ? (timeout * 3 / 2) : timeout;
-        Util.sleep(timeout);
-        System.out.printf(" %-48s   %-22s   %-22s   %-22s\n", this + " chose goods ", "", "", "");
-        Dispatcher.totalTimeSpent += (double) timeout / 1000;
+        try {
+            Dispatcher.semaphoreChoosingGoods.acquire();
+            int timeout = Util.getRandom(500, 2000);
+            timeout = pensioner ? (timeout * 3 / 2) : timeout;
+            Util.sleep(timeout);
+            System.out.printf(" %-48s   %-22s   %-22s   %-22s\n", this + " chose goods ", "", "", "");
+            Dispatcher.getTotalTimeSpent().addAndGet(timeout / 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            Dispatcher.semaphoreChoosingGoods.release();
+        }
     }
 
     @Override
@@ -66,18 +83,14 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             int timeout = Util.getRandom(100, 200);
             timeout = pensioner ? (timeout * 3 / 2) : timeout;
             Util.sleep(timeout);
-            synchronized (Dispatcher.TIME_MON) {
-                Dispatcher.totalTimeSpent += (double) timeout / 1000;
-            }
+            Dispatcher.getTotalTimeSpent().addAndGet(timeout / 1000);
             String[] inBasket = Goods.entries.toArray()[Util.getRandom(0, Goods.entries.size() - 1)]
                     .toString().split("=");
             System.out.printf(" %-48s   %-22s   %-22s   %-22s\n"
                     , this + " put to the basket " + inBasket[0] + " " + inBasket[1] + "$", "", "", "");
             sb.append(inBasket[0]).append(" ").append(inBasket[1]).append("$").append(";");
             total += Double.parseDouble(inBasket[1]);
-            synchronized (Dispatcher.GOODS_MON) {
-                Dispatcher.totalGoodsCounter++;
-            }
+            Dispatcher.getTotalGoodsCounter().incrementAndGet();
         }
         buyerTotalSum.put(this, total);
         Basket.putToBasket(this, sb.toString());
@@ -90,11 +103,11 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
             DequeBuyer.add(this, pensioner);
             iWait = true;
             while (iWait)
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
     }
 

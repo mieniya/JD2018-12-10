@@ -3,10 +3,12 @@ package by.it.titkovskaya.jd02_02;
 public class Cashier implements Runnable {
 
     private String name;
-    private static boolean close = false;
+    static volatile boolean goOnBreak = false;
+    static volatile boolean continueWorking = false;
+    boolean isOnBreak;
 
-    public static void setClose(boolean close) {
-        Cashier.close = close;
+    Object getMonitor() {
+        return this;
     }
 
     Cashier(int number) {
@@ -18,16 +20,22 @@ public class Cashier implements Runnable {
     public void run() {
         cashierAction(" opened");
         while (!Dispatcher.planComplete()) {
-           if (close){
-               synchronized (this) {
-                   try {
-                       this.wait();
-                   } catch (InterruptedException e) {
-                       e.printStackTrace();
-                   }
-               }
-           }
-           cashierWorks();
+            if (goOnBreak) {
+                synchronized (this) {
+                    goOnBreak = false;
+                    this.cashierAction(" is on break");
+                    CashDeskManager.sendToStaffRoom(this);
+                    isOnBreak = true;
+                    while (isOnBreak){
+                        try {
+                            this.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            cashierWorks();
         }
         cashierAction(" closed");
     }
@@ -40,6 +48,7 @@ public class Cashier implements Runnable {
             addAmountBuyerSpentToTotalRevenue(buyer);
             servesBuyerAndPrintCashVoucher(buyer, formBuyerCashVoucher(buyer));
             synchronized (buyer.getMonitor()) {
+                buyer.iWait = false;
                 buyer.notify();
             }
         } else {
@@ -47,7 +56,7 @@ public class Cashier implements Runnable {
         }
     }
 
-    private void cashierAction(String action) {
+    void cashierAction(String action) {
         if (this.name.contains("1")) {
             System.out.printf("| %-22s | %-22s | %-22s | %-22s | %-22s | %-10s | %-10s |\n"
                     , this + action, "", "", "", "", "", "");

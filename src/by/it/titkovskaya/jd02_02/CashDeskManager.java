@@ -6,19 +6,18 @@ import java.util.List;
 public class CashDeskManager extends Thread {
 
     private static List<Thread> threads = new LinkedList<>();
-    static int cashDeskNumber = 1;
+    private static int cashDeskNumber = 0;
     private static int cashDeskOpened = 0;
 
     @Override
     public void run() {
         int cashiersToStart = 2;
-        cashDeskOpening(cashiersToStart);
+        cashDeskOpen(cashiersToStart);
 
         while (Dispatcher.marketOpened()) {
-            if (checkCashDeskRequired()) {
-                cashDeskOpening(cashDesksRequired());
-            }
+            checkCashDeskRequired();
         }
+        Util.sleep(1);
 
         for (Thread thread : threads) {
             try {
@@ -29,8 +28,8 @@ public class CashDeskManager extends Thread {
         }
     }
 
-    private static void cashDeskOpening(int cashDesksRequired) {
-        for (int i = cashDeskNumber; i <= cashDesksRequired; i++) {
+    private static void cashDeskOpen(int cashDesksRequired) {
+        for (int i = cashDeskNumber + 1; i <= cashDesksRequired; i++) {
             Thread cashier = new Thread(new Cashier(i));
             threads.add(cashier);
             cashDeskNumber++;
@@ -39,29 +38,33 @@ public class CashDeskManager extends Thread {
         }
     }
 
-    private static boolean checkCashDeskRequired() {
-        if (cashDeskOpened == cashDesksRequired()) {
-            Cashier.setClose(false);
-            return false;
-        } else if (cashDeskOpened < cashDesksRequired()) {
-            Cashier.setClose(false);
-            return true;
-        } else if (cashDeskOpened > cashDesksRequired()) {
-            Cashier.setClose(true);
-
-            cashDeskOpened--;
-            return false;
-        } else return false;
+    private static void checkCashDeskRequired() {
+        int cashDesksRequired = DequeBuyer.getTotalDequeSize() / 5 + 1;
+        if (cashDesksRequired > 5) cashDesksRequired = 5;
+        if (cashDeskOpened < cashDesksRequired) {
+            if (cashDeskNumber < cashDesksRequired) {
+                cashDeskOpen(cashDesksRequired);
+            }
+            if (cashDeskOpened < cashDesksRequired) {
+                Cashier.continueWorking = true;
+            }
+        } else if (cashDeskOpened > cashDesksRequired) {
+            Cashier.goOnBreak = true;
+            CashDeskManager.cashDeskOpened--;
+        }
     }
 
-    private static int cashDesksRequired() {
-        int deque = DequeBuyer.getTotalDequeSize();
-        if (deque <= 5) return 1;
-        else if (deque > 10 && deque <= 15) return 2;
-        else if (deque > 15 && deque <= 20) return 3;
-        else if (deque > 20 && deque <= 25) return 4;
-        else if (deque > 25) return 5;
-        else return 0;
+    static void sendToStaffRoom(Cashier cashier) {
+        if (Cashier.continueWorking) {
+            Cashier.continueWorking = false;
+            synchronized (cashier.getMonitor()) {
+                cashier.isOnBreak = false;
+                cashier.notify();
+            }
+            cashier.cashierAction(" is reopened");
+            cashier.run();
+            cashDeskOpened++;
+        }
     }
 
 }

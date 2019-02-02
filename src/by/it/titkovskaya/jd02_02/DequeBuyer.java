@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 class DequeBuyer {
 
-    private static Deque<Buyer> deque = new LinkedList<>();
-    private static Deque<Buyer> dequePrior = new LinkedList<>();
+    private static volatile Deque<Buyer> deque = new LinkedList<>();
+    private static volatile Deque<Buyer> dequePrior = new LinkedList<>();
 
     static int getTotalDequeSize(){
         return deque.size()+dequePrior.size();
