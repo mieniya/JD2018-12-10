@@ -1,13 +1,18 @@
-package by.it.titkovskaya.jd02_03;
-
-import java.util.concurrent.atomic.AtomicBoolean;
+package by.it.titkovskaya.Temp;
+/*
+import java.util.concurrent.Semaphore;
 
 public class Cashier implements Runnable {
 
     private String name;
-    static volatile AtomicBoolean goOnBreak = new AtomicBoolean(false);
-    static volatile AtomicBoolean continueWorking = new AtomicBoolean(false);
+    protected static boolean close = false;
     static double totalRevenue = 0;
+
+    private static Semaphore semaphore1 = new Semaphore(1);
+    private static Semaphore semaphore2 = new Semaphore(2);
+    private static Semaphore semaphore3 = new Semaphore(3);
+    private static Semaphore semaphore4 = new Semaphore(4);
+    private static Semaphore semaphore5 = new Semaphore(5);
 
     Cashier(int number) {
         name = "Cashier №" + number;
@@ -18,16 +23,62 @@ public class Cashier implements Runnable {
     public void run() {
         cashierAction(" opened");
         while (!Dispatcher.planComplete()) {
-            if (goOnBreak.get()){
-                goOnBreak.compareAndSet(true,false);
-                this.cashierAction(" is on break");
-                Runner.cashDeskOpened--;
-                while (!continueWorking.get()){
-                    Util.sleep(100);
+            if (DequeBuyer.getDequeSize()<5) {
+                try {
+                    semaphore1.acquire();
+                    cashierWorks();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                Runner.cashDeskOpened++;
+                finally {
+                    semaphore1.release();
+                }
             }
-            cashierWorks();
+            if (DequeBuyer.getDequeSize()>=5&&DequeBuyer.getDequeSize()<10) {
+                try {
+                    semaphore2.acquire();
+                    cashierWorks();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    semaphore2.release();
+                }
+            }
+            if (DequeBuyer.getDequeSize()>=10&&DequeBuyer.getDequeSize()<15) {
+                try {
+                    semaphore3.acquire();
+                    cashierWorks();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    semaphore3.release();
+                }
+            }
+            if (DequeBuyer.getDequeSize()>=15&&DequeBuyer.getDequeSize()<20) {
+                try {
+                    semaphore4.acquire();
+                    cashierWorks();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    semaphore4.release();
+                }
+            }
+            if (DequeBuyer.getDequeSize()>=20) {
+                try {
+                    semaphore5.acquire();
+                    cashierWorks();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    semaphore5.release();
+                }
+            }
+
         }
         cashierAction(" closed");
     }
@@ -155,3 +206,4 @@ public class Cashier implements Runnable {
         return name;
     }
 }
+*/

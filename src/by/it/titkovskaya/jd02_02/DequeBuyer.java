@@ -24,10 +24,10 @@ class DequeBuyer {
     }
 
     static synchronized Buyer poll() {
-        if (deque.size() > 0){
-            return deque.pollFirst();
-        } else if (dequePrior.size()>0)
+        if (dequePrior.size() > 0){
             return dequePrior.pollFirst();
+        } else if (deque.size()>0)
+            return deque.pollFirst();
         else return null;
     }
 }

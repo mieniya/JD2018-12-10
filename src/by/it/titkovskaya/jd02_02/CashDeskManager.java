@@ -48,9 +48,10 @@ public class CashDeskManager extends Thread {
             if (cashDeskOpened < cashDesksRequired) {
                 Cashier.continueWorking = true;
             }
-        } else if (cashDeskOpened > cashDesksRequired) {
+        }
+        if (cashDeskOpened > cashDesksRequired) {
             Cashier.goOnBreak = true;
-            CashDeskManager.cashDeskOpened--;
+            cashDeskOpened--;
         }
     }
 

@@ -15,6 +15,9 @@ public class Dispatcher {
 
     static Semaphore semaphoreTakingBaskets = new Semaphore(50);
     static Semaphore semaphoreChoosingGoods = new Semaphore(20);
+    static Semaphore semaphoreQueue = new Semaphore(30);
+    static Semaphore semaphoreToPrint = new Semaphore(1);
+    static Semaphore semaphoreRevenue = new Semaphore(1);
 
 
     private static final int plan = 100;

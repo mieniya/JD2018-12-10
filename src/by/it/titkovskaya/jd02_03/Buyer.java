@@ -6,6 +6,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     protected static boolean pensioner = false;
     static ConcurrentHashMap <Buyer, Double> buyerTotalSum = new ConcurrentHashMap<>();
+    static long timeToQueue;
 
     boolean iWait;
 
@@ -98,16 +99,25 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void goToQueue() {
-        System.out.printf(" %-48s   %-22s   %-22s   %-22s\n", this + " went to the queue", "", "", "");
-        synchronized (this) {
-            DequeBuyer.add(this, pensioner);
-            iWait = true;
-            while (iWait)
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        try {
+            Dispatcher.semaphoreQueue.acquire();
+            System.out.printf(" %-48s   %-22s   %-22s   %-22s\n", this + " went to the queue", "", "", "");
+            timeToQueue = System.nanoTime();
+            synchronized (this) {
+                DequeBuyer.add(this, pensioner);
+                iWait = true;
+                while (iWait){
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            Dispatcher.semaphoreQueue.release();
         }
     }
 
