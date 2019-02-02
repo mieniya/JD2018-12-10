@@ -18,7 +18,6 @@ class Runner {
         for (int i = 1; i <= 5; i++) {
             Cashier cashier = new Cashier(i);
             threads.add(cashier);
-            Dispatcher.waitingCashiers.add(cashier);
             cashier.start();
         }
 
@@ -32,9 +31,8 @@ class Runner {
                     buyer.start();
                 }
             }
-            int queueSize = DequeBuyer.getQueueSize();
-                Cashier.cashiersManager(queueSize);
-//            проверяем размер очереди и вызываем менеджера по кассирам
+//            int queueSize = DequeBuyer.getQueueSize();
+//                Cashier.cashiersManager(queueSize);
 
             Util.sleep(1000 / Dispatcher.K_SPEED);
         }
