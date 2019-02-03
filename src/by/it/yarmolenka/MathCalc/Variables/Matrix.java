@@ -38,9 +38,6 @@ public class Matrix extends Var {
             String buff = list.get(i).replace("{", "");
             buff = buff.replace("}", "");
             String[] str = buff.split(",");
-            for (int i1 = 0; i1 < str.length; i1++) {
-                str[i1] = str[i1].trim();
-            }
             for (int j = 0; j < str.length; j++) {
                 this.value[i][j] = Double.parseDouble(str[j]);
             }
@@ -50,13 +47,13 @@ public class Matrix extends Var {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("{");
-        StringBuilder def = new StringBuilder(", ");
+        StringBuilder del = new StringBuilder(", ");
         for (int i = 0; i < this.value.length; i++) {
             sb.append("{").append(this.value[i][0]);
             for (int j = 1; j < this.value[i].length; j++)
-                sb.append(def).append(this.value[i][j]);
+                sb.append(del).append(this.value[i][j]);
             sb.append("}");
-            if (i < this.value.length - 1) sb.append(", ");
+            if (i < this.value.length - 1) sb.append(del);
         }
         sb.append("}");
         return sb.toString();

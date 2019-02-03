@@ -10,13 +10,22 @@ class Log {
 
     static void addToLog(String message) {
         ArrayList<String> list = new ArrayList<>();
-        String s;
         if (new File(pathToLogFile).exists()) {
-            try (BufferedReader reader = new BufferedReader((new FileReader(pathToLogFile)))) {
-                while ((s = reader.readLine()) != null) list.add(s);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            reWriteLast49ToFile(list);
+        }
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(pathToLogFile, true))) {
+            writer.append(message).append("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void reWriteLast49ToFile(ArrayList<String> list) {
+        String s;
+        try (BufferedReader reader = new BufferedReader((new FileReader(pathToLogFile)))) {
+            while ((s = reader.readLine()) != null) list.add(s);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         if (list.size() >= 50) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(pathToLogFile))) {
@@ -26,12 +35,6 @@ class Log {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(pathToLogFile, true))) {
-            writer.append(message).append("\n");
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

@@ -29,10 +29,10 @@ public class Vector extends Var {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("{");
-        StringBuilder des = new StringBuilder(", ");
+        StringBuilder del = new StringBuilder(", ");
         sb.append(this.value[0]);
         for (int i = 1; i < this.value.length; i++) {
-            sb.append(des).append(this.value[i]);
+            sb.append(del).append(this.value[i]);
         }
         sb.append("}");
         return sb.toString();
