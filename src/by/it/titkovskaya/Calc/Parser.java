@@ -28,6 +28,27 @@ class Parser {
         printToLog = false;
         printToLog = matchCalc.find();
 
+        //получим выражение без скобок приоритета
+        expression = getExpressionWithoutPriority(expression);
+        //рассчитаем выражение согласно знакам приоритета
+        return getCalculationResult(expression);
+    }
+
+    private String getExpressionWithoutPriority(String expression) throws CalcException {
+        //проверим, есть ли приоритетные операции, указанные скобками
+        Pattern priorOperation = Pattern.compile(Patterns.PRIOR_OPERATION);
+        Matcher matcherPrior = priorOperation.matcher(expression);
+        if (matcherPrior.find()) {
+            String operationPrior = matcherPrior.group();
+            String operationPriorResult = getCalculationResult(operationPrior.replace("(","")
+                    .replace(")",""));
+            expression=expression.replace(operationPrior,operationPriorResult);
+            expression=getExpressionWithoutPriority(expression);
+        }
+        return expression;
+    }
+
+    private String getCalculationResult(String expression) throws CalcException {
         List<String> operands;
         List<String> operations;
         Pattern operation = Pattern.compile(Patterns.OPERATION);
