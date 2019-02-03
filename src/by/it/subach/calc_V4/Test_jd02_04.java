@@ -204,13 +204,13 @@ public class Test_jd02_04 {
     }
 
     @Test
-    public void createScalar() throws Exception{
+    public void createScalar() {
         Object scalar = new Scalar(123.456);
         String s= scalar.toString();
         assertEquals("123.456", s);
     }
     @Test
-    public void createVector() throws Exception{
+    public void createVector() {
         String v = "{1, 2, 3}";
         Object vector = new Vector(v);
         String v1= vector.toString();
@@ -218,7 +218,7 @@ public class Test_jd02_04 {
     }
 
     @Test
-    public void createMatrix() throws Exception{
+    public void createMatrix() {
         String m = "{{1, 2, 3}, {4, 5, 6}}";
         Object matrix = new Matrix(m);
         String m1= matrix.toString();
