@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Log {
 
     private static String filename = System.getProperty("user.dir") + "" +
-            "/src/by/it/moroz/calc/" + "log.txt";
+            "/src/by/it/moroz/calc/" + "errors.txt";
 
     private Log() {
     }

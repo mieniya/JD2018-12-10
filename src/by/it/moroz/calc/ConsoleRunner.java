@@ -6,12 +6,15 @@ public class ConsoleRunner {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         String input;
+        Scanner scanner = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
+
         Var.loadVarFromFile();
-        while (!(input = scanner.nextLine().toLowerCase()).equals("end")) {
+
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
+            String result;
             if (input.equalsIgnoreCase("printvar")) {
                 System.out.println("Список переменных:");
                 Var.printVar();
@@ -19,7 +22,7 @@ public class ConsoleRunner {
                 System.out.println("Отсортированный список переменных:");
                 Var.sortVar();
             } else try {
-                Var result = parser.calc(input);
+                result = parser.calc(input);
                 printer.print(result);
 
             } catch (CalcException calcException) {

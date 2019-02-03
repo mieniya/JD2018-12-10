@@ -33,6 +33,7 @@ public abstract class Var implements Operation {
     }
 
     public static Var createVar(String operand) throws CalcException {
+        operand = operand.trim();
         if (operand.matches(Patterns.SCALAR)) return new Scalar(operand);
         if (operand.matches(Patterns.VECTOR)) return new Vector(operand);
         if (operand.matches(Patterns.MATRIX)) return new Matrix(operand);
