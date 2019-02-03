@@ -203,4 +203,25 @@ public class Test_jd02_04 {
         assertEquals("{{34.0, 40.0}, {64.0, 76.0}}", actualA);
     }
 
+    @Test
+    public void createScalar() throws Exception{
+        Object scalar = new Scalar(123.456);
+        String s= scalar.toString();
+        assertEquals("123.456", s);
+    }
+    @Test
+    public void createVector() throws Exception{
+        String v = "{1, 2, 3}";
+        Object vector = new Vector(v);
+        String v1= vector.toString();
+        assertEquals("{1.0, 2.0, 3.0}", v1);
+    }
+
+    @Test
+    public void createMatrix() throws Exception{
+        String m = "{{1, 2, 3}, {4, 5, 6}}";
+        Object matrix = new Matrix(m);
+        String m1= matrix.toString();
+        assertEquals("{{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}}", m1);
+    }
 }
