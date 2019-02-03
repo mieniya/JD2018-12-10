@@ -2,7 +2,6 @@ package by.it.yarmolenka.MathCalc_v1_severalCalcuations_singleBrackets_Exception
 
 import by.it.yarmolenka.MathCalc_v1_severalCalcuations_singleBrackets_Exceptions.Operations.*;
 import by.it.yarmolenka.MathCalc_v1_severalCalcuations_singleBrackets_Exceptions.Variables.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -10,6 +9,7 @@ import java.util.regex.Pattern;
 
 public class Parcer {
     public Var calc(String expression) throws CalcException {
+
 
         if (expression.matches(Patterns.SCALAR)) return new Scalar(expression);
         if (expression.matches(Patterns.VECTOR)) return new Vector(expression);
@@ -25,6 +25,10 @@ public class Parcer {
         List<String> list = new ArrayList<>();
         while (m.find()) list.add(m.group());
         String[] split = expression.trim().split(Patterns.OPERATION);
+
+        for (int i = 0; i < split.length; i++)
+            split[i]=split[i].trim();
+
 
 
         if (list.get(0).equals("=")) {

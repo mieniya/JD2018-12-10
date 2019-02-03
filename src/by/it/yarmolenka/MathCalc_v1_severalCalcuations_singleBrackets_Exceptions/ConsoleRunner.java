@@ -14,6 +14,7 @@ public class ConsoleRunner {
         Var.loadVarsFromFile();
         while (!(expression = reader.readLine()).equals("end")) {
             try {
+                expression = expression.trim();
                 Var result = parcer.calc(expression);
                 printer.print(result);
             } catch (CalcException e) {
