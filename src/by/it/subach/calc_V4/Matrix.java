@@ -8,7 +8,7 @@ class Matrix extends Var {
     public double[][] getValue() {
         return value;
     }
-    Scalar minus = new Scalar(-1);
+    private Scalar minus = new Scalar(-1);
 
     Matrix(double[][] value) {
         this.value = new double[value.length][value[0].length];

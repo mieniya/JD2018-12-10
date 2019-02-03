@@ -142,6 +142,9 @@ public class Test_jd02_04 {
         System.out.println("Сложение матрицы и скаляра...");
         String actualA = parcer.calc("A={{1, 2, 3}, {2, 3, 4}}+2");
         assertEquals("{{3.0, 4.0, 5.0}, {4.0, 5.0, 6.0}}", actualA);
+        String actualB = parcer.calc("{{1, 2}, {3, 4}}+1.0");
+        assertEquals("{{2.0, 3.0}, {4.0, 5.0}}", actualB);
+
     }
 
     @Test

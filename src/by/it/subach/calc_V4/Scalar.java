@@ -17,7 +17,6 @@ public class Scalar extends Var {
 
     Scalar(Scalar otherScalar) {
         this.value = otherScalar.value;
-
     }
 
     Scalar(String strValue) {
@@ -151,7 +150,7 @@ public class Scalar extends Var {
 
     //    Vector / Scalar
     @Override
-    public Var div2(Vector other) throws CalcException {
+    public Var div2(Vector other) {
         double[] res = Arrays.copyOf(other.getValue(), other.getValue().length);
         for (int i = 0; i < res.length; i++) {
             res[i] /= this.getValue();
@@ -161,7 +160,7 @@ public class Scalar extends Var {
 
     //    Matrix / Scalar
     @Override
-    public Var div2(Matrix other) throws CalcException {
+    public Var div2(Matrix other) {
         double[][] res = Arrays.copyOf(other.getValue(), other.getValue().length);
         for (int i = 0; i < res.length; i++) {
             for (int j = 0; j < res[i].length; j++) {
