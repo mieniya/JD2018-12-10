@@ -1,4 +1,4 @@
-package by.it.migunko.jd02_01;
+package by.it.migunko.jd02_03;
 
 public interface IUseBacket {
     void takeBacket();

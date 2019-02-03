@@ -1,10 +1,12 @@
-package by.it.migunko.jd02_01;
+package by.it.migunko.jd02_03;
 import java.util.HashMap;
 import java.util.Map;
-public class Buyer extends Thread implements IBuyer, IUseBacket{
+import java.util.concurrent.Semaphore;
+public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     private Map<String, Double> goods= new HashMap<>();
     private Map<String, Double> goodBuyers= new HashMap<>();
+    private static Semaphore chooseGoodsBuyers=new Semaphore(20);
 
     private void goodsMarket(){
         goods.put("хлеб", 1.15);
@@ -16,8 +18,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
         goods.put("печенье", 7.60);
     }
 
-
     Buyer(int number) {
+
         super("Покупатель №" + number);
     }
 
@@ -27,6 +29,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
         enterToMarket();
         takeBacket();
         chooseGoods();
+        goToQueue();
         goOut();
     }
     @Override
@@ -41,20 +44,29 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
     }
     @Override
     public void chooseGoods() {
-        int timeout = Util.rnd(500, 2000);
-        Util.sleep(timeout);
-        int count= Util.rnd(1,4);
-        goodsMarket();
-        for (int i = 0; i < count; i++) {
-            int index= Util.rnd(0,goods.size()-1);
-            for (String good:goods.keySet()) {
-                if(index==0) {
-                    Double goodPrice=goods.get(good);
-                    putGoodsToBacket(good,goodPrice);
-                    break;
+
+        try {
+            chooseGoodsBuyers.acquire();
+            int timeout = Util.rnd(500, 2000);
+            Util.sleep(timeout);
+            int count= Util.rnd(1,4);
+            goodsMarket();
+            for (int i = 0; i < count; i++) {
+                int index= Util.rnd(0,goods.size()-1);
+                for (String good:goods.keySet()) {
+                    if(index==0) {
+                        Double goodPrice=goods.get(good);
+                        putGoodsToBacket(good,goodPrice);
+                        break;
+                    }
+                    index--;
                 }
-                index--;
             }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            chooseGoodsBuyers.release();
         }
     }
     @Override
@@ -62,9 +74,26 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
         int timeout = Util.rnd(100, 200);
         Util.sleep(timeout);
         goodBuyers.put(good,goodPrice);
-        System.out.println(this+" положил в корзину "+ good +":"+ goodPrice+ "р");
+        System.out.println(this+" положил в корзину "+good+", цена "+goodPrice);
     }
-
+    public double totalCheck(){
+        double check=0;
+        for (double price:goodBuyers.values()) {
+            check=check+price;
+        }
+        return check;
+    }
+    @Override
+    public void goToQueue() {
+        BuyerQueue.addToQueue(this);
+        synchronized (this){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     @Override
     public void goOut() {
         System.out.println(this + " вышел из магазина");

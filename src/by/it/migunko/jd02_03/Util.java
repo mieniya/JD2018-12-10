@@ -1,4 +1,4 @@
-package by.it.migunko.jd02_02;
+package by.it.migunko.jd02_03;
 
 public class Util {
     private static final int K_SPEED=100;

@@ -1,6 +1,6 @@
-package by.it.migunko.jd02_02;
+package by.it.migunko.jd02_03;
 
-class Cashier implements Runnable {
+class Cashier implements Runnable{
 
     private String name;
     Cashier(int number) {
@@ -17,8 +17,7 @@ class Cashier implements Runnable {
                 System.out.println(this + " обслуживает " + buyer);
                 Util.sleep(Util.rnd(2000, 5000));
                 double check=buyer.totalCheck();
-                System.out.print(this + " завершил обслуживание " + buyer+", сумма чека: ");
-                System.out.printf("%.2f \n", check);
+                System.out.printf("%s завершил обслуживание %s, сумма чека: %.2f \n", this, buyer, check);
                 Dispatcher.completeBuyer();
                 synchronized (buyer) {
                     buyer.notify();
