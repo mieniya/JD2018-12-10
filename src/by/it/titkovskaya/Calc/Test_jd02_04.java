@@ -2,6 +2,8 @@ package by.it.titkovskaya.Calc;
 
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+
 import static org.junit.Assert.assertEquals;
 
 public class Test_jd02_04 {
@@ -122,6 +124,45 @@ public class Test_jd02_04 {
         System.out.println("Expected value: {43.0, 170.0}");
         System.out.println();
         assertEquals("Received value is incorrect", "{43.0, 170.0}", actual);
+    }
+
+    @Test
+    public void Test_scalar_toString() throws Exception {
+        Parser parser = new Parser();
+        String actual = parser.calc("a={2,5,8}");
+        System.out.println("Создание переменной a типа Vector на основе массива {2,5,8}");
+        Vector vector = new Vector("{2,5,8}");
+        System.out.println("Actual output: " + actual);
+        System.out.println("-----------------------------");
+        System.out.println("Expected output: {2,5,8}");
+        System.out.println();
+        assertEquals("Incorrect output", "{2.0, 5.0, 8.0}",vector.toString());
+    }
+
+    @Test
+    public void Test_vector_toString() throws Exception {
+        Parser parser = new Parser();
+        String actual = parser.calc("b={2,5,8}");
+        System.out.println("Создание переменной a типа Vector на основе массива {2,5,8}");
+        Vector vector = new Vector("{2,5,8}");
+        System.out.println("Actual output: " + actual);
+        System.out.println("-----------------------------");
+        System.out.println("Expected output: {2,5,8}");
+        System.out.println();
+        assertEquals("Incorrect output", "{2.0, 5.0, 8.0}",vector.toString());
+    }
+
+    @Test
+    public void Test_matrix_toString() throws Exception {
+        Parser parser = new Parser();
+        String actual = parser.calc("c={{2,5,8},{3,4,7}}");
+        System.out.println("Создание переменной a типа Vector на основе массива {{2,5,8},{3,4,7}}");
+        Matrix matrix = new Matrix("{{2,5,8},{3,4,7}}");
+        System.out.println("Actual output: " + actual);
+        System.out.println("-----------------------------");
+        System.out.println("Expected output: {{2.0, 5.0, 8.0}, {3.0, 4.0, 7.0}}");
+        System.out.println();
+        assertEquals("Incorrect output", "{{2.0, 5.0, 8.0}, {3.0, 4.0, 7.0}}",matrix.toString());
     }
 
 }
