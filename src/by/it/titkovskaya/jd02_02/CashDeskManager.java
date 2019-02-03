@@ -14,7 +14,7 @@ public class CashDeskManager extends Thread {
         int cashiersToStart = 2;
         cashDeskOpen(cashiersToStart);
 
-        while (Dispatcher.marketOpened()) {
+        while (!Dispatcher.planComplete()) {
             checkCashDeskRequired();
         }
         Util.sleep(1);
