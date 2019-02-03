@@ -15,6 +15,6 @@ public class CalcTest {
     }
     @Test
     public void testMul() throws Exception {
-   
+
     }
 }
