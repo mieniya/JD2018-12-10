@@ -11,7 +11,7 @@ public class ConsoleRunner {
         Parcer parcer = new Parcer();
         Printer printer = new Printer();
         Var.loadVarsFromFile();
-        while (!(expression = reader.readLine()).equals("end")) {
+        while (!(expression = reader.readLine()).equalsIgnoreCase("end")) {
             try {
                 expression = expression.trim();
                 Var result = parcer.calc(expression);
