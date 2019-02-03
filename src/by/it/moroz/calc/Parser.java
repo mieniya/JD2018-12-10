@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String input) throws CalcExeption {
+    Var calc(String input) throws CalcException {
 
         Pattern oper = Pattern.compile(Patterns.OPERATION);
         String[] operands = input.trim().split(Patterns.OPERATION);
@@ -14,6 +14,7 @@ class Parser {
         if (matcher.find()) {
             operation = matcher.group();
         }
+        assert operation != null;
         if (operation.equals("=")) {
             Var.saveVar(operands[0], two);
             return two;

@@ -10,24 +10,22 @@ public class ConsoleRunner {
         String input;
         Parser parser = new Parser();
         Printer printer = new Printer();
+        Var.loadVarFromFile();
         while (!(input = scanner.nextLine().toLowerCase()).equals("end")) {
-            try {
-                if (input.equalsIgnoreCase("printvar")) {
-                    System.out.println("Список переменных:");
-                    Var.printVar();
-                } else if(input.equalsIgnoreCase("sortvar")){
-                    System.out.println("Отсортированный список переменных:");
-                    Var.sortVar();
-                }
-                else {
-                    Var result = parser.calc(input);
-                    printer.print(result);
-                }
+            if (input.equalsIgnoreCase("printvar")) {
+                System.out.println("Список переменных:");
+                Var.printVar();
+            } else if (input.equalsIgnoreCase("sortvar")) {
+                System.out.println("Отсортированный список переменных:");
+                Var.sortVar();
+            } else try {
+                Var result = parser.calc(input);
+                printer.print(result);
 
-            } catch (CalcExeption calcExeption) {
-                printer.showError(calcExeption);
+            } catch (CalcException calcException) {
+                printer.showError(calcException);
             }
-
         }
+        Var.saveVarToFile();
     }
 }
