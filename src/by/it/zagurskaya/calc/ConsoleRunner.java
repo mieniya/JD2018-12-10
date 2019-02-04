@@ -24,10 +24,14 @@ public class ConsoleRunner {
                     // итерирование по набору(коллекции) отношений(соотношение) клю-значение из Map
                     for (Map.Entry<String, Var> varEntry : varMap.entrySet()) {
                         System.out.print(varEntry.getKey() + "=");
-                        printer.print(varEntry.getValue());
+                        printer.print(varEntry.getValue().toString());
                     }
                 } else {
-                    Var result = parcer.calc(expression);
+                    String result = parcer.calc(expression);
+//                    int i=2;
+//                    int c=3+i;
+////                    Var result = parcer.calc(expression);
+//                    String result;
                     printer.print(result);
                 }
             } catch ( CalcException e) {
