@@ -1,0 +1,3 @@
+message.welcome=Прывитанне!
+message.question=Як справы?
+user.name=Загурская Наталля
