@@ -15,6 +15,7 @@ class Parcer {
             this.put("-", 1);
             this.put("*", 2);
             this.put("/", 2);
+            this.put("\\((.*?)\\)",3);
         }
     };
 

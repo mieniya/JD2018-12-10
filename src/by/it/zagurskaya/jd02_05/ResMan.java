@@ -4,22 +4,30 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public enum ResMan {
-    INSTANSE;
+    INSTANCE;
+
+    private final String RESOURSE="by.it.zagurskaya.jd02_05.messages";
     private Locale locale;
-    private final String RECOURS = "by.it.zagurskaya.jd02_05.messeges";
     private ResourceBundle resourceBundle;
 
-    ResMan () {
+    ResMan() {
         setLocale(Locale.getDefault());
     }
 
-
     public void setLocale(Locale locale) {
         this.locale = locale;
-        resourceBundle = ResourceBundle.getBundle(RECOURS,locale);
+        resourceBundle=ResourceBundle.getBundle(RESOURSE,locale);
     }
-    public void setLocale(Locale locale, String country) {
-        this.locale = locale;
-        resourceBundle = ResourceBundle.getBundle(RECOURS,locale);
+
+    public void setLocale(String language) {
+        setLocale(new Locale(language));
+    }
+
+    public void setLocale(String language, String country) {
+        setLocale(new Locale(language,country));
+    }
+
+    public String get(String key){
+        return resourceBundle.getString(key);
     }
 }

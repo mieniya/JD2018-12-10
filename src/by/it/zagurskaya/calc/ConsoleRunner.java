@@ -28,10 +28,7 @@ public class ConsoleRunner {
                     }
                 } else {
                     String result = parcer.calc(expression);
-//                    int i=2;
-//                    int c=3+i;
 ////                    Var result = parcer.calc(expression);
-//                    String result;
                     printer.print(result);
                 }
             } catch ( CalcException e) {
