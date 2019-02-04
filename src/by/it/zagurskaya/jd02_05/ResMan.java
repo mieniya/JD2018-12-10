@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 public enum ResMan {
     INSTANCE;
 
-    private final String RESOURSE="by.it.zagurskaya.jd02_05.messages";
+    private final String RESOURSE = "by.it.zagurskaya.jd02_05.messages";
     private Locale locale;
     private ResourceBundle resourceBundle;
 
@@ -16,7 +16,7 @@ public enum ResMan {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
-        resourceBundle=ResourceBundle.getBundle(RESOURSE,locale);
+        resourceBundle = ResourceBundle.getBundle(RESOURSE, locale);
     }
 
     public void setLocale(String language) {
@@ -24,10 +24,10 @@ public enum ResMan {
     }
 
     public void setLocale(String language, String country) {
-        setLocale(new Locale(language,country));
+        setLocale(new Locale(language, country));
     }
 
-    public String get(String key){
+    public String get(String key) {
         return resourceBundle.getString(key);
     }
 }

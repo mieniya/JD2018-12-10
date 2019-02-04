@@ -15,12 +15,22 @@ class Parcer {
             this.put("-", 1);
             this.put("*", 2);
             this.put("/", 2);
-            this.put("\\((.*?)\\)",3);
         }
     };
 
 
     String calc(String expression) throws CalcException {
+        //найдем скобки
+//        D=((C-0.15)-20)/(7-5)
+        int bracketCloseIndex = expression.indexOf(")");
+        while (bracketCloseIndex != -1) {
+            int bracketOpenIndex = expression.lastIndexOf("(", bracketCloseIndex);
+            String bracketExpression = expression.substring(bracketOpenIndex + 1, bracketCloseIndex);
+            String bracketResult = calc(bracketExpression);
+            expression = expression.replace("(" + bracketExpression + ")", bracketResult);
+            bracketCloseIndex = expression.indexOf(")");
+        }
+
         List<String> operands;
         List<String> operations;
 
@@ -28,7 +38,7 @@ class Parcer {
         //найдем операнды
         String[] mas = expression.trim().split(Patterns.OPERATION);
         operands = new ArrayList<>(Arrays.asList(mas));
-        operations=new ArrayList<>();
+        operations = new ArrayList<>();
 
         //найдем операции
         Matcher matcher = oper.matcher(expression);
@@ -36,15 +46,15 @@ class Parcer {
             operations.add(matcher.group());
         }
         //выполним все операции
-        while (operations.size()>0){
-            int indexOperation=getIndexOperation(operations);
-            String one=operands.remove(indexOperation);
-            String op=operations.remove(indexOperation);
-            String two=operands.remove(indexOperation);
-            String result=oneOperation(one,op,two);
-            operands.add(indexOperation,result);
+        while (operations.size() > 0) {
+            int indexOperation = getIndexOperation(operations);
+            String one = operands.remove(indexOperation);
+            String op = operations.remove(indexOperation);
+            String two = operands.remove(indexOperation);
+            String result = oneOperation(one, op, two);
+            operands.add(indexOperation, result);
         }
-        Var res=Var.createVar(operands.get(0));
+        Var res = Var.createVar(operands.get(0));
         //вернем строку а не Var, так сказано в задании
         return res.toString();
 
@@ -52,16 +62,16 @@ class Parcer {
 
     private int getIndexOperation(List<String> operations) throws CalcException {
         //ищем операцию с самым высоким приоритетом
-        int res=-1;
-        int p=-1;
+        int res = -1;
+        int p = -1;
         for (int i = 0; i < operations.size(); i++) {
             String op = operations.get(i);
             if (p < prior.get(op)) {
-                res=i;
-                p=prior.get(op);
+                res = i;
+                p = prior.get(op);
             }
         }
-        if (res>-1)
+        if (res > -1)
             return res;
         else
             throw new CalcException("Неожиданное завершение вычислений");
@@ -84,16 +94,16 @@ class Parcer {
 //        Matcher matcher = oper.matcher(expression);
 //        if (matcher.find()) {
 //            String operation = matcher.group();
-            switch (operation) {
-                case "+":
-                    return one.add(two).toString();
-                case "-":
-                    return one.sub(two).toString();
-                case "*":
-                    return one.mul(two).toString();
-                case "/":
-                    return one.div(two).toString();
-            }
+        switch (operation) {
+            case "+":
+                return one.add(two).toString();
+            case "-":
+                return one.sub(two).toString();
+            case "*":
+                return one.mul(two).toString();
+            case "/":
+                return one.div(two).toString();
+        }
 //        }
         throw new CalcException("Неожиданное завершение вычислений");
     }
