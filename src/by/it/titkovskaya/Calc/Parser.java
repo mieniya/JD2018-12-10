@@ -35,7 +35,8 @@ class Parser {
     }
 
     private String getExpressionWithoutPriority(String expression) throws CalcException {
-        //проверим, есть ли приоритетные операции, указанные скобками
+
+        //проверим, есть ли приоритетные операции, выделенные скобками
         Pattern priorOperation = Pattern.compile(Patterns.PRIOR_OPERATION);
         Matcher matcherPrior = priorOperation.matcher(expression);
         if (matcherPrior.find()) {
