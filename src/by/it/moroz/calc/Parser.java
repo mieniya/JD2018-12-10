@@ -3,12 +3,13 @@ package by.it.moroz.calc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
 
-    private static  final HashMap<String, Integer> priority = new HashMap<>(){
+    private static  final Map<String, Integer> priority = new HashMap<>(){
         {
             this.put("=",0);
             this.put("+",1);
