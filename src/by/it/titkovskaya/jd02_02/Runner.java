@@ -8,6 +8,9 @@ public class Runner {
     private static List<Thread> threads = new LinkedList<>();
     static int time;
     private static int buyerNumber = 0;
+    private static int cashDeskNumber = 0;
+    private static int cashDeskOpened = 0;
+
 
     public static void main(String[] args) {
         Goods.load();
@@ -36,10 +39,11 @@ public class Runner {
 
     private static void marketWorkingTime() {
 
-        CashDeskManager manager = new CashDeskManager();
-        threads.add(manager);
-        manager.start();
+        int cashiersToStart = 2;
+        cashDeskOpen(cashiersToStart);
+
         for (time = 1; Dispatcher.marketOpened(); time++) {
+            checkCashDeskRequired();
             int sec = time % 60;
             if (time <= 30 || time >= 61 && time <= 90) {
                 buyersTraffic(sec + 10 - Dispatcher.getCounterBuyerInShop());
@@ -55,6 +59,24 @@ public class Runner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static void cashDeskOpen(int cashDesksRequired) {
+        for (int i = cashDeskNumber + 1; i <= cashDesksRequired; i++) {
+            Thread cashier = new Thread(new Cashier(i));
+            threads.add(cashier);
+            cashDeskNumber++;
+            cashDeskOpened++;
+            cashier.start();
+        }
+    }
+
+    private static void checkCashDeskRequired() {
+        int cashDesksRequired = DequeBuyer.getTotalDequeSize() / 5 + 1;
+        if (cashDesksRequired > 5) cashDesksRequired = 5;
+        if (cashDeskOpened < cashDesksRequired) {
+            cashDeskOpen(cashDesksRequired);
         }
     }
 

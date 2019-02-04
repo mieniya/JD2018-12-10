@@ -1,8 +1,15 @@
-package by.it.titkovskaya.jd02_02;
+package by.it.titkovskaya.jd02_02_2.jd02_02;
 
 public class Cashier implements Runnable {
 
     private String name;
+    static volatile boolean goOnBreak = false;
+    static volatile boolean continueWorking = false;
+    boolean isOnBreak;
+
+    Object getMonitor() {
+        return this;
+    }
 
     Cashier(int number) {
         name = "Cashier №" + number;
@@ -13,6 +20,21 @@ public class Cashier implements Runnable {
     public void run() {
         cashierAction(" opened");
         while (!Dispatcher.planComplete()) {
+            if (goOnBreak) {
+                synchronized (this) {
+                    goOnBreak = false;
+                    this.cashierAction(" is on break");
+                    CashDeskManager.sendToStaffRoom(this);
+                    isOnBreak = true;
+                    while (isOnBreak){
+                        try {
+                            this.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
             cashierWorks();
         }
         cashierAction(" closed");
@@ -34,7 +56,7 @@ public class Cashier implements Runnable {
         }
     }
 
-    private void cashierAction(String action) {
+    void cashierAction(String action) {
         if (this.name.contains("1")) {
             System.out.printf("| %-22s | %-22s | %-22s | %-22s | %-22s | %-10s | %-10s |\n"
                     , this + action, "", "", "", "", "", "");

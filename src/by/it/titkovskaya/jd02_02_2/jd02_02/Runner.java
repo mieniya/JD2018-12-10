@@ -1,17 +1,13 @@
-package by.it.titkovskaya.jd02_03;
+package by.it.titkovskaya.jd02_02_2.jd02_02;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Runner {
 
+    private static List<Thread> threads = new LinkedList<>();
     static int time;
     private static int buyerNumber = 0;
-    private static int cashDeskNumber = 0;
-    static int cashDeskOpened = 0;
-
-    private static ExecutorService cashiers = Executors.newFixedThreadPool(5);
-
 
     public static void main(String[] args) {
         Goods.load();
@@ -40,63 +36,35 @@ public class Runner {
 
     private static void marketWorkingTime() {
 
-
-        ExecutorService buyers = Executors.newFixedThreadPool(100);
-
-        int cashiersToStart = 2;
-        cashDeskOpen(cashiers, cashiersToStart);
-
+        CashDeskManager manager = new CashDeskManager();
+        threads.add(manager);
+        manager.start();
         for (time = 1; Dispatcher.marketOpened(); time++) {
-            checkCashDeskRequired();
             int sec = time % 60;
             if (time <= 30 || time >= 61 && time <= 90) {
-                buyersTraffic(buyers, sec + 10 - Dispatcher.getCounterBuyerInShop().get());
-            } else if (Dispatcher.getCounterBuyerInShop().get() >= 40 + (30 - sec)) {
+                buyersTraffic(sec + 10 - Dispatcher.getCounterBuyerInShop());
+            } else if (Dispatcher.getCounterBuyerInShop() >= 40 + (30 - sec)) {
                 Util.sleep(1000);
             } else {
-                buyersTraffic(buyers, 1);
+                buyersTraffic(1);
             }
         }
-        buyers.shutdown();
-        cashiers.shutdown();
-        while (!buyers.isTerminated())
-            Util.sleep(1);
-        while (!cashiers.isTerminated())
-            Thread.yield();
-    }
-
-    private static void cashDeskOpen(ExecutorService cashiers, int cashDeskRequired) {
-        for (int i = cashDeskNumber + 1; i <= cashDeskRequired; i++) {
-            Cashier cashier = new Cashier(i);
-            cashiers.execute(cashier);
-            cashDeskOpened++;
-            cashDeskNumber++;
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    private static void buyersTraffic(ExecutorService buyers, int count) {
+    private static void buyersTraffic(int count) {
         for (int i = 0; i < count; i++) {
-            if (Dispatcher.marketOpened()) {
-                Buyer buyer = new Buyer(++buyerNumber);
-                buyers.execute(buyer);
-            }
+            Buyer buyer = new Buyer(++buyerNumber);
+            threads.add(buyer);
+            buyer.start();
         }
         Util.sleep(1000);
-    }
-
-    private static void checkCashDeskRequired() {
-        int cashDesksRequired = DequeBuyer.getDequeSize() / 5 + 1;
-        if (cashDesksRequired > 5) cashDesksRequired = 5;
-        if (cashDeskOpened < cashDesksRequired) {
-            if (cashDeskNumber < cashDesksRequired)
-                cashDeskOpen(cashiers, cashDesksRequired);
-            if (cashDeskOpened < cashDesksRequired) {
-                Cashier.continueWorking.compareAndSet(false,true);
-            }
-        }
-        if (cashDeskOpened > cashDesksRequired){
-            Cashier.goOnBreak.compareAndSet(false,true);
-        }
     }
 
     private static void marketClosing() {
@@ -120,16 +88,14 @@ public class Runner {
         System.out.printf("\n\n\n%-15s\n%-85s\n" +
                         " %23s | %-10s  %23s | %-6.1f$\n" +
                         " %23s | %-10s  %23s | %-2.1f$\n" +
-                        " %23s | %-10s  %23s | %-7s\n  " +
+                        " %23s | %-10.1f  %23s | %-7s\n  " +
                         " %21s | %-10.1f  %23s | %-7.1f\n", " STATISTICS"
                 , "----------------------------------------------------------------------------"
-                , "TOTAL BUYERS", Dispatcher.getCounterBuyerComplete(), "TOTAL SUM", Cashier.totalRevenue
-                , "incl. pensioners", Dispatcher.getPensionersCounter(), "average per buyer"
-                , Cashier.totalRevenue / Dispatcher.getCounterBuyerComplete().get()
-                , "TOTAL TIME SPENT", Dispatcher.getTotalTimeSpent(), "TOTAL GOODS", Dispatcher.getTotalGoodsCounter()
-                , "average per buyer"
-                , (double) Dispatcher.getTotalTimeSpent().get() / Dispatcher.getCounterBuyerComplete().get()
-                , "average per buyer", (double) Dispatcher.getTotalGoodsCounter().get() / Dispatcher.getCounterBuyerComplete().get());
+                , "TOTAL BUYERS", Dispatcher.getCounterBuyerComplete(), "TOTAL SUM", Dispatcher.getTotalRevenueCounter()
+                , "incl. pensioners", Dispatcher.getPensionersCounter(), "average per buyer",
+                Dispatcher.getTotalRevenueCounter() / Dispatcher.getCounterBuyerComplete()
+                , "TOTAL TIME SPENT", Dispatcher.totalTimeSpent, "TOTAL GOODS", Dispatcher.totalGoodsCounter
+                , "average per buyer", Dispatcher.totalTimeSpent / Dispatcher.getCounterBuyerComplete()
+                , "average per buyer", (double) Dispatcher.totalGoodsCounter / Dispatcher.getCounterBuyerComplete());
     }
-
 }

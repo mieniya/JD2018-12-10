@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_02;
+package by.it.titkovskaya.jd02_02_2.jd02_02;
 
 import java.util.LinkedList;
 import java.util.List;
