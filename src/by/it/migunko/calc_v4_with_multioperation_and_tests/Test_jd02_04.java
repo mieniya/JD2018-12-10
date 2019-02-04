@@ -20,7 +20,7 @@ public class Test_jd02_04 {
         assertEquals("Error","2.65",actual);
     }
 
-    
+
     @Test
     public void Task_B() throws Exception{
         Parser parser=new Parser();
