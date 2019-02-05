@@ -16,7 +16,7 @@ public class Vars {
 
     public static String printVar() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Содержимое контейнера:\n");
+        sb.append("Содержимое:\n");
         for (Map.Entry<String, Var> entry : vars.entrySet()){
             sb.append(entry.getKey());
             sb.append("=");

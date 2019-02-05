@@ -46,7 +46,7 @@ public class Vector extends Var {
     @Override
     public Var add(Var other) throws CalcException {
         if (other instanceof Vector){
-            if (this.value.length != ((Vector) other).value.length) throw new CalcException("ERROR");
+            if (this.value.length != ((Vector) other).value.length) throw new CalcException("ERROR:разного размера");
             Vector res = new Vector(this);
             for (int i = 0; i < res.value.length; i++) {
                 res.value[i] = res.value[i] + ((Vector) other).value[i];
@@ -66,7 +66,7 @@ public class Vector extends Var {
     @Override
     public Var sub(Var other) throws CalcException {
         if (other instanceof Vector){
-            if (this.value.length != ((Vector) other).value.length) throw new CalcException("ERROR");
+            if (this.value.length != ((Vector) other).value.length) throw new CalcException("ERROR: разного размера");
             Vector res = new Vector(this);
             for (int i = 0; i < res.value.length; i++) {
                 res.value[i] = res.value[i] - ((Vector) other).value[i];
@@ -86,7 +86,7 @@ public class Vector extends Var {
     @Override
     public Var mul(Var other) throws CalcException {
         if (other instanceof Vector){
-            if (this.value.length != ((Vector) other).value.length) throw new CalcException("ERROR");
+            if (this.value.length != ((Vector) other).value.length) throw new CalcException("ERROR: разного размера");
             Vector res = new Vector(this);
             for (int i = 0; i < res.value.length; i++) {
                 res.value[i] = res.value[i] * ((Vector) other).value[i];

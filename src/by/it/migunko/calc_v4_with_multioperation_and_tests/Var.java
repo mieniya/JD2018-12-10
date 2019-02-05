@@ -4,7 +4,7 @@ abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException(String.format("ERROR: Сложение  невозможно.\n", this, other));
+        throw new CalcException(String.format("ERROR: Сложение %s с %s невозможно.\n", this, other));
     }
 
     @Override

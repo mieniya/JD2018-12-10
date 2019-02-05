@@ -84,10 +84,14 @@ public class Parser {
         String requared = "";
         while (matcher.find()){
             String c = matcher.group();
-            if ("{(".contains(c)){
+            if ("[{(".contains(c)){
                 list.addLast(c);
             } else {
                 switch (c){
+                    case "]": {
+                        requared = "[";
+                        break;
+                    }
                     case "}": {
                         requared = "{";
                         break;
@@ -103,5 +107,4 @@ public class Parser {
         }
         return list.size() == 0;
     }
-
 }
