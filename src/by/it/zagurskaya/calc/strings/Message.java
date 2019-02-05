@@ -1,6 +1,7 @@
 package by.it.zagurskaya.calc.strings;
 
 public interface Message {
+    String NOT_DEFINED = "message.notDefined";
     String ADDITION = "message.addition";
     String SUBTRACTION = "message.subtraction";
     String DIVISION = "message.division";
@@ -8,8 +9,8 @@ public interface Message {
     String ACTION = "message.action";
     String IMPOSSIBLE = "message.impossible";
     String ON = "message.on";
-    String NOTREALIZED = "message.notRealized";
-    String ZERODIVIDE = "message.zeroDivide";
-    String ACTIONNOTIMPOSSIBLE = "message.actionNotImpossible";
-    String UNEXPECTEDCOMPLETIONOFCALCULATIONS = "message.unexpectedCompletionOfCalculations";
+    String NOT_REALIZED = "message.notRealized";
+    String ZERO_DIVIDE = "message.zeroDivide";
+    String ACTION_NOT_IMPOSSIBLE = "message.actionNotImpossible";
+    String UNEXPECTED_COMPLETION_OF_CALCULATIONS = "message.unexpectedCompletionOfCalculations";
 }

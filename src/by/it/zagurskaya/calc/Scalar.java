@@ -33,25 +33,15 @@ class Scalar extends Var {
             double res = this.value + ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector))
-//        {
-//            double[] res = Arrays.copyOf(((Scalar) other).getValue(),((Vector) other).getLenght());
-//            for (int i = 0; i < res.length; i++) {
-//                res[i] = this.value + res[i];
-//            }
-//            return new Vector(res);
-//        }
         {
-//            throw new CalcException("Действие не реализовано");//notRealized
-            throw new CalcException(Localmessages.NOTREALIZED);//notRealized
+            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
         }
         else if ((other instanceof Matrix)) {
-//            throw new CalcException("Действие не реализовано");//notRealized
-            throw new CalcException(Localmessages.NOTREALIZED);//notRealized
+            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
         }
         return other.add(this);
-        // other Vector or Matrix;
     }
 
     @Override
@@ -60,34 +50,29 @@ class Scalar extends Var {
             double res = this.value - ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector)) {
-//            throw new CalcException("Действие не реализовано");//notRealized
-            throw new CalcException(Localmessages.NOTREALIZED);//notRealized
+            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(Localmessages.NOTREALIZED);//notRealized
+            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
         }
         Scalar minus = new Scalar(-1);
         return other.add(this.mul(minus));
-        // other Vector or Matrix;
     }
 
     @Override
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0)
-                throw new CalcException(Localmessages.ZERODIVIDE);//zeroDivide
+                throw new CalcException(LocalMessages.ZERO_DIVIDE_SUPPLIER.get());//zeroDivide
             double res = this.value / ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector)) {
-//            throw new CalcException("Действие не возможно");//actionNotImpossible
-            throw new CalcException(Localmessages.ACTIONNOTIMPOSSIBLE);//actionNotImpossible
+            throw new CalcException(LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get());//actionNotImpossible
 
         } else if ((other instanceof Matrix)) {
-            //            throw new CalcException("Действие не возможно");//actionNotImpossible
-            throw new CalcException(Localmessages.ACTIONNOTIMPOSSIBLE);//actionNotImpossible
+            throw new CalcException(LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get());//actionNotImpossible
         }
         return super.div(other);
-        // other Vector or Matrix;
     }
 
     @Override
@@ -96,22 +81,17 @@ class Scalar extends Var {
             double res = this.value * ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector)) {
-//            throw new CalcException("Действие не реализовано");//notRealized
-            throw new CalcException(Localmessages.NOTREALIZED);//notRealized
+            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
         } else if ((other instanceof Matrix)) {
-//            throw new CalcException("Действие не реализовано");//notRealized
-            throw new CalcException(Localmessages.NOTREALIZED);//notRealized
+            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
         }
         return other.mul(this);
-        // other Vector or Matrix;
     }
 
     @Override
     public String toString() {
-        //return "какой-то скаляр";
-        //return Double.toString(value);
         return String.valueOf(value);
     }
 }

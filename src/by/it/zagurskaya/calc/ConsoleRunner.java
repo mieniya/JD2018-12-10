@@ -12,10 +12,10 @@ public class ConsoleRunner {
 
     public static void main(String[] args) throws CalcException {
 //        public static void main(String[] args) throws CalcException {
-        if (args.length == 0) {
-            Locale currentLocale = Locale.getDefault();
-            args = new String[]{currentLocale.getLanguage(),currentLocale.getCountry() };
-        }
+//        if (args.length == 0) {
+//            Locale currentLocale = Locale.getDefault();
+//            args = new String[]{currentLocale.getLanguage(),currentLocale.getCountry() };
+//        }
 //        args = new String[]{"ru", "RU"};
 //        args = new String[]{"", ""};
         String expression;
@@ -24,6 +24,10 @@ public class ConsoleRunner {
         Printer printer = new Printer();
         while (!(expression = scanner.nextLine()).equals(END)) {
             try {
+                if (LocalMessages.getSupportedLanguages().contains(expression)) {
+                    LocalMessages.setLocale(expression);
+                    continue;// переходит исполнение кода на условие while. Начало следующего цикла итерации по циклу
+                }
 
                 if (expression.contains(PRINTVAR)) {
                     //набор соотношений

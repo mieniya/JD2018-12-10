@@ -74,8 +74,7 @@ class Parcer {
         if (res > -1)
             return res;
         else
-//            throw new CalcException("Неожиданное завершение вычислений"); //unexpectedCompletionOfCalculations
-        throw new CalcException(Localmessages.UNEXPECTEDCOMPLETIONOFCALCULATIONS); //unexpectedCompletionOfCalculations
+        throw new CalcException(LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get()); //unexpectedCompletionOfCalculations
 
     }
 
@@ -90,13 +89,9 @@ class Parcer {
 
         Var one = Var.createVar(strOne);
         if (one == null || two == null) {
-//            System.err.println("Операция " + operation + " невозможна");//action impossible
-            System.err.println(Localmessages.ACTION + operation + Localmessages.IMPOSSIBLE);//action impossible
+            System.err.println(LocalMessages.ACTION_SUPPLIER.get() + operation + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//action impossible
             return null;
         }
-//        Matcher matcher = oper.matcher(expression);
-//        if (matcher.find()) {
-//            String operation = matcher.group();
         switch (operation) {
             case "+":
                 return one.add(two).toString();
@@ -108,8 +103,7 @@ class Parcer {
                 return one.div(two).toString();
         }
 //        }
-//        throw new CalcException("Неожиданное завершение вычислений"); //unexpectedCompletionOfCalculations
-        throw new CalcException(Localmessages.UNEXPECTEDCOMPLETIONOFCALCULATIONS); //unexpectedCompletionOfCalculations
+        throw new CalcException(LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get()); //unexpectedCompletionOfCalculations
 
     }
 }
