@@ -32,10 +32,19 @@ class Scalar extends Var {
         if (other instanceof Scalar) {
             double res = this.value + ((Scalar) other).value;
             return new Scalar(res);
-        } else if ((other instanceof Vector)) {
-            throw new CalcException("Действие не реализовано");
-        } else if ((other instanceof Matrix)) {
-            throw new CalcException("Действие не реализовано");
+        } else if ((other instanceof Vector))
+//        {
+//            double[] res = Arrays.copyOf(((Scalar) other).getValue(),((Vector) other).getLenght());
+//            for (int i = 0; i < res.length; i++) {
+//                res[i] = this.value + res[i];
+//            }
+//            return new Vector(res);
+//        }
+        {
+            throw new CalcException("Действие не реализовано");//notRealized
+        }
+        else if ((other instanceof Matrix)) {
+            throw new CalcException("Действие не реализовано");//notRealized
         }
         return other.add(this);
         // other Vector or Matrix;
@@ -47,9 +56,9 @@ class Scalar extends Var {
             double res = this.value - ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector)) {
-            throw new CalcException("Действие не реализовано");
+            throw new CalcException("Действие не реализовано");//notRealized
         } else if ((other instanceof Matrix)) {
-            throw new CalcException("Действие не реализовано");
+            throw new CalcException("Действие не реализовано");//notRealized
         }
         Scalar minus = new Scalar(-1);
         return other.add(this.mul(minus));
@@ -60,7 +69,7 @@ class Scalar extends Var {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0)
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Деление на ноль");//zeroDivide
             double res = this.value / ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector)) {
@@ -78,9 +87,9 @@ class Scalar extends Var {
             double res = this.value * ((Scalar) other).value;
             return new Scalar(res);
         } else if ((other instanceof Vector)) {
-            throw new CalcException("Действие не реализовано");
+            throw new CalcException("Действие не реализовано");//notRealized
         } else if ((other instanceof Matrix)) {
-            throw new CalcException("Действие не реализовано");
+            throw new CalcException("Действие не реализовано");//notRealized
         }
         return other.mul(this);
         // other Vector or Matrix;

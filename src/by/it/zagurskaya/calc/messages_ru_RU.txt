@@ -1,0 +1,19 @@
+message.welcome=Привет!
+message.question=Как дела?
+user.name=Загурская Наталия
+message.notDefined=Переменная не определена
+message.addition=Сложение
+message.subtraction=Вычитание
+message.division=Деление
+message.multiplication=Умножение
+message.impossible=невозможно
+message.on=на
+message.notRealized=Действие не реализовано!
+message.zeroDivide=Деление на ноль!
+message.welcome=Действие не возможно!
+message.welcome=Привет!
+message.welcome=Привет!
+message.welcome=Привет!
+
+
+

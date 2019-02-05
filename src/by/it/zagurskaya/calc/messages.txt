@@ -1,0 +1,12 @@
+message.welcome=Welcome!
+message.question=How do You do?
+user.name=Zagurskay Natallia
+message.notDefined=Variable is not defined
+message.addition=Addition
+message.subtraction=Subtraction
+message.division=Division
+message.multiplication=Multiplication
+message.impossible=impossible
+message.on=on
+message.notRealized=Action is not realized!
+message.zeroDivide=Zero divide

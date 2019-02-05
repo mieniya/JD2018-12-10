@@ -11,6 +11,9 @@ public class Vector extends Var {
 //        return value;
         return Arrays.copyOf(this.value, this.value.length);
     }
+    public Integer getLenght() {
+        return  this.value.length;
+    }
 
     public Vector(double[] value) {
         this.value = Arrays.copyOf(value, value.length);

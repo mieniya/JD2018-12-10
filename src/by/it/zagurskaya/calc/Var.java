@@ -31,33 +31,33 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         if (vars.containsKey(operand))
                 return vars.get(operand);
-        throw new CalcException("Переменная не определена" + operand);
+        throw new CalcException("Переменная не определена" + operand);//notDefined
     }
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Сложение " + this + "на" + other + "невозможно");
+        throw new CalcException("Сложение " + this + "на" + other + "невозможно");//addition on impossible
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Вычитание " + this + "на" + other + "невозможно");
+        throw new CalcException("Вычитание " + this + "на" + other + "невозможно");//subtraction on impossible
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Деление " + this + "на" + other + "невозможно");
+        throw new CalcException("Деление " + this + "на" + other + "невозможно");//division on impossible
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Умножение " + this + "на" + other + "невозможно");
+        throw new CalcException("Умножение " + this + "на" + other + "невозможно"); //multiplication on impossible
     }
 
     @Override
     public String toString() {
         return "непонятная переменная";
-    }
+    }//notDefined
 
 
 }
