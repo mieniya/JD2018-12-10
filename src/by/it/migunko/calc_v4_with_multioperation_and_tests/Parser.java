@@ -88,10 +88,7 @@ public class Parser {
                 list.addLast(c);
             } else {
                 switch (c){
-                    case "]": {
-                        requared = "[";
-                        break;
-                    }
+
                     case "}": {
                         requared = "{";
                         break;
