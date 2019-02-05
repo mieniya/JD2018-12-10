@@ -39,7 +39,7 @@ public abstract class Var implements Operation {
         if (operand.matches(Patterns.MATRIX)) return new Matrix(operand);
         if (remember.containsKey(operand)) return remember.get(operand);
         //TODO Replace on errors
-        throw new CalcException("Переменная " + operand + " неопределена.");
+        throw new CalcException(ResMan.INSTANCE.getError(Errors.UNDEFINED) + operand);
     }
 
     public static void loadVarFromFile() {
@@ -81,22 +81,22 @@ public abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Сложение " + this + " на " + other + " невозможно.");
+        throw new CalcException(ResMan.INSTANCE.getError(Errors.ADD));
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Вычитание " + this + " на " + other + " невозможно.");
+        throw new CalcException(ResMan.INSTANCE.getError(Errors.SUBTRACTION));
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Умножение " + this + " на " + other + " невозможно.");
+        throw new CalcException(ResMan.INSTANCE.getError(Errors.MULTIPLICATION));
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Деление " + this + " на " + other + " невозможно.");
+        throw new CalcException(ResMan.INSTANCE.getError(Errors.DEVISION));
     }
 
 }

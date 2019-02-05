@@ -1,4 +1,4 @@
-package by.it.moroz.jd02_05;
+package by.it.moroz.calc;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -7,11 +7,11 @@ public enum ResMan {
 
     INSTANCE;
 
-    private final String MESSAGE="by.it.moroz.jd02_05.messages.messages";
-    private final String DATE = "by.it.moroz.jd02_05.date.date";
+    private final String ERROR="by.it.moroz.calc.errors.error";
+    private final String MESSAGE = "by.it.moroz.calc.messages.message";
     private Locale locale;
+    private ResourceBundle Error;
     private ResourceBundle Message;
-    private ResourceBundle Date;
 
     ResMan() {
         setLocale(Locale.getDefault());
@@ -19,8 +19,8 @@ public enum ResMan {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
-        Message=ResourceBundle.getBundle(MESSAGE,locale);
-        Date = ResourceBundle.getBundle(DATE,locale);
+        Error=ResourceBundle.getBundle(ERROR,locale);
+        Message=ResourceBundle.getBundle(MESSAGE, locale);
     }
 
     public void setLocale(String language) {
@@ -31,11 +31,10 @@ public enum ResMan {
         setLocale(new Locale(language,country));
     }
 
-    public String getMessage(String key){
-        return Message.getString(key);
+    public String getError(String key){
+        return Error.getString(key);
     }
 
-    public String getDate(String key){
-        return Date.getString(key);
-    }
+    public String getMessage(String key) {return Message.getString(key);}
+
 }
