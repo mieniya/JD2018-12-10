@@ -11,59 +11,25 @@ class Cashier extends Thread implements Runnable {
         name = "Cashier №" + number;
     }
 
-    Cashier getMonitor() {
-        return this;
+    public static Object getMonitor(){
+        return MONITOR;
     }
+
 
     @Override
     public void run() {
-        System.out.println(this + " opened");
-        Dispatcher.waitingCashiers.addFirst(this);
-        synchronized (this) {
-            try {
-                System.out.println(this + " go to sleep");
-//                System.out.println(Dispatcher.waitingCashiers.toString());
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-//            System.out.println(this + " go to work");
-            Util.sleep(1000);
-        }
+        System.out.println(this + " open");
+
         while (!Dispatcher.planComplete()) {
-
-
-//            while (cashiersNeeded < Dispatcher.cashiersOnDuty) {
-//                synchronized (this) {
-//                    try {
-//                        this.wait();
-//                        System.out.println(this + " wait");
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-
             Buyer buyer = DequeBuyer.poll();
             if (buyer != null) {
-                int cashiersNeeded = getCashiersNeeded(DequeBuyer.getQueueSize());
-
-                if (Dispatcher.cashiersOnDuty < cashiersNeeded) {
-                    while (cashiersNeeded != Dispatcher.cashiersOnDuty) {
-                        synchronized (this) {
-                            this.notify();
-                        }
-                    }
-
-                    Util.sleep(1000);
-                }
-                System.out.println(DequeBuyer.getQueueSize());
+//                System.out.println(DequeBuyer.getQueueSize());
                 System.out.println(this + " service " + buyer);
-                int timeout = Util.getRandom(3000, 4000);        //500, 2000 по-умолчанию
-                Util.sleep(timeout);
+//                int timeout = Util.getRandom(500, 2000);        //500, 2000 по-умолчанию
+//                Util.sleep(timeout);
                 synchronized (buyer.getMonitor()) {
-                    buyer.notify();
-                    Util.sleep(1);
+                    buyer.iWait = false;
+                    buyer.getMonitor().notify();
                 }
             } else {
                 Util.sleep(1);
