@@ -32,6 +32,21 @@ public class Test_jd02_04 {
         assertEquals("Error test","{10.0, 15.0}",actual);
     }
 
+    @Test
+    public void operationsWithScalars() throws Exception{
+        Parser parser = new Parser();
+        String result = parser.calc("2.0+2.0");
+        assertEquals("Ошика сложения скаляров","4.0", result);
+
+        result = parser.calc("8.0-6.0");
+        assertEquals("Ошика вычетания скаляров","2.0", result);
+
+        result = parser.calc("1.0*5.0");
+        assertEquals("Ошика умножения скаляров","5.0", result);
+
+        result = parser.calc("8.0/4.0");
+        assertEquals("Ошика деления скаляров","2.0", result);
+    }
 
     @Test
     public void operationsWithVectors() throws Exception{
@@ -52,12 +67,11 @@ public class Test_jd02_04 {
         assertEquals("Ошика умножения вектора на скаляр","{10.0, 20.0, 25.0}", result);
     }
 
-
     @Test
     public void createVars(){
-        Var scalar = Var.createVar("-8");
+        Var scalar = Var.createVar("3");
         Var vector = Var.createVar("{1,2,3}");
-        assertEquals("Ошика создания/вывода скаляра","-8.0", scalar.toString());
+        assertEquals("Ошика создания/вывода скаляра","3.0", scalar.toString());
         assertEquals("Ошика создания/вывода вектора","{1.0, 2.0, 3.0}", vector.toString());
 
     }
