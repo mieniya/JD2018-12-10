@@ -74,7 +74,9 @@ class Parcer {
         if (res > -1)
             return res;
         else
-            throw new CalcException("Неожиданное завершение вычислений");
+//            throw new CalcException("Неожиданное завершение вычислений"); //unexpectedCompletionOfCalculations
+        throw new CalcException(Localmessages.UNEXPECTEDCOMPLETIONOFCALCULATIONS); //unexpectedCompletionOfCalculations
+
     }
 
     private String oneOperation(String strOne, String operation, String strTwo) throws CalcException {
@@ -88,7 +90,8 @@ class Parcer {
 
         Var one = Var.createVar(strOne);
         if (one == null || two == null) {
-            System.err.println("Операция " + operation + " невозможна");
+//            System.err.println("Операция " + operation + " невозможна");//action impossible
+            System.err.println(Localmessages.ACTION + operation + Localmessages.IMPOSSIBLE);//action impossible
             return null;
         }
 //        Matcher matcher = oper.matcher(expression);
@@ -105,6 +108,8 @@ class Parcer {
                 return one.div(two).toString();
         }
 //        }
-        throw new CalcException("Неожиданное завершение вычислений");
+//        throw new CalcException("Неожиданное завершение вычислений"); //unexpectedCompletionOfCalculations
+        throw new CalcException(Localmessages.UNEXPECTEDCOMPLETIONOFCALCULATIONS); //unexpectedCompletionOfCalculations
+
     }
 }

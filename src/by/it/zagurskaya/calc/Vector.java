@@ -52,7 +52,7 @@ public class Vector extends Var {
                 return new Vector(res);
             }
         } else if ((other instanceof Matrix)) {
-            throw new CalcException("Сложение не возможно");
+            throw new CalcException("Сложение не возможно");//addition impossible
         }
         return super.add(other);
     }
@@ -75,7 +75,8 @@ public class Vector extends Var {
                 return new Vector(res);
             }
         } else if ((other instanceof Matrix)) {
-            throw new CalcException("Вычитание не возможно");
+//            throw new CalcException("Вычитание не возможно");//subtraction impossible
+            throw new CalcException(Localmessages.SUBTRACTION+Localmessages.IMPOSSIBLE);//subtraction impossible
         }
         return super.sub(other);
     }
@@ -98,7 +99,8 @@ public class Vector extends Var {
                 return new Scalar(vectorMultVector);
             }
         } else if ((other instanceof Matrix)) {
-            throw new CalcException("Умножение не возможно");
+//            throw new CalcException("Умножение не возможно");//multiplication impossible
+            throw new CalcException(Localmessages.MULTIPLICATION + Localmessages.IMPOSSIBLE);//multiplication impossible
         }
         return super.mul(other);
     }
@@ -112,9 +114,12 @@ public class Vector extends Var {
             }
             return new Vector(res);
         } else if ((other instanceof Vector)) {
-            throw new CalcException("Деление не возможно");
+//            throw new CalcException("Деление не возможно"); //division impossible
+            throw new CalcException(Localmessages.DIVISION + Localmessages.IMPOSSIBLE); //division impossible
+
         } else if ((other instanceof Matrix)) {
-            throw new CalcException("Деление не возможно");
+//            throw new CalcException("Деление не возможно");//division impossible
+            throw new CalcException(Localmessages.DIVISION + Localmessages.IMPOSSIBLE);//division impossible
         }
         return super.div(other);
     }

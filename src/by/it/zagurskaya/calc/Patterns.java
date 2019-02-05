@@ -12,10 +12,6 @@ class Patterns {
     static final String MATRIX = "\\{(" + VECTOR + ",?\\s?)+}";
     static final String OPERATION = "(?<=[^*/])[-+*/=]";
 //    static final String OPERATION = "[+=*/-]";
-
-//    static final Pattern p = Pattern.compile("[+=*/-]");
-
-//    static final String OPERATION = "(?<=[^-+*/={, ])[-+*/=](?=>[^-+*/={, ])";
 //    static final String OPERATION = "(?<=[^-+*/={(), ])[-+*/=]";
 
 

@@ -1,5 +1,6 @@
 package by.it.zagurskaya.calc;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -11,6 +12,12 @@ public class ConsoleRunner {
 
     public static void main(String[] args) throws CalcException {
 //        public static void main(String[] args) throws CalcException {
+        if (args.length == 0) {
+            Locale currentLocale = Locale.getDefault();
+            args = new String[]{currentLocale.getLanguage(),currentLocale.getCountry() };
+        }
+//        args = new String[]{"ru", "RU"};
+//        args = new String[]{"", ""};
         String expression;
         Scanner scanner = new Scanner(System.in);
         Parcer parcer = new Parcer();
