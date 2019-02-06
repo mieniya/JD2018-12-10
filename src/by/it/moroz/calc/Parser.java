@@ -73,7 +73,7 @@ class Parser {
 
         Var one = Var.createVar(strOne);
         if (one == null || two == null) {
-            System.err.println("Операция "+strOne + operation + strTwo +" невозможна.");
+            System.err.println(ResMan.INSTANCE.getError(Errors.IMPOSSIBLE));
             return null;
         }
         switch (operation) {
@@ -106,7 +106,7 @@ class Parser {
         if (res>-1)
             return res;
         else
-            throw new CalcException("Неожиданное завершение вычислений");
+            throw new CalcException(ResMan.INSTANCE.getError(Errors.UNEXPECTED));
     }
 
 
