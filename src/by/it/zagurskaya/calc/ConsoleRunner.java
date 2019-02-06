@@ -1,6 +1,5 @@
 package by.it.zagurskaya.calc;
 
-import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,6 +17,12 @@ public class ConsoleRunner {
 //        }
 //        args = new String[]{"ru", "RU"};
 //        args = new String[]{"", ""};
+
+        /////???а сдесь не ругается?????
+
+        Logger logger=Logger.getLogger();
+        logger.log("message 1");
+
         String expression;
         Scanner scanner = new Scanner(System.in);
         Parcer parcer = new Parcer();

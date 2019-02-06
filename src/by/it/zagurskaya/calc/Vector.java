@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Vector extends Var {
     private double[] value;
+    private Logger logger=Logger.getLogger();
 
     public double[] getValue() {
         //double[]value = Arrays.copyOf(this.value,this.value.length);
@@ -41,7 +42,7 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = ((Scalar) other).getValue() + res[i];
             }
-            return new Vector(res);
+            return Var.createVar(res.toString());//new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] res = Arrays.copyOf(this.value, this.value.length);
@@ -49,10 +50,11 @@ public class Vector extends Var {
                     // double b=res[i];
                     res[i] += ((Vector) other).value[i];
                 }
-                return new Vector(res);
+                return createVar(res.toString());//new Vector(res);
             }
         } else if ((other instanceof Matrix)) {
             throw new CalcException(LocalMessages.ADDITION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//addition impossible
+//            logger.log("message 1");
         }
         return super.add(other);
     }
@@ -64,7 +66,7 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] - ((Scalar) other).getValue();
             }
-            return new Vector(res);
+            return createVar(res.toString());//new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] res = Arrays.copyOf(this.value, this.value.length);
@@ -72,7 +74,7 @@ public class Vector extends Var {
                     // double b=res[i];
                     res[i] -= ((Vector) other).value[i];
                 }
-                return new Vector(res);
+                return createVar(res.toString());//new Vector(res);
             }
         } else if ((other instanceof Matrix)) {
             throw new CalcException(LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//subtraction impossible
@@ -87,7 +89,7 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] * ((Scalar) other).getValue();
             }
-            return new Vector(res);
+            return createVar(res.toString());//new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] res = Arrays.copyOf(this.value, this.value.length);

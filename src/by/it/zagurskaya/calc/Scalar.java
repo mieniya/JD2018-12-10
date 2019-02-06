@@ -31,7 +31,7 @@ class Scalar extends Var {
     public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value + ((Scalar) other).value;
-            return new Scalar(res);
+            return Var.createVar(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector))
         {
             throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
@@ -48,7 +48,8 @@ class Scalar extends Var {
     public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value - ((Scalar) other).value;
-            return new Scalar(res);
+//            return new Scalar(res);
+            return Var.createVar(Double.toString(res));
         } else if ((other instanceof Vector)) {
             throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
@@ -56,6 +57,7 @@ class Scalar extends Var {
             throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
         }
         Scalar minus = new Scalar(-1);
+//        Scalar minus = Var.createVar(Double.toString(-1));
         return other.add(this.mul(minus));
     }
 
@@ -65,7 +67,7 @@ class Scalar extends Var {
             if (((Scalar) other).value == 0)
                 throw new CalcException(LocalMessages.ZERO_DIVIDE_SUPPLIER.get());//zeroDivide
             double res = this.value / ((Scalar) other).value;
-            return new Scalar(res);
+            return Var.createVar(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector)) {
             throw new CalcException(LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get());//actionNotImpossible
 
@@ -79,7 +81,7 @@ class Scalar extends Var {
     public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value * ((Scalar) other).value;
-            return new Scalar(res);
+            return Var.createVar(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector)) {
             throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
 
