@@ -1,4 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
+
+import by.it.titkovskaya.calc.localization.strings.Programme;
 
 import java.io.*;
 import java.util.HashMap;
@@ -10,7 +12,7 @@ abstract class Var implements Operation {
     private static Map<String, Var> vars = new HashMap<>();
 
     private static String varsFile = System.getProperty("user.dir") + ""
-            + "/src/by/it/titkovskaya/Calc/"
+            + "/src/by/it/titkovskaya/calc/"
             + "vars.txt";
 
     static Var createVar(String operand) throws CalcException {
@@ -23,7 +25,8 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand))
             return vars.get(operand);
-        throw new CalcException("Переменная " + operand + " не определена");
+        throw new CalcException(ResMan.INSTANCE.get(Programme.VARIABLE) + " " + operand + " "
+                + ResMan.INSTANCE.get(Programme.NOT_DEFINED));
     }
 
     static void saveVar(String nameVar, Var value) {
@@ -73,27 +76,31 @@ abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Сложение " + this + " и " + other + " невозможно");
+        throw new CalcException(ResMan.INSTANCE.get(Programme.ADD) + " " + this + " "
+                + ResMan.INSTANCE.get(Programme.AND) + " " + other + " " + ResMan.INSTANCE.get(Programme.IMPOSSIBLE));
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Вычитание " + this + " и " + other + " невозможно");
+        throw new CalcException(ResMan.INSTANCE.get(Programme.SUB) + " " + this + " "
+                + ResMan.INSTANCE.get(Programme.OF) + " " + other + " " + ResMan.INSTANCE.get(Programme.IMPOSSIBLE));
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Умножение " + this + " на " + other + " невозможно");
+        throw new CalcException(ResMan.INSTANCE.get(Programme.MUL) + " " + this + " "
+                + ResMan.INSTANCE.get(Programme.BY) + " " + other + " " + ResMan.INSTANCE.get(Programme.IMPOSSIBLE));
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Деление " + this + " на " + other + " невозможно");
+        throw new CalcException(ResMan.INSTANCE.get(Programme.DIV) + " " + this + " "
+                + ResMan.INSTANCE.get(Programme.BY) + " " + other + " " + ResMan.INSTANCE.get(Programme.IMPOSSIBLE));
     }
 
     @Override
     public String toString() {
-        return "Какая-то непонятная переменная";
+        return ResMan.INSTANCE.get(Programme.ERROR_UNEXPECTED_RESULT);
     }
 
 }

@@ -1,4 +1,4 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ class Log {
     private static LinkedList<String> logList = new LinkedList<>();
 
     private static String filename = System.getProperty("user.dir")+""+
-            "/src/by/it/titkovskaya/Calc/"+
+            "/src/by/it/titkovskaya/calc/"+
             "log.txt";
 
     private Log(){

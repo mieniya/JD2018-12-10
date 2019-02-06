@@ -1,4 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
+
+import by.it.titkovskaya.calc.localization.strings.Programme;
 
 public class Scalar extends Var {
 
@@ -53,7 +55,7 @@ public class Scalar extends Var {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0)
-                throw new CalcException("Деление на ноль невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_DIV_ZERO));
             double result = this.value / ((Scalar) other).value;
             return new Scalar(result);
         }

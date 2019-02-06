@@ -1,4 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
+
+import by.it.titkovskaya.calc.localization.strings.Programme;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -92,7 +94,7 @@ class Parser {
         if (index > -1)
             return index;
         else
-            throw new CalcException("Неожиданное завершение вычислений");
+            throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_UNEXPECTED_RESULT));
     }
 
     private String oneOperation(String operandOne, String operationToDo, String operandTwo) throws CalcException {
@@ -104,7 +106,8 @@ class Parser {
 
         Var one = Var.createVar(operandOne);
         if (one == null || two == null) {
-            System.err.println("Операция " + operationToDo + " невозможна");
+            System.err.println(ResMan.INSTANCE.get(Programme.OPERATION) + " " + operationToDo + " "
+                    + ResMan.INSTANCE.get(Programme.IMPOSSIBLE));
             return null;
         }
         switch (operationToDo) {
@@ -117,7 +120,7 @@ class Parser {
             case "/":
                 return one.div(two).toString();
         }
-        throw new CalcException("Неожиданное завершение вычислений");
+        throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_UNEXPECTED_RESULT));
     }
 
 }

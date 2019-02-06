@@ -1,8 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
 
 import org.junit.Test;
-
-import java.lang.reflect.Constructor;
 
 import static org.junit.Assert.assertEquals;
 

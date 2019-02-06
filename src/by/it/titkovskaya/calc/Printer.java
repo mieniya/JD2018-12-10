@@ -1,4 +1,4 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
 
 class Printer {
     public void print(String result) {

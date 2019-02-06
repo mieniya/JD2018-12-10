@@ -1,4 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
+
+import by.it.titkovskaya.calc.localization.strings.Programme;
 
 import java.util.Arrays;
 
@@ -38,7 +40,7 @@ public class Vector extends Var {
             return new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length != ((Vector) other).value.length)
-                throw new CalcException("Сложение векторов разной длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_VECTOR_ADD));
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] += ((Vector) other).value[i];
@@ -58,7 +60,7 @@ public class Vector extends Var {
             return new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length != ((Vector) other).value.length)
-                throw new CalcException("Вычитание векторов разной длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_VECTOR_SUB));
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] -= ((Vector) other).value[i];
@@ -78,7 +80,7 @@ public class Vector extends Var {
             return new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length != ((Vector) other).value.length) {
-                throw new CalcException("Умножение векторов разной длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_VECTOR_MUL));
             }
             double[] res = Arrays.copyOf(this.value, this.value.length);
             double mulResult = 0;
@@ -95,7 +97,7 @@ public class Vector extends Var {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).getValue()==0)
-                throw new CalcException("Деление на ноль невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_DIV_ZERO));
             double[] res = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] /= ((Scalar) other).getValue();

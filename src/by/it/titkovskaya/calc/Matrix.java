@@ -1,4 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
+
+import by.it.titkovskaya.calc.localization.strings.Programme;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,7 +50,7 @@ public class Matrix extends Var {
             return new Matrix(res);
         } else if (other instanceof Matrix) {
             if (this.value.length != ((Matrix) other).value.length || this.value[0].length != ((Matrix) other).value[0].length) {
-                throw new CalcException("Сложение матриц разной длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_MATRIX_ADD));
             }
             double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
@@ -73,7 +75,7 @@ public class Matrix extends Var {
             return new Matrix(res);
         } else if (other instanceof Matrix) {
             if (this.value.length != ((Matrix) other).value.length || this.value[0].length != ((Matrix) other).value[0].length) {
-                throw new CalcException("Вычитание матриц разной длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_MATRIX_SUB));
             }
             double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
@@ -98,7 +100,7 @@ public class Matrix extends Var {
             return new Matrix(res);
         } else if (other instanceof Vector) {
             if (this.value[0].length != ((Vector) other).getValue().length) {
-                throw new CalcException("Умножение матрицы на вектор несоответствующей длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_MATRIX_MUL_VECTOR));
             }
             double[] res = new double[((Vector) other).getValue().length];
             for (int i = 0; i < res.length; i++) {
@@ -109,7 +111,7 @@ public class Matrix extends Var {
             return new Vector(res);
         } else if (other instanceof Matrix) {
             if (this.value.length != ((Matrix) other).value.length || this.value[0].length != ((Matrix) other).value[0].length) {
-                throw new CalcException("Умножение матрицы на матрицу несоответствующей длины невозможно");
+                throw new CalcException(ResMan.INSTANCE.get(Programme.ERROR_MATRIX_MUL));
             }
             double[][] res = new double[value.length][((Matrix) other).value[0].length];
             for (int i = 0; i < value.length; i++) {

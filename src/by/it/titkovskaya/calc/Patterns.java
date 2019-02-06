@@ -1,4 +1,4 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
 
 class Patterns {
 
