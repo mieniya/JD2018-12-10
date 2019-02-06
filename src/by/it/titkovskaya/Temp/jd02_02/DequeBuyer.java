@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_02_2.jd02_02;
+package by.it.titkovskaya.Temp.jd02_02;
 
 import java.util.Deque;
 import java.util.LinkedList;
