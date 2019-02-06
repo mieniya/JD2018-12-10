@@ -21,13 +21,12 @@ public class ConsoleRunner {
         /////???а сдесь не ругается?????
 
         Logger logger=Logger.getLogger();
-        logger.log("message 1");
-
         String expression;
         Scanner scanner = new Scanner(System.in);
         Parcer parcer = new Parcer();
         Printer printer = new Printer();
         while (!(expression = scanner.nextLine()).equals(END)) {
+            logger.log(expression);
             try {
                 if (LocalMessages.getSupportedLanguages().contains(expression)) {
                     LocalMessages.setLocale(expression);
@@ -36,7 +35,7 @@ public class ConsoleRunner {
 
                 if (expression.contains(PRINTVAR)) {
                     //набор соотношений
-                    Map<String, Var> varMap = Var.getVars();
+                    Map<String, Var> varMap = VarCreator.getInstance().getVars();
                     // итерирование по набору(коллекции) отношений(соотношение) клю-значение из Map
                     for (Map.Entry<String, Var> varEntry : varMap.entrySet()) {
                         System.out.print(varEntry.getKey() + "=");

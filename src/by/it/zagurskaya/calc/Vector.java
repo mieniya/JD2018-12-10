@@ -1,38 +1,28 @@
 package by.it.zagurskaya.calc;
 
-
 import java.util.Arrays;
 
 public class Vector extends Var {
+
     private double[] value;
-    private Logger logger=Logger.getLogger();
 
-    public double[] getValue() {
-        //double[]value = Arrays.copyOf(this.value,this.value.length);
-//        return value;
-        return Arrays.copyOf(this.value, this.value.length);
-    }
-    public Integer getLenght() {
-        return  this.value.length;
-    }
-
-    public Vector(double[] value) {
-        this.value = Arrays.copyOf(value, value.length);
-//        System.arraycopy(value, 0, this.value, 0, value.length);
-    }
-
-    public Vector(Vector otherVector) {
-        this.value = new double[otherVector.value.length];
-        System.arraycopy(otherVector.value, 0, value, 0, value.length);
-    }
-
+    public static final VarCreator varCreator = VarCreator.getInstance();
 
     public Vector(String strVector) {
+        logger.log("");
         String[] strings = strVector.replace("{", "").replace("}", "").split(",");
         this.value = new double[strings.length];
         for (int i = 0; i < value.length; i++) {
             this.value[i] = Double.parseDouble(strings[i]);
         }
+    }
+
+    public double[] getValue() {
+        return Arrays.copyOf(this.value, this.value.length);
+    }
+
+    public Integer getLenght() {
+        return this.value.length;
     }
 
     @Override
@@ -42,7 +32,7 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = ((Scalar) other).getValue() + res[i];
             }
-            return Var.createVar(res.toString());//new Vector(res);
+            return varCreator.create(varCreator.toString(res));//new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] res = Arrays.copyOf(this.value, this.value.length);
@@ -50,11 +40,12 @@ public class Vector extends Var {
                     // double b=res[i];
                     res[i] += ((Vector) other).value[i];
                 }
-                return createVar(res.toString());//new Vector(res);
+                return varCreator.create(varCreator.toString(res));//new Vector(res);
             }
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.ADDITION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//addition impossible
-//            logger.log("message 1");
+            String message = LocalMessages.ADDITION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            logger.log(message);
+            throw new CalcException(message);//addition impossible
         }
         return super.add(other);
     }
@@ -66,18 +57,19 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] - ((Scalar) other).getValue();
             }
-            return createVar(res.toString());//new Vector(res);
+            return varCreator.create(varCreator.toString(res));//new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] res = Arrays.copyOf(this.value, this.value.length);
                 for (int i = 0; i < res.length; i++) {
-                    // double b=res[i];
                     res[i] -= ((Vector) other).value[i];
                 }
-                return createVar(res.toString());//new Vector(res);
+                return varCreator.create(varCreator.toString(res));//new Vector(res);
             }
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//subtraction impossible
+            String message = LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            logger.log(message);
+            throw new CalcException(message);//subtraction impossible
         }
         return super.sub(other);
     }
@@ -89,7 +81,7 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] * ((Scalar) other).getValue();
             }
-            return createVar(res.toString());//new Vector(res);
+            return varCreator.create(varCreator.toString(res));//new Vector(res);
         } else if (other instanceof Vector) {
             if (this.value.length == ((Vector) other).value.length) {
                 double[] res = Arrays.copyOf(this.value, this.value.length);
@@ -97,10 +89,12 @@ public class Vector extends Var {
                 for (int i = 0; i < res.length; i++) {
                     vectorMultVector += ((Vector) other).value[i] * res[i];
                 }
-                return new Scalar(vectorMultVector);
-            }
+                return varCreator.create(String.valueOf(vectorMultVector));//new Vector(res);
+        }
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.MULTIPLICATION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//multiplication impossible
+            String massage = LocalMessages.MULTIPLICATION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//multiplication impossible
         }
         return super.mul(other);
     }
@@ -112,13 +106,16 @@ public class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] / ((Scalar) other).getValue();
             }
-            return new Vector(res);
+            return varCreator.create(varCreator.toString(res));//new Vector(res);
         } else if ((other instanceof Vector)) {
-//            throw new CalcException("Деление не возможно"); //division impossible
-            throw new CalcException(LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get()); //division impossible
+            String massage = LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage); //division impossible
 
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//division impossible
+            String massage = LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//division impossible
         }
         return super.div(other);
     }

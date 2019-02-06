@@ -11,27 +11,18 @@ class Scalar extends Var {
 
     private double value;
 
-    public double getValue() {
-        return value;
-    }
-
-    Scalar(double value) {
-        this.value = value;
-    }
-
-    Scalar(Scalar otherScalar) {
-        value = otherScalar.value;
-    }
-
     Scalar(String strValue) {
         value = Double.parseDouble(strValue);
     }
 
+    public double getValue() {
+        return value;
+    }
     @Override
     public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value + ((Scalar) other).value;
-            return Var.createVar(Double.toString(res));//new Scalar(res);
+            return VarCreator.getInstance().create(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector))
         {
             throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
@@ -49,30 +40,40 @@ class Scalar extends Var {
         if (other instanceof Scalar) {
             double res = this.value - ((Scalar) other).value;
 //            return new Scalar(res);
-            return Var.createVar(Double.toString(res));
+            return VarCreator.getInstance().create(Double.toString(res));
         } else if ((other instanceof Vector)) {
-            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
+            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//notRealized
 
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
+            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//notRealized
         }
-        Scalar minus = new Scalar(-1);
-//        Scalar minus = Var.createVar(Double.toString(-1));
+        Var minus = VarCreator.getInstance().create(Double.toString(-1));
         return other.add(this.mul(minus));
     }
 
     @Override
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
-            if (((Scalar) other).value == 0)
-                throw new CalcException(LocalMessages.ZERO_DIVIDE_SUPPLIER.get());//zeroDivide
+            if (((Scalar) other).value == 0){
+                String massage = LocalMessages.ZERO_DIVIDE_SUPPLIER.get();
+                logger.log(massage);
+                throw new CalcException(massage);//zeroDivide
+                }
             double res = this.value / ((Scalar) other).value;
-            return Var.createVar(Double.toString(res));//new Scalar(res);
+            return VarCreator.getInstance().create(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector)) {
-            throw new CalcException(LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get());//actionNotImpossible
+            String massage = LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//actionNotImpossible
 
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get());//actionNotImpossible
+            String massage = LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//actionNotImpossible
         }
         return super.div(other);
     }
@@ -81,12 +82,16 @@ class Scalar extends Var {
     public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double res = this.value * ((Scalar) other).value;
-            return Var.createVar(Double.toString(res));//new Scalar(res);
+            return VarCreator.getInstance().create(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector)) {
-            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
+            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//notRealized
 
         } else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
+            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            logger.log(massage);
+            throw new CalcException(massage);//notRealized
 
         }
         return other.mul(this);
