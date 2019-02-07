@@ -1,4 +1,6 @@
-package by.it.titkovskaya.Calc;
+package by.it.titkovskaya.calc;
+
+import by.it.titkovskaya.calc.internationalization.strings.Programme;
 
 public class CalcException extends Exception {
 
@@ -7,12 +9,12 @@ public class CalcException extends Exception {
     }
 
     public CalcException(String message) {
-        super("ERROR: " + message);
-        System.out.println("ERROR: " + message);
+        super(ResMan.INSTANCE.get(Programme.ERROR) + " " + message);
+        System.out.println(ResMan.INSTANCE.get(Programme.ERROR) + " " + message);
     }
 
     public CalcException(String message, Throwable cause) {
-        super("ERROR: " + message, cause);
+        super(ResMan.INSTANCE.get(Programme.ERROR) + " " + message, cause);
     }
 
     public CalcException(Throwable cause) {
