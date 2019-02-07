@@ -12,17 +12,18 @@ public class ConsoleRunner {
         Scanner scanner = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
+        Variables variables = Variables.getVariables();
 
-        Var.loadVarFromFile();
+        variables.loadVarFromFile();
 
         while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
             String result;
             if (input.equalsIgnoreCase("printvar")) {
                 System.out.println(resMan.getMessage(Message.PRINT));
-                Var.printVar();
+                variables.printVar();
             } else if (input.equalsIgnoreCase("sortvar")) {
                 System.out.println(resMan.getMessage(Message.SORT));
-                Var.sortVar();
+                variables.sortVar();
             } else if (input.equalsIgnoreCase("ru")) resMan.setLocale("ru", "RU");
             else if(input.equalsIgnoreCase("be")) resMan.setLocale("be", "BY");
             else if(input.equalsIgnoreCase("en")) resMan.setLocale(Locale.getDefault());
@@ -34,6 +35,6 @@ public class ConsoleRunner {
                 printer.showError(calcException);
             }
         }
-        Var.saveVarToFile();
+        variables.saveVarToFile();
     }
 }

@@ -9,6 +9,9 @@ import java.util.regex.Pattern;
 
 class Parser {
 
+    private VarFactory varFactory = new VarFactory();
+    private Variables variables=Variables.getVariables();
+
     private static  final Map<String, Integer> priority = new HashMap<String, Integer>(){
         {
             this.put("=",0);
@@ -57,21 +60,21 @@ class Parser {
                 operands.add(indexOperation, result);
             }
         }
-        Var result = Var.createVar(operands.get(0));
+        Var result = varFactory.createVar(operands.get(0));
         //вернем строку а не Var, так сказано в задании
         return result.toString();
     }
 
     private String oneOperation(String strOne, String operation, String strTwo) throws CalcException {
         //обработка одной комнады
-        Var two = Var.createVar(strTwo);
+        Var two = varFactory.createVar(strTwo);
         assert operation != null;
         if (operation.equals("=")) {
-            Var.saveVar(strOne, two);
+            variables.saveVar(strOne, two);
             return two.toString();
         }
 
-        Var one = Var.createVar(strOne);
+        Var one = varFactory.createVar(strOne);
         if (one == null || two == null) {
             System.err.println(ResMan.INSTANCE.getError(Errors.IMPOSSIBLE));
             return null;
