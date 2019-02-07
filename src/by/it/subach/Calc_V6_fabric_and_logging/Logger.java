@@ -3,10 +3,6 @@ package by.it.subach.Calc_V6_fabric_and_logging;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Logger {
 
@@ -29,9 +25,6 @@ public class Logger {
     }
 
     public void log(String text) {
-        Date date = new Date();
-        DateFormat df = SimpleDateFormat.getDateTimeInstance(2, 2);
-        String message = String.format("%s %s\n", df.format(date), text);
         synchronized (Logger.class) {
 
             try (
@@ -41,7 +34,7 @@ public class Logger {
                             )
             ) {
 
-                out.write(message);
+                out.write(text + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
