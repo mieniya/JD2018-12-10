@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 class Parser {
 
-    private static  final HashMap<String, Integer> priority = new HashMap<>(){
+    private static  final HashMap<String, Integer> priority = new HashMap<String, Integer>(){
         {
             this.put("=",0);
             this.put("+",1);

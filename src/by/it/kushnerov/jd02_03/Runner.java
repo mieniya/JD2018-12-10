@@ -1,4 +1,4 @@
-package by.it.kushnerov.jd02_02;
+package by.it.kushnerov.jd02_03;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,7 @@ public class Runner {
     private static List<Thread> threads = new ArrayList<>();
 
     public static void main(String[] args) {
-        Goods.setGoods();
-
+        //for (int k = 0; k < 1000; k++) {
         System.out.println("Market opened");
         int number = 0;
         for (int i = 1; i <= 2; i++) {
@@ -36,5 +35,6 @@ public class Runner {
         }
         System.out.println("Market closed");
 
+        // }
     }
 }

@@ -1,5 +1,4 @@
-package by.it.kushnerov.jd02_02;
-
+package by.it.kushnerov.jd02_03;
 
 class Cashier implements Runnable {
 
