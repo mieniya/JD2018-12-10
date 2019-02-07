@@ -5,7 +5,7 @@ import java.util.Deque;
 
 class Dispatcher {
 
-    static final int K_SPEED = 1;
+    static final int K_SPEED = 10;
     static volatile int counterBuyerInShop = 0;
     private static volatile int counterBuyerComplete = 0;
     private static final Object MON = new Object();
@@ -15,8 +15,6 @@ class Dispatcher {
 
     static Deque<Cashier> workingCashiers = new ArrayDeque<>();
     static Deque<Cashier> waitingCashiers = new ArrayDeque<>();
-
-
 
 
     static void newBuyer() {

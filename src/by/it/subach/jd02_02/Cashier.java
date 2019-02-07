@@ -11,33 +11,25 @@ class Cashier extends Thread implements Runnable {
         name = "Cashier №" + number;
     }
 
-    Cashier getMonitor() {
-        return this;
+    public static Object getMonitor(){
+        return MONITOR;
     }
+
 
     @Override
     public void run() {
-        System.out.println(this + " opened");
-        synchronized (this) {
-            try {
-                System.out.println(this + " go to sleep");
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-//            System.out.println(this + " go to work");
-            Util.sleep(1000);
-        }
+        System.out.println(this + " open");
+
         while (!Dispatcher.planComplete()) {
             Buyer buyer = DequeBuyer.poll();
             if (buyer != null) {
-                System.out.println(DequeBuyer.getQueueSize());
+//                System.out.println(DequeBuyer.getQueueSize());
                 System.out.println(this + " service " + buyer);
-                int timeout = Util.getRandom(3000, 4000);        //500, 2000 по-умолчанию
-                Util.sleep(timeout);
+//                int timeout = Util.getRandom(500, 2000);        //500, 2000 по-умолчанию
+//                Util.sleep(timeout);
                 synchronized (buyer.getMonitor()) {
-                    buyer.notify();
-                    Util.sleep(1);
+                    buyer.iWait = false;
+                    buyer.getMonitor().notify();
                 }
             } else {
                 Util.sleep(1);
@@ -67,42 +59,54 @@ class Cashier extends Thread implements Runnable {
 
     }
 
+    private void goToWork() {
+        synchronized (this) {
+            this.notify();
+            Dispatcher.workingCashiers.addFirst(this);                        //добавляем кассира в работающую очередь
+            Dispatcher.cashiersOnDuty++;
+            System.out.println(this + " go to work");
+            System.out.println("Cashiers on duty " + Dispatcher.cashiersOnDuty);
+        }
+    }
+
+    private void goToSleep() {
+        Dispatcher.waitingCashiers.addFirst(this);
+        System.out.println("            " + Dispatcher.waitingCashiers.toString());
+        System.out.println("            " + Dispatcher.workingCashiers.toString());
+
+        synchronized (this) {
+            try {
+                System.out.println("    " + this);
+                this.wait();
+                Dispatcher.cashiersOnDuty--;
+                System.out.println(this.name + " go to sleep");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void cashiersManager(int queueSize) {
         System.out.println(queueSize);
-        int cashiersNeeded = getCashiersNeeded(queueSize);
-
-
-        if (Dispatcher.cashiersOnDuty < cashiersNeeded) {
-            while (cashiersNeeded != Dispatcher.cashiersOnDuty) {
-                Cashier cashier = Dispatcher.waitingCashiers.pollLast();           //берем кассира из очереди отдыхающих
-                Dispatcher.workingCashiers.addFirst(cashier);                        //добавляем кассира в работающую очередь
-                synchronized (Dispatcher.CASHIERS) {
-                    Dispatcher.cashiersOnDuty++;
-                    System.out.println(cashier.name + " go to work");
-                    System.out.println("Cashiers on duty " + Dispatcher.cashiersOnDuty);
-                    Dispatcher.CASHIERS.notify();
-                    Util.sleep(1000);
-                }
-
-            }
-        }
-
-        if (cashiersNeeded < Dispatcher.cashiersOnDuty) {
-            while (cashiersNeeded < Dispatcher.cashiersOnDuty) {
-                Cashier cashier = Dispatcher.workingCashiers.pollLast();
-                Dispatcher.waitingCashiers.addFirst(cashier);
-                synchronized (Dispatcher.CASHIERS) {
-                    try {
-                        System.out.println(cashier.name + " go to sleep");
-                        Dispatcher.CASHIERS.wait();
-//                        cashier.notify();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Dispatcher.cashiersOnDuty--;
-                }
-            }
-        }
+//        int cashiersNeeded = getCashiersNeeded(queueSize);
+//
+//        if (Dispatcher.cashiersOnDuty < cashiersNeeded) {
+//            while (cashiersNeeded != Dispatcher.cashiersOnDuty) {
+//                Cashier cashier = Dispatcher.waitingCashiers.removeLast();  //берем кассира из очереди отдыхающих
+//                cashier.goToWork();
+//            }
+//            System.out.println(Dispatcher.waitingCashiers.toString());
+//            System.out.println(Dispatcher.workingCashiers.toString());
+//
+//            Util.sleep(1000);
+//        }
+//
+//        while (cashiersNeeded < Dispatcher.cashiersOnDuty) {
+//            while (cashiersNeeded < Dispatcher.cashiersOnDuty) {
+//                Cashier cashier = Dispatcher.workingCashiers.removeFirst();
+//                cashier.goToSleep();
+//            }
+//        }
     }
 
 

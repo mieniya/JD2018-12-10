@@ -1,36 +1,22 @@
 package by.it.subach.jd02_02;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class DequeBuyer {
-    private static  final Integer MONITOR = 0 ;
 
-    static  Integer getMonitor(){
-        return MONITOR;
-    }
-
-    private static Deque<Buyer> q = new LinkedList<>();
+    private static BlockingDeque<Buyer> q = new LinkedBlockingDeque<>(20);
 
     static void add(Buyer buyer) {
-        synchronized (MONITOR) {
-            q.addLast(buyer);
-            Util.sleep(1000);
+        //ошибка №2 add(this) кидает ошибку когда очередь полна
+        try {
+            q.putLast(buyer);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
     static Buyer poll() {
-        synchronized (MONITOR) {
-            return q.pollFirst();
-        }
+        return q.pollFirst();
     }
-
-    static int getQueueSize(){
-        synchronized (MONITOR) {
-            return q.size();
-        }
-    }
-
-
-
 }

@@ -24,4 +24,8 @@ class GoodsInMarket {
         return keys.get(random.nextInt(keys.size()));
     }
 
+    static int getPrice (Map<String, Integer> goods, String good){
+        return goods.get(good);
+    }
+
 }
