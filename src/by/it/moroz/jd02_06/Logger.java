@@ -1,36 +1,35 @@
-package by.it.moroz.calc;
+package by.it.moroz.jd02_06;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 
-public class Log {
+public class Logger {
 
-    private static volatile Log instance;
+    private static volatile Logger instance;
 
-    private static String filename;
+    private String filename;
 
-    private Log() {
-        filename = System.getProperty("user.dir") +
-                "/src/by/it/moroz/calc/errors.txt";
+    private Logger(){
+        filename=System.getProperty("user.dir") + "/src/by/it/moroz/jd02_06/log.txt";
     }
 
-    static Log getLogger() {
+    static Logger getLogger() {
         if(instance==null){
-            synchronized (Log.class){
+            synchronized (Logger.class){
                 if (instance==null)
-                    instance = new Log();
+                    instance = new Logger();
             }
         }
         return instance;
     }
 
-    void toLog(String logLine) {
+    public void log(String s) {
         Date date = new Date();
         String message = String
-                .format("%s %s\n", date.toString(), logLine);
-        synchronized (Log.class) {
+                .format("%s %s\n", date.toString(), s);
+        synchronized (Logger.class) {
             try (
                     BufferedWriter out =
                             new BufferedWriter(
@@ -38,11 +37,9 @@ public class Log {
                             )
             ) {
                 out.write(message);
-                out.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
 }
