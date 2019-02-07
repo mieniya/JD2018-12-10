@@ -8,8 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parcer {
-    private Logger logger = Logger.getLogger();
-    private Report report = Report.getReport();
     private HashMap<String, Integer> prior = new HashMap<String, Integer>() {
         {
             this.put("=", 0);

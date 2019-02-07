@@ -1,7 +1,5 @@
 package by.it.zagurskaya.calc;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -10,6 +8,8 @@ public class ConsoleRunner {
 
     public static final String PRINTVAR = "printvar";
     public static final String END = "end";
+
+    private static final Logger logger = Logger.getLogger();
 
     public static void main(String[] args) throws CalcException {
 //        public static void main(String[] args) throws CalcException {
@@ -20,22 +20,18 @@ public class ConsoleRunner {
 //        args = new String[]{"ru", "RU"};
 //        args = new String[]{"", ""};
 
-        Logger logger=Logger.getLogger();
-        Report report=Report.getReport();
-        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
-        String dateFirst = df.format(new Date());
-        String dateLast = df.format(new Date());
+        ReportBuilder reportBuilder = new ReportBuilder();
         // сдесь было время!!!!
-//        Date dateFirst = new Date();
-//        Date dateLast = new Date();
+//        Date startDateString = new Date();
+//        Date finishDateString = new Date();
         String expression;
         Scanner scanner = new Scanner(System.in);
         Parcer parcer = new Parcer();
         Printer printer = new Printer();
-        report.report(dateFirst.toString());
+        reportBuilder.setHeader().saveTimeStamp();
         while (!(expression = scanner.nextLine()).equals(END)) {
             logger.log(expression);
-            report.report(expression);
+            reportBuilder.saveMessage(expression);
             try {
                 if (LocalMessages.getSupportedLanguages().contains(expression)) {
                     LocalMessages.setLocale(expression);
@@ -54,14 +50,14 @@ public class ConsoleRunner {
                     String result = parcer.calc(expression);
 ////                    Var result = parcer.calc(expression);
                     printer.print(result);
-                    report.report(result);
+                    reportBuilder.saveMessage(result);
                 }
-            } catch ( CalcException e) {
+            } catch (CalcException e) {
                 logger.log(e.getMessage());
-                report.report(e.getMessage());
+                reportBuilder.saveMessage(e.getMessage());
                 System.out.println(e.getMessage());
             }
         }
-        report.report(dateLast.toString());
+        reportBuilder.saveTimeStamp().build();
     }
 }
