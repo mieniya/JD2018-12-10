@@ -13,11 +13,16 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         Variables variables = Variables.getVariables();
+        ReportBuilder report = new ReportShort();
+        report.createNewReport();
+        report.getTitle();
+        report.getStartTime();
 
         variables.loadVarFromFile();
 
         while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
             String result;
+            report.getExpression(input);
             if (input.equalsIgnoreCase("printvar")) {
                 System.out.println(resMan.getMessage(Message.PRINT));
                 variables.printVar();
@@ -30,11 +35,15 @@ public class ConsoleRunner {
             else try {
                 result = parser.calc(input);
                 printer.print(result);
+                report.getResult(result);
 
             } catch (CalcException calcException) {
                 printer.showError(calcException);
+                report.getError(calcException);
             }
         }
         variables.saveVarToFile();
+        report.getFinishTime();
+        report.getReport();
     }
 }
