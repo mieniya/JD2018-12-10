@@ -1,4 +1,4 @@
-package by.it.titkovskaya.calc.localization.strings;
+package by.it.titkovskaya.calc.internationalization.strings;
 
 public interface Country {
     String US = "US";

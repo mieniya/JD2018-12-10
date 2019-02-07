@@ -1,6 +1,6 @@
 package by.it.titkovskaya.calc;
 
-import by.it.titkovskaya.calc.localization.strings.Programme;
+import by.it.titkovskaya.calc.internationalization.strings.Programme;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

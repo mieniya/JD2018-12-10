@@ -1,9 +1,9 @@
 package by.it.titkovskaya.calc;
 
-import by.it.titkovskaya.calc.localization.strings.Country;
-import by.it.titkovskaya.calc.localization.strings.Language;
-import by.it.titkovskaya.calc.localization.strings.Programme;
-import by.it.titkovskaya.calc.localization.strings.Service;
+import by.it.titkovskaya.calc.internationalization.strings.Country;
+import by.it.titkovskaya.calc.internationalization.strings.Language;
+import by.it.titkovskaya.calc.internationalization.strings.Programme;
+import by.it.titkovskaya.calc.internationalization.strings.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
