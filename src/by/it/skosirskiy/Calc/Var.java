@@ -5,7 +5,7 @@ import java.util.*;
 
 abstract class Var implements Operation {
     private static String varsFile = System.getProperty("user.dir") + "" +
-            "/src/by/it/skosirskiy/calc/" +
+            "/src/by/it/skosirskiy/Calc/" +
             "vars.txt";
 
 
