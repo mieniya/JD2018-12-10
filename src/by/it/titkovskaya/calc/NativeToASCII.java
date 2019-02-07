@@ -4,7 +4,7 @@ import java.io.*;
 
 public class NativeToASCII {
     public static void main(String[] args) {
-        File dir = new File(System.getProperty("user.dir")  + "/src/by/it/titkovskaya/calc");
+        File dir = new File(System.getProperty("user.dir")  + "/src/by/it/titkovskaya/calc/internationalization");
         if (dir.exists() && dir.isDirectory()){
             File[] files = dir.listFiles();
             if (files != null) {
