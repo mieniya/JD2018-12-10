@@ -25,11 +25,13 @@ class Scalar extends Var {
             return VarCreator.getInstance().create(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector))
         {
-            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
+            String message = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            throw new CalcException(message);//notRealized
 
         }
         else if ((other instanceof Matrix)) {
-            throw new CalcException(LocalMessages.NOT_REALIZED_SUPPLIER.get());//notRealized
+            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            throw new CalcException(massage);//notRealized
 
         }
         return other.add(this);
@@ -42,13 +44,11 @@ class Scalar extends Var {
 //            return new Scalar(res);
             return VarCreator.getInstance().create(Double.toString(res));
         } else if ((other instanceof Vector)) {
-            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//notRealized
+            String message = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            throw new CalcException(message);//notRealized
 
         } else if ((other instanceof Matrix)) {
             String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
-            logger.log(massage);
             throw new CalcException(massage);//notRealized
         }
         Var minus = VarCreator.getInstance().create(Double.toString(-1));
@@ -59,21 +59,18 @@ class Scalar extends Var {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0){
-                String massage = LocalMessages.ZERO_DIVIDE_SUPPLIER.get();
-                logger.log(massage);
-                throw new CalcException(massage);//zeroDivide
+                String message = LocalMessages.ZERO_DIVIDE_SUPPLIER.get();
+                throw new CalcException(message);//zeroDivide
                 }
             double res = this.value / ((Scalar) other).value;
             return VarCreator.getInstance().create(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector)) {
-            String massage = LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//actionNotImpossible
+            String message = LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message);//actionNotImpossible
 
         } else if ((other instanceof Matrix)) {
-            String massage = LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//actionNotImpossible
+            String message = LocalMessages.ACTION_NOT_IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message);//actionNotImpossible
         }
         return super.div(other);
     }
@@ -84,14 +81,12 @@ class Scalar extends Var {
             double res = this.value * ((Scalar) other).value;
             return VarCreator.getInstance().create(Double.toString(res));//new Scalar(res);
         } else if ((other instanceof Vector)) {
-            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//notRealized
+            String message = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            throw new CalcException(message);//notRealized
 
         } else if ((other instanceof Matrix)) {
-            String massage = LocalMessages.NOT_REALIZED_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//notRealized
+            String message = LocalMessages.NOT_REALIZED_SUPPLIER.get();
+            throw new CalcException(message);//notRealized
 
         }
         return other.mul(this);

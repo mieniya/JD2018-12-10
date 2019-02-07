@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 class Parcer {
     private Logger logger = Logger.getLogger();
+    private Report report = Report.getReport();
     private HashMap<String, Integer> prior = new HashMap<String, Integer>() {
         {
             this.put("=", 0);
@@ -75,9 +76,8 @@ class Parcer {
         if (res > -1)
             return res;
         else {
-            String massage = LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage); //unexpectedCompletionOfCalculations
+            String message = LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get();
+            throw new CalcException(message); //unexpectedCompletionOfCalculations
         }
     }
 
@@ -92,9 +92,8 @@ class Parcer {
 
         Var one = VarCreator.getInstance().create(strOne);
         if (one == null || two == null) {
-            String massage = LocalMessages.ACTION_SUPPLIER.get() + operation + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            System.err.println(massage);//action impossible
+            String message = LocalMessages.ACTION_SUPPLIER.get() + operation + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            System.err.println(message);//action impossible
             return null;
         }
         switch (operation) {
@@ -108,9 +107,8 @@ class Parcer {
                 return one.div(two).toString();
         }
 //        }
-        String massage = LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get();
-        logger.log(massage);
-        throw new CalcException(massage); //unexpectedCompletionOfCalculations
+        String message = LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get();
+        throw new CalcException(message); //unexpectedCompletionOfCalculations
 
     }
 }

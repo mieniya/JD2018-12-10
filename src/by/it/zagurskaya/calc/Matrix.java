@@ -65,9 +65,8 @@ public class Matrix extends Var {
                 return varCreator.create(varCreator.toString(resMatr));//new Matrix(resMatr);
             }
         } else if ((other instanceof Vector)) {
-            String massage = LocalMessages.ADDITION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage); //addition impossible
+            String message = LocalMessages.ADDITION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message); //addition impossible
 
         }
         return super.add(other);
@@ -92,18 +91,16 @@ public class Matrix extends Var {
                             res[i][j] = res[i][j] - ((Matrix) other).value[i][j];
                         }
                     } else {
-                        String massage = LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-                        logger.log(massage);
-                        throw new CalcException(massage); //subtraction impossible
+                        String message = LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+                        throw new CalcException(message); //subtraction impossible
 
                     }
                 }
                 return varCreator.create(varCreator.toString(res));//new Matrix(res);
             }
         } else if ((other instanceof Vector)) {
-            String massage = LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage); //subtraction impossible
+            String message = LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message); //subtraction impossible
 
         }
         return super.sub(other);

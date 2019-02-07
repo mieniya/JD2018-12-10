@@ -9,7 +9,6 @@ public class Vector extends Var {
     public static final VarCreator varCreator = VarCreator.getInstance();
 
     public Vector(String strVector) {
-        logger.log("");
         String[] strings = strVector.replace("{", "").replace("}", "").split(",");
         this.value = new double[strings.length];
         for (int i = 0; i < value.length; i++) {
@@ -44,7 +43,6 @@ public class Vector extends Var {
             }
         } else if ((other instanceof Matrix)) {
             String message = LocalMessages.ADDITION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(message);
             throw new CalcException(message);//addition impossible
         }
         return super.add(other);
@@ -68,7 +66,6 @@ public class Vector extends Var {
             }
         } else if ((other instanceof Matrix)) {
             String message = LocalMessages.SUBTRACTION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(message);
             throw new CalcException(message);//subtraction impossible
         }
         return super.sub(other);
@@ -92,9 +89,8 @@ public class Vector extends Var {
                 return varCreator.create(String.valueOf(vectorMultVector));//new Vector(res);
         }
         } else if ((other instanceof Matrix)) {
-            String massage = LocalMessages.MULTIPLICATION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//multiplication impossible
+            String message = LocalMessages.MULTIPLICATION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message);//multiplication impossible
         }
         return super.mul(other);
     }
@@ -108,14 +104,12 @@ public class Vector extends Var {
             }
             return varCreator.create(varCreator.toString(res));//new Vector(res);
         } else if ((other instanceof Vector)) {
-            String massage = LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage); //division impossible
+            String message = LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message); //division impossible
 
         } else if ((other instanceof Matrix)) {
-            String massage = LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
-            logger.log(massage);
-            throw new CalcException(massage);//division impossible
+            String message = LocalMessages.DIVISION_SUPPLIER.get() + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            throw new CalcException(message);//division impossible
         }
         return super.div(other);
     }

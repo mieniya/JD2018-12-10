@@ -1,5 +1,7 @@
 package by.it.zagurskaya.calc;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,15 +20,22 @@ public class ConsoleRunner {
 //        args = new String[]{"ru", "RU"};
 //        args = new String[]{"", ""};
 
-        /////???а сдесь не ругается?????
-
         Logger logger=Logger.getLogger();
+        Report report=Report.getReport();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+        String dateFirst = df.format(new Date());
+        String dateLast = df.format(new Date());
+        // сдесь было время!!!!
+//        Date dateFirst = new Date();
+//        Date dateLast = new Date();
         String expression;
         Scanner scanner = new Scanner(System.in);
         Parcer parcer = new Parcer();
         Printer printer = new Printer();
+        report.report(dateFirst.toString());
         while (!(expression = scanner.nextLine()).equals(END)) {
             logger.log(expression);
+            report.report(expression);
             try {
                 if (LocalMessages.getSupportedLanguages().contains(expression)) {
                     LocalMessages.setLocale(expression);
@@ -45,10 +54,14 @@ public class ConsoleRunner {
                     String result = parcer.calc(expression);
 ////                    Var result = parcer.calc(expression);
                     printer.print(result);
+                    report.report(result);
                 }
             } catch ( CalcException e) {
+                logger.log(e.getMessage());
+                report.report(e.getMessage());
                 System.out.println(e.getMessage());
             }
         }
+        report.report(dateLast.toString());
     }
 }
