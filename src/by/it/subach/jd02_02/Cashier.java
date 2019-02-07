@@ -73,16 +73,14 @@ class Cashier extends Thread implements Runnable {
 
 
         if (Dispatcher.cashiersOnDuty < cashiersNeeded) {
-
-
             while (cashiersNeeded != Dispatcher.cashiersOnDuty) {
                 Cashier cashier = Dispatcher.waitingCashiers.pollLast();           //берем кассира из очереди отдыхающих
                 Dispatcher.workingCashiers.addFirst(cashier);                        //добавляем кассира в работающую очередь
-                synchronized (cashier.getMonitor()) {
+                synchronized (Dispatcher.CASHIERS) {
                     Dispatcher.cashiersOnDuty++;
                     System.out.println(cashier.name + " go to work");
                     System.out.println("Cashiers on duty " + Dispatcher.cashiersOnDuty);
-                    cashier.notify();
+                    Dispatcher.CASHIERS.notify();
                     Util.sleep(1000);
                 }
 
@@ -93,10 +91,11 @@ class Cashier extends Thread implements Runnable {
             while (cashiersNeeded < Dispatcher.cashiersOnDuty) {
                 Cashier cashier = Dispatcher.workingCashiers.pollLast();
                 Dispatcher.waitingCashiers.addFirst(cashier);
-                synchronized (cashier.getMonitor()) {
+                synchronized (Dispatcher.CASHIERS) {
                     try {
                         System.out.println(cashier.name + " go to sleep");
-                        cashier.wait(1);
+                        Dispatcher.CASHIERS.wait();
+//                        cashier.notify();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
