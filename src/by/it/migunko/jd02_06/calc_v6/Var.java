@@ -21,16 +21,7 @@ abstract class Var implements Operation {
     public Var div(Var other) throws CalcException {
         throw new CalcException(String.format("ERROR: Деление %s на %s невозможно.\n", this, other));
     }
-    static Var createVar(String operand){
-        operand = operand.trim();
-        if (operand.matches(Patterns.SCALAR)){
-            return new Scalar(operand);
-        }
-        if (operand.matches(Patterns.VECTOR)){
-            return new Vector(operand);
-        }
-        return Vars.getVar(operand);
-    }
+
 }
 
 

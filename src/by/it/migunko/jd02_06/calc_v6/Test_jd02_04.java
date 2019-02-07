@@ -71,8 +71,8 @@ public class Test_jd02_04 {
 
     @Test
     public void createVars(){
-        Var scalar = Var.createVar("3");
-        Var vector = Var.createVar("{1,2,3}");
+        Var scalar = VarFactory.createVar("3");
+        Var vector = VarFactory.createVar("{1,2,3}");
         assertEquals("Ошика создания/вывода скаляра","3.0", scalar.toString());
         assertEquals("Ошика создания/вывода вектора","{1.0, 2.0, 3.0}", vector.toString());
 
