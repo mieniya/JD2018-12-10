@@ -1,5 +1,6 @@
-package by.it.titkovskaya.calc;
+package by.it.titkovskaya.Calc;
 
+import by.it.a_khmelev.jd02_05.ResMan;
 import by.it.titkovskaya.calc.internationalization.strings.Programme;
 
 public class CalcException extends Exception {
