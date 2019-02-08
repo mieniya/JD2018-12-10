@@ -54,7 +54,7 @@ class Parcer {
             String result = oneOperation(one, op, two);
             operands.add(indexOperation, result);
         }
-        Var res = Var.createVar(operands.get(0));
+        Var res = VarCreator.getInstance().create(operands.get(0));
         //вернем строку а не Var, так сказано в задании
         return res.toString();
 
@@ -73,23 +73,25 @@ class Parcer {
         }
         if (res > -1)
             return res;
-        else
-        throw new CalcException(LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get()); //unexpectedCompletionOfCalculations
-
+        else {
+            String message = LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get();
+            throw new CalcException(message); //unexpectedCompletionOfCalculations
+        }
     }
 
     private String oneOperation(String strOne, String operation, String strTwo) throws CalcException {
         //обработка одной комнады у нас уже была.
         //адаптируем ее под отдельный метод
-        Var two = Var.createVar(strTwo);
+        Var two = VarCreator.getInstance().create(strTwo);
         if (operation.equals("=")) {
-            Var.saveVar(strOne, two);
+            VarCreator.getInstance().saveVar(strOne, two);
             return two.toString();
         }
 
-        Var one = Var.createVar(strOne);
+        Var one = VarCreator.getInstance().create(strOne);
         if (one == null || two == null) {
-            System.err.println(LocalMessages.ACTION_SUPPLIER.get() + operation + LocalMessages.IMPOSSIBLE_SUPPLIER.get());//action impossible
+            String message = LocalMessages.ACTION_SUPPLIER.get() + operation + LocalMessages.IMPOSSIBLE_SUPPLIER.get();
+            System.err.println(message);//action impossible
             return null;
         }
         switch (operation) {
@@ -103,7 +105,8 @@ class Parcer {
                 return one.div(two).toString();
         }
 //        }
-        throw new CalcException(LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get()); //unexpectedCompletionOfCalculations
+        String message = LocalMessages.UNEXPECTED_COMPLETION_OF_CALCULATIONS_SUPPLIER.get();
+        throw new CalcException(message); //unexpectedCompletionOfCalculations
 
     }
 }
