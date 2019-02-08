@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://jd02.akhmelev.by.it/somestring"
-        xmlns:tag="http://jd02.akhmelev.by.it/somestring">
-<element name="users">
+        xmlns:tag="http://jd02.akhmelev.by.it/somestring"
+        elementFormDefault="qualified"
+>
+<element name="users" >
     <complexType>
         <sequence>
             <element
