@@ -3,18 +3,31 @@ package by.it.titkovskaya.calc;
 import java.io.*;
 import java.util.LinkedList;
 
-class Log {
+class Logger {
 
     private static LinkedList<String> logList = new LinkedList<>();
 
-    private static String filename = System.getProperty("user.dir")+""+
-            "/src/by/it/titkovskaya/calc/"+
-            "log.txt";
+    private static volatile Logger instance;
 
-    private Log(){
+    private String filename;
+
+    private Logger() {
+        filename = System.getProperty("user.dir")+""+
+                "/src/by/it/titkovskaya/calc/log.txt";
     }
 
-    private static void loadLogFromFile() {
+    static Logger getLogger() {
+        if (instance == null) {
+            synchronized (Logger.class) {
+                if (instance == null) {
+                    instance = new Logger();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private void loadLogFromFile() {
         if (!new File(filename).exists()) return;
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             for (; ; ) {
@@ -32,7 +45,7 @@ class Log {
         }
     }
 
-    static void toLog(String logLine){
+    void toLog(String logLine){
         loadLogFromFile();
         logList.addLast(logLine);
         if (logList.size()<=50){
