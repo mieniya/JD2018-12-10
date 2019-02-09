@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT users (user)+>
+<!ELEMENT user (login,email,password,ads)>
+<!ELEMENT  login (#PCDATA)>
+<!ELEMENT  email (#PCDATA)>
+<!ELEMENT  password (#PCDATA)>
+<!ELEMENT  ads (ad)+>
+<!ELEMENT ad (description, addres,floor,floors,rooms,price,area)>
+<!ELEMENT description (#PCDATA)>
+        <!ELEMENT addres (#PCDATA)>
+        <!ELEMENT floor (#PCDATA)>
+        <!ELEMENT floors (#PCDATA)>
+        <!ELEMENT rooms (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        <!ELEMENT area (#PCDATA)>

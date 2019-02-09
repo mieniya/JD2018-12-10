@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user>
+        <login>vasyaP</login>
+        <email>vasyap@mail.ru</email>
+        <passport>qwerty</passport>
+        <ads>
+            <ad>
+                <description>
+                    Good Appartments
+                </description>
+                <addres>
+                    Minsk Lenina 12 app. 25
+                </addres>
+                <floor>2</floor>
+                <floors>6</floors>
+                <rooms>3</rooms>
+                <price>99999.0</price>
+                <area>59.9</area>
+            </ad>
+            <ad>
+                <description>
+                    Small House
+                </description>
+                <addres>
+                    Minsk Khalturina 15
+                </addres>
+                <floor>1</floor>
+                <floors>2</floors>
+                <rooms>3</rooms>
+                <price>12000.0</price>
+                <area>66.6</area>
+            </ad>
+        </ads>
+    </user>
+    <user>
+        <login>petyaB</login>
+        <email>petyab@mail.ru</email>
+        <passport>ytrewq</passport>
+        <ads>
+            <ad>
+                <description>
+                    New Appartment
+                </description>
+                <addres>
+                    Minsk Miroshnichenko 9 app. 216
+                </addres>
+                <floor>3</floor>
+                <floors>9</floors>
+                <rooms>2</rooms>
+                <price>60000.0</price>
+                <area>35.7</area>
+            </ad>
+        </ads>
+    </user>
+</users>
