@@ -1,10 +1,10 @@
-package by.it.subach.calc_V5.localization;
+package by.it.subach.Calc_V6_fabric_and_logging.localization;
 
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public enum TranslateManager implements Message{
+public enum TranslateManager implements Message {
     INSTANCE;
 
     private final String RESOURCE = "by.it.subach.calc_V5.localization.messages";
