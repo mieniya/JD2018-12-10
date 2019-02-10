@@ -1,6 +1,5 @@
 package by.it.zagurskaya.calc;
 
-import java.util.regex.Pattern;
 
 class Patterns {
 
