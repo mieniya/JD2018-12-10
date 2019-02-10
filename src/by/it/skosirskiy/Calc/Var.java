@@ -5,7 +5,7 @@ import java.util.*;
 
 abstract class Var implements Operation {
     private static String varsFile = System.getProperty("user.dir") + "" +
-            "/src/by/it/skosirskiy/Calc/" +
+            "/src/by/it/skosirskiy/Calc1/" +
             "vars.txt";
 
 
@@ -28,7 +28,7 @@ abstract class Var implements Operation {
 
         operand=operand.trim().replace("\\s+","").replace(" ","");
         if (operand.matches(Patterns.SCALAR))
-            return new Scalar(operand);
+            return new  Scalar(operand);
         else if (operand.matches(Patterns.VECTOR))
             return new Vector(operand);
         else if (operand.matches(Patterns.MATRIX))

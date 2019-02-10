@@ -1,5 +1,7 @@
 package by.it.skosirskiy.Calc;
 
+
+
 import java.util.Scanner;
 
 public class ConsoleRunner {
@@ -10,7 +12,7 @@ public class ConsoleRunner {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String line;
-
+        ResMan resMan = ResMan.INSTANCE;
         Parcer parser= new Parcer();
         Printer printer = new Printer();
         Var.loadVarFromFile();

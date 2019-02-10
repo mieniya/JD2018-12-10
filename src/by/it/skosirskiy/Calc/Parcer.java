@@ -1,18 +1,13 @@
 package by.it.skosirskiy.Calc;
 
-import by.it._examples_.jd01_11.Generics.Demo;
+
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parcer  extends CalcException{
-    static ResourceBundle rb = null;
-    String country = "";
-    String language="";
-    String str1= rb.getString("str1");
-    String str2= rb.getString("str2");
-    String str3= rb.getString("str3");
+
     private HashMap<String,Integer> prior=new HashMap<String, Integer>(){
         {
             this.put("=",0);
@@ -25,24 +20,18 @@ public class Parcer  extends CalcException{
 
   public   String  calc(String expression) throws CalcException{
       ResMan resMan = ResMan.INSTANCE;
-
+      ResourceBundle rb;
       if (expression.contains("printvar")) {
             Var.printvar();}
         else if (expression.contains("sortvar")) {
             Var.sortvar();}
         else if (expression.contains("ru")) {
-          country = "US";
-          language= "EN";}
+          resMan.setLocale("ru", "RU");}
         else if (expression.contains("be")) {
-          country = "BY";
-          language= "BE";}
+          resMan.setLocale("be", "BY");}
         else if (expression.contains("en")) {
-          country = "US";
-          language= "EN";}
+          resMan.setLocale("en", "US");}
         else {
-            if (language==""){
-          Locale current = new Locale(language, country);
-          rb = ResourceBundle.getBundle("by\\it\\skosirskiy\\calc\\messages", current);}
 
         List<String> operands;
         List<String> operations;
@@ -78,7 +67,7 @@ public class Parcer  extends CalcException{
             String result=oneOperation(one,op,two);
             operands.add(indexOperation,result);
         }
-        Var res=Var.createVar(operands.get(0));
+        Var res= Var.createVar(operands.get(0));
         //вернем строку а не Var, так сказано в задании
         return res.toString();
 
@@ -102,8 +91,7 @@ public class Parcer  extends CalcException{
         if (res>-1)
             return res;
         else
-
-            throw new CalcException(str1);
+            throw new CalcException(ResMan.INSTANCE.get(Message.str1));
     }
 
     private String oneOperation(String strOne, String operation, String strTwo) throws CalcException {
@@ -117,7 +105,7 @@ public class Parcer  extends CalcException{
 
         Var one = Var.createVar(strOne);
         if (one == null || two == null) {
-            System.err.println(str2 + operation + str3);
+            System.err.println(ResMan.INSTANCE.get(Message.str1) + operation + ResMan.INSTANCE.get(Message.str3));
             return null;
         }
         switch (operation) {
@@ -131,7 +119,7 @@ public class Parcer  extends CalcException{
                 return one.div(two).toString();
         }
 
-        throw new CalcException("Неожиданное завершение вычислений");
+        throw new CalcException(ResMan.INSTANCE.get(Message.str1));
     }
 
 }
