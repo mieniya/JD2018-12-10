@@ -1,4 +1,4 @@
-package by.it.titkovskaya.calc;
+package by.it.titkovskaya.calc.internationalization;
 
 import java.io.*;
 

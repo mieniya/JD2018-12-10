@@ -11,5 +11,12 @@ public interface Service {
     String START_CALCULATION ="message.start.calculation";
     String END = "end";
     String TO_FINISH = "message.to.finish";
+    String DETAILED_REPORT= "message.detailed.report";
+    String BRIEF_REPORT= "message.brief.report";
+    String CHOOSE_REPORT= "message.choose.report";
+    String REPORT_LINK= "message.report.link";
+    String FULL = "full";
+    String START_TIME = "message.start.time";
+    String FINISH_TIME = "message.finish.time";
 
 }
