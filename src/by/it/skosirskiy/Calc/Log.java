@@ -7,7 +7,7 @@ import java.io.*;
 
     private static int countLineLog=0;
     private static String filename = System.getProperty("user.dir") + "" +
-            "/src/by/it/skosirskiy/Calc1/" +
+            "/src/by/it/skosirskiy/Calc/" +
             "log.txt";
 
 

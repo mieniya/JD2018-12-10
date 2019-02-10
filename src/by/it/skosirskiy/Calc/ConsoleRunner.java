@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ConsoleRunner {
 
 
-
+    static Logger logger= Logger.getLogger();
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -15,6 +15,7 @@ public class ConsoleRunner {
         ResMan resMan = ResMan.INSTANCE;
         Parcer parser= new Parcer();
         Printer printer = new Printer();
+
         Var.loadVarFromFile();
         Log.getCountLineLog();
         while (!(line = scan.nextLine()).equals("end")){
