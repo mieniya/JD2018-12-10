@@ -35,7 +35,7 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand)) return vars.get(operand);
 
-        throw new CalcException("Невозможно создать .."+operand);
+        throw new CalcException(ResMan.INSTANCE.get(Message.str6)+operand);
 
     }
 
@@ -43,25 +43,25 @@ abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException  {
-        throw new CalcException("Операция сложения "+this+"+"+other+"невозможна");
+        throw new CalcException(ResMan.INSTANCE.get(Message.str7)+this);
 
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Операция вычитания "+this+"-"+other+"невозможна");
+        throw new CalcException(ResMan.INSTANCE.get(Message.str8)+this);
 
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения "+this+"*"+other+"невозможна");
+        throw new CalcException(ResMan.INSTANCE.get(Message.str9)+this);
 
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления "+this+"/"+other+"невозможна");
+        throw new CalcException(ResMan.INSTANCE.get(Message.str10)+this);
 
     }
     static void saveVarToFile() {

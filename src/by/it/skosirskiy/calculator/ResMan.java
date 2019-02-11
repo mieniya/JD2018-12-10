@@ -8,7 +8,7 @@ public enum ResMan {
 
     INSTANCE;
 
-    private final String RESOURSE="by\\it\\skosirskiy\\calc\\messages";
+    private final String RESOURSE="by/it/skosirskiy/calculator/messages";
     private Locale locale;
     private ResourceBundle resourceBundle;
 
