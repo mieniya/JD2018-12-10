@@ -32,7 +32,7 @@ class SAXHandler extends DefaultHandler {
             for (int i = 0; i <attCount ; i++) {
                 String name = attributes.getLocalName(i);
                 String value = attributes.getValue(i);
-                String attText = String.format("%s=\"%s\"",name,value);
+                String attText = String.format(" %s=\"%s\"",name,value);
                 xmlTxt.append(attText);
             }
 

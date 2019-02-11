@@ -3,7 +3,7 @@
        xmlns="http://jd02.zagurskaya.by.it/somestring"
        xsi:schemaLocation="http://jd02.zagurskaya.by.it/somestring users.xsd"
 >
-    <user>
+    <user nickname="Ivanova">
         <idUser>5</idUser>
         <login>IvanovaVP</login>
         <password>qwerty</password>
@@ -22,7 +22,7 @@
                             <currencyEntry>840</currencyEntry>
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
-                            <sumEntry>1000</sumEntry>
+                            <sumEntry currency="$">1000</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>2.1</rateEntry>
                         </entry>
@@ -32,7 +32,7 @@
                             <currencyEntry>933</currencyEntry>
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
-                            <sumEntry>1000</sumEntry>
+                            <sumEntry currency="б.р.">1000</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
@@ -51,7 +51,7 @@
                             <currencyEntry>840</currencyEntry>
                             <accauntDebitEntry>1010000000005</accauntDebitEntry>
                             <accauntKreditEntry>6901000000840</accauntKreditEntry>
-                            <sumEntry>100</sumEntry>
+                            <sumEntry currency="$">100</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>2.1</rateEntry>
                         </entry>
@@ -61,7 +61,7 @@
                             <currencyEntry>933</currencyEntry>
                             <accauntDebitEntry>6911000000840</accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
-                            <sumEntry>210</sumEntry>
+                            <sumEntry currency="б.р.">210</sumEntry>
                             <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
@@ -81,7 +81,7 @@
                             <currencyEntry>933</currencyEntry>
                             <accauntDebitEntry>1010000000005</accauntDebitEntry>
                             <accauntKreditEntry>3819000000000</accauntKreditEntry>
-                            <sumEntry>56</sumEntry>
+                            <sumEntry currency="б.р.">56</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
@@ -118,7 +118,7 @@
             </duties>
         </description>
     </user>
-    <user>
+    <user nickname="Petrova">
         <idUser>6</idUser>
         <login>PetrovaTI</login>
         <password>qazwsx</password>
@@ -137,7 +137,7 @@
                             <currencyEntry>840</currencyEntry>
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
-                            <sumEntry>1000</sumEntry>
+                            <sumEntry currency="$">1000</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>2.1</rateEntry>
                         </entry>
@@ -147,7 +147,7 @@
                             <currencyEntry>933</currencyEntry>
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
-                            <sumEntry>1000</sumEntry>
+                            <sumEntry currency="б.р.">1000</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
@@ -166,7 +166,7 @@
                             <currencyEntry>840</currencyEntry>
                             <accauntDebitEntry>6901000000840</accauntDebitEntry>
                             <accauntKreditEntry>1010000000000</accauntKreditEntry>
-                            <sumEntry>200</sumEntry>
+                            <sumEntry currency="$">200</sumEntry>
                             <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>2.15</rateEntry>
                         </entry>
@@ -176,7 +176,7 @@
                             <currencyEntry>933</currencyEntry>
                             <accauntDebitEntry>1010000000000</accauntDebitEntry>
                             <accauntKreditEntry>6911000000840</accauntKreditEntry>
-                            <sumEntry>430</sumEntry>
+                            <sumEntry currency="б.р.">430</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
@@ -195,7 +195,7 @@
                             <currencyEntry>933</currencyEntry>
                             <accauntDebitEntry>1010000000005</accauntDebitEntry>
                             <accauntKreditEntry>3819000000000</accauntKreditEntry>
-                            <sumEntry>20</sumEntry>
+                            <sumEntry currency="б.р.">20</sumEntry>
                             <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>

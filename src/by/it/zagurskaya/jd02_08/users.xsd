@@ -23,6 +23,7 @@
             <element name="password" type="string" />
             <element name="description"  type="tag:Description"/>
         </sequence>
+        <attribute name="nickname" type="string" use="required"/>
     </complexType>
 
     <complexType name="Description">
@@ -66,10 +67,17 @@
             <element name="currencyEntry" type="integer" />
             <element name="accauntDebitEntry"  type="string"/>
             <element name="accauntKreditEntry" type="string"/>
-            <element name="sumEntry" type="double"/>
+            <element name="sumEntry" type="tag:SumEntry"/>
             <element name="comingOrSpeting" type="boolean"/>
             <element name="rateEntry" type="double"/>
         </sequence>
+    </complexType>
+    <complexType name="SumEntry">
+        <simpleContent>
+            <restriction base="double">
+                <attribute name="currency" type="string"/>
+            </restriction>
+        </simpleContent>
     </complexType>
     <complexType name="Kassa">
         <sequence>
