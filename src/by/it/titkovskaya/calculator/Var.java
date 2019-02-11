@@ -12,7 +12,7 @@ abstract class Var implements Operation {
     private static Map<String, Var> vars = new HashMap<>();
 
     private static String varsFile = System.getProperty("user.dir") + ""
-            + "/src/by/it/titkovskaya/calc/"
+            + "/src/by/it/titkovskaya/calculator/"
             + "vars.txt";
 
     static Var createVar(String operand) throws CalcException {

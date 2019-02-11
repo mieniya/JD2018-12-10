@@ -19,7 +19,7 @@ public class BriefReportBuilder extends ReportBuilder{
     @Override
     void buildOutputFileName() {
         report.setFileName(System.getProperty("user.dir")+""+
-                "/src/by/it/titkovskaya/calc/reportBuilder/BriefReport.txt");
+                "/src/by/it/titkovskaya/calculator/reportBuilder/BriefReport.txt");
     }
 
     @Override

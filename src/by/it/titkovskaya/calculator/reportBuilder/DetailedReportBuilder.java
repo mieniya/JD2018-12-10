@@ -18,7 +18,7 @@ public class DetailedReportBuilder extends ReportBuilder {
     @Override
     void buildOutputFileName() {
         report.setFileName(System.getProperty("user.dir") + "" +
-                "/src/by/it/titkovskaya/calc/reportBuilder/DetailedReport.txt");
+                "/src/by/it/titkovskaya/calculator/reportBuilder/DetailedReport.txt");
     }
 
     @Override

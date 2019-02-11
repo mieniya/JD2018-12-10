@@ -13,7 +13,7 @@ class Logger {
 
     private Logger() {
         filename = System.getProperty("user.dir")+""+
-                "/src/by/it/titkovskaya/calc/log.txt";
+                "/src/by/it/titkovskaya/calculator/log.txt";
     }
 
     static Logger getLogger() {
