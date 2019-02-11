@@ -4,15 +4,13 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class SAXHandler {
+class SAXHandler extends DefaultHandler {
     private StringBuilder xmlTxt;
     private StringBuilder elementTxt;
     private String tab;
-
-    public class SAXParserHandler extends DefaultHandler {
         @Override
         public void startDocument() throws SAXException {
-            System.out.println("startDocument");
+//            System.out.println("startDocument");
             xmlTxt = new StringBuilder();
             elementTxt = new StringBuilder();
             tab = "";
@@ -22,22 +20,22 @@ public class SAXHandler {
         @Override
         public void endDocument() throws SAXException {
             System.out.println(xmlTxt);
-            System.out.println("endDocument");
+//            System.out.println("endDocument");
         }
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+            xmlTxt.append(tab).append("<").append(qName);
 //            System.out.println("startElement"+qName);
             //выводим атрибуты тэга
             int attCount = attributes.getLength();
             for (int i = 0; i <attCount ; i++) {
                 String name = attributes.getLocalName(i);
                 String value = attributes.getValue(i);
-                String attText = String.format("%s=\"%s",name,value);
+                String attText = String.format("%s=\"%s\"",name,value);
                 xmlTxt.append(attText);
-
             }
-            xmlTxt.append(tab).append("<").append(qName);
+
             tab = tab.concat("\t");
             xmlTxt.append(">\n");
 
@@ -63,5 +61,4 @@ public class SAXHandler {
             String part =new String(ch,start,length);
             elementTxt.append(part);
         }
-    }
 }

@@ -7,24 +7,24 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.*;
 
 public class StAXParser {
-    private StringBuilder xmlTxt;
-    private StringBuilder elementTxt;
-    private String tab;
 
     public static void main(String[] args) {
-
-        String xmlFile = System.getProperty("user.dir") + "src/by/it/zagurskaya/jd02_08/users+xsd.xml";
+        StAXParser parser = new StAXParser();
+//        String xmlFile = System.getProperty("user.dir") + "src/by/it/zagurskaya/jd02_08/users+xsd.xml";
+        String xmlFile = System.getProperty("user.dir") + "/src/by/it/zagurskaya/jd02_08/users+xsd.xml";
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
-        try (
-                Reader reader = new BufferedReader(new FileReader(xmlFile));
-
+        try (Reader reader =
+                     new BufferedReader(
+                             new FileReader(xmlFile)
+                     )
         ) {
-            xmlInputFactory.createXMLStreamReader(reader);
-//            proces();
-        } catch (XMLStreamException | IOException e) {
-            e.printStackTrace();
+            XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(reader);
+            StringBuilder xml = parser.process(xmlStreamReader);
+            System.out.println(xml);
 
+        } catch (IOException | XMLStreamException e) {
+            e.printStackTrace();
         }
     }
 
