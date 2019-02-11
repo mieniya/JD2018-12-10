@@ -1,4 +1,4 @@
-package by.it.skosirskiy.Calc;
+package by.it.skosirskiy.calculator;
 
 class Scalar extends  Var {
     private double value;

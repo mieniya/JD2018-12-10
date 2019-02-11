@@ -1,4 +1,4 @@
-package by.it.skosirskiy.Calc;
+package by.it.skosirskiy.calculator;
 
 public interface Message {
     String str1 = "str1";

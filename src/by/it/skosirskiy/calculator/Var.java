@@ -1,11 +1,11 @@
-package by.it.skosirskiy.Calc;
+package by.it.skosirskiy.calculator;
 
 import java.io.*;
 import java.util.*;
 
 abstract class Var implements Operation {
     private static String varsFile = System.getProperty("user.dir") + "" +
-            "/src/by/it/skosirskiy/Calc/" +
+            "/src/by/it/skosirskiy/calculator/" +
             "vars.txt";
 
 

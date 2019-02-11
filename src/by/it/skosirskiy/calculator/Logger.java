@@ -1,4 +1,4 @@
-package by.it.skosirskiy.Calc;
+package by.it.skosirskiy.calculator;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ class Logger {
 
     private Logger() {
         FILENAME = System.getProperty("user.dir")
-                + "/src/by/it/skosirskiy/Calc/log_jd02_06.txt";
+                + "/src/by/it/skosirskiy/calculator/log_jd02_06.txt";
     }
 
     public static Logger getLogger() {

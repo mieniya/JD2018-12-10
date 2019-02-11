@@ -1,4 +1,4 @@
-package by.it.skosirskiy.Calc;
+package by.it.skosirskiy.calculator;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
