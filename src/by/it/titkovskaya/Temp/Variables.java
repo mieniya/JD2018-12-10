@@ -1,8 +1,8 @@
 package by.it.titkovskaya.Temp;
 /*
-import by.it.titkovskaya.calc.CalcException;
-import by.it.titkovskaya.calc.Parser;
-import by.it.titkovskaya.calc.Var;
+import by.it.titkovskaya.calculator.CalcException;
+import by.it.titkovskaya.calculator.Parser;
+import by.it.titkovskaya.calculator.Var;
 
 import java.io.*;
 import java.util.HashMap;

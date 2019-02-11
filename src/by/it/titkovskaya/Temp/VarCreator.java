@@ -2,8 +2,8 @@ package by.it.titkovskaya.Temp;
 /*
 //Factory method (VarFactory)
 
-import by.it.titkovskaya.calc.*;
-import by.it.titkovskaya.calc.internationalization.strings.Programme;
+import by.it.titkovskaya.calculator.*;
+import by.it.titkovskaya.calculator.internationalization.strings.Programme;
 
 public abstract class VarCreator {
 
