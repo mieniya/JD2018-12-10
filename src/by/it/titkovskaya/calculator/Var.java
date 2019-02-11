@@ -11,9 +11,7 @@ abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
 
-    private static String varsFile = System.getProperty("user.dir") + ""
-            + "/src/by/it/titkovskaya/calculator/"
-            + "vars.txt";
+    private static String varsFile = (new Path()).getPath(Operation.class,"vars.txt");
 
     static Var createVar(String operand) throws CalcException {
         operand = operand.trim().replace("\\s", "");
