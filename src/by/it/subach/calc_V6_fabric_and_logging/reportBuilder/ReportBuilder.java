@@ -1,6 +1,6 @@
-package by.it.subach.Calc_V6_fabric_and_logging.reportBuilder;
+package by.it.subach.calc_V6_fabric_and_logging.reportBuilder;
 
-import by.it.subach.Calc_V6_fabric_and_logging.Logger;
+import by.it.subach.calc_V6_fabric_and_logging.Logger;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

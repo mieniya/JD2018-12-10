@@ -1,4 +1,4 @@
-package by.it.subach.Calc_V6_fabric_and_logging;
+package by.it.subach.calc_V6_fabric_and_logging;
 
 import org.junit.Test;
 

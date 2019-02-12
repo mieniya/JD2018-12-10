@@ -1,6 +1,6 @@
-package by.it.subach.Calc_V6_fabric_and_logging;
+package by.it.subach.calc_V6_fabric_and_logging;
 
-import by.it.subach.Calc_V6_fabric_and_logging.localization.TranslateManager;
+import by.it.subach.calc_V6_fabric_and_logging.localization.TranslateManager;
 
 public class CalcException extends Exception {
     public CalcException() {

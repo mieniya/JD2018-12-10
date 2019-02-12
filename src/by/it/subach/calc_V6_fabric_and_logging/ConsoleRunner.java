@@ -1,9 +1,9 @@
-package by.it.subach.Calc_V6_fabric_and_logging;
+package by.it.subach.calc_V6_fabric_and_logging;
 
-import by.it.subach.Calc_V6_fabric_and_logging.localization.TranslateManager;
-import by.it.subach.Calc_V6_fabric_and_logging.reportBuilder.LongReportBuilder;
-import by.it.subach.Calc_V6_fabric_and_logging.reportBuilder.ReportBuilder;
-import by.it.subach.Calc_V6_fabric_and_logging.reportBuilder.ShortReportBuilder;
+import by.it.subach.calc_V6_fabric_and_logging.localization.TranslateManager;
+import by.it.subach.calc_V6_fabric_and_logging.reportBuilder.LongReportBuilder;
+import by.it.subach.calc_V6_fabric_and_logging.reportBuilder.ReportBuilder;
+import by.it.subach.calc_V6_fabric_and_logging.reportBuilder.ShortReportBuilder;
 
 import java.util.Scanner;
 

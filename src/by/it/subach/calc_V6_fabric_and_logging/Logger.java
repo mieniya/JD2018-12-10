@@ -1,4 +1,4 @@
-package by.it.subach.Calc_V6_fabric_and_logging;
+package by.it.subach.calc_V6_fabric_and_logging;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -11,7 +11,7 @@ public class Logger {
     private final String FILENAME;
 
     private Logger() {
-        FILENAME = System.getProperty("user.dir") + "/src/by/it/subach/Calc_V6_fabric_and_logging/log.txt";
+        FILENAME = System.getProperty("user.dir") + "/src/by/it/subach/calc_V6_fabric_and_logging/log.txt";
     }
 
     public static Logger getLogger() {
