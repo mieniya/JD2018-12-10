@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<users>
+<users  xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://jd02.moroz.by.it/somestring"
+        xsi:schemaLocation="http://jd02.moroz.by.it/somestring users.xsd">
     <user>
         <login>vasyaP</login>
         <email>vasyap@mail.ru</email>
-        <passport>qwerty</passport>
+        <password>qwerty</password>
         <ads>
             <ad>
                 <description>
                     Good Appartments
                 </description>
-                <addres>
+                <address>
                     Minsk Lenina 12 app. 25
-                </addres>
+                </address>
                 <floor>2</floor>
                 <floors>6</floors>
                 <rooms>3</rooms>
@@ -22,9 +24,9 @@
                 <description>
                     Small House
                 </description>
-                <addres>
+                <address>
                     Minsk Khalturina 15
-                </addres>
+                </address>
                 <floor>1</floor>
                 <floors>2</floors>
                 <rooms>3</rooms>
@@ -36,15 +38,15 @@
     <user>
         <login>petyaB</login>
         <email>petyab@mail.ru</email>
-        <passport>ytrewq</passport>
+        <password>ytrewq</password>
         <ads>
             <ad>
                 <description>
                     New Appartment
                 </description>
-                <addres>
+                <address>
                     Minsk Miroshnichenko 9 app. 216
-                </addres>
+                </address>
                 <floor>3</floor>
                 <floors>9</floors>
                 <rooms>2</rooms>

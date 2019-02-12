@@ -5,9 +5,9 @@
 <!ELEMENT  email (#PCDATA)>
 <!ELEMENT  password (#PCDATA)>
 <!ELEMENT  ads (ad)+>
-<!ELEMENT ad (description, addres,floor,floors,rooms,price,area)>
+<!ELEMENT ad (description, address,floor,floors,rooms,price,area)>
 <!ELEMENT description (#PCDATA)>
-        <!ELEMENT addres (#PCDATA)>
+        <!ELEMENT address (#PCDATA)>
         <!ELEMENT floor (#PCDATA)>
         <!ELEMENT floors (#PCDATA)>
         <!ELEMENT rooms (#PCDATA)>

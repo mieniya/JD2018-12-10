@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE users SYSTEM "users.dtd">
 <users>
     <user>
         <login>vasyaP</login>
@@ -10,9 +9,9 @@
                 <description>
                     Good Appartments
                 </description>
-                <addres>
+                <address>
                     Minsk Lenina 12 app. 25
-                </addres>
+                </address>
                 <floor>2</floor>
                 <floors>6</floors>
                 <rooms>3</rooms>
@@ -23,9 +22,9 @@
                 <description>
                     Small House
                 </description>
-                <addres>
+                <address>
                     Minsk Khalturina 15
-                </addres>
+                </address>
                 <floor>1</floor>
                 <floors>2</floors>
                 <rooms>3</rooms>
@@ -43,9 +42,9 @@
                 <description>
                     New Appartment
                 </description>
-                <addres>
+                <address>
                     Minsk Miroshnichenko 9 app. 216
-                </addres>
+                </address>
                 <floor>3</floor>
                 <floors>9</floors>
                 <rooms>2</rooms>

@@ -15,8 +15,8 @@ public class UsersValidator {
 
     public static void main(String[ ] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName =   "src/by/it/moroz/jd02_07/users+xsd.xml";
-        String schemaName = "src/by/it/moroz/jd02_07/xsd.xsd";
+        String fileName =   "src/by/it/moroz/jd02_07/jd02_07_02/restaurant+xsd.xml";
+        String schemaName = "src/by/it/moroz/jd02_07/jd02_07_02/restaurant.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
