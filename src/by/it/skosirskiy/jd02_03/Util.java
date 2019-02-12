@@ -1,6 +1,4 @@
-package by.it.skosirskiy.jd02_01;
-
-
+package by.it.skosirskiy.jd02_03;
 
 public class Util {
 
@@ -19,4 +17,6 @@ public class Util {
             e.printStackTrace();
         }
     }
+
+
 }
