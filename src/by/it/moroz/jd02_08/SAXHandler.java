@@ -37,6 +37,11 @@ class SAXHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) {
+        String text = elementTxt.toString().trim();
+        if (!text.isEmpty()) {
+            xmlTxt.append(tab).append(text).append("\n");
+            elementTxt.setLength(0);
+        }
         tab = tab.substring(1);
         xmlTxt.append(tab).append("</").append(qName).append(">\n");
 
