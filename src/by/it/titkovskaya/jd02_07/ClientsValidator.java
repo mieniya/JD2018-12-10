@@ -11,7 +11,7 @@ import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 
-public class UsersValidator {
+public class ClientsValidator {
     public static void main(String[] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         String fileName = "src/by/it/titkovskaya/jd02_07/clients+xsd.xml";
