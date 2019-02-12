@@ -14,7 +14,7 @@ public class SAXHandler extends DefaultHandler {
     public void startDocument() throws SAXException {
         xmlTxt = new StringBuilder();
         elementTxt = new StringBuilder();
-        tab="";
+        tab = "";
     }
 
     @Override
@@ -30,12 +30,10 @@ public class SAXHandler extends DefaultHandler {
         for(int i = 0; i < attCount; i++){
             String name = attributes.getLocalName(i);
             String value = attributes.getValue(i);
-            String attString = String.format(" %s=\"%s\"", name, value);
-            xmlTxt.append(attString);
+            String attText = String.format(" %s=\"%s\"", name, value);
+            xmlTxt.append(attText);
         }
         tab = tab.concat("\t");
-        //todo attr
-
         xmlTxt.append(">\n");
     }
 
