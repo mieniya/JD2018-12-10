@@ -11,10 +11,6 @@ public class SAXParser {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         String xmlFile=System.getProperty("user.dir")+
                 "/src/by/it/zagurskaya/jd02_08/users+xsd.xml";
-//        String xmlFile=System.getProperty("user.dir")+
-//                "/src/by/it/zagurskaya/jd02_08/users.xml";
-//        String xmlFile=System.getProperty("user.dir")+
-//                "/src/by/it/zagurskaya/jd02_08/users.xml";
         SAXHandler myHandler=new SAXHandler();
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         javax.xml.parsers.SAXParser saxParser = saxParserFactory.newSAXParser();

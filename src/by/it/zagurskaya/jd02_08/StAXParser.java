@@ -10,7 +10,6 @@ public class StAXParser {
 
     public static void main(String[] args) {
         StAXParser parser = new StAXParser();
-//        String xmlFile = System.getProperty("user.dir") + "src/by/it/zagurskaya/jd02_08/users+xsd.xml";
         String xmlFile = System.getProperty("user.dir") + "/src/by/it/zagurskaya/jd02_08/users+xsd.xml";
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
