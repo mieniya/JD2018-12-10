@@ -1,7 +1,6 @@
 package by.it.subach.jd02_08;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class SAXHandler extends DefaultHandler {
@@ -11,20 +10,20 @@ public class SAXHandler extends DefaultHandler {
     private String tab;
 
     @Override
-    public void startDocument() throws SAXException {
+    public void startDocument() {
         xmlTxt = new StringBuilder();
         elementTxt = new StringBuilder();
         tab="";
     }
 
     @Override
-    public void endDocument() throws SAXException {
+    public void endDocument() {
         System.out.println(xmlTxt);
 
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         xmlTxt.append(tab).append("<").append(qName);
         int attCount = attributes.getLength();
         for(int i = 0; i < attCount; i++){
@@ -40,7 +39,7 @@ public class SAXHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         String text = elementTxt.toString().trim();
         if(!text.isEmpty()) {
             xmlTxt.append(tab).append(text).append("\n");
@@ -52,7 +51,7 @@ public class SAXHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         String part = new String(ch, start, length);
         elementTxt.append(part);
     }
