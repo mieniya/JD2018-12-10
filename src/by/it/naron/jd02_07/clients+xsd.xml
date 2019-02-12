@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<clients xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="D:\DeV\it-academy\javaCourse_Khmelev\MyCourseWithGit\src\by\it\naron\jd02_07\clients.xml clients.xsd"
+xmlns="D:\DeV\it-academy\javaCourse_Khmelev\MyCourseWithGit\src\by\it\naron\jd02_07\clients.xml">
+    <client>
+        <e-mail>naron@it.by</e-mail>
+        <login>naron</login>
+        <password>naron</password>
+        <orders>
+            <order>
+                <name>coat</name>
+                <code>20681</code>
+                <size>42</size>
+                <colour>green</colour>
+                <delivery_address>Minsk, Gyrskogo, 27-79</delivery_address>
+                <phone_number>(29)715-97-50</phone_number>
+            </order>
+            <order>
+                <name>hat</name>
+                <code>14205</code>
+                <size>42</size>
+                <colour>brown</colour>
+                <delivery_address>Minsk, Gyrskogo, 27-79</delivery_address>
+                <phone_number>(29)715-97-50</phone_number>
+            </order>
+        </orders>
+    </client>
+</clients>
