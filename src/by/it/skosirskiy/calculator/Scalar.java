@@ -1,6 +1,6 @@
 package by.it.skosirskiy.calculator;
 
-class Scalar extends Var {
+class Scalar extends  Var {
     private double value;
 
     public double getValue() {
@@ -17,7 +17,7 @@ class Scalar extends Var {
     Scalar(String str){ value=Double.parseDouble(str);}  //this.value=Double.parseDouble(str);
 
     @Override
-    public Var add(Var other) throws CalcException{
+    public Var add( Var other) throws CalcException{
         if (other instanceof Scalar){
             double sub=this.value+((Scalar) other).value;
             return  new Scalar(sub);
@@ -28,7 +28,7 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException{
+    public  Var sub( Var other)  throws CalcException{
         if (other instanceof Scalar){
             double sub=this.value-((Scalar) other).value;
             return  new Scalar(sub);
@@ -39,7 +39,7 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var mul(Var other) throws CalcException {
+    public  Var mul( Var other) throws CalcException {
         if (other instanceof Scalar){
             double mul=this.value*((Scalar) other).value;
             return  new Scalar(mul);
@@ -49,10 +49,10 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var div(Var other) throws CalcException {
+    public  Var div( Var other) throws CalcException {
         if (other instanceof Scalar){
             if (((Scalar) other).value==0)
-            throw new CalcException(" Деление на ноль");
+            throw new CalcException(ResMan.INSTANCE.get(Message.str5));
             double div=this.value/((Scalar) other).value;
             return  new Scalar(div);
         }
