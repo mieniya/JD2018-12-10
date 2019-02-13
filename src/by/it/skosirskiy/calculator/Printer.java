@@ -2,10 +2,10 @@ package by.it.skosirskiy.calculator;
 
 public class Printer {
 
-    void print(Var var){
+    void print(String str){
 
-        if (var!=null)
-            System.out.println(var);
+        if (str!=null)
+            System.out.println(str);
 
     }
 
@@ -15,6 +15,8 @@ public class Printer {
     void showError(CalcException e) {
         System.err.println(e.getMessage());
         Log.toLog(e.getMessage());
+        ConsoleRunner.logger.log(e.getMessage());
+
     }
 
 
