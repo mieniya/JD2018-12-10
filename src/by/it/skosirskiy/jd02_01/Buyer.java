@@ -3,22 +3,34 @@ package by.it.skosirskiy.jd02_01;
 
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
-
+    private static boolean pensioner;
     Buyer(int number){super("Buyer №"+number);}
     @Override
     public void run() {
         enterToMarket();
+        isPensioner();
         takeBacket();
         putGoodsToBacket();
         chooseGoods();
         goOut();
         System.out.flush();
-        Dispatcher.counterBuyer--;
+
+
+    }
+
+    private void isPensioner() {
+        if (Util.getRandom(3) == 0) {
+            pensioner = true;
+        } else {
+            pensioner = false;
+        }
     }
 
     @Override
     public void enterToMarket() {
+        Dispatcher.counterBuyer++;
         System.out.println(this+" enter to Market");
+        Util.sleep(2000);
     }
 
     @Override
@@ -32,6 +44,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void goOut() {
         System.out.println(this+" go out from market");
+        Dispatcher.counterBuyer--;
     }
 
     @Override
@@ -45,13 +58,13 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
         for (int i = 0; i < Util.getRandom(1,4); i++) {
             sleepBuy();
-            System.out.println(this+" take "+Dispatcher.getRandomBuy()+" in backet,"+" buer is pensionner: "+Dispatcher.pensioneer);
+            System.out.println(this+" take "+Goods.getRandomBuy()+" in backet,"+" buer is pensionner: "+ pensioner);
         }
     }
 
     private void sleepBuy( ) {
         double k=1;
-        if(Dispatcher.pensioneer){k =1.5;}
+        if(pensioner){k =1.5;}
         int timeout = (int) (Util.getRandom(100, 200)*k);
         Util.sleep(timeout);
     }

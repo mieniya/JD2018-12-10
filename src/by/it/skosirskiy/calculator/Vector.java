@@ -2,7 +2,7 @@ package by.it.skosirskiy.calculator;
 
 import java.util.Arrays;
 
-class Vector extends Var {
+class Vector extends  Var {
 
     private double[] value;
 
@@ -33,11 +33,11 @@ class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException{
-        if(other instanceof Scalar){
+    public  Var add( Var other) throws CalcException{
+        if(other instanceof  Scalar){
         double[] res= Arrays.copyOf(value,value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]+((Scalar)other).getValue();
+                res[i]=res[i]+(( Scalar)other).getValue();
             }
             return  new Vector(res);
         }
@@ -57,11 +57,11 @@ class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException{
-        if(other instanceof Scalar){
+    public  Var sub( Var other)  throws CalcException{
+        if(other instanceof  Scalar){
             double[] res= Arrays.copyOf(value,value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]-((Scalar)other).getValue();
+                res[i]=res[i]-(( Scalar)other).getValue();
             }
             return  new Vector(res);
         }
@@ -81,11 +81,11 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other)  throws CalcException{
-        if(other instanceof Scalar){
+    public  Var mul( Var other)  throws CalcException{
+        if(other instanceof  Scalar){
             double[] res= Arrays.copyOf(value,value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]*((Scalar)other).getValue();
+                res[i]=res[i]*(( Scalar)other).getValue();
             }
             return  new Vector(res);
         }
@@ -99,7 +99,7 @@ class Vector extends Var {
                     mul = mul + res[i];
 
                 }
-                return new Scalar(mul);
+                return new  Scalar(mul);
             }
         }
 
@@ -107,12 +107,12 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div (Var other) throws CalcException {
-        if(other instanceof Scalar){
+    public  Var div ( Var other) throws CalcException {
+        if(other instanceof  Scalar){
             double[] res= Arrays.copyOf(value,value.length);
             for (int i = 0; i < res.length; i++) {
-                if (((Scalar)other).getValue()==0) throw new CalcException(" Деление на ноль");
-                res[i]=res[i]/((Scalar)other).getValue();
+                if ((( Scalar)other).getValue()==0) throw new CalcException(" Деление на ноль");
+                res[i]=res[i]/(( Scalar)other).getValue();
             }
             return  new Vector(res);
         }
