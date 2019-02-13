@@ -14,27 +14,31 @@ class Runner {
         ResMan resMan = ResMan.INSTANCE;
         DateFormat df;
         System.out.println(Systems.ENTERANCE);
+        LABEL:
         while (true) {
             String language = reader.readLine();
-            if (language.equals(Language.RU)) {
-                resMan.setLocale(Language.RU, Country.RU);
-                df = DateFormat.getDateInstance(
-                        DateFormat.LONG, new Locale(Language.RU, Country.RU));
-                break;
+            switch (language) {
+                case "ru":
+                    resMan.setLocale(Language.RU, Country.RU);
+                    df = DateFormat.getDateInstance(
+                            DateFormat.LONG, new Locale(Language.RU, Country.RU));
+                    break LABEL;
+                case "en":
+                    resMan.setLocale(Language.EN, Country.US);
+                    df = DateFormat.getDateInstance(
+                            DateFormat.LONG, Locale.US);
+                    break LABEL;
+                case "be":
+                    resMan.setLocale(Language.BE, Country.BY);
+                    df = DateFormat.getDateInstance(
+                            DateFormat.LONG, new Locale(Language.BE, Country.BY));
+                    break LABEL;
+                default:
+                    System.err.println(Systems.INCORRECT_INPUT);
             }
-            if (language.equals(Language.EN)) {
-                resMan.setLocale(Language.EN, Country.US);
-                df = DateFormat.getDateInstance(
-                        DateFormat.LONG, Locale.US);
-                break;
-            }
-            if (language.equals(Language.BE)) {
-                resMan.setLocale(Language.BE, Country.BY);
-                df = DateFormat.getDateInstance(
-                        DateFormat.LONG, new Locale(Language.BE, Country.BY));
-                break;
-            }
-            System.err.println(Systems.INCORRECT_INPUT);
+
+
+
         }
         Date date = new Date(System.currentTimeMillis());
         output(resMan, df, date);

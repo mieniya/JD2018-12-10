@@ -18,30 +18,33 @@ public class ConsoleRunner {
         Printer printer = new Printer();
         Translator translator = Translator.INSTANCE;
         Var.loadVarsFromFile();
+        LABEL:
         while (true) {
+            System.out.println(translator.get(Message.INPUT));
             expression = reader.readLine();
-            if (expression.equalsIgnoreCase(Exit.END)) break;
-            if (expression.equalsIgnoreCase(Language.RU)) {
-                translator.setLocale(Language.RU, Country.RU);
-                System.out.println(translator.get(Message.LANGUAGE));
-                continue;
-            }
-            if (expression.equalsIgnoreCase(Language.BE)) {
-                translator.setLocale(Language.BE, Country.BY);
-                System.out.println(translator.get(Message.LANGUAGE));
-                continue;
-            }
-            if (expression.equalsIgnoreCase(Language.EN)) {
-                translator.setLocale(Language.EN, Country.US);
-                System.out.println(translator.get(Message.LANGUAGE));
-                continue;
-            }
-            try {
-                expression = expression.trim();
-                Var result = parcer.calc(expression);
-                printer.print(result);
-            } catch (CalcException e) {
-                printer.showError(e);
+            switch (expression) {
+                case Exit.END:
+                    break LABEL;
+                case Language.RU:
+                    translator.setLocale(Language.RU, Country.RU);
+                    System.out.println(translator.get(Message.LANGUAGE));
+                    continue;
+                case Language.BE:
+                    translator.setLocale(Language.BE, Country.BY);
+                    System.out.println(translator.get(Message.LANGUAGE));
+                    continue;
+                case Language.EN:
+                    translator.setLocale(Language.EN, Country.US);
+                    System.out.println(translator.get(Message.LANGUAGE));
+                    continue;
+                default:
+                    try {
+                        expression = expression.trim();
+                        Var result = parcer.calc(expression);
+                        printer.print(result);
+                    } catch (CalcException e) {
+                        printer.showError(e);
+                    }
             }
         }
         Date finish = new Date();

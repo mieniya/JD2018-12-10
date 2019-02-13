@@ -8,6 +8,7 @@ exception.div=Дзяленне немагчыма
 exception.divByZero=Дзяленне на нуль немагчыма
 exception.mul=Множанне немагчыма
 message.language=Устаноулена беларуская мова
+message.input=Увядзiце аперацыю (для смены мовы увядзiце ru/en/be)
 report.headerShort=Кароткая справаздача па рабоце калькулятара
 report.headerFull=Поуная справаздача па рабоце калькулятара
 report.start=Пачатак
