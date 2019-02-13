@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 public class StAXParser {
-    private static String xml = "src/by/it/migunko/jd02_07/travels.xml";
+    private static String xml = "src/by/it/migunko/jd02_08/travels.xml";
     private static String tab="";
     private static StringBuilder text=new StringBuilder();
 
