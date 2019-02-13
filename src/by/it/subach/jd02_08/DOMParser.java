@@ -1,6 +1,5 @@
 package by.it.subach.jd02_08;
 
-import com.sun.jmx.mbeanserver.NamedObject;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
