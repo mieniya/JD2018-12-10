@@ -3,7 +3,7 @@ package by.it.skosirskiy.calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Matrix extends Var {
+public class Matrix extends  Var {
 
     private double[][] value;
 
@@ -31,7 +31,7 @@ public class Matrix extends Var {
             kolrows++;
         }
 
-        String[] strMatrix = str.replaceAll("[^,0-9]", "").split(",");
+        String[] strMatrix = str.replaceAll("[^,.0-9]", "").split(",");
 
         int columns = strMatrix.length / kolrows; // shctchik elment v matrice
         this.value = new double[kolrows][columns];
@@ -47,12 +47,12 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other)  throws CalcException{
-        if (other instanceof Scalar) {
+    public  Var add( Var other)  throws CalcException{
+        if (other instanceof  Scalar) {
             double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j] = this.value[i][j] + ((Scalar) other).getValue();
+                    res[i][j] = this.value[i][j] + (( Scalar) other).getValue();
                 }
             }
             return new Matrix(res);
@@ -73,12 +73,12 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException{
-        if (other instanceof Scalar) {
+    public  Var sub( Var other)  throws CalcException{
+        if (other instanceof  Scalar) {
             double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j] = this.value[i][j] - ((Scalar) other).getValue();
+                    res[i][j] = this.value[i][j] - (( Scalar) other).getValue();
                 }
             }
             return new Matrix(res);
@@ -100,12 +100,12 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other)  throws CalcException{
-        if (other instanceof Scalar) {
+    public  Var mul( Var other)  throws CalcException{
+        if (other instanceof  Scalar) {
             double[][] res = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res.length; j++) {
-                    res[i][j] = this.value[i][j] * ((Scalar) other).getValue();
+                    res[i][j] = this.value[i][j] * (( Scalar) other).getValue();
                 }
             }
             return new Matrix(res);
@@ -141,7 +141,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) throws CalcException {
+    public  Var div( Var other) throws CalcException {
         return super.div(other);
     }
 

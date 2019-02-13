@@ -10,6 +10,7 @@ public class ConsoleRunner {
         Parcer parcer=new Parcer();
         Printer printer=new Printer();
 
+
         while (!(expression = scanner.nextLine()).equalsIgnoreCase("END")) {
             Var result=parcer.calc(expression);
             printer.print(result);

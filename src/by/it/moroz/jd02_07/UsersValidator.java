@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_07;
+package by.it.moroz.jd02_07;
 
 import org.xml.sax.SAXException;
 
@@ -12,25 +12,28 @@ import java.io.File;
 import java.io.IOException;
 
 public class UsersValidator {
-    public static void main(String[] args) {
+
+    public static void main(String[ ] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName = "src/by/it/titkovskaya/jd02_07/clients+xsd.xml";
-        String schemeName = "src/by/it/titkovskaya/jd02_07/clients.xsd";
+        String fileName =   "src/by/it/moroz/jd02_07/jd02_07_02/restaurant+xsd.xml";
+        String schemaName = "src/by/it/moroz/jd02_07/jd02_07_02/restaurant.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
-        File schemaLocation = new File(schemeName);
+        File schemaLocation = new File(schemaName);
         try {
-            //создание схемы
+            // создание схемы
             Schema schema = factory.newSchema(schemaLocation);
-            //создание валидатора на основе схемы
+            // создание валидатора на основе схемы
             Validator validator = schema.newValidator();
-            //проверка документа
+            // проверка документа
             Source source = new StreamSource(fileName);
             validator.validate(source);
-            System.out.println(fileName + " валиден");
+            System.out.println(fileName + " валиден.");
         } catch (SAXException e) {
-            System.err.println("Валидация " + fileName + " не выполнена: " + e.getMessage());
+            System.err.print("Валидация "+ fileName + " не выполена: "
+                    + e.getMessage());
         } catch (IOException e) {
-            System.err.println(fileName + " не валиден" + e.getMessage());
+            System.err.print(fileName + " не валиден:"
+                    + e.getMessage());
         }
     }
 }
