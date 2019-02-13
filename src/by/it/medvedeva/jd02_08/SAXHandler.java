@@ -50,3 +50,31 @@ class SAXHandler extends DefaultHandler {
         content.append(part.trim());
     }
 }
+  //*class SAXHandler extends DefaultHandler{
+      //@Override
+      //public void startDocument() throws SAXException {
+        //  System.out.println("startDocument");
+
+      //}
+
+      //@Override
+      //public void endDocument() throws SAXException {
+
+      //}
+
+      //@Override
+      //public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        //  System.out.println("startElement: "+qName);
+      //}
+
+      //@Override
+      //public void endElement(String uri, String localName, String qName) throws SAXException {
+       //   super.endElement(uri, localName, qName);
+      //}
+
+      //@Override
+      //public void characters(char[] ch, int start, int length) throws SAXException {
+        //  super.characters(ch, start, length);
+    //  }
+  //}
+  //

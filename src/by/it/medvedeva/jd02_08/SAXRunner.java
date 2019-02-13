@@ -11,19 +11,26 @@ import java.io.IOException;
 
 public class SAXRunner {
 
-    private static String xml = System.getProperty("user.dir") + "/src/by/it/akhmelev/jd02_07/person+xsd.xml";
+    private static String xml = System.getProperty("user.dir") + "/src/by/it/medvedeva/jd02_07/person+xsd.xml";
 
     public static void main(String[] args) {
 
         try {
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = saxParserFactory.newSAXParser();
-            DefaultHandler ourHandler=new SAXHandler();
-            File xmlFile=new File(xml);
-            saxParser.parse(xmlFile,ourHandler);
+            DefaultHandler ourHandler = new SAXHandler();
+            File xmlFile = new File(xml);
+            saxParser.parse(xmlFile, ourHandler);
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
 
     }
 }
+
+
+   // public static void main(String[] args) {
+     //   SAXHandler myHandler=new SAXHandler();
+       // SAXParserFactory saxParserFactory= SAXRunner;
+        //javax.xml.parsers.
+    //}
