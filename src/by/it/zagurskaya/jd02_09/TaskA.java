@@ -21,13 +21,10 @@ public class TaskA {
             JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             Users users = (Users) unmarshaller.unmarshal(new File(xmlIn));
-            User vasya = users.getUser().get(0);
-            vasya.setLogin("SuperVasyaP");
-//            я закоментила
-//            System.out.println(vasya.getAds().getAd().get(0).getDescription());
-
-            //System.out.println(users);
-            // jaxbContext - ok
+            User vika = users.getUser().get(0);
+            vika.setLogin("IvanovaVikaPetrova");
+//            System.out.println(users);
+//             jaxbContext - ok
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(users, new File(xmlOut));

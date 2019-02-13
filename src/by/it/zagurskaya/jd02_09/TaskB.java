@@ -32,7 +32,7 @@ public class TaskB {
 
     private void readXml() {
         String xmlIn = System.getProperty("user.dir") +
-                "/src/by/it/zagurskaya/jd02_09/users+xsd.xml";
+                "/src/by/it/zagurskaya/jd02_09/users+xsd2.xml";
         try {
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             users = (Users) unmarshaller.unmarshal(new File(xmlIn));
@@ -53,7 +53,7 @@ public class TaskB {
 
     private void saveXml() {
         String xmlOut = System.getProperty("user.dir") +
-                "/src/by/it/zagurskaya/jd02_09/users+xsd2.xml";
+                "/src/by/it/zagurskaya/jd02_09/resultB.xml";
 
         try {
             Marshaller marshaller = jaxbContext.createMarshaller();

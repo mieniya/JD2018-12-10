@@ -23,7 +23,7 @@
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
                             <sumEntry>1000</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>2.1</rateEntry>
                         </entry>
                         <entry>
@@ -33,7 +33,7 @@
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
                             <sumEntry>1000</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
                     </entrys>
@@ -52,7 +52,7 @@
                             <accauntDebitEntry>1010000000005</accauntDebitEntry>
                             <accauntKreditEntry>6901000000840</accauntKreditEntry>
                             <sumEntry>100</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>2.1</rateEntry>
                         </entry>
                         <entry>
@@ -62,7 +62,7 @@
                             <accauntDebitEntry>6911000000840</accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
                             <sumEntry>210</sumEntry>
-                            <comingOrSpeting>1</comingOrSpeting>
+                            <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
                     </entrys>
@@ -81,8 +81,8 @@
                             <accauntDebitEntry>1010000000005</accauntDebitEntry>
                             <accauntKreditEntry>3819000000000</accauntKreditEntry>
                             <sumEntry>56</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
-                            <rateEntry>1</rateEntry>
+                            <comingOrSpeting>1</comingOrSpeting>
+                            <rateEntry>0</rateEntry>
                         </entry>
                     </entrys>
                 </operation>
@@ -137,7 +137,7 @@
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
                             <sumEntry>1000</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>2.1</rateEntry>
                         </entry>
                         <entry>
@@ -147,7 +147,7 @@
                             <accauntDebitEntry> </accauntDebitEntry>
                             <accauntKreditEntry>1010000000005</accauntKreditEntry>
                             <sumEntry>1000</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
                     </entrys>
@@ -166,7 +166,7 @@
                             <accauntDebitEntry>6901000000840</accauntDebitEntry>
                             <accauntKreditEntry>1010000000000</accauntKreditEntry>
                             <sumEntry>200</sumEntry>
-                            <comingOrSpeting>1</comingOrSpeting>
+                            <comingOrSpeting>0</comingOrSpeting>
                             <rateEntry>2.15</rateEntry>
                         </entry>
                         <entry>
@@ -176,7 +176,7 @@
                             <accauntDebitEntry>1010000000000</accauntDebitEntry>
                             <accauntKreditEntry>6911000000840</accauntKreditEntry>
                             <sumEntry>430</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
                     </entrys>
@@ -195,7 +195,7 @@
                             <accauntDebitEntry>1010000000005</accauntDebitEntry>
                             <accauntKreditEntry>3819000000000</accauntKreditEntry>
                             <sumEntry>20</sumEntry>
-                            <comingOrSpeting>0</comingOrSpeting>
+                            <comingOrSpeting>1</comingOrSpeting>
                             <rateEntry>1</rateEntry>
                         </entry>
                     </entrys>
