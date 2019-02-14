@@ -12,8 +12,8 @@ class Logger {
     private String filename;
 
     private Logger() {
-        filename = System.getProperty("user.dir")+""+
-                "/src/by/it/titkovskaya/calc/log.txt";
+        Path path = new Path();
+        filename = path.getPath(Logger.class,"log.txt");
     }
 
     static Logger getLogger() {

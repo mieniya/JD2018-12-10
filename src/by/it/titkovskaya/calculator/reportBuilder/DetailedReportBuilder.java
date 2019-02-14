@@ -1,6 +1,7 @@
 package by.it.titkovskaya.calculator.reportBuilder;
 
 import by.it.titkovskaya.calculator.ConsoleRunner;
+import by.it.titkovskaya.calculator.Path;
 import by.it.titkovskaya.calculator.ResMan;
 import by.it.titkovskaya.calculator.internationalization.strings.Service;
 
@@ -17,8 +18,8 @@ public class DetailedReportBuilder extends ReportBuilder {
 
     @Override
     void buildOutputFileName() {
-        report.setFileName(System.getProperty("user.dir") + "" +
-                "/src/by/it/titkovskaya/calc/reportBuilder/DetailedReport.txt");
+        Path path = new Path();
+        report.setFileName(path.getPath(DetailedReportBuilder.class, "DetailedReport.txt"));
     }
 
     @Override
