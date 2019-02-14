@@ -1,1 +1,1 @@
-xjc -d ..\..\..\..\ travels.xml
+xjc -d ..\..\..\..\ travels.xsd
