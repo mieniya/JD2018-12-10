@@ -2,16 +2,16 @@ package by.it.subach.jd02_09.TaskC;
 
 import java.io.*;
 
-public abstract class Converter<Bean> {
+public abstract class Converter {
 
-    protected Bean bean;
+    protected Object bean;
     protected Class beanClass;
 
-    Converter(Bean beanClass) {
-        bean = beanClass;
+    Converter(Class beanClass) {
+        this.beanClass = beanClass;
     }
 
-    Bean getBean(){
+    Object getBean(){
         return bean;
     }
 
@@ -22,16 +22,20 @@ public abstract class Converter<Bean> {
 
 
 
-    public void save(File file){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+    void save(File file){
+        try (
+            BufferedWriter writer =
+                    new BufferedWriter(
+                            new FileWriter(file)
+                    )
+        ){
             writer.write(getText());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void load(File file){
+    void load(File file){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             StringBuilder sb = new StringBuilder();
