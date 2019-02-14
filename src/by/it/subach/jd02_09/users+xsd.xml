@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<users xmlns="http://beans.jd02_09.a_khmelev.it.by/">
+<?xml version="1.0" encoding="UTF-8" ?>
+<users  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://beans.jd02_09.subach.it.by/"
+        xsi:schemaLocation="http://beans.jd02_09.subach.it.by/ users.xsd"
+>
     <user>
         <login>vasyaP</login>
         <email>vasyap@mail.ru</email>
         <password>qwerty</password>
         <ads>
             <ad>
-                <description>
-                    Good Appartments
-                </description>
-                <address>
-                    Minsk Lenina 12 app. 25
-                </address>
+                <description>Good Apartments</description>
+                <address>Minsk Lenina 12 app. 25</address>
                 <floor>2</floor>
                 <floors>6</floors>
                 <rooms>3</rooms>
@@ -19,12 +18,8 @@
                 <area>59.9</area>
             </ad>
             <ad>
-                <description>
-                    Small House
-                </description>
-                <address>
-                    Minsk Khalturina 15
-                </address>
+                <description>Small House</description>
+                <address>Minsk Khalturina 15</address>
                 <floor>1</floor>
                 <floors>2</floors>
                 <rooms>4</rooms>
@@ -39,17 +34,13 @@
         <password>asdfgh</password>
         <ads>
             <ad>
-                <description>
-                    New Appartments
-                </description>
-                <address>
-                    Minsk Scryganava 3 app. 125
-                </address>
+                <description>New Appartments</description>
+                <address>Minsk Scryganava 3 app. 125</address>
                 <floor>7</floor>
                 <floors>25</floors>
                 <rooms>2</rooms>
                 <price>120000.0</price>
-                <area>60.0</area>
+                <area>60</area>
             </ad>
         </ads>
     </user>
