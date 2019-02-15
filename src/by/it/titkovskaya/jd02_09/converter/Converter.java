@@ -27,19 +27,19 @@ public abstract class Converter<Bean> {
     }
 
     void load(File source) {
-        try {
-            JAXBContext context = JAXBContext.newInstance(beanClass);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            bean = (Bean) unmarshaller.unmarshal(source);
-            System.out.println("\n=================== XML source ===================");
-            System.out.println(bean);
-        } catch (JAXBException e) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(source))) {
+            StringBuilder builder = new StringBuilder();
+            while (reader.ready()){
+                builder.append(reader.readLine()).append("\n");
+            }
+            load(builder.toString());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    void save(File fileName, String output) {
+    void save(String output, File fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(output);
         } catch (IOException e) {
@@ -55,14 +55,6 @@ public abstract class Converter<Bean> {
 
 /*
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(source))) {
-            StringBuilder builder = new StringBuilder();
-            while (reader.ready()){
-                builder.append(reader.readLine()).append("\n");
-            }
-            load(builder.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
  */

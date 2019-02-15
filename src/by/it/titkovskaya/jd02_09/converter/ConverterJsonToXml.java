@@ -16,12 +16,12 @@ class ConverterJsonToXml<Bean> extends Converter<Bean> {
     }
 
     @Override
-    void load(String json) {
-        System.out.println("\n=================== JSON ===================");
-        System.out.println(json);
+    void load(String source) {
         Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
-        Bean bean = gson.fromJson(json, getBeanClass());
+        Bean bean = gson.fromJson(source, getBeanClass());
         setBean(bean);
+        System.out.println("\n=================== JSON loaded ===================");
+        System.out.println(bean);
     }
 
     @Override
@@ -32,7 +32,7 @@ class ConverterJsonToXml<Bean> extends Converter<Bean> {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             Writer writer = new StringWriter();
             marshaller.marshal(getBean(), writer);
-            System.out.println("\n=================== XML output ===================");
+            System.out.println("\n=================== XML from JSON ===================\n");
             System.out.println(writer.toString());
             return writer.toString();
         } catch (JAXBException e) {
