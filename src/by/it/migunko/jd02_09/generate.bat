@@ -1,0 +1,1 @@
+xjc -d ..\..\..\..\ travels.xsd
