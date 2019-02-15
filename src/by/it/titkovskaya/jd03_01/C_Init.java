@@ -19,7 +19,7 @@ public class C_Init {
         try (Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:2016/" +
                         "?useUnicode=true&characterEncoding=UTF-8",
-                "root", 
+                "root",
                 "");
              Statement statement = connection.createStatement()
         ){

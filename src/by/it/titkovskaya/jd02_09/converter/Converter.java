@@ -1,8 +1,5 @@
 package by.it.titkovskaya.jd02_09.converter;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.*;
 
 public abstract class Converter<Bean> {
