@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <clients xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="http://jd02.titkovskaya.by.it/someplace"
-        xsi:schemaLocation="http://jd02.titkovskaya.by.it/someplace clients.xsd"
+        xmlns="http://beans.jd02_09.titkovskaya.it.by/"
+        xsi:schemaLocation="http://beans.jd02_09.titkovskaya.it.by/ clients.xsd"
 >
     <client>
         <client_ID>123456789AB</client_ID>
