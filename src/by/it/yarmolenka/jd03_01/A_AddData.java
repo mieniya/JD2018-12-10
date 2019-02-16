@@ -19,13 +19,13 @@ public class A_AddData {
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("INSERT INTO `yarmolenka`.`bets` (`id`, `sport`, `event`, `actual_bet`, " +
                     "`odds`, `actual_result`, `bet_amount`, `payout`, `fk_gamblers`) " +
-                    "VALUES (DEFAULT, 'soccer','match1','W1' ,2.4,'X',100,0,1);");
+                    "VALUES (DEFAULT, 'soccer','match1','W1' ,2.4,'X',100,0,2);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`bets` (`id`, `sport`, `event`, `actual_bet`, " +
                     "`odds`, `actual_result`, `bet_amount`, `payout`, `fk_gamblers`) " +
-                    "VALUES (DEFAULT, 'soccer','match2','W2' ,2.1,'W2',100,210,1);");
+                    "VALUES (DEFAULT, 'soccer','match2','W2' ,2.1,'W2',100,210,2);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`bets` (`id`, `sport`, `event`, `actual_bet`, " +
                     "`odds`, `actual_result`, `bet_amount`, `payout`, `fk_gamblers`) " +
-                    "VALUES (DEFAULT, 'hockey','match1','W1' ,3.7,'W1',100,370,1);");
+                    "VALUES (DEFAULT, 'hockey','match3','W1' ,3.7,'W1',100,370,3);");
         } catch (SQLException e) {
             e.printStackTrace();
         }
