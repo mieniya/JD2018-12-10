@@ -42,3 +42,13 @@ class ConverterJsonToXml<Bean> extends Converter<Bean> {
     }
 
 }
+
+/*
+При преобразовании в самостоятельный ковертер из JSON в XML логичнее результат конвертации
+записыватьв файл непосредственно во время маршализации, минуя создание Writer, т.е:
+вместо:
+        Writer writer = new StringWriter();
+        marshaller.marshal(getBean(), writer);
+писать:
+        marshaller.marshal(getBean(), new File(xmlOutput));
+ */

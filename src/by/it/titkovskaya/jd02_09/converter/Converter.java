@@ -35,6 +35,9 @@ public abstract class Converter<Bean> {
         }
     }
 
+    abstract String getText();
+
+    abstract void load(String text);
 
     void save(String output, File fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
@@ -44,14 +47,4 @@ public abstract class Converter<Bean> {
         }
     }
 
-    abstract String getText();
-
-    abstract void load(String text);
-
 }
-
-/*
-
-
-
- */
