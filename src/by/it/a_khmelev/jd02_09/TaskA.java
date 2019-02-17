@@ -23,8 +23,8 @@ public class TaskA {
             Users users = (Users) unmarshaller.unmarshal(new File(xmlIn));
             User vasya = users.getUser().get(0);
             vasya.setLogin("SuperVasyaP");
-//            System.out.println(vasya.getAds().getAd().get(0).getDescription());
-            System.out.println(users);
+            System.out.println(vasya.getAds().getAd().get(0).getDescription());
+            //System.out.println(users);
             // jaxbContext - ok
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
