@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://jd02.yarmolenka.by.it/somestring+att"
-        xmlns:tag="http://jd02.yarmolenka.by.it/somestring+att"
+        targetNamespace="http://jd02_09.yarmolenka.it.by/beans"
+        xmlns:tag="http://jd02_09.yarmolenka.it.by/beans"
         elementFormDefault="qualified"
 >
-    <element name="users">
+    <element name="gamblers">
         <complexType>
             <sequence>
                 <element
-                        name="user"
-                        type="tag:User"
+                        name="gambler"
+                        type="tag:Gambler"
                         minOccurs="2"
                         maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>
 
-    <complexType name="User">
+    <complexType name="Gambler">
         <sequence>
             <element name="login" type="ID"/>
-            <element name="email" type="string"/>
             <element name="password" type="string"/>
+            <element name="email" type="string"/>
             <element name="bets" type="tag:Bets"/>
         </sequence>
-        <attribute name="nickname" type="string" use="required"/>
     </complexType>
 
     <complexType name="Bets">
@@ -33,17 +32,16 @@
                      maxOccurs="unbounded"
                      type="tag:Bet"/>
         </sequence>
-        <attribute name="max" type="positiveInteger" use="required"/>
     </complexType>
 
     <complexType name="Bet">
         <sequence>
-            <element name="description" type="string"/>
-            <element name="race" type="string"/>
-            <element name="totalHorses" type="positiveInteger"/>
-            <element name="horse" type="positiveInteger"/>
+            <element name="sport" type="string"/>
+            <element name="event" type="string"/>
+            <element name="actual_bet" type="string"/>
             <element name="odds" type="double"/>
-            <element name="betAmount" type="double"/>
+            <element name="actual_result" type="string"/>
+            <element name="bet_amount" type="double"/>
             <element name="payout" type="double"/>
         </sequence>
     </complexType>

@@ -2,69 +2,69 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html"/>
 
-    <xsl:template match="/users">
+    <xsl:template match="/gamblers">
         <table border="1">
-            <tr><td>Name</td><td>Email</td><td>Password</td><td>Bets</td></tr>
+            <tr><td>Name</td><td>Password</td><td>Email</td><td>Bets</td></tr>
             <xsl:apply-templates/>
         </table>
     </xsl:template>
 
-    <xsl:template match="/users/user">
-    <tr><xsl:apply-templates/></tr>
+    <xsl:template match="/gamblers/gambler">
+        <tr><xsl:apply-templates/></tr>
     </xsl:template>
 
-    <xsl:template match="/users/user/login">
+    <xsl:template match="/gamblers/gambler/login">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/email">
+    <xsl:template match="/gamblers/gambler/email">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/password">
+    <xsl:template match="/gamblers/gambler/password">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets">
+    <xsl:template match="/gamblers/gambler/bets">
         <td>
             <table border="1">
-                <tr><td>Kind of Bet</td><td>Race</td><td>Total Horses</td><td>Horse</td>
-                    <td>Odds</td><td>Bet Amount</td><td>Payout</td>
+                <tr><td>Sport</td><td>Event</td><td>Actual bet</td><td>Odds</td>
+                    <td>Actual result</td><td>Bet Amount</td><td>Payout</td>
                 </tr>
                 <xsl:apply-templates/>
             </table>
         </td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet">
+    <xsl:template match="/gamblers/gambler/bets/bet">
         <tr><xsl:apply-templates/></tr>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/description">
+    <xsl:template match="/gamblers/gambler/bets/bet/sport">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/race">
+    <xsl:template match="/gamblers/gambler/bets/bet/event">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/totalHorses">
+    <xsl:template match="/gamblers/gambler/bets/bet/actual_bet">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/horse">
+    <xsl:template match="/gamblers/gambler/bets/bet/odds">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/odds">
+    <xsl:template match="/gamblers/gambler/bets/bet/actual_result">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/betAmount">
+    <xsl:template match="/gamblers/gambler/bets/bet/bet_amount">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 
-    <xsl:template match="/users/user/bets/bet/payout">
+    <xsl:template match="/gamblers/gambler/bets/bet/payout">
         <td><xsl:apply-templates/></td>
     </xsl:template>
 

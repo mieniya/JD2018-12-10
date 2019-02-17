@@ -14,16 +14,13 @@ import java.io.IOException;
 public class UsersValidator {
     public static void main(String[ ] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName =   "src/by/it/yarmolenka/jd02_07/users+xsd.xml";
-        String schemaName = "src/by/it/yarmolenka/jd02_07/users.xsd";
+        String fileName =   "src/by/it/yarmolenka/jd02_07/gamblers+xsd.xml";
+        String schemaName = "src/by/it/yarmolenka/jd02_07/gamblers.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
-            // создание схемы
             Schema schema = factory.newSchema(schemaLocation);
-            // создание валидатора на основе схемы
             Validator validator = schema.newValidator();
-            // проверка документа
             Source source = new StreamSource(fileName);
             validator.validate(source);
             System.out.println(fileName + " валиден.");
