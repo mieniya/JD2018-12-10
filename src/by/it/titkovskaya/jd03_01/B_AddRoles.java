@@ -23,7 +23,7 @@ public class B_AddRoles {
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'client');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
-            statement.executeUpdate("UPDATE `titkovskaya`.`users` SET `roles_id` = '2' WHERE `users`.`id` = 4");
+            statement.executeUpdate("UPDATE `titkovskaya`.`users` SET `roles_id` = '3' WHERE `users`.`id` = 4;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
