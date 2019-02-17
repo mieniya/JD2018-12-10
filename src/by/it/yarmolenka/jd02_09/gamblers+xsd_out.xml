@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<gamblers  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns="http://jd02_09.yarmolenka.it.by/beans"
-           xsi:schemaLocation="http://jd02_09.yarmolenka.it.by/beans gamblers.xsd"
->
-<gambler>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gamblers xmlns="http://jd02_09.yarmolenka.it.by/beans">
+    <gambler>
         <login>first_gambler</login>
         <password>password1</password>
         <email>gambler1@mail.ru</email>
@@ -14,8 +11,8 @@
                 <actual_bet>W1</actual_bet>
                 <odds>2.4</odds>
                 <actual_result>X</actual_result>
-                <bet_amount>100</bet_amount>
-                <payout>0</payout>
+                <bet_amount>100.0</bet_amount>
+                <payout>0.0</payout>
             </bet>
             <bet>
                 <sport>soccer</sport>
@@ -23,8 +20,8 @@
                 <actual_bet>W2</actual_bet>
                 <odds>2.1</odds>
                 <actual_result>W2</actual_result>
-                <bet_amount>100</bet_amount>
-                <payout>210</payout>
+                <bet_amount>100.0</bet_amount>
+                <payout>210.0</payout>
             </bet>
         </bets>
     </gambler>
@@ -39,8 +36,8 @@
                 <actual_bet>W1</actual_bet>
                 <odds>3.7</odds>
                 <actual_result>W1</actual_result>
-                <bet_amount>100</bet_amount>
-                <payout>370</payout>
+                <bet_amount>100.0</bet_amount>
+                <payout>370.0</payout>
             </bet>
         </bets>
     </gambler>

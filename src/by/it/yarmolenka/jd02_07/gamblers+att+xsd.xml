@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <gamblers  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns="http://jd02_07.yarmolenka.it.by/somestring+att"
-           xsi:schemaLocation="http://jd02_07.yarmolenka.it.by/somestring+att gamblers+att.xsd"
+           xmlns="http://jd02_09.yarmolenka.it.by/beans+att"
+           xsi:schemaLocation="http://jd02_09.yarmolenka.it.by/beans+att gamblers+att.xsd"
 >
     <gambler nickname="first">
         <login>first_gambler</login>
