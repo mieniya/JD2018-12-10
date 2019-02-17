@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://jd02.yarmolenka.by.it/somestring+att"
-        xmlns:tag="http://jd02.yarmolenka.by.it/somestring+att"
+        targetNamespace="http://jd02_07.yarmolenka.it.by/somestring+att"
+        xmlns:tag="http://jd02_07.yarmolenka.it.by/somestring+att"
         elementFormDefault="qualified"
 >
     <element name="gamblers">
