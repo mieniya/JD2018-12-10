@@ -11,7 +11,7 @@ import java.io.IOException;
 
 class MySAXParser {
     public static void main(String[] args) {
-        String pathToXML = GetPath.getPath(UsersValidator.class) + "users+att+xsd.xml";
+        String pathToXML = GetPath.getPath(UsersValidator.class) + "gamblers+att+xsd.xml";
         MyHandler myHandler = new MyHandler();
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         try {
