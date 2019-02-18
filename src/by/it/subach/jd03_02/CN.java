@@ -1,0 +1,7 @@
+package by.it.subach.jd03_02;
+
+public interface CN {
+
+    String URL = "jdbc:mysql://127.0.0.1:3306/" +
+            "?useUnicode=true&characterEncoding=UTF-8";
+}
