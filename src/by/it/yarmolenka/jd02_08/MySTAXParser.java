@@ -10,7 +10,7 @@ import java.io.*;
 
 class MySTAXParser {
     public static void main(String[] args) {
-        String path = GetPath.getPath(UsersValidator.class) + "users+att+xsd.xml";
+        String path = GetPath.getPath(UsersValidator.class) + "gamblers+att+xsd.xml";
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         try (Reader reader = new BufferedReader(new FileReader(path))) {
             XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(reader);
