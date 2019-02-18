@@ -5,7 +5,7 @@
 --DROP TABLE IF EXISTS `itacademy`.`users` ;
 --DROP TABLE IF EXISTS `itacademy`.`roles` ;
 
-DROP SCHEMA IF EXISTS `itacademy` ;
+DROP SCHEMA IF EXISTS `itacademy`;
 
 -- -----------------------------------------------------
 -- Schema akhmelev
