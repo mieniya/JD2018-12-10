@@ -15,7 +15,7 @@ class DatabaseCreator {
     }
 
     void create(){
-        try (Connection connection = DriverManager.getConnection(CN.URL_DB_ROOT, CN.USER_DB, CN.PASSWORD_DB);
+        try (Connection connection = DriverManager.getConnection(CN.URL_DB_PACKAGE, CN.USER_DB, CN.PASSWORD_DB);
         Statement statement = connection.createStatement()){
             statement.executeUpdate("DROP SCHEMA IF EXISTS `yarmolenka`;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `yarmolenka` DEFAULT CHARACTER SET utf8;");

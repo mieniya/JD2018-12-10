@@ -30,9 +30,9 @@ class DatabaseFulfill {
             statement.executeUpdate("INSERT INTO `yarmolenka`.`admins` (`id`, `login`, `email`, `password`) " +
                     "VALUES (DEFAULT, 'admin2', 'admin2@mail.ru', 'admin2pass');");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `discription`, `result`, " +
-                    "`fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '10.05.2019', 'BATE - Dinamo', NULL, 1, 2, 1);");
+                    "`fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '2019-11-11 11:11:11', 'BATE - Dinamo', NULL, 1, 2, 1);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `discription`, `result`, `fk_sports`, " +
-                    "`fk_match_status`, `fk_admins`) VALUES (DEFAULT, '05.05.2019', 'SKA - CSKA', NULL, 2, 2, 2);");
+                    "`fk_match_status`, `fk_admins`) VALUES (DEFAULT, '2019-11-11 11:11:11', 'SKA - CSKA', NULL, 2, 2, 2);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'W1', 2.2, 1, 1);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
