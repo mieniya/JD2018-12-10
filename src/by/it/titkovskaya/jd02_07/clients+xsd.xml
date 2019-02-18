@@ -5,9 +5,7 @@
 >
     <client>
         <client_ID>123456789AB</client_ID>
-        <name>
-            John Smith
-        </name>
+        <name>John Smith</name>
         <passport>MP1234567</passport>
         <login>johnSMITH</login>
         <password>12345</password>
@@ -48,9 +46,7 @@
     </client>
     <client>
         <client_ID>987654321ZY</client_ID>
-        <name>
-            Jane Dough
-        </name>
+        <name>Jane Dough</name>
         <passport>MP7654321</passport>
         <login>janeDOUGH</login>
         <password>54321</password>
