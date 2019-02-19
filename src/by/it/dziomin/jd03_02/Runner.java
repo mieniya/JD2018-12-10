@@ -31,7 +31,6 @@ public class Runner {
         System.out.println("\n*****UsersCRUD***************");
         UsersCRUD usersCRUD = new UsersCRUD();
         Users user = new Users(0, "TestUser", "xx99999", "+37529994459235", 1);
-
         if (usersCRUD.create(user)) {
             System.out.println("CREATE OK: " + user);
         }
