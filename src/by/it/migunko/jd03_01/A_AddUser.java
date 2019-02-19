@@ -10,8 +10,7 @@ public class A_AddUser {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
+        
         try (Connection connection =
                      DriverManager.getConnection(
                              "jdbc:mysql://127.0.0.1:2016/",
