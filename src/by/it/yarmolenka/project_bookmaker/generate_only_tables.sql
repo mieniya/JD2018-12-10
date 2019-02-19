@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `yarmolenka`.`events` ;
 
 CREATE TABLE IF NOT EXISTS `yarmolenka`.`events` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `discription` VARCHAR(500) NULL,
+  `description` VARCHAR(500) NULL,
   `odds` DOUBLE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `yarmolenka`.`matches` ;
 CREATE TABLE IF NOT EXISTS `yarmolenka`.`matches` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` TIMESTAMP NULL,
-  `discription` VARCHAR(500) NULL,
+  `description` VARCHAR(500) NULL,
   `result` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -102,7 +102,7 @@ DROP TABLE IF EXISTS `yarmolenka`.`match_status` ;
 
 CREATE TABLE IF NOT EXISTS `yarmolenka`.`match_status` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `finished` TINYINT(1) NULL,
+  `status` VARCHAR(100) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

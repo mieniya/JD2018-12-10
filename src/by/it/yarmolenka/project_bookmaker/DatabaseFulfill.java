@@ -21,29 +21,25 @@ class DatabaseFulfill {
                     "VALUES (DEFAULT, 'gambler1', 'gambler1@mail.ru', 'gambler1pass');");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`gamblers` (`id`, `login`, `email`, `password`) " +
                     "VALUES (DEFAULT, 'gambler2', 'gambler2@mail.ru', 'gambler2pass');");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`sports` (`id`, `sport`) VALUES (DEFAULT, 'soccer');");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`sports` (`id`, `sport`) VALUES (DEFAULT, 'hockey');");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`match_status` (`id`, `finished`) VALUES (DEFAULT, true);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`match_status` (`id`, `finished`) VALUES (DEFAULT, false);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`admins` (`id`, `login`, `email`, `password`) " +
                     "VALUES (DEFAULT, 'admin1', 'admin1@mail.ru', 'admin1pass');");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`admins` (`id`, `login`, `email`, `password`) " +
                     "VALUES (DEFAULT, 'admin2', 'admin2@mail.ru', 'admin2pass');");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `discription`, `result`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `description`, `result`, " +
                     "`fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '2019-11-11 11:11:11', 'BATE - Dinamo', NULL, 1, 2, 1);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `discription`, `result`, `fk_sports`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `description`, `result`, `fk_sports`, " +
                     "`fk_match_status`, `fk_admins`) VALUES (DEFAULT, '2019-11-11 11:11:11', 'SKA - CSKA', NULL, 2, 2, 2);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'W1', 2.2, 1, 1);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'X', 2.8, 1, 1);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'W2', 3.6, 1, 1);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'W1', 2.4, 2, 2);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'X', 4.0, 2, 2);");
-            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, " +
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, " +
                     "`fk_admins`) VALUES (DEFAULT, 'W2', 1.8, 2, 2);");
             statement.executeUpdate("INSERT INTO `yarmolenka`.`cashiers` (`id`, `overall`, `available`, `in_bets`, " +
                     "`fk_gamblers`, `fk_admins`) VALUES (DEFAULT, 1000, 900, 100, 1, 1);");

@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `yarmolenka`.`match_status` ;
 
 CREATE TABLE IF NOT EXISTS `yarmolenka`.`match_status` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `finished` TINYINT(1) NULL,
+  `status` VARCHAR(100) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -75,7 +75,7 @@ DROP TABLE IF EXISTS `yarmolenka`.`matches` ;
 CREATE TABLE IF NOT EXISTS `yarmolenka`.`matches` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` TIMESTAMP NULL,
-  `discription` VARCHAR(500) NULL,
+  `description` VARCHAR(500) NULL,
   `result` VARCHAR(45) NULL,
   `fk_sports` INT NOT NULL,
   `fk_match_status` INT NOT NULL,
@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS `yarmolenka`.`events` ;
 
 CREATE TABLE IF NOT EXISTS `yarmolenka`.`events` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `discription` VARCHAR(500) NULL,
+  `description` VARCHAR(500) NULL,
   `odds` DOUBLE NULL,
   `fk_matches` INT NOT NULL,
   `fk_admins` INT NOT NULL,
@@ -222,8 +222,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `yarmolenka`;
-INSERT INTO `yarmolenka`.`match_status` (`id`, `finished`) VALUES (DEFAULT, true);
-INSERT INTO `yarmolenka`.`match_status` (`id`, `finished`) VALUES (DEFAULT, false);
+INSERT INTO `yarmolenka`.`match_status` (`id`, `status`) VALUES (DEFAULT, 'to_play');
+INSERT INTO `yarmolenka`.`match_status` (`id`, `status`) VALUES (DEFAULT, 'finished');
 
 COMMIT;
 
@@ -244,8 +244,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `yarmolenka`;
-INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `discription`, `result`, `fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '10.05.2019', 'BATE - Dinamo', NULL, 1, 2, 1);
-INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `discription`, `result`, `fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '05.05.2019', 'SKA - CSKA', NULL, 2, 2, 2);
+INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `description`, `result`, `fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '10.05.2019', 'BATE - Dinamo', NULL, 1, 2, 1);
+INSERT INTO `yarmolenka`.`matches` (`id`, `date`, `description`, `result`, `fk_sports`, `fk_match_status`, `fk_admins`) VALUES (DEFAULT, '05.05.2019', 'SKA - CSKA', NULL, 2, 2, 2);
 
 COMMIT;
 
@@ -255,12 +255,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `yarmolenka`;
-INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W1', 2.2, 1, 1);
-INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'X', 2.8, 1, 1);
-INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W2', 3.6, 1, 1);
-INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W1', 2.4, 2, 2);
-INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'X', 4.0, 2, 2);
-INSERT INTO `yarmolenka`.`events` (`id`, `discription`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W2', 1.8, 2, 2);
+INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W1', 2.2, 1, 1);
+INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'X', 2.8, 1, 1);
+INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W2', 3.6, 1, 1);
+INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W1', 2.4, 2, 2);
+INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'X', 4.0, 2, 2);
+INSERT INTO `yarmolenka`.`events` (`id`, `description`, `odds`, `fk_matches`, `fk_admins`) VALUES (DEFAULT, 'W2', 1.8, 2, 2);
 
 COMMIT;
 

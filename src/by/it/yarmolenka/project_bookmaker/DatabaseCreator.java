@@ -36,7 +36,7 @@ class DatabaseCreator {
             statement.executeUpdate("DROP TABLE IF EXISTS `yarmolenka`.`match_status` ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `yarmolenka`.`match_status` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `finished` TINYINT(1) NULL,\n" +
+                    "  `status` VARCHAR(100) NULL,\n" +
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("DROP TABLE IF EXISTS `yarmolenka`.`admins` ;");
@@ -51,7 +51,7 @@ class DatabaseCreator {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `yarmolenka`.`matches` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `date` TIMESTAMP NULL,\n" +
-                    "  `discription` VARCHAR(500) NULL,\n" +
+                    "  `description` VARCHAR(500) NULL,\n" +
                     "  `result` VARCHAR(45) NULL,\n" +
                     "  `fk_sports` INT NOT NULL,\n" +
                     "  `fk_match_status` INT NOT NULL,\n" +
@@ -79,7 +79,7 @@ class DatabaseCreator {
             statement.executeUpdate("DROP TABLE IF EXISTS `yarmolenka`.`events` ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `yarmolenka`.`events` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `discription` VARCHAR(500) NULL,\n" +
+                    "  `description` VARCHAR(500) NULL,\n" +
                     "  `odds` DOUBLE NULL,\n" +
                     "  `fk_matches` INT NOT NULL,\n" +
                     "  `fk_admins` INT NOT NULL,\n" +
@@ -100,9 +100,9 @@ class DatabaseCreator {
             statement.executeUpdate("DROP TABLE IF EXISTS `yarmolenka`.`cashiers` ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `yarmolenka`.`cashiers` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `overall` DOUBLE NULL,\n" +
-                    "  `available` DOUBLE NULL,\n" +
-                    "  `in_bets` DOUBLE NULL,\n" +
+                    "  `overall` DOUBLE(30,30) NULL,\n" +
+                    "  `available` DOUBLE(30,30) NULL,\n" +
+                    "  `in_bets` DOUBLE(30,30) NULL,\n" +
                     "  `fk_gamblers` INT NOT NULL,\n" +
                     "  `fk_admins` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
@@ -147,6 +147,14 @@ class DatabaseCreator {
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`sports` (`id`, `sport`) " +
+                    "VALUES (DEFAULT, 'soccer');");
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`sports` (`id`, `sport`) " +
+                    "VALUES (DEFAULT, 'hockey');");
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`match_status` (`id`, `status`) " +
+                    "VALUES (DEFAULT, 'to_play');");
+            statement.executeUpdate("INSERT INTO `yarmolenka`.`match_status` (`id`, `status`) " +
+                    "VALUES (DEFAULT, 'finished');");
         } catch (SQLException e) {
             e.printStackTrace();
         }
