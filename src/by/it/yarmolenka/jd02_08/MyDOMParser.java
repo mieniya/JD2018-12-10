@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class MyDOMParser {
     public static void main(String[] args) {
-        String path = GetPath.getPath(UsersValidator.class) + "users+att+xsd.xml";
+        String path = GetPath.getPath(UsersValidator.class) + "gamblers+att+xsd.xml";
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
