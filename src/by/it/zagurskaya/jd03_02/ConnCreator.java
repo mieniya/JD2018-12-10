@@ -1,16 +1,34 @@
 package by.it.zagurskaya.jd03_02;
 
+
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnCreator {
-    private static volatile Connection connection;
-    private ConnCreator() {
-
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver: " + e);
+        }
     }
-    static Connection getConnection () throws SQLException {
+
+    private static volatile Connection connection;
+
+    private ConnCreator() {
+    }
+
+    public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
-//            synchronized (getConnection());
+            synchronized (ConnCreator.class) {
+                if (connection == null || connection.isClosed()) {
+                    connection = DriverManager.getConnection(
+                            CN.URL, CN.USER, CN.PASSWORD
+                    );
+                }
+            }
+
         }
         return connection;
     }
