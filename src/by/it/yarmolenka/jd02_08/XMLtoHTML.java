@@ -12,9 +12,9 @@ public class XMLtoHTML {
         String path = GetPath.getPath(XMLtoHTML.class);
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         try {
-            Transformer transformer = transformerFactory.newTransformer(new StreamSource(path + "users.xsl"));
-            transformer.transform(new StreamSource(path + "users.xml"), new StreamResult(path + "users.html"));
-            System.out.println("Transformation of " + path + "users.xml is complete");
+            Transformer transformer = transformerFactory.newTransformer(new StreamSource(path + "gamblers.xsl"));
+            transformer.transform(new StreamSource(path + "gamblers.xml"), new StreamResult(path + "gamblers.html"));
+            System.out.println("Transformation of " + path + "gamblers.xml is complete");
         } catch (TransformerException e) {
             e.printStackTrace();
         }
