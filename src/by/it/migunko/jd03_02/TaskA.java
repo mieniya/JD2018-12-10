@@ -17,7 +17,7 @@ public class TaskA {
         testUser=crud.read(testUser.getId());
         if (testUser!=null)
             System.out.println("Read "+testUser);
-        testUser.setEmail("NewEmail");
+        testUser.setEmail("TestEmail");
         if (crud.update(testUser))
             System.out.println("Update "+testUser);
         if (crud.delete(testUser))

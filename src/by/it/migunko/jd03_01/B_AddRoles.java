@@ -25,7 +25,7 @@ public class B_AddRoles {
             statement.executeUpdate("INSERT INTO `migunko`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Agent');");
             statement.executeUpdate("INSERT INTO `migunko`.`roles` (`ID`, `Role`) VALUES (DEFAULT, 'Buyer');");
 
-            if (connection.isClosed()) System.out.println("Соединение с базой прервано");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
