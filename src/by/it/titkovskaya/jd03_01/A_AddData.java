@@ -23,9 +23,9 @@ class A_AddData {
                 "");
              Statement statement = connection.createStatement())
         {
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `balance`, `currency`, `users_id`, `account status_id`) VALUES (DEFAULT, 444444444, 750000, 'USD', 4, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '17.02.2019', 75000, 4);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`, `payment status_id`) VALUES (DEFAULT, '17.02.2019', 15000, 'gmbh XXX', 4, 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 444444444, 'USD', 4, 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '1550565270934', 75000, 4);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '1550565328037', 15000, 'gmbh XXX', 4);");
         } catch (SQLException e) {
             e.printStackTrace();
         }

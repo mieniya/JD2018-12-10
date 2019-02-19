@@ -1,18 +1,13 @@
-package by.it.titkovskaya.jd03_01;
+package by.it.titkovskaya.jd03_02.crud;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 class C_Reset {
 
     void reset(){
-        try (Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:2016/" +
-                        "?useUnicode=true&characterEncoding=UTF-8",
-                "root",
-                "");
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement())
         {
             statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`replenishments` ;");
