@@ -11,7 +11,7 @@ public class User {
     public User() {
     }
 
-    public User(long id, String login, String email, String password, long role_id) {
+    public User(long id, String login, String email, String password, int role_id) {
         this.id = id;
         this.login = login;
         this.email = email;
@@ -55,7 +55,7 @@ public class User {
         this.password = password;
     }
 
-    public void setRole_id(long role_id) {
+    public void setRole_id(int role_id) {
         this.role_id = role_id;
     }
 

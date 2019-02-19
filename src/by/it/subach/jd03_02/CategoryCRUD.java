@@ -24,7 +24,7 @@ public class CategoryCRUD {
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    category.setId(generatedKeys.getInt("id"));
+                    category.setId(generatedKeys.getInt(1));
                     return true;
                 }
             }
@@ -45,6 +45,7 @@ public class CategoryCRUD {
                 category.setId(resultSet.getInt("id"));
                 category.setName(resultSet.getString("category_name"));
                 category.setDescription(resultSet.getString("category_description"));
+                return category;
             }
         }
         return null;

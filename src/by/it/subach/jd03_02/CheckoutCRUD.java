@@ -15,15 +15,15 @@ public class CheckoutCRUD {
                 Statement statement = connection.createStatement()
         ) {
             String sql = String.format("INSERT INTO `checkout`(`checkout_status`, `order_id`) " +
-                            "VALUES ('%b','%d')",
-                    checkout.isCheckoutStatus(),
+                            "VALUES ('%d','%d')",
+                    checkout.getCheckoutStatus(),
                     checkout.getOrder_id()
             );
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    checkout.setId(generatedKeys.getInt("id"));
+                    checkout.setId(generatedKeys.getInt(1));
                     return true;
                 }
             }
@@ -43,8 +43,9 @@ public class CheckoutCRUD {
             if(resultSet.next()){
                 Checkout checkout = new Checkout();
                 checkout.setId(resultSet.getInt("id"));
-                checkout.setCheckoutStatus(resultSet.getBoolean("checkout_status"));
+                checkout.setCheckoutStatus(resultSet.getInt("checkout_status"));
                 checkout.setOrder_id(resultSet.getInt("order_id"));
+                return checkout;
             }
         }
         return null;
@@ -56,9 +57,9 @@ public class CheckoutCRUD {
                 Statement statement = connection.createStatement()
         ) {
             String sql = String.format("UPDATE `checkout` " +
-                    "SET `checkout_status`='%b',`order_id`='%d' " +
+                    "SET `checkout_status`='%d',`order_id`='%d' " +
                     "WHERE `id`='%d'",
-                    checkout.isCheckoutStatus(),
+                    checkout.getCheckoutStatus(),
                     checkout.getOrder_id(),
                     checkout.getId()
             );

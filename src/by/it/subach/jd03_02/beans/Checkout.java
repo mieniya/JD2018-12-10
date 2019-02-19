@@ -3,13 +3,13 @@ package by.it.subach.jd03_02.beans;
 public class Checkout {
 
     private int id;
-    private boolean checkoutStatus;
+    private int checkoutStatus;
     private int order_id;
 
     public Checkout() {
     }
 
-    public Checkout(int id, boolean checkoutStatus, int order_id) {
+    public Checkout(int id, int checkoutStatus, int order_id) {
         this.id = id;
         this.checkoutStatus = checkoutStatus;
         this.order_id = order_id;
@@ -23,11 +23,11 @@ public class Checkout {
         this.id = id;
     }
 
-    public boolean isCheckoutStatus() {
+    public int getCheckoutStatus() {
         return checkoutStatus;
     }
 
-    public void setCheckoutStatus(boolean checkoutStatus) {
+    public void setCheckoutStatus(int checkoutStatus) {
         this.checkoutStatus = checkoutStatus;
     }
 

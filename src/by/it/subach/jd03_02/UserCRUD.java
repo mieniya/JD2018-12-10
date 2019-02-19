@@ -25,7 +25,7 @@ public class UserCRUD {
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    user.setId(generatedKeys.getLong("id"));
+                    user.setId(generatedKeys.getLong(1));
                     return true;
                 }
             }
@@ -44,11 +44,12 @@ public class UserCRUD {
                 ResultSet resultSet = statement.executeQuery(sql);
                 if(resultSet.next()){
                     User user = new User();
-                    user.setId(resultSet.getLong("id"));
+                    user.setId(resultSet.getLong(1));
                     user.setLogin(resultSet.getString("login"));
                     user.setPassword(resultSet.getString("password"));
                     user.setEmail(resultSet.getString("email"));
-                    user.setRole_id(resultSet.getLong("role_id"));
+                    user.setRole_id(resultSet.getInt("role_id"));
+                    return user;
                 }
             }
             return null;

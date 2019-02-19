@@ -23,7 +23,7 @@ public class OrderCRUD {
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    order.setId(generatedKeys.getInt("id"));
+                    order.setId(generatedKeys.getInt(1));
                     return true;
                 }
             }
@@ -44,6 +44,7 @@ public class OrderCRUD {
                 order.setId(resultSet.getInt("id"));
                 order.setUser_id(resultSet.getLong("user_id"));
                 order.setProduct_id(resultSet.getInt("product_id"));
+                return order;
             }
         }
         return null;

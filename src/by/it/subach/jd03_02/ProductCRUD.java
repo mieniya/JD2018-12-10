@@ -26,7 +26,7 @@ public class ProductCRUD {
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    product.setId(generatedKeys.getInt("id"));
+                    product.setId(generatedKeys.getInt(1));
                     return true;
                 }
             }
@@ -45,10 +45,11 @@ public class ProductCRUD {
             if (resultSet.next()) {
                 Product product = new Product();
                 product.setId(resultSet.getInt("id"));
-                product.setName(resultSet.getString("name"));
-                product.setPrice(resultSet.getDouble("price"));
-                product.setDescription(resultSet.getString("description"));
+                product.setName(resultSet.getString("product_name"));
+                product.setPrice(resultSet.getDouble("product_price"));
+                product.setDescription(resultSet.getString("product_description"));
                 product.setCategory_id(resultSet.getInt("categories_id"));
+                return product;
             }
         }
         return null;

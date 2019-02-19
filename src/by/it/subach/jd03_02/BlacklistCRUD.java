@@ -44,6 +44,7 @@ public class BlacklistCRUD {
                 BlackList blackList = new BlackList();
                 blackList.setId(resultSet.getInt("id"));
                 blackList.setUser_id(resultSet.getLong("user_id"));
+                return blackList;
             }
         }
         return null;
