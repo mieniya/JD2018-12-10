@@ -30,7 +30,7 @@ class A_CreateDB {
                     "  `login` VARCHAR(100) NULL," +
                     "  `password` VARCHAR(100) NULL," +
                     "  `email` VARCHAR(100) NULL," +
-                    "  `adress` VARCHAR(100) NULL," +
+                    "  `address` VARCHAR(100) NULL," +
                     "  `name` VARCHAR(100) NULL," +
                     "  `surname` VARCHAR(100) NULL," +
                     "  `numberphone` INT NULL," +
@@ -48,7 +48,7 @@ class A_CreateDB {
                     "  `name` VARCHAR(100) NULL," +
                     "  `count` INT NULL," +
                     "  `price` DOUBLE NULL," +
-                    "  `chek` DOUBLE NULL," +
+                    "  `check` DOUBLE NULL," +
                     "  `users_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  INDEX `fk_orders_users1_idx` (`users_id` ASC)," +

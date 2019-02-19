@@ -32,7 +32,7 @@ class C_Init {
                     "  `login` VARCHAR(100) NULL," +
                     "  `password` VARCHAR(100) NULL," +
                     "  `email` VARCHAR(100) NULL," +
-                    "  `adress` VARCHAR(100) NULL," +
+                    "  `address` VARCHAR(100) NULL," +
                     "  `name` VARCHAR(100) NULL," +
                     "  `surname` VARCHAR(100) NULL," +
                     "  `numberphone` INT NULL," +
@@ -63,14 +63,14 @@ class C_Init {
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `adress`, " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, " +
                     "`name`, `surname`, `numberphone`, `roles_id`) " +
                     "VALUES (DEFAULT, 'TrinzoA', 'qwerty123', 'trizzzno@gmail.com', 'Nezavisimosti, 54-84', " +
                     "'Andrei', 'Trizno', 298563456, 2);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `adress`, `name`, " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, `name`, " +
                     "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, 'BorokhaM', 'borokha', " +
                     "NULL, NULL, 'Maria', 'Borokha', NULL, 1);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `adress`, `name`, " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, `name`, " +
                     "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, NULL, NULL, NULL, 'Kedishko, 3-1', " +
                     "'Vladislau', 'Makarevich', 447568394, 3);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `chek`, `users_id`)" +

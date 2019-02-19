@@ -1,29 +1,21 @@
-package by.it.moroz.jd03.jd03_01;
+package by.it.moroz.jd03.jd03_02;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-class B_ShowUsers {
-    
+public class ShowUsers {
+
     private Map<Integer, String> roles;
-    
-    B_ShowUsers(){
+
+    ShowUsers(){
         this.roles = new HashMap<>();
     }
 
-    static {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     void showUsers(){
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/moroz" +
-                "?useUnicode=true&characterEncoding=UTF-8", "root", "");
+        try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
+            int countUsers=0;
             ResultSet role = statement.executeQuery("SELECT * FROM `roles`");
             while (role.next()){
                 roles.put(role.getInt("id"), role.getString("role"));
@@ -33,9 +25,11 @@ class B_ShowUsers {
                 System.out.println( roles.get(user.getInt("roles_id")) + ": " +
                         user.getString("login")+", "+user.getString("password")+", "
                         +user.getString("email")+", "+user.getString("address")+", "
-                +user.getString("name")+", "+user.getString("surname")+", "+
-                        user.getInt("numberphone"));
+                        +user.getString("name")+", "+user.getString("surname")+", "+
+                        user.getInt("phonenumber"));
+                countUsers++;
             }
+            System.out.println("Total users: "+countUsers+"\nTotal roles: "+roles.size());
         } catch (SQLException e) {
             e.printStackTrace();
         }

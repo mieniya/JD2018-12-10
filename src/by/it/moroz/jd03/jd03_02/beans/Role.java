@@ -1,20 +1,19 @@
-package by.it.moroz.jd03.jd03_02;
+package by.it.moroz.jd03.jd03_02.beans;
 
 public class Role {
 
-    private int id;
+    private long id;
     private String role;
 
     public Role(){
-
     }
 
-    public Role(int id, String role) {
+    public Role(long id, String role) {
         this.id = id;
         this.role = role;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -22,7 +21,7 @@ public class Role {
         return role;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -32,6 +31,9 @@ public class Role {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Role{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
