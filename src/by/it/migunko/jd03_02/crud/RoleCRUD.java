@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 public class RoleCRUD {
-    boolean create(Roles roles) throws SQLException {
+   public boolean create(Roles roles) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
