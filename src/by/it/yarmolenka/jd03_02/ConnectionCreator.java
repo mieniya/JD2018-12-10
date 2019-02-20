@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-class ConnectionCreator {
+public class ConnectionCreator {
     static {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -18,7 +18,7 @@ class ConnectionCreator {
     private ConnectionCreator() {
     }
 
-    static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()){
             synchronized (ConnectionCreator.class){
                 if (connection == null || connection.isClosed()){

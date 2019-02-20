@@ -1,19 +1,23 @@
 package by.it.yarmolenka.jd03_02.beans;
 
-public class Gambler {
+public class User {
     private long id;
     private String login;
     private String email;
     private String password;
+    private double cashier;
+    private long fk_roles;
 
-    public Gambler() {
+    public User() {
     }
 
-    public Gambler(long id, String login, String email, String password) {
+    public User(long id, String login, String email, String password, double cashier, long fk_roles) {
         this.id = id;
         this.login = login;
         this.email = email;
         this.password = password;
+        this.cashier = cashier;
+        this.fk_roles = fk_roles;
     }
 
     public long getId() {
@@ -32,6 +36,14 @@ public class Gambler {
         return password;
     }
 
+    public double getCashier() {
+        return cashier;
+    }
+
+    public long getFk_roles() {
+        return fk_roles;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -48,9 +60,23 @@ public class Gambler {
         this.password = password;
     }
 
+    public void setCashier(double cashier) {
+        this.cashier = cashier;
+    }
+
+    public void setFk_roles(long fk_roles) {
+        this.fk_roles = fk_roles;
+    }
+
     @Override
     public String toString() {
-        return "Gambler{id=" + id + ", login='" + login + "\', email='" +
-                email + "\', password='" + password + "\'}";
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", cashier=" + cashier +
+                ", fk_roles=" + fk_roles +
+                '}';
     }
 }

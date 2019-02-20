@@ -4,18 +4,16 @@ public class Event {
     private long id;
     private String description;
     private double odds;
-    private long fk_matches;
-    private long fk_admins;
+    private long fk_races;
 
     public Event() {
     }
 
-    public Event(long id, String description, double odds, long fk_matches, long fk_admins) {
+    public Event(long id, String description, double odds, long fk_races) {
         this.id = id;
         this.description = description;
         this.odds = odds;
-        this.fk_matches = fk_matches;
-        this.fk_admins = fk_admins;
+        this.fk_races = fk_races;
     }
 
     public long getId() {
@@ -30,12 +28,8 @@ public class Event {
         return odds;
     }
 
-    public long getFk_matches() {
-        return fk_matches;
-    }
-
-    public long getFk_admins() {
-        return fk_admins;
+    public long getFk_races() {
+        return fk_races;
     }
 
     public void setId(long id) {
@@ -50,12 +44,8 @@ public class Event {
         this.odds = odds;
     }
 
-    public void setFk_matches(long fk_matches) {
-        this.fk_matches = fk_matches;
-    }
-
-    public void setFk_admins(long fk_admins) {
-        this.fk_admins = fk_admins;
+    public void setFk_races(long fk_races) {
+        this.fk_races = fk_races;
     }
 
     @Override
@@ -64,8 +54,7 @@ public class Event {
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", odds=" + odds +
-                ", fk_matches=" + fk_matches +
-                ", fk_admins=" + fk_admins +
+                ", fk_races=" + fk_races +
                 '}';
     }
 }
