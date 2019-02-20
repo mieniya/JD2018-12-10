@@ -63,6 +63,7 @@ public class C_Init {
                     "  `area` DOUBLE NULL," +
                     "  `price` DOUBLE NULL," +
                     "  `users_id` INT NOT NULL," +
+                    "  `data` TIMESTAMP(6) NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  CONSTRAINT `fk_ads_users1`" +
                     "    FOREIGN KEY (`users_id`)" +
@@ -76,8 +77,8 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'administrator', 'administrator@mail.ru', 'administrator', 1);");
             statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'user', 'user@mail.ru', 'user', 2);");
             statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'petrov', 'petrov@mail.ru', 'petrov', 2);");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Good appartments', 'Minsk Lenina str., 10 app.12', 3, 5, 2, 55, 77777, 3);");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Маленький домик', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3);");
+            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`, `data`) VALUES (DEFAULT, 'Good appartments', 'Minsk Lenina str., 10 app.12', 3, 5, 2, 55, 77777, 3, '2019-02-20 11:45:00');");
+            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`, `data`) VALUES (DEFAULT, 'Small house', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3, '2019-02-20 11:46:00');");
         } catch (SQLException e) {
             e.printStackTrace();
         }
