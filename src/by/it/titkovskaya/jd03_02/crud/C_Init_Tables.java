@@ -73,7 +73,7 @@ class C_Init_Tables {
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `titkovskaya`.`payments` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `date` MEDIUMTEXT NOT NULL," +
+                    "  `date` TIMESTAMP(0) NOT NULL," +
                     "  `amount` DOUBLE NOT NULL," +
                     "  `recipient` VARCHAR(200) NOT NULL," +
                     "  `accounts_id` INT NOT NULL," +
@@ -87,7 +87,7 @@ class C_Init_Tables {
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `titkovskaya`.`replenishments` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `date` MEDIUMTEXT NULL," +
+                    "  `date` TIMESTAMP(0) NULL," +
                     "  `amount` DOUBLE NULL," +
                     "  `accounts_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +

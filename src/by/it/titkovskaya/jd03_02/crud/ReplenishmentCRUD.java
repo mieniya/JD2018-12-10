@@ -6,15 +6,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 class ReplenishmentCRUD {
 
     boolean create(Replenishment replenishment) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("INSERT INTO `replenishments` (`date`, `amount`, `accounts_id`) " +
-                        "VALUES ('%s','%d','%d')",
-                        replenishment.getDate(), (int) replenishment.getAmount(), replenishment.getAccounts_id());
+            String sql = String.format(Locale.ENGLISH,"INSERT INTO `replenishments` (`date`, `amount`, `accounts_id`) " +
+                        "VALUES ('%s','%f','%d')",
+                        replenishment.getDate(), replenishment.getAmount(), replenishment.getAccounts_id());
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();

@@ -50,9 +50,9 @@ public class Runner_Reset_Init {
         System.out.println("Created successfully:\n"+account1 +"\n" +account2 +"\n" + account3 +"\n");
 
         PaymentCRUD paymentCRUD = new PaymentCRUD();
-        Timestamp payDate1 = new Timestamp(1550564702447L);
-        Timestamp payDate2 = new Timestamp(1550564727845L);
-        Timestamp payDate3 = new Timestamp(1550564752112L);
+        Timestamp payDate1 = Timestamp.valueOf("2019-01-04 16:50:00");
+        Timestamp payDate2 = Timestamp.valueOf("2019-01-25 12:00:00");
+        Timestamp payDate3 = Timestamp.valueOf("2019-02-15 13:30:00");
         Payment payment1 = new Payment(0,payDate1, 2000, "llc rosting", 1);
         Payment payment2 = new Payment(0, payDate2, 10000, "ue metrostroy", 2);
         Payment payment3 = new Payment(0, payDate3, 25000, "corporation GNB", 3);
@@ -62,9 +62,9 @@ public class Runner_Reset_Init {
         System.out.println("Created successfully:\n"+payment1 +"\n" +payment2 +"\n" + payment3 +"\n");
 
         ReplenishmentCRUD replenishmentCRUD = new ReplenishmentCRUD();
-        Timestamp date1 = new Timestamp(1550564169698L);
-        Timestamp date2 = new Timestamp(1550564628100L);
-        Timestamp date3 = new Timestamp(1550564662529L);
+        Timestamp date1 = Timestamp.valueOf("2019-01-04 15:25:00");
+        Timestamp date2 = Timestamp.valueOf("2019-01-15 09:40:00");
+        Timestamp date3 = Timestamp.valueOf("2019-02-02 11:30:00");
         Replenishment replenishment1 = new Replenishment(0, date1, 2000, 1);
         Replenishment replenishment2 = new Replenishment(0, date2, 30000, 2);
         Replenishment replenishment3 = new Replenishment(0, date3, 50000, 3);

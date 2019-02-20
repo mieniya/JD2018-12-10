@@ -6,15 +6,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 class PaymentCRUD {
 
     boolean create(Payment payment) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("INSERT INTO `payments` (`date`, `amount`, `recipient`, `accounts_id`) " +
-                    "VALUES ('%s','%d','%s','%d')",
-                    payment.getDate(), (int) payment.getAmount(), payment.getRecipient(), payment.getAccounts_id());
+            String sql = String.format(Locale.ENGLISH,"INSERT INTO `payments` (`date`, `amount`, `recipient`, `accounts_id`) " +
+                    "VALUES ('%s','%f','%s','%d')",
+                    payment.getDate(), payment.getAmount(), payment.getRecipient(), payment.getAccounts_id());
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
