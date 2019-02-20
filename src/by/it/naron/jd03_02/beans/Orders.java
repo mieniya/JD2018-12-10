@@ -6,14 +6,14 @@ public class Orders {
     private int id;
     private int  amount;
     private int time_delivery;
-    private int price;
+    private double price;
     private int users_id;
     private int goods_flower_id;
 
     public Orders() {
     }
 
-    public Orders(int id, int amount, int time_delivery, int price, int users_id, int goods_flower_id) {
+    public Orders(int id, int amount, int time_delivery, double price, int users_id, int goods_flower_id) {
         this.id = id;
         this.amount = amount;
         this.time_delivery = time_delivery;
@@ -46,11 +46,11 @@ public class Orders {
         this.time_delivery = time_delivery;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -78,7 +78,7 @@ public class Orders {
         return id == orders.id &&
                 amount == orders.amount &&
                 time_delivery == orders.time_delivery &&
-                price == orders.price &&
+                Double.compare(orders.price, price) == 0 &&
                 users_id == orders.users_id &&
                 goods_flower_id == orders.goods_flower_id;
     }

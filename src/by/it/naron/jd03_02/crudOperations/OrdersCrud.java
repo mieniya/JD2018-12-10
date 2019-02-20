@@ -7,16 +7,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class OrdersCrud {
 
     public boolean create(Orders orders) throws SQLException {
         try (Connection connection = Connect.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format(
+      //      String sql = String.format(Locale.ENGLISH)
+            String sql = String.format(Locale.ENGLISH,
                     "INSERT INTO `orders`" +
                             "(`amount`, `time_delivery`, `price`, `users_id`, `goods_Flower_id`) " +
-                            "VALUES ('%d','%d','%d','%d','%d')",
+                            "VALUES ('%d','%d','%.2f','%d','%d')",
                     orders.getAmount(), orders.getTime_delivery(), orders.getPrice(),
                     orders.getUsers_id(), orders.getGoods_flower_id());
 
@@ -36,7 +38,7 @@ public class OrdersCrud {
 
     public Orders read(int id) throws SQLException {
         Orders ordersResult = null;
-        String readOrdersSql = String.format(
+        String readOrdersSql = String.format(Locale.ENGLISH,
                 "SELECT `id`, `amount`, `time_delivery`, `price`, " +
                 "`users_id`, `goods_flower_id` FROM `orders` WHERE id = %d",id);
         try(Connection connection = Connect.getConnection();
@@ -50,7 +52,7 @@ public class OrdersCrud {
                         resultSet.getInt("id") ,
                         resultSet.getInt("amount"),
                         resultSet.getInt("time_delivery"),
-                        resultSet.getInt("price"),
+                        resultSet.getDouble("price"),
                         resultSet.getInt("users_id"),
                         resultSet.getInt("goods_flower_id"));
                 return ordersResult;
@@ -62,9 +64,9 @@ public class OrdersCrud {
     public boolean update(Orders orders) throws SQLException {
         try (Connection connection = Connect.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format(
+            String sql = String.format(Locale.ENGLISH,
                     "UPDATE `orders` " +
-                     "SET `amount`='%d',`time_delivery`='%d',`price`='%d'," +
+                     "SET `amount`='%d',`time_delivery`='%d',`price`='%.2f'," +
                             "`users_id`='%d', `goods_Flower_id`='%d' " +
                             "WHERE `id`='%d'",
                     orders.getAmount(), orders.getTime_delivery(), orders.getPrice(),
@@ -76,7 +78,7 @@ public class OrdersCrud {
     public boolean delete(Orders orders) throws SQLException {
         try (Connection connection = Connect.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format(
+            String sql = String.format(Locale.ENGLISH,
                     "DELETE FROM `orders` WHERE `id`='%d'",
                     orders.getId());
             return 1 == statement.executeUpdate(sql);

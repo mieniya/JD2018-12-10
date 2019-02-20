@@ -29,7 +29,7 @@ public class OrdersTest {
 
         OrdersCrud ordersCrud = new OrdersCrud();
         Orders orders = new Orders
-                (0,2,500,300,2,2);
+                (0,2,500,300.333,2,2);
        if (ordersCrud.create(orders))
             System.out.println("CREATE OK: " + orders);
         orders.setAmount(9000000);
