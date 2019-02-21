@@ -1,11 +1,11 @@
-package by.it.titkovskaya.jd03_01;
+package by.it.titkovskaya.jd03_02.crud;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-class C_Init {
+class C_Init_Tables {
 
     static {
         try {
@@ -64,12 +64,12 @@ class C_Init {
                     "    FOREIGN KEY (`users_id`)" +
                     "    REFERENCES `titkovskaya`.`users` (`id`)" +
                     "    ON DELETE CASCADE" +
-                    "    ON UPDATE CASCADE," +
+                    "    ON UPDATE RESTRICT," +
                     "  CONSTRAINT `fk_accounts_account status1`" +
                     "    FOREIGN KEY (`account_status_id`)" +
                     "    REFERENCES `titkovskaya`.`account status` (`id`)" +
                     "    ON DELETE RESTRICT" +
-                    "    ON UPDATE CASCADE)" +
+                    "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `titkovskaya`.`payments` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
@@ -83,11 +83,11 @@ class C_Init {
                     "    FOREIGN KEY (`accounts_id`)" +
                     "    REFERENCES `titkovskaya`.`accounts` (`id`)" +
                     "    ON DELETE CASCADE" +
-                    "    ON UPDATE CASCADE)" +
+                    "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `titkovskaya`.`replenishments` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `date` TIMESTAMP(0) NOT NULL," +
+                    "  `date` TIMESTAMP(0) NULL," +
                     "  `amount` DOUBLE NULL," +
                     "  `accounts_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
@@ -96,26 +96,9 @@ class C_Init {
                     "    FOREIGN KEY (`accounts_id`)" +
                     "    REFERENCES `titkovskaya`.`accounts` (`id`)" +
                     "    ON DELETE CASCADE" +
-                    "    ON UPDATE CASCADE)" +
+                    "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'client');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`users` (`id`, `login`, `password`, `email`, `name`, `roles_id`) VALUES (DEFAULT, 'admin', '00000', 'admin@it.by', 'Samanta Jones', 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`users` (`id`, `login`, `password`, `email`, `name`, `roles_id`) VALUES (DEFAULT, 'johnSMITH', '11111', 'johnSMITH@it.by', 'John Smith', 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`users` (`id`, `login`, `password`, `email`, `name`, `roles_id`) VALUES (DEFAULT, 'janeDOUGH', '22222', 'janeDOUGH@it.by', 'Jane Dough', 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`account status` (`id`, `status`) VALUES (DEFAULT, 'active');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`account status` (`id`, `status`) VALUES (DEFAULT, 'locked');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 111111111, 'USD', 2, 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 222222222, 'BYN', 2, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 333333333, 'EUR', 3, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 16:50', 2000, 'llc rosting', 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-25 12:00', 10000, 'ue metrostroy', 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-02-15 13:30', 25000, 'corporation GNB', 3);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 15:25', 2000, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-01-15 09:40', 30000, 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-02-02 11:30', 50000, 3);");
-        } catch (SQLException e) {
+            } catch (SQLException e) {
             e.printStackTrace();
         }
     }
