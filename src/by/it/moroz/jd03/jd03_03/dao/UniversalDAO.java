@@ -1,4 +1,4 @@
-package by.it.moroz.jd03.jd03_03;
+package by.it.moroz.jd03.jd03_03.dao;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -160,6 +160,11 @@ public class UniversalDAO<TypeBean> implements InterfaceDAO<TypeBean> {
             e.printStackTrace();
         }
         return (0 < executeUpdate(sql, false));
+    }
+
+    @Override
+    public List<TypeBean> getAll() throws SQLException {
+        return getAll("");
     }
 
 
