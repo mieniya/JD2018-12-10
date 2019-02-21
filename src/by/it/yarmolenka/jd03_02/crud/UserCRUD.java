@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.Locale;
 
 public class UserCRUD {
@@ -63,6 +64,24 @@ public class UserCRUD {
              Statement statement = connection.createStatement()) {
             String sql = String.format("DELETE FROM `users` WHERE `id`='%d'", user.getId());
             return statement.executeUpdate(sql) == 1;
+        }
+    }
+
+    public void showUsersWithRoles() throws SQLException {
+        try (Connection connection = ConnectionCreator.getConnection();
+        Statement statement = connection.createStatement()){
+            String sql = "SELECT * FROM `users` INNER JOIN `roles` ON `users`.`fk_roles`=`roles`.`id`";
+            ResultSet resultSet = statement.executeQuery(sql);
+            long usersCount = 0;
+            long rolesCount = 0;
+            HashSet<String> set = new HashSet<>();
+            while (resultSet.next()){
+                System.out.println(resultSet.getString(2) + " - " +
+                        resultSet.getString(8));
+                usersCount++;
+                if (set.add(resultSet.getString("role"))) rolesCount++;
+            }
+            System.out.println("Users: " + usersCount + "\nRoles: " + rolesCount);
         }
     }
 }

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 public class RoleCRUD {
     public boolean create(Role role) throws SQLException {
@@ -54,6 +55,18 @@ public class RoleCRUD {
         Statement statement = connection.createStatement()){
             String sql = String.format("DELETE FROM `roles` WHERE `id`='%d'", role.getId());
             return statement.executeUpdate(sql) == 1;
+        }
+    }
+
+    public Long searchId(String role) throws SQLException {
+        try (Connection connection = ConnectionCreator.getConnection();
+        Statement statement = connection.createStatement()){
+            String sql = "SELECT * FROM `roles`";
+            HashMap<String, Long> list = new HashMap<>();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next())
+                list.put(resultSet.getString("role"), resultSet.getLong("id"));
+            return list.get(role);
         }
     }
 }

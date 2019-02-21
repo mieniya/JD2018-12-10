@@ -16,6 +16,7 @@ public class CrudTester {
         readRole.setRole("new admin");
         if (roleCRUD.update(readRole)) System.out.println("Role updated OK: " + readRole);
         if (roleCRUD.delete(readRole)) System.out.println("Role deleted: " + readRole);
+        System.out.println("id of new admin is " + roleCRUD.searchId("new admin"));
 
 
         UserCRUD userCRUD = new UserCRUD();
