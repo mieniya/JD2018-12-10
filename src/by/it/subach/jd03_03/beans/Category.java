@@ -2,20 +2,20 @@ package by.it.subach.jd03_03.beans;
 
 public class Category {
 
-    private int id;
+    private long id;
     private String name;
     private String description;
 
     public Category() {
     }
 
-    public Category(int id, String name, String description) {
+    public Category(long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -27,7 +27,7 @@ public class Category {
         return description;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

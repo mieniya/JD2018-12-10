@@ -1,4 +1,4 @@
-package by.it.subach.jd03_01;
+package by.it.subach.jd03_03;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

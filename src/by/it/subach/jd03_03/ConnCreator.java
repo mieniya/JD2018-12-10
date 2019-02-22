@@ -22,7 +22,7 @@ public class ConnCreator {
 
     }
 
-    static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             synchronized (ConnCreator.class) {
                 if (connection == null || connection.isClosed()) {
