@@ -75,17 +75,17 @@ public class C_Init {
                     "  `isBack` TINYINT(1) NULL," +
                     "  `dateRate` DATE NULL," +
                     "  `currencyComing` INT NOT NULL," +
-                    "  `currencSpending` INT NOT NULL," +
+                    "  `currencySpending` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  INDEX `fk_rateCB_currencys1_idx` (`currencyComing` ASC)," +
-                    "  INDEX `fk_rateCB_currencys2_idx` (`currencSpending` ASC)," +
+                    "  INDEX `fk_rateCB_currencys2_idx` (`currencySpending` ASC)," +
                     "  CONSTRAINT `fk_rateCB_currencys1`" +
                     "    FOREIGN KEY (`currencyComing`)" +
                     "    REFERENCES `zagurskaya`.`currencys` (`idCurrency`)" +
                     "    ON DELETE RESTRICT" +
                     "    ON UPDATE RESTRICT," +
                     "  CONSTRAINT `fk_rateCB_currencys2`" +
-                    "    FOREIGN KEY (`currencSpending`)" +
+                    "    FOREIGN KEY (`currencySpending`)" +
                     "    REFERENCES `zagurskaya`.`currencys` (`idCurrency`)" +
                     "    ON DELETE RESTRICT" +
                     "    ON UPDATE RESTRICT)" +
@@ -144,12 +144,12 @@ public class C_Init {
                     "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `zagurskaya`.`duties` (" +
-                    "  `idduties` INT NOT NULL AUTO_INCREMENT," +
+                    "  `idDuties` INT NOT NULL AUTO_INCREMENT," +
                     "  `numberUser` INT NOT NULL," +
                     "  `dateDuties` DATE NULL," +
                     "  `numberDuties` INT NULL," +
                     "  `isClose` TINYINT(1) NULL," +
-                    "  PRIMARY KEY (`idduties`)," +
+                    "  PRIMARY KEY (`idDuties`)," +
                     "  INDEX `fk_duties_users1_idx` (`numberUser` ASC)," +
                     "  CONSTRAINT `fk_duties_users1`" +
                     "    FOREIGN KEY (`numberUser`)" +
@@ -218,12 +218,12 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `zagurskaya`.`rateNB` (`id`, `rateSum`, `rateDate`, `currency_id`) VALUES (DEFAULT, 0.0324, '2018-02-01', 643);");
             statement.executeUpdate("INSERT INTO `zagurskaya`.`rateNB` (`id`, `rateSum`, `rateDate`, `currency_id`) VALUES (DEFAULT, 1, '2018-02-01', 933);");
 
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencSpending`) VALUES (DEFAULT, 2.17, 1, '2018-02-01', 933, 840);");
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencSpending`) VALUES (DEFAULT, 2.43, 0, '2018-02-01', 978, 933);");
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencSpending`) VALUES (DEFAULT, 2.45, 1, '2018-02-01', 933, 978);");
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencSpending`) VALUES (DEFAULT, 0.0321, 0, '2018-02-01', 643, 933);");
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencSpending`) VALUES (DEFAULT, 0.0328, 1, '2018-02-01', 933, 643);");
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencSpending`) VALUES (DEFAULT, 2.15, 0, '2018-02-01', 840, 933);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencySpending`) VALUES (DEFAULT, 2.17, 1, '2018-02-01', 933, 840);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencySpending`) VALUES (DEFAULT, 2.43, 0, '2018-02-01', 978, 933);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencySpending`) VALUES (DEFAULT, 2.45, 1, '2018-02-01', 933, 978);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencySpending`) VALUES (DEFAULT, 0.0321, 0, '2018-02-01', 643, 933);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencySpending`) VALUES (DEFAULT, 0.0328, 1, '2018-02-01', 933, 643);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`rateCB` (`id`, `rateSum`, `isBack`, `dateRate`, `currencyComing`, `currencySpending`) VALUES (DEFAULT, 2.15, 0, '2018-02-01', 840, 933);");
 
             statement.executeUpdate("INSERT INTO `zagurskaya`.`sprEntrys` (`idEntry`, `nameEntry`, `currencyEntry`, `accauntDebitEntry`, `accauntKreditEntry`, `sumEntry`, `isSpeting`, `rateEntry`) VALUES (100003, 'Получено валюты', 643, '', '1010000000643', NULL, 0, NULL);");
             statement.executeUpdate("INSERT INTO `zagurskaya`.`sprEntrys` (`idEntry`, `nameEntry`, `currencyEntry`, `accauntDebitEntry`, `accauntKreditEntry`, `sumEntry`, `isSpeting`, `rateEntry`) VALUES (100004, 'Получено валюты', 933, '', '1010000000933', NULL, 0, NULL);");
@@ -274,8 +274,8 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `zagurskaya`.`usersOperations` (`idUserOperation`, `dateOperation`, `rateEntry`, `sumEntry`, `currencyOperation`, `numberUser`, `numberOperation`, `specification`, `checkingAccount`) VALUES (DEFAULT, '2018-02-01', 1, 20, 933, 3, 998, 'За мобильный телефор', '3012000000023');");
             statement.executeUpdate("INSERT INTO `zagurskaya`.`usersOperations` (`idUserOperation`, `dateOperation`, `rateEntry`, `sumEntry`, `currencyOperation`, `numberUser`, `numberOperation`, `specification`, `checkingAccount`) VALUES (DEFAULT, '2018-02-01', 2.1, 1000, 840, 2, 1000, 'Получены денежные средства', NULL);");
 
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`duties` (`idduties`, `numberUser`, `dateDuties`, `numberDuties`, `isClose`) VALUES (DEFAULT, 2, '2018-02-01', 1, 0);");
-            statement.executeUpdate("INSERT INTO `zagurskaya`.`duties` (`idduties`, `numberUser`, `dateDuties`, `numberDuties`, `isClose`) VALUES (DEFAULT, 3, '2018-02-01', 1, 0);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`duties` (`idDuties`, `numberUser`, `dateDuties`, `numberDuties`, `isClose`) VALUES (DEFAULT, 2, '2018-02-01', 1, 0);");
+            statement.executeUpdate("INSERT INTO `zagurskaya`.`duties` (`idDuties`, `numberUser`, `dateDuties`, `numberDuties`, `isClose`) VALUES (DEFAULT, 3, '2018-02-01', 1, 0);");
 
             statement.executeUpdate("INSERT INTO `zagurskaya`.`kassa` (`idCurrency`, `receivedCurrency`, `comingCurrency`, `spendingCurrency`, `hendedCurrency`, `balanceCarrency`, `numberUser`, `date`, `duties`) VALUES (643, 0, 0, 0, 0, 0, 2, '2018-02-01', 1);");
             statement.executeUpdate("INSERT INTO `zagurskaya`.`kassa` (`idCurrency`, `receivedCurrency`, `comingCurrency`, `spendingCurrency`, `hendedCurrency`, `balanceCarrency`, `numberUser`, `date`, `duties`) VALUES (840, 1000, 100, 0, 0, 1100, 2, '2018-02-01', 1);");
