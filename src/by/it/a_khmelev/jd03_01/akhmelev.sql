@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `akhmelev`.`ads` (
   `area` DOUBLE NULL,
   `price` DOUBLE NULL,
   `users_id` INT NOT NULL,
+  `data` TIMESTAMP(6) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_ads_users1`
     FOREIGN KEY (`users_id`)
@@ -108,8 +109,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `akhmelev`;
-INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Good appartments', 'Minsk Lenina str., 10 app.12', 3, 5, 2, 55, 77777, 3);
-INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Small house', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3);
+INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`, `data`) VALUES (DEFAULT, 'Good appartments', 'Minsk Lenina str., 10 app.12', 3, 5, 2, 55, 77777, 3, '2019-02-20 11:45:00');
+INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`, `data`) VALUES (DEFAULT, 'Small house', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3, '2019-02-20 11:46:00');
 
 COMMIT;
 
