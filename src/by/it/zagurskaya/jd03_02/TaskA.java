@@ -13,7 +13,12 @@ import java.sql.Statement;
 public class TaskA {
 
     public static void main(String[] args) throws SQLException {
+//        ВАЖНО! В случае наличия \src\by\it\zagurskaya\jd03_02\Runner.java НЕ ЗАПУСКАТЬ!!!//
 //        ВАЖНО! для инициализации БД вызвать \src\by\it\zagurskaya\jd03_01\Runner.java
+//        ВАЖНО! Далее поочередно \src\by\it\zagurskaya\jd03_02\TaskA.java -> TaskB.java -> TaskC.java
+
+
+
 
 //        Поиск кода роли по имени роли
         try (Connection connection = ConnCreator.getConnection();
@@ -35,7 +40,7 @@ public class TaskA {
             }
             System.out.println();
         }
-// CRUD для пользователя
+// Dao для пользователя
         RoleCRUD roleCRUD = new RoleCRUD();
 
         Role role = new Role(0, "TestRole");
