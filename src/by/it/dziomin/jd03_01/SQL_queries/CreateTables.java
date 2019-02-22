@@ -48,6 +48,5 @@ public interface CreateTables {
             "  `transmission` VARCHAR(45) NULL,\n" +
             "  PRIMARY KEY (`id`))";
 
-//    String
 
 }
