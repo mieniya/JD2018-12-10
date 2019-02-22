@@ -17,7 +17,6 @@ class C_Reset {
         {
             statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`replenishments` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`payments` ;");
-            statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`payment status` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`accounts` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`account status` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `titkovskaya`.`users` ;");
