@@ -1,16 +1,15 @@
 package by.it.skosirskiy.jd03_02;
 
 
-
-
-
 import by.it.skosirskiy.jd03_02.Beans.Role;
 import by.it.skosirskiy.jd03_02.Beans.User;
 
 import java.sql.SQLException;
 
+
 public class Runner {
     public static void main(String[] args) throws SQLException {
+
         UserCRUD userCRUD = new UserCRUD();
 
         User user = new User(0, "TestUser", "TestEmail", "TestPassword", 9);
@@ -39,11 +38,8 @@ public class Runner {
         if (roleCRUD.delete(role))
             System.out.println("DELETE OK: " + role);
 
-        //TEST CASCADE
-        //        User user=userCRUD.read(3);
-        //        System.out.println(user);
-        //        userCRUD.delete(user);
 
 
     }
+
 }
