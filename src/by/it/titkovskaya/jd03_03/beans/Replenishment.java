@@ -53,7 +53,7 @@ public class Replenishment {
 
     @Override
     public String toString() {
-        return "Replenishment{" +
+        return "\nReplenishment{" +
                 "id=" + id +
                 ", date=" + date +
                 ", amount=" + amount +

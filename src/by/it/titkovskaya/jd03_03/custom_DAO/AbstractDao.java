@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_03;
+package by.it.titkovskaya.jd03_03.custom_DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

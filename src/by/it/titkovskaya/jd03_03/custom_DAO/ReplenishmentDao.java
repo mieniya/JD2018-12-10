@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_03;
+package by.it.titkovskaya.jd03_03.custom_DAO;
 
 import by.it.titkovskaya.jd03_03.beans.Replenishment;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ReplenishmentDao extends AbstractDao implements InterfaceDao<Replenishment>{
+public class ReplenishmentDao extends AbstractDao implements InterfaceDao<Replenishment> {
 
     @Override
     public Replenishment read(long id) throws SQLException {

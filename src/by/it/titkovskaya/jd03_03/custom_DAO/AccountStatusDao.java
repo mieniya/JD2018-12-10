@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_03;
+package by.it.titkovskaya.jd03_03.custom_DAO;
 
 import by.it.titkovskaya.jd03_03.beans.AccountStatus;
 

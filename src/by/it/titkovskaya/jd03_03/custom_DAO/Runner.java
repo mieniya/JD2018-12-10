@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_03;
+package by.it.titkovskaya.jd03_03.custom_DAO;
 
 import by.it.titkovskaya.jd03_03.beans.*;
 
@@ -13,7 +13,7 @@ public class Runner {
         User user = new User();
         List<User> users = dao.user.getAll();
         if (users.size() > 0)
-            System.out.println("READ OK: " + users);
+            System.out.println("\nREAD OK: " + users);
         user.setRoles_id(3);
         if (dao.user.create(user))
             System.out.println("CREATE OK: " + user);
@@ -26,7 +26,7 @@ public class Runner {
         Role role = new Role();
         List<Role> roles = dao.role.getAll();
         if (roles.size() > 0)
-            System.out.println("READ OK: " + roles);
+            System.out.println("\nREAD OK: " + roles);
         if (dao.role.create(role))
             System.out.println("CREATE OK: " + role);
         role.setRole("moderator");
@@ -38,7 +38,7 @@ public class Runner {
         Account account = new Account();
         List<Account> accounts = dao.account.getAll();
         if (accounts.size() > 0)
-            System.out.println("READ OK: " + accounts);
+            System.out.println("\nREAD OK: " + accounts);
         account.setUsers_id(3);
         account.setAccount_status_id(2);
         if (dao.account.create(account))
@@ -52,7 +52,7 @@ public class Runner {
         Replenishment replenishment = new Replenishment();
         List<Replenishment> replenishments = dao.replenishment.getAll();
         if (replenishments.size() > 0)
-            System.out.println("READ OK: " + replenishments);
+            System.out.println("\nREAD OK: " + replenishments);
         replenishment.setAccounts_id(3);
         replenishment.setDate(Timestamp.valueOf("2019-02-21 18:00:00"));
         if (dao.replenishment.create(replenishment))
@@ -66,7 +66,7 @@ public class Runner {
         Payment payment = new Payment();
         List<Payment> payments = dao.payment.getAll();
         if (payments.size() > 0)
-            System.out.println("READ OK: " + payments);
+            System.out.println("\nREAD OK: " + payments);
         payment.setAccounts_id(3);
         com.sun.jmx.snmp.Timestamp timestamp = new com.sun.jmx.snmp.Timestamp();
         Timestamp payDate = new Timestamp(timestamp.getDateTime());
@@ -82,7 +82,7 @@ public class Runner {
         AccountStatus status = new AccountStatus();
         List<AccountStatus> statuses = dao.status.getAll();
         if (statuses.size() > 0)
-            System.out.println("READ OK: " + statuses);
+            System.out.println("\nREAD OK: " + statuses);
         if (dao.status.create(status))
             System.out.println("CREATE OK: " + status);
         status.setStatus("TESTstatus");
