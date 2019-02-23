@@ -30,8 +30,8 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
 
     @Override
     public User read(long id) throws SQLException {
-        String sql = String.format(" WHERE id=" +
-                id);
+        String sql = " WHERE id=" +
+                id;
         List<User> userList = getAll(sql);
         if (userList.size() == 1) {
             return userList.get(0);
@@ -75,8 +75,8 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                 Connection connection = ConnCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            String sql = String.format("SELECT * FROM `users` " +
-                    where);
+            String sql = "SELECT * FROM `users` " +
+                    where;
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 User user = new User();

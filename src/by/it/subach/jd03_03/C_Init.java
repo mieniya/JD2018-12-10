@@ -117,7 +117,6 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `internet_shop`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'PetyaS', 'qqqq', 'petya@tut.by', 2);");
             statement.executeUpdate("INSERT INTO `internet_shop`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'SvetaV', 'aaaa1', 'sveta@gmail.com', 2);");
             statement.executeUpdate("INSERT INTO `internet_shop`.`users` (`id`, `login`, `password`, `email`, `role_id`) VALUES (DEFAULT, 'Alfonso', 'zxcv', 'alfonso@yahoo.com', 3);");
-            statement.executeUpdate("INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, NULL, '');");
             statement.executeUpdate("INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, 'consoles', 'Consoles');");
             statement.executeUpdate("INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, 'games', 'Console games');");
             statement.executeUpdate("INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, 'accessorise', 'Accessorise for consoles');");
@@ -128,7 +127,9 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `product_description`, `categories_id`) VALUES (DEFAULT, 'Heroes 3', 15.99, 'Strategy', 2);");
             statement.executeUpdate("INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `product_description`, `categories_id`) VALUES (DEFAULT, 'Baldurs gate 3 ', 19.99, 'RPG ', 2);");
             statement.executeUpdate("INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `product_description`, `categories_id`) VALUES (DEFAULT, 'Dualshock 5', 80.00, 'Gamepad for PS5', 3);");
-
+            statement.executeUpdate("INSERT INTO `internet_shop`.`orders` (`id`, `user_id`, `product_id`) VALUES (DEFAULT, 2, 3);");
+            statement.executeUpdate("INSERT INTO `internet_shop`.`orders` (`id`, `user_id`, `product_id`) VALUES (DEFAULT, 2, 4);");
+            statement.executeUpdate("INSERT INTO `internet_shop`.`orders` (`id`, `user_id`, `product_id`) VALUES (DEFAULT, 3, 5);");
 
 
 

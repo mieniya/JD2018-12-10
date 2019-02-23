@@ -2,20 +2,20 @@ package by.it.subach.jd03_03.beans;
 
 public class Order {
 
-    private int id;
+    private long id;
     private long user_id;
-    private int product_id;
+    private long product_id;
 
     public Order() {
     }
 
-    public Order(int id, int user_id, int product_id) {
+    public Order(long id, long user_id, long product_id) {
         this.id = id;
         this.user_id = user_id;
         this.product_id = product_id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -23,11 +23,11 @@ public class Order {
         return user_id;
     }
 
-    public int getProduct_id() {
+    public long getProduct_id() {
         return product_id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -35,7 +35,7 @@ public class Order {
         this.user_id = user_id;
     }
 
-    public void setProduct_id(int product_id) {
+    public void setProduct_id(long product_id) {
         this.product_id = product_id;
     }
 

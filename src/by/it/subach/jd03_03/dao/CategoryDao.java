@@ -28,7 +28,7 @@ public class CategoryDao extends AbstractDao implements InterfaceDao<Category> {
     }
 
     public Category read(long id) throws SQLException {
-            String sql = String.format(" WHERE `id`='%d'",
+            String sql = String.format(" WHERE id=" +
                     id);
             List<Category> categories = getAll(sql);
             if(categories.size() > 0) {
@@ -50,7 +50,7 @@ public class CategoryDao extends AbstractDao implements InterfaceDao<Category> {
 
 
     public boolean delete(Category category) throws SQLException {
-            String sql = String.format("DELETE FROM `categories` WHERE `id`='%d'",
+            String sql = String.format("DELETE FROM `categories` WHERE id="+
                     category.getId()
             );
             return executeUpdate(sql);
@@ -69,7 +69,7 @@ public class CategoryDao extends AbstractDao implements InterfaceDao<Category> {
                 Connection connection = ConnCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            String sql = String.format("SELECT * FROM `categories` WHERE '%s:'",
+            String sql = String.format("SELECT * FROM `categories` " +
                     where);
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {

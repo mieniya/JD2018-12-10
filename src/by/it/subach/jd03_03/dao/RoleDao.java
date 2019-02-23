@@ -25,7 +25,7 @@ public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
     }
 
     public Role read(long id) throws SQLException {
-            String sql = String.format(" WHERE `id`='%d'",
+            String sql = String.format(" WHERE id=" +
                     id);
             List<Role> rolesList = getAll(sql);
             if(rolesList.size() > 0) {
@@ -62,12 +62,12 @@ public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
                 Connection connection = ConnCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            String sql = String.format("SELECT * FROM `roles` WHERE '%s:'",
+            String sql = String.format("SELECT * FROM `roles` " +
                     where);
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 Role role = new Role();
-                role.setId(resultSet.getLong("id"));
+                role.setId(resultSet.getLong(1));
                 role.setRole(resultSet.getString("role"));
                 rolesList.add(role);
             }

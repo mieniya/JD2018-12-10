@@ -2,24 +2,24 @@ package by.it.subach.jd03_03.beans;
 
 public class Checkout {
 
-    private int id;
+    private long id;
     private int checkoutStatus;
-    private int order_id;
+    private long order_id;
 
     public Checkout() {
     }
 
-    public Checkout(int id, int checkoutStatus, int order_id) {
+    public Checkout(long id, int checkoutStatus, long order_id) {
         this.id = id;
         this.checkoutStatus = checkoutStatus;
         this.order_id = order_id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -31,11 +31,11 @@ public class Checkout {
         this.checkoutStatus = checkoutStatus;
     }
 
-    public int getOrder_id() {
+    public long getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(int order_id) {
+    public void setOrder_id(long order_id) {
         this.order_id = order_id;
     }
 

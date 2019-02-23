@@ -127,7 +127,7 @@ DROP TABLE IF EXISTS `internet_shop`.`checkout` ;
 
 CREATE TABLE IF NOT EXISTS `internet_shop`.`checkout` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `checkout_status` TINYINT(1) NULL,
+  `checkout_status` INT NOT NULL,
   `order_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_checkout_orders1`
@@ -174,7 +174,6 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `internet_shop`;
-INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, NULL, '');
 INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, 'consoles', 'Consoles');
 INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, 'games', 'Console games');
 INSERT INTO `internet_shop`.`categories` (`id`, `category_name`, `category_description`) VALUES (DEFAULT, 'accessorise', 'Accessorise for consoles');
@@ -194,6 +193,18 @@ INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `
 INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `product_description`, `categories_id`) VALUES (DEFAULT, 'Heroes 3', 15.99, 'Strategy', 2);
 INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `product_description`, `categories_id`) VALUES (DEFAULT, 'Baldurs gate 3 ', 19.99, 'RPG ', 2);
 INSERT INTO `internet_shop`.`products` (`id`, `product_name`, `product_price`, `product_description`, `categories_id`) VALUES (DEFAULT, 'Dualshock 5', 80.00, 'Gamepad for PS5', 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `internet_shop`.`orders`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `internet_shop`;
+INSERT INTO `internet_shop`.`orders` (`id`, `user_id`, `product_id`) VALUES (DEFAULT, 2, 3);
+INSERT INTO `internet_shop`.`orders` (`id`, `user_id`, `product_id`) VALUES (DEFAULT, 2, 4);
+INSERT INTO `internet_shop`.`orders` (`id`, `user_id`, `product_id`) VALUES (DEFAULT, 3, 5);
 
 COMMIT;
 

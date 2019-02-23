@@ -2,22 +2,22 @@ package by.it.subach.jd03_03.beans;
 
 public class BlackList {
 
-    private int id;
+    private long id;
     private long user_id;
 
     public BlackList() {
     }
 
-    public BlackList(int id, long user_id) {
+    public BlackList(long id, long user_id) {
         this.id = id;
         this.user_id = user_id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

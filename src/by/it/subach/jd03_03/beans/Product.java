@@ -2,24 +2,24 @@ package by.it.subach.jd03_03.beans;
 
 public class Product {
 
-    private int id;
+    private long id;
     private String name;
     private double price;
     private String description;
-    private int category_id;
+    private long categories_id;
 
     public Product() {
     }
 
-    public Product(int id, String name, double price, String description, int category_id) {
+    public Product(long id, String name, double price, String description, long categories_id) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.category_id = category_id;
+        this.categories_id = categories_id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -35,11 +35,11 @@ public class Product {
         return description;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public long getCategories_id() {
+        return categories_id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -55,8 +55,8 @@ public class Product {
         this.description = description;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategories_id(long categories_id) {
+        this.categories_id = categories_id;
     }
 
     @Override
