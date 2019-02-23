@@ -4,6 +4,7 @@ import by.it.naron.jd03_02.beans.Orders;
 import by.it.naron.jd03_02.crudOperations.OrdersCrud;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class OrdersTest {
 
@@ -26,10 +27,11 @@ public class OrdersTest {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
+        Timestamp date = new Timestamp(1550582031901L);
 
         OrdersCrud ordersCrud = new OrdersCrud();
         Orders orders = new Orders
-                (0,2,500,300.333,2,2);
+                (0,2,500,date,2,2,2);
        if (ordersCrud.create(orders))
             System.out.println("CREATE OK: " + orders);
         orders.setAmount(9000000);

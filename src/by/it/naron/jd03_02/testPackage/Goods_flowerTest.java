@@ -27,7 +27,7 @@ public class Goods_flowerTest {
 
 
         Goods_flower goods_flower = new Goods_flower(
-                1,"somename","somecolour",5);
+                1,"somename","somecolour",5,3.5);
         Goods_flowerCrud goods_flowerCrud = new Goods_flowerCrud();
 
        if (goods_flowerCrud.create(goods_flower))

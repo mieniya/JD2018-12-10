@@ -106,15 +106,17 @@ public class TaskC {
             Roles role1 = new Roles(1, "admin");
             Roles role2 = new Roles(2, "user");
             Roles role3 = new Roles(3, "guest");
-            Goods_flower goodsFlower1 = new Goods_flower(1,"ros","re",5);
-            Goods_flower goodsFlower2 = new Goods_flower(2,"ros","re",5);
-            Goods_flower goodsFlower3 = new Goods_flower(3,"ros","re",5);
+            Goods_flower goodsFlower1 = new Goods_flower(1,"ros","re",5,5);
+            Goods_flower goodsFlower2 = new Goods_flower(2,"ros","re",5,5);
+            Goods_flower goodsFlower3 = new Goods_flower(3,"ros","re",5,5);
             Users user1 = new Users(1,"ivan","pivan","ivan@it.by",2);
             Users user2 = new Users(2, "Petr Petrovich Petrov", "petya", "petya@yandex.ru",1);
             Users user3 = new Users(3, "Василий Васильевич Васильев", "vasya", "vasya@gmail.com",3);
-            Orders orders1 = new Orders(1,2,4,5,2,1);
-            Orders orders2 = new Orders(2,2,4,5,2,1);
-            Orders orders3 = new Orders(3,2,4,5,2,1);
+        Timestamp date = new Timestamp(1550582031901L);
+
+        Orders orders1 = new Orders(1,2,4,date,2,1,5);
+            Orders orders2 = new Orders(2,2,4,date,5,2,1);
+            Orders orders3 = new Orders(3,2,4,date,5,2,1);
 
 //
 //            Car car1 = new Car(1, "Range Rover Sport", "black", 2012, 1);

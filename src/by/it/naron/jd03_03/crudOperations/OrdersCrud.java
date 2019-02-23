@@ -1,7 +1,7 @@
-package by.it.naron.jd03_02.crudOperations;
+package by.it.naron.jd03_03.crudOperations;
 
-import by.it.naron.jd03_02.beans.Orders;
 import by.it.naron.jd03_02.tools.Connect;
+import by.it.naron.jd03_03.beans.Orders;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -71,7 +71,8 @@ public class OrdersCrud {
                         "`total_price`='%f',`users_id`='%d', `goods_Flower_id`='%d' " +
                             "WHERE `id`='%d'",
                     orders.getAmount(), orders.getTime_delivery(), orders.getDate_orders(),
-                     orders.getTotal_price(), orders.getUsers_id(), orders.getGoods_flower_id(),orders.getId());
+                     orders.getTotal_price(), orders.getUsers_id(), orders.getGoods_flower_id(),
+                    orders.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }

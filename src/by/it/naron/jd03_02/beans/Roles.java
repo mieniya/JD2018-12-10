@@ -4,22 +4,25 @@ import java.util.Objects;
 
 public class Roles {
  //fields
-    private int id;
+    private long id;
     private String role;
 
 //construcrors
-    public Roles(int id, String role) {
-        this.id = id;
-        this.role = role;
-    }
+
+
     public Roles() {
     }
 
-//Getters and Setters
-    public int getId() {
+    public Roles(long id, String role) {
+        this.id = id;
+        this.role = role;
+    }
+
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -30,8 +33,6 @@ public class Roles {
     public void setRole(String role) {
         this.role = role;
     }
-
-//Equals and Hashcode
 
     @Override
     public boolean equals(Object o) {
@@ -47,7 +48,6 @@ public class Roles {
 
         return Objects.hash(id, role);
     }
-//ToString
 
     @Override
     public String toString() {

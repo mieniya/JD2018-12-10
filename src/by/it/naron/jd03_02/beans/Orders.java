@@ -1,72 +1,85 @@
 package by.it.naron.jd03_02.beans;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Orders {
-    private int id;
-    private int  amount;
-    private int time_delivery;
-    private double price;
-    private int users_id;
-    private int goods_flower_id;
+    private long id;
+    private long  amount;
+    private long time_delivery;
+    private Timestamp date_orders;
+    private double total_price;
+    private long users_id;
+    private long goods_flower_id;
 
     public Orders() {
     }
 
-    public Orders(int id, int amount, int time_delivery, double price, int users_id, int goods_flower_id) {
+    public Orders(long id, long amount, long time_delivery,
+                  Timestamp date_orders, double total_price,
+                  long users_id, long goods_flower_id) {
         this.id = id;
         this.amount = amount;
         this.time_delivery = time_delivery;
-        this.price = price;
+        this.date_orders = date_orders;
+        this.total_price = total_price;
         this.users_id = users_id;
         this.goods_flower_id = goods_flower_id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 
-    public int getTime_delivery() {
+    public long getTime_delivery() {
         return time_delivery;
     }
 
-    public void setTime_delivery(int time_delivery) {
+    public void setTime_delivery(long time_delivery) {
         this.time_delivery = time_delivery;
     }
 
-    public double getPrice() {
-        return price;
+    public Timestamp getDate_orders() {
+        return date_orders;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDate_orders(Timestamp date_orders) {
+        this.date_orders = date_orders;
     }
 
-    public int getUsers_id() {
+    public double getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
+    }
+
+    public long getUsers_id() {
         return users_id;
     }
 
-    public void setUsers_id(int users_id) {
+    public void setUsers_id(long users_id) {
         this.users_id = users_id;
     }
 
-    public int getGoods_flower_id() {
+    public long getGoods_flower_id() {
         return goods_flower_id;
     }
 
-    public void setGoods_flower_id(int goods_flower_id) {
+    public void setGoods_flower_id(long goods_flower_id) {
         this.goods_flower_id = goods_flower_id;
     }
 
@@ -78,15 +91,17 @@ public class Orders {
         return id == orders.id &&
                 amount == orders.amount &&
                 time_delivery == orders.time_delivery &&
-                Double.compare(orders.price, price) == 0 &&
+                Double.compare(orders.total_price, total_price) == 0 &&
                 users_id == orders.users_id &&
-                goods_flower_id == orders.goods_flower_id;
+                goods_flower_id == orders.goods_flower_id &&
+                Objects.equals(date_orders, orders.date_orders);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, amount, time_delivery, price, users_id, goods_flower_id);
+        return Objects.hash(id, amount, time_delivery, date_orders, total_price,
+                users_id, goods_flower_id);
     }
 
     @Override
@@ -95,7 +110,8 @@ public class Orders {
                 "id=" + id +
                 ", amount=" + amount +
                 ", time_delivery=" + time_delivery +
-                ", price=" + price +
+                ", date_orders=" + date_orders +
+                ", total_price=" + total_price +
                 ", users_id=" + users_id +
                 ", goods_flower_id=" + goods_flower_id +
                 '}';

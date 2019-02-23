@@ -5,13 +5,16 @@ package by.it.naron.jd03_03.beans;
 import java.util.Objects;
 
 public class Users {
-    private int id;
+    private long id;
     private String login;
     private String password;
     private String email;
-    private int roles_id;
+    private long roles_id;
 
-    public Users(int id, String login, String password, String email, int roles_id) {
+    public Users() {
+    }
+
+    public Users(long id, String login, String password, String email, long roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -19,14 +22,11 @@ public class Users {
         this.roles_id = roles_id;
     }
 
-    public Users() {
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -54,14 +54,13 @@ public class Users {
         this.email = email;
     }
 
-    public int getRoles_id() {
+    public long getRoles_id() {
         return roles_id;
     }
 
-    public void setRoles_id(int roles_id) {
+    public void setRoles_id(long roles_id) {
         this.roles_id = roles_id;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -83,13 +82,12 @@ public class Users {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Users{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", roles_id=" + roles_id +
-                "}";
+                '}';
     }
-
 }

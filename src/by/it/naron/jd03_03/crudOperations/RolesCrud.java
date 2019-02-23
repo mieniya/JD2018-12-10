@@ -1,7 +1,7 @@
-package by.it.naron.jd03_02.crudOperations;
+package by.it.naron.jd03_03.crudOperations;
 
-import by.it.naron.jd03_02.beans.Roles;
 import by.it.naron.jd03_02.tools.Connect;
+import by.it.naron.jd03_03.beans.Roles;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
