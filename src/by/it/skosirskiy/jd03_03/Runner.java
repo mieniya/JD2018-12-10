@@ -10,14 +10,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Runner {
-    private static void showUsers(){
-        //покажем все, что есть в таблице пользователей
+    private static void showUsers() throws SQLException {
+
         System.out.println("\nТаблица пользователей:");
         List<User> users=new UserDao().getAll("");
         for (User each:users) System.out.println(each);
     }
     public static void main(String[] args) throws SQLException {
-        //инициализация работы с базой
+
         Dao dao = Dao.getDao();
         System.out.println("Роли пользователей");
         for (Role role: dao.role.getAll("")) {
@@ -26,14 +26,14 @@ public class Runner {
 
         showUsers();
 
-        User user = new User(0,"Сергей Иванович", "siivanov", "siivanov@mail.ru",2);
+        User user = new User(0,"Сергей Иванович", "sergio", "sergio@mail.ru",2);
         //добавим пользователя
         if (dao.user.create(user)) System.out.println("\nДобавлен:" + user);
         showUsers();
 
-        //извлечем и обновим пользователя с email siivanov@mail.ru
-        user = dao.user.getAll("WHERE ID>25").get(0);
-        user.setLogin("up_siivanov");
+        //извлечем и обновим пользователя с email sergio@mail.ru
+        user = dao.user.getAll("WHERE `email`='sergio@mail.ru'").get(0);
+        user.setLogin("up_ivan");
         if (dao.user.update(user)) System.out.println("\nИзменен:" + user);
         showUsers();
 

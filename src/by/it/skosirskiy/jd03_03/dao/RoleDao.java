@@ -12,7 +12,7 @@ import java.util.List;
 public class RoleDao extends AbstractDao implements InterfaceDAO<Role> {
 
     @Override
-    public Role read(int id) {
+    public Role read(int id) throws SQLException {
         List<Role> roles = getAll("WHERE ID=" + id + " LIMIT 0,1");
         if (roles.size() > 0) {
             return roles.get(0);
@@ -48,7 +48,7 @@ public class RoleDao extends AbstractDao implements InterfaceDAO<Role> {
     }
 
     @Override
-    public List<Role> getAll(String WHERE) {
+    public List<Role> getAll(String WHERE) throws SQLException {
         List<Role> roles = new ArrayList<>();
         String sql = "SELECT * FROM roles " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
@@ -61,8 +61,6 @@ public class RoleDao extends AbstractDao implements InterfaceDAO<Role> {
                 role.setRole(rs.getString("role"));
                 roles.add(role);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return roles;
     }

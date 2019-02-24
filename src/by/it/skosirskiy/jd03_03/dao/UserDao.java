@@ -12,7 +12,7 @@ import java.util.List;
 public class UserDao extends AbstractDao implements InterfaceDAO<User> {
 
     @Override
-    public List<User> getAll(String WHERE) {
+    public List<User> getAll(String WHERE) throws SQLException {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
@@ -28,14 +28,12 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
                 user.setRoles_id(rs.getInt("roles_id"));
                 users.add(user);
             }
-        } catch (SQLException e) {
-            //тут нужно логгирование SQLException(e);
         }
         return users;
     }
 
     @Override
-    public User read(int id) {
+    public User read(int id) throws SQLException {
         List<User> users = getAll("WHERE id=" + id + " LIMIT 0,1");
         if (users.size() > 0) {
             return users.get(0);

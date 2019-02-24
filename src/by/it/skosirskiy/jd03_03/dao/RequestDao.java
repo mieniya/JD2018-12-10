@@ -11,7 +11,7 @@ import java.util.List;
 
 public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
     @Override
-    public Request read(int id) {
+    public Request read(int id) throws SQLException {
         List<Request> requests = getAll("WHERE id=" + id + " LIMIT 0,1");
         if (requests.size() > 0) {
             return requests.get(0);
@@ -48,7 +48,7 @@ public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
     }
 
     @Override
-    public List<Request> getAll(String WHERE) {
+    public List<Request> getAll(String WHERE) throws SQLException {
         List<Request> requests = new ArrayList<>();
         String sql = "SELECT * FROM requests " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
@@ -67,8 +67,6 @@ public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
 
                 requests.add(request);
             }
-        } catch (SQLException e) {
-            //тут нужно логгирование SQLException(e);
         }
         return requests;
     }

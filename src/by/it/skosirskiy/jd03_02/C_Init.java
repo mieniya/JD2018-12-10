@@ -88,8 +88,8 @@ public class C_Init {
                     "AUTO_INCREMENT = 8\n" +
                     "DEFAULT CHARACTER SET = utf8");
             statement.executeUpdate("INSERT INTO `skosirskiy`.`address` (`id`, `city`, `street`, `house`, `flat`) VALUES\n" +
-                    "(2, 'minsk', 'lenina', '11', 5),\n" +
-                    "(3, 'minsk', 'marksa', '15', 13);");
+                    "(1, 'minsk', 'lenina', '11', 5),\n" +
+                    "(2, 'minsk', 'marksa', '15', 13);");
 
             statement.executeUpdate("INSERT INTO `skosirskiy`.`roles` (`id`, `role`) VALUES\n" +
                     "(1, 'admin'),\n" +
@@ -113,10 +113,10 @@ public class C_Init {
                     "(6, 'alex', 'alex', 'alex@mail.ru', 4),\n" +
                     "(7, 'iliya', 'iliya', 'iliya@mail.ru', 5);");
             statement.executeUpdate("INSERT INTO `skosirskiy`.`requests` (`id`, `type`, `date_create`, `date_complete`, `user_id`, `status_id`, `address_id`) VALUES\n" +
-                    "(4, 'no water', '2019-02-01', '2019-02-07', 2, 3, 2),\n" +
-                    "(5, 'no water', '2019-02-02', '2019-02-08', 4, 3, 3),\n" +
-                    "(6, 'fix the door', '2019-02-08', '2019-02-28', 4, 1, 3),\n" +
-                    "(7, 'no internet', '2019-04-08', '2019-02-05', 4, 3, 3);");
+                    "(1, 'no water', '2019-02-01', '2019-02-07', 1, 1, 1),\n" +
+                    "(2, 'no water', '2019-02-02', '2019-02-08', 2, 2, 2),\n" +
+                    "(3, 'fix the door', '2019-02-08', '2019-02-28', 1, 2, 1),\n" +
+                    "(4, 'no internet', '2019-04-08', '2019-02-05', 2, 1, 1);");
 
         } catch (SQLException e) {
             e.printStackTrace();

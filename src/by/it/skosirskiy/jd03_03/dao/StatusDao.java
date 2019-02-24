@@ -10,7 +10,7 @@ import java.util.List;
 
 public class StatusDao extends AbstractDao implements InterfaceDAO<Status> {
     @Override
-    public Status read(int id) {
+    public Status read(int id) throws SQLException {
         List<Status> Statuses = getAll("WHERE id=" + id + " LIMIT 0,1");
         if (Statuses.size() > 0) {
             return Statuses.get(0);
@@ -48,7 +48,7 @@ public class StatusDao extends AbstractDao implements InterfaceDAO<Status> {
 
 
     @Override
-    public List<Status> getAll(String WHERE) {
+    public List<Status> getAll(String WHERE) throws SQLException {
         List<Status> statuses = new ArrayList<>();
         String sql = "SELECT * FROM statuses " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
@@ -60,8 +60,6 @@ public class StatusDao extends AbstractDao implements InterfaceDAO<Status> {
                 status.setStatus(rs.getString("id"));
                 statuses.add(status);
             }
-        } catch (SQLException e) {
-            //тут нужно логгирование SQLException(e);
         }
         return statuses;
     }
