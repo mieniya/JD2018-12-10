@@ -1,7 +1,7 @@
 package by.it.migunko.jd03_03.beans;
 
 public class Tours {
-   private long id;
+    private long id;
     private String description;
     private String typeOfTravel;
     private String destination;
@@ -12,7 +12,7 @@ public class Tours {
 
     public Tours(){
 
-   }
+    }
     public Tours(long id, String description, String typeOfTravel, String destination, String hotel, int countOfNights, double price, long users_id) {
         this.id = id;
         this.description = description;

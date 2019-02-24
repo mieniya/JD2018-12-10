@@ -64,7 +64,7 @@ public class TourDao extends AbstractDao implements InterfaceDao<Tours>{
                 Statement statement = connection.createStatement()
         ) {
             String sql = String.format(
-                            "SELECT * FROM `tours` "+ where);
+                    "SELECT * FROM `tours` "+ where);
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 Tours tour = new Tours(

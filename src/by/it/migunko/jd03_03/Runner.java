@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
-
         Dao dao = Dao.getDao();
         Roles role=new Roles(0,"Test");
         dao.role.create(role);
@@ -30,8 +29,6 @@ public class Runner {
         dao.user.update(user);
         dao.user.delete(user);
         System.out.println(user);
-
-
     }
 }
 
