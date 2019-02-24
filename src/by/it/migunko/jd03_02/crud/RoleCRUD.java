@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 public class RoleCRUD {
-   public boolean create(Roles roles) throws SQLException {
+    public boolean create(Roles roles) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
@@ -28,7 +28,7 @@ public class RoleCRUD {
         Roles roles = null;
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format( "SELECT `role` FROM `roles` WHERE id=%d", id);
+            String sql = String.format("SELECT `role` FROM `roles` WHERE id=%d", id);
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
                 roles = new Roles(
@@ -43,7 +43,7 @@ public class RoleCRUD {
     public boolean update(Roles roles) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format( "UPDATE `roles` SET `role`='%s' WHERE id=%d",
+            String sql = String.format("UPDATE `roles` SET `role`='%s' WHERE id=%d",
                     roles.getRole(), roles.getId());
             return 1 == statement.executeUpdate(sql);
         }
@@ -52,7 +52,7 @@ public class RoleCRUD {
     public boolean delete(Roles roles) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format( "DELETE FROM `roles` WHERE id=%d", roles.getId());
+            String sql = String.format("DELETE FROM `roles` WHERE id=%d", roles.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }
