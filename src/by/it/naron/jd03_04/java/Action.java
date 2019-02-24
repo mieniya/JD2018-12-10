@@ -12,13 +12,13 @@ public enum Action {
         this.command = command;
     }
 
-    Cmd command;
+    public Cmd command;
 
-    String getJsp(){
+    public String getJsp(){
         return "/"+name().toLowerCase()+".jsp";
     }
 
-    static Action define(HttpServletRequest req){
+    public static Action define(HttpServletRequest req){
         String command = req.getParameter("command").toUpperCase();
         try {
             return Action.valueOf(command);
