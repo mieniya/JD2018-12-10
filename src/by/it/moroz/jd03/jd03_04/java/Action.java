@@ -16,7 +16,6 @@ public enum Action {
 
      static Action define(HttpServletRequest req){
         String command = req.getParameter("command").toUpperCase();
-
         try{
             return Action.valueOf(command);
         }catch (Exception e){
