@@ -1,19 +1,19 @@
 package by.it.migunko.jd03_03.beans;
 
 public class Tours {
-   private   long id;
-   private String description;
-   private String typeOfTravel;
-   private String destination;
-   private   String hotel;
-   private int countOfNights;
-   private   double price;
-   private long users_id;
-    public Tours() {
-    }
+   private long id;
+    private String description;
+    private String typeOfTravel;
+    private String destination;
+    private String hotel;
+    private int countOfNights;
+    private double price;
+    private long users_id;
 
-    public Tours (long id, String description, String typeOfTravel, String destination
-            , String hotel,  int countOfNights, double price, long users_id) {
+    public Tours(){
+
+   }
+    public Tours(long id, String description, String typeOfTravel, String destination, String hotel, int countOfNights, double price, long users_id) {
         this.id = id;
         this.description = description;
         this.typeOfTravel = typeOfTravel;
@@ -23,6 +23,7 @@ public class Tours {
         this.price = price;
         this.users_id = users_id;
     }
+
     public long getId() {
         return id;
     }
@@ -37,6 +38,20 @@ public class Tours {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Tours{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", typeOfTravel='" + typeOfTravel + '\'' +
+                ", destination='" + destination + '\'' +
+                ", hotel='" + hotel + '\'' +
+                ", countOfNights=" + countOfNights +
+                ", price=" + price +
+                ", users_id=" + users_id +
+                '}';
     }
 
     public String getTypeOfTravel() {
@@ -85,18 +100,5 @@ public class Tours {
 
     public void setUsers_id(long users_id) {
         this.users_id = users_id;
-    }
-    @Override
-    public String toString() {
-        return "Tours{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", typeOfTravel='" + typeOfTravel + '\'' +
-                ", destination='" + destination + '\'' +
-                ", hotel=" + hotel +
-                ", countOfNights=" + countOfNights +
-                ", price=" + price +
-                ", users_id=" + users_id +
-                '}';
     }
 }
