@@ -25,7 +25,7 @@ public class UniversalDAO<TypeBean> implements InterfaceDAO<TypeBean> {
     private String table; //это его таблица в базе
     private Field[] fields; //это поля bean
 
-    //конструктор DAO
+    //конструктор Dao
     public UniversalDAO(Class<TypeBean> aClass, String sqlTableName) {
         this.aClass = aClass;
         this.table = sqlTableName;

@@ -36,9 +36,9 @@ public class Runner {
             System.out.println("DELETE OK: " + role);
 
         //TEST CASCADE
-        //        User user=userCRUD.read(3);
-        //        System.out.println(user);
-        //        userCRUD.delete(user);
+//                User user=userCRUD.read(3);
+//                System.out.println(user);
+//                userCRUD.delete(user);
 
 
     }
