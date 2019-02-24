@@ -1,5 +1,6 @@
 package by.it.moroz.jd03.jd03_03;
 
+import by.it.moroz.jd03.jd03_03.beans.Order;
 import by.it.moroz.jd03.jd03_03.beans.User;
 import by.it.moroz.jd03.jd03_03.dao.DAO;
 
@@ -11,7 +12,7 @@ public class Runner {
     public static void main(String[] args) throws SQLException {
 
         DAO dao = DAO.getDao();
-        User user = new User(0, "TestLogin", "TestPassword", "TestEmail",
+       /* User user = new User(0, "TestLogin", "TestPassword", "TestEmail",
                 "TestAddress", "TestName", "TestSurname", 111111111, 2);
         List<User> users = dao.user.getAll();
         System.out.println("======================\nList of users:\n======================");
@@ -34,7 +35,11 @@ public class Runner {
         for (User secondUser : secondUsers) {
             System.out.println("This is "+dao.role.read(secondUser.getRoles_id()).getRole());
             System.out.println(secondUser);
-        }
+        }*/
+        Order order = new Order();
+        dao.order.getAll("");
+
+
 
     }
 

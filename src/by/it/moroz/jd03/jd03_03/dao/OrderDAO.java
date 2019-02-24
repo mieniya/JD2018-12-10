@@ -2,17 +2,14 @@ package by.it.moroz.jd03.jd03_03.dao;
 
 import by.it.moroz.jd03.jd03_03.beans.Order;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+ public class OrderDAO extends UniversalDAO<Order> {
 
-class OrderDAO extends AbstractDAO implements InterfaceDAO<Order> {
+      OrderDAO() {
+        super(Order.class, "orders");
+    }
 
 
-    @Override
+    /*@Override
     public Order read(long id) throws SQLException {
         List<Order> orders = getAll("WHERE `id`=" + id);
         return orders.size()==0?null:orders.get(0);
@@ -54,7 +51,7 @@ class OrderDAO extends AbstractDAO implements InterfaceDAO<Order> {
         List<Order> result = new ArrayList<>();
             String sql = "SELECT * FROM `orders` "+WHERE;
             ResultSet resultSet = executeQuery(sql);
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 Order order = new Order();
                 order.setId(resultSet.getLong("id"));
                 order.setName(resultSet.getString("name"));
@@ -65,5 +62,5 @@ class OrderDAO extends AbstractDAO implements InterfaceDAO<Order> {
                 result.add(order);
             }
         return result;
-    }
+    }*/
 }
