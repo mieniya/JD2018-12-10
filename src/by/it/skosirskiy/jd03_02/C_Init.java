@@ -66,8 +66,8 @@ public class C_Init {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `skosirskiy`.`requests` (\n" +
                     "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
                     "  `type` VARCHAR(45) NULL DEFAULT NULL,\n" +
-                    "  `date_create` DATE NULL DEFAULT NULL,\n" +
-                    "  `date_complete` DATE NULL DEFAULT NULL,\n" +
+                    "  `date_create` TIMESTAMP NULL DEFAULT NULL,\n" +
+                    "  `date_complete` TIMESTAMP NULL DEFAULT NULL,\n" +
                     "  `user_id` INT(11) NOT NULL,\n" +
                     "  `status_id` INT(11) NOT NULL,\n" +
                     "  `address_id` INT(11) NOT NULL,\n" +

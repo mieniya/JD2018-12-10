@@ -1,19 +1,20 @@
-package by.it.skosirskiy.jd03_02.Beans;
+package by.it.skosirskiy.jd03_02.beans;
 
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 public class Request {
     private long id;
     private String type;
-    private Date date_create;
-    private Date date_complete;
+    private Timestamp date_create;
+    private Timestamp date_complete;
     private int user_id;
     private int status_id;
     private int address_id;
     public Request() {
     }
 
-    public Request(long id, String type, Date date_create, Date date_complete, int user_id, int status_id, int address_id) {
+    public Request(long id, String type, Timestamp date_create, Timestamp date_complete, int user_id, int status_id, int address_id) {
         this.id = id;
         this.type = type;
         this.date_create = date_create;
@@ -31,11 +32,11 @@ public class Request {
         this.type = type;
     }
 
-    public void setDate_create(Date date_create) {
+    public void setDate_create(Timestamp date_create) {
         this.date_create = date_create;
     }
 
-    public void setDate_complete(Date date_complete) {
+    public void setDate_complete(Timestamp date_complete) {
         this.date_complete = date_complete;
     }
 
@@ -59,11 +60,11 @@ public class Request {
         return type;
     }
 
-    public Date getDate_create() {
+    public Timestamp getDate_create() {
         return date_create;
     }
 
-    public Date getDate_complete() {
+    public Timestamp getDate_complete() {
         return date_complete;
     }
 
