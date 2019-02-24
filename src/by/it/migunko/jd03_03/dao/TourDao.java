@@ -13,7 +13,7 @@ public class TourDao extends AbstractDao implements InterfaceDao<Tours>{
     public boolean create(Tours tours) throws SQLException {
         String sql = String.format("INSERT INTO " +
                         "`tours`(`description`, `typeOfTravel`, `destination`, " +
-                        "`hotel`,  `numberOfNights`, `price`, `users_id`) " +
+                        "`hotel`,  `countOfNights`, `price`, `users_id`) " +
                         "VALUES ('%s','%s','%s','%s',%d,%f,%d)",
                 tours.getDescription(), tours.getTypeOfTravel(), tours.getDestination(),
                 tours.getHotel(),  tours.getCountOfNights(),
