@@ -3,17 +3,17 @@ package by.it.titkovskaya.jd03_01;
 public class Runner {
 
     public static void main(String[] args) {
-        A_AddUser addUser = new A_AddUser();
-        addUser.addUser();
+//        A_AddUser addUser = new A_AddUser();
+  //      addUser.addUser();
 
-        A_AddData addData = new A_AddData();
-        addData.addData();
+    //    A_AddData addData = new A_AddData();
+      //  addData.addData();
 
 //        B_AddRoles addRoles = new B_AddRoles();
   //      addRoles.addRoles();
 
-        B_ShowUsers showUsers = new B_ShowUsers();
-        showUsers.showUsers();
+    //    B_ShowUsers showUsers = new B_ShowUsers();
+      //  showUsers.showUsers();
 
         C_Reset reset = new C_Reset();
         reset.reset();
