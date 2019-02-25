@@ -9,6 +9,10 @@ import by.it.dziomin.jd03_02.crud.RentsCRUD;
 import by.it.dziomin.jd03_02.crud.RolesCRUD;
 import by.it.dziomin.jd03_02.crud.UsersCRUD;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Runner {
     public static void main(String[] args) {
         new DBConnector();
@@ -18,7 +22,7 @@ public class Runner {
         if (roleCRUD.create(role)) {
             System.out.println("CREATE OK: " + role);
         }
-        role.setRole("TestRoleUpdate");
+        role.setName("TestRoleUpdate");
         if (roleCRUD.update(role)) {
             System.out.println("UPDATE OK: " + role);
         }
@@ -69,7 +73,7 @@ public class Runner {
             System.out.println("CREATE OK: " + rent);
         }
         rent.setPrice(20.52);
-        rent.setOpen(0);
+        rent.setIsOpen(0);
         if (rentsCRUD.update(rent)) {
             System.out.println("UPDATE OK: " + rent);
         }
@@ -78,5 +82,18 @@ public class Runner {
             System.out.println("READ OK: " + rent);
         if (rentsCRUD.delete(rent))
             System.out.println("DELETE OK: " + rent);
+               
+        setCorrectDate();
+               
     }
+    
+    public static void setCorrectDate() {
+        try {
+            DBConnector.getStatement().executeUpdate("UPDATE rent SET date = null WHERE 1;");
+            DBConnector.getStatement().executeUpdate("alter table rent modify date date null;");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
