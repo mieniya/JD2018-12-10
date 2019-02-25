@@ -18,8 +18,8 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) {
-        Action action = Action.define(req);
         resp.setHeader("Cache-Control", "no-store");
+        Action action = Action.define(req);
         try{
             Action nextAction = action.command.execute(req);
             if(nextAction!=action)
