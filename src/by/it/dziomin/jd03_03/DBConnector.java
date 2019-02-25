@@ -20,7 +20,6 @@ public class DBConnector {
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-
         try {
             dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
             return dbConnection;
