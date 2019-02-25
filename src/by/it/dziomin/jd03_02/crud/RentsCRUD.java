@@ -68,7 +68,7 @@ public class RentsCRUD {
     public Rents read(long id) {
         try {
             String sql = String.format(
-                    "SELECT * FROM `rents` WHERE `id`='%d'",
+                    "SELECT_ALL_SQL * FROM `rents` WHERE `id`='%d'",
                     id);
             ResultSet resultSet = DBConnector.getStatement().executeQuery(sql);
             if (resultSet.next()) {

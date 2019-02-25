@@ -64,7 +64,7 @@ public class Runner {
 
         System.out.println("\n*****RentsCRUD***************");
         RentsCRUD rentsCRUD = new RentsCRUD();
-        Rents rent = new Rents(0, 999999999, 100.00, 1, 4,1);
+        Rents rent = new Rents(0, 999999999, 100.00, 1, 2,1);
         if (rentsCRUD.create(rent)) {
             System.out.println("CREATE OK: " + rent);
         }

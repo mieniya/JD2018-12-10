@@ -70,7 +70,7 @@ public class Rents {
 
     @Override
     public String toString() {
-        return "Rents{" +
+        return "Rent{" +
                 "id=" + id +
                 ", date=" + date +
                 ", price=" + price +

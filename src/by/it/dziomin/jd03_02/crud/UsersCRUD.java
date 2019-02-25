@@ -69,7 +69,7 @@ public class UsersCRUD {
     public Users read(long id) {
         try {
             String sql = String.format(
-                    "SELECT * FROM `users` WHERE `id`='%d'",
+                    "SELECT_ALL_SQL * FROM `users` WHERE `id`='%d'",
                     id);
             ResultSet resultSet = DBConnector.getStatement().executeQuery(sql);
             if (resultSet.next()) {
