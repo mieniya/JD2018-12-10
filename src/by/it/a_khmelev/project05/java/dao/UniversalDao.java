@@ -147,7 +147,7 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
             e.printStackTrace();
         }
         String sql = "insert INTO " + table + " (" + names + ") values(" + values + ")";
-        //System.out.println(sql);
+        System.out.println(sql);
         int id = executeUpdate(sql, true);
         if (id > 0) try {
             fields[0].setAccessible(true);
