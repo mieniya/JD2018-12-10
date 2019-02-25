@@ -91,8 +91,8 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `naron`.`goods_flower` (`id`, `name`, `color`, `size`) VALUES (DEFAULT, 'orchid', 'white', 50);");
             statement.executeUpdate("INSERT INTO `naron`.`goods_flower` (`id`, `name`, `color`, `size`) VALUES (DEFAULT, 'begonia', 'pink', 30);");
 
-            statement.executeUpdate("INSERT INTO `naron`.`orders` (`id`, `amount`, `time_delivery`, `price`, `users_id`, `goods_flower_id`) VALUES (DEFAULT, 3, 5000000, 20, 1, 1);");
-            statement.executeUpdate("INSERT INTO `naron`.`orders` (`id`, `amount`, `time_delivery`, `price`, `users_id`, `goods_flower_id`) VALUES (DEFAULT, 5, 6000000, 65, 2, 2);");
+            statement.executeUpdate("INSERT INTO `naron`.`orders` (`id`, `amount`, order_date, total_price, `users_id`, `goods_flower_id`) VALUES (DEFAULT, 3, 5000000, 20, 1, 1);");
+            statement.executeUpdate("INSERT INTO `naron`.`orders` (`id`, `amount`, order_date, total_price, `users_id`, `goods_flower_id`) VALUES (DEFAULT, 5, 6000000, 65, 2, 2);");
 
             } catch (SQLException e) {
             e.printStackTrace();

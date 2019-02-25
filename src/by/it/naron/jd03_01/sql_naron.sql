@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `naron`.`goods_flower` ;
 CREATE TABLE IF NOT EXISTS `naron`.`goods_flower` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(60) NULL,
-  `color` VARCHAR(45) NULL,
+  `colour` VARCHAR(45) NULL,
   `size` DOUBLE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -123,9 +123,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `naron`;
-INSERT INTO `naron`.`goods_flower` (`id`, `name`, `color`, `size`) VALUES (DEFAULT, 'rose', 'red', 70);
-INSERT INTO `naron`.`goods_flower` (`id`, `name`, `color`, `size`) VALUES (DEFAULT, 'orchid', 'white', 50);
-INSERT INTO `naron`.`goods_flower` (`id`, `name`, `color`, `size`) VALUES (DEFAULT, 'begonia', 'pink', 30);
+INSERT INTO `naron`.`goods_flower` (`id`, `name`, `colour`, `size`) VALUES (DEFAULT, 'rose', 'red', 70);
+INSERT INTO `naron`.`goods_flower` (`id`, `name`, `colour`, `size`) VALUES (DEFAULT, 'orchid', 'white', 50);
+INSERT INTO `naron`.`goods_flower` (`id`, `name`, `colour`, `size`) VALUES (DEFAULT, 'begonia', 'pink', 30);
 
 COMMIT;
 
