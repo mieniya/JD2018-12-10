@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>FrontController</servlet-name>
-        <servlet-class>by.it.moroz.jd03.jd03_04.java.FrontController</servlet-class>
+        <servlet-class>by.it.moroz.jd03.progect.java.FrontController</servlet-class>
     </servlet>
 
     <servlet-mapping>

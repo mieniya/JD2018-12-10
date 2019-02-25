@@ -1,10 +1,10 @@
-package by.it.moroz.jd03.jd03_04.java;
+package by.it.moroz.jd03.progect.java;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CmdSighUp implements Cmd {
+public class CmdIndex implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) {
-        return Action.SIGNUP;
+        return Action.INDEX;
     }
 }

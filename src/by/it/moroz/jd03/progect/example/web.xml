@@ -6,7 +6,7 @@
          metadata-complete="true">
    <servlet>
        <servlet-name>Hello</servlet-name>
-       <servlet-class>by.it.moroz.jd03.jd03_04.HelloServlet</servlet-class>
+       <servlet-class>by.it.moroz.jd03.progect.HelloServlet</servlet-class>
    </servlet>
 
     <servlet-mapping>
