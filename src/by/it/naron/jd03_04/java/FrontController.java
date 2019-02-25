@@ -10,6 +10,11 @@ import java.io.IOException;
 public class FrontController extends HttpServlet{
 
     @Override
+    public void init() throws ServletException {
+        super.init();
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req, resp);
     }
@@ -33,5 +38,10 @@ public class FrontController extends HttpServlet{
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
     }
 }
