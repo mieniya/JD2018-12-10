@@ -22,14 +22,14 @@ public class Runner_Reset_Init {
         roleCRUD.create(role1);
         roleCRUD.create(role2);
         roleCRUD.create(role3);
-        System.out.println("Created successfully:\n"+role1 +"\n" +role2 +"\n" + role3 +"\n");
+        System.out.println("Created successfully:\n" + role1 + "\n" + role2 + "\n" + role3 + "\n");
 
         AccountStatusCRUD statusCRUD = new AccountStatusCRUD();
         AccountStatus status1 = new AccountStatus(0, "active");
         AccountStatus status2 = new AccountStatus(0, "locked");
         statusCRUD.create(status1);
         statusCRUD.create(status2);
-        System.out.println("Created successfully:\n"+status1 +"\n" +status2 +"\n");
+        System.out.println("Created successfully:\n" + status1 + "\n" + status2 + "\n");
 
         UserCRUD userCRUD = new UserCRUD();
         User user1 = new User(0, "admin", "00000", "admin@it.by", "Samanta Jones", 1);
@@ -38,7 +38,7 @@ public class Runner_Reset_Init {
         userCRUD.create(user1);
         userCRUD.create(user2);
         userCRUD.create(user3);
-        System.out.println("Created successfully:\n"+user1 +"\n" +user2 +"\n" + user3 +"\n");
+        System.out.println("Created successfully:\n" + user1 + "\n" + user2 + "\n" + user3 + "\n");
 
         AccountCRUD accountCRUD = new AccountCRUD();
         Account account1 = new Account(0, 111111111, "USD", 2, 2);
@@ -47,19 +47,19 @@ public class Runner_Reset_Init {
         accountCRUD.create(account1);
         accountCRUD.create(account2);
         accountCRUD.create(account3);
-        System.out.println("Created successfully:\n"+account1 +"\n" +account2 +"\n" + account3 +"\n");
+        System.out.println("Created successfully:\n" + account1 + "\n" + account2 + "\n" + account3 + "\n");
 
         PaymentCRUD paymentCRUD = new PaymentCRUD();
         Timestamp payDate1 = Timestamp.valueOf("2019-01-04 16:50:00");
         Timestamp payDate2 = Timestamp.valueOf("2019-01-25 12:00:00");
         Timestamp payDate3 = Timestamp.valueOf("2019-02-15 13:30:00");
-        Payment payment1 = new Payment(0,payDate1, 2000, "llc rosting", 1);
+        Payment payment1 = new Payment(0, payDate1, 2000, "llc rosting", 1);
         Payment payment2 = new Payment(0, payDate2, 10000, "ue metrostroy", 2);
         Payment payment3 = new Payment(0, payDate3, 25000, "corporation GNB", 3);
         paymentCRUD.create(payment1);
         paymentCRUD.create(payment2);
         paymentCRUD.create(payment3);
-        System.out.println("Created successfully:\n"+payment1 +"\n" +payment2 +"\n" + payment3 +"\n");
+        System.out.println("Created successfully:\n" + payment1 + "\n" + payment2 + "\n" + payment3 + "\n");
 
         ReplenishmentCRUD replenishmentCRUD = new ReplenishmentCRUD();
         Timestamp date1 = Timestamp.valueOf("2019-01-04 15:25:00");
@@ -71,6 +71,6 @@ public class Runner_Reset_Init {
         replenishmentCRUD.create(replenishment1);
         replenishmentCRUD.create(replenishment2);
         replenishmentCRUD.create(replenishment3);
-        System.out.println("Created successfully:\n"+replenishment1 +"\n" +replenishment2 +"\n" + replenishment3 +"\n");
+        System.out.println("Created successfully:\n" + replenishment1 + "\n" + replenishment2 + "\n" + replenishment3 + "\n");
     }
 }
