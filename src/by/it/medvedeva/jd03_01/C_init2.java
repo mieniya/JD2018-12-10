@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_init {
+public class C_init2 {
 
     public static void main(String[] args) throws SQLException {
         try {
