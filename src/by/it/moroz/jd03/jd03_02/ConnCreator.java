@@ -13,7 +13,7 @@ public class ConnCreator {
             System.out.println("Error loading driver: " + e);
         }
     }
-    
+
     private static volatile Connection connection;
 
     public ConnCreator() {
