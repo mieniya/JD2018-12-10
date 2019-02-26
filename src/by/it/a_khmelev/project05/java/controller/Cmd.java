@@ -1,4 +1,4 @@
-package by.it.naron.jd03_04.java;
+package by.it.a_khmelev.project05.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

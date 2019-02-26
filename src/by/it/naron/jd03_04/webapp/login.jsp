@@ -2,11 +2,47 @@
 <%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
+    <%@ include file="include/menu.jsp" %>
 
-<%@ include file="include/menu.jsp" %>
-<p>Cmd Login: ${message}</p>
+    User: ${users}
+    <br>
+
+    <form class="form-horizontal" action="do?command=Login" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>SignUp</legend>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="login">Login</label>
+                <div class="col-md-4">
+                    <input id="login" name="login" value="testLogin" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Password</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="loginButton"></label>
+                <div class="col-md-4">
+                    <button id="loginButton" name="loginButton" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
 </div>
-
 </body>
 </html>
 

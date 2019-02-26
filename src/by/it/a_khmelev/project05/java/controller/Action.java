@@ -1,4 +1,4 @@
-package by.it.naron.jd03_04.java;
+package by.it.a_khmelev.project05.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,19 +6,22 @@ public enum Action {
 
     INDEX(new CmdIndex()),
     ERROR(new CmdError()),
+    LOGIN(new CmdLogin()),
+    CREATEAD(new CmdCreateAd()),
+    RESETDB(new CmdResetDB()),
     SIGNUP(new CmdSignup());
 
     Action(Cmd command) {
         this.command = command;
     }
 
-    public Cmd command;
+    Cmd command;
 
-    public String getJsp(){
+    String getJsp(){
         return "/"+name().toLowerCase()+".jsp";
     }
 
-    public static Action define(HttpServletRequest req){
+    static Action define(HttpServletRequest req){
         String command = req.getParameter("command").toUpperCase();
         try {
             return Action.valueOf(command);

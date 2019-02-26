@@ -1,4 +1,4 @@
-package by.it.naron.jd03_04.java;
+package by.it.naron.jd03_04.java.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,11 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class FrontController extends HttpServlet{
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,7 +20,7 @@ public class FrontController extends HttpServlet{
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp){
-        Action action=Action.define(req);
+        Action action= Action.define(req);
         try {
             Action nextAction = action.command.execute(req);
             if (nextAction == action) {
@@ -38,10 +33,5 @@ public class FrontController extends HttpServlet{
             e.printStackTrace();
         }
 
-    }
-
-    @Override
-    public void destroy() {
-        super.destroy();
     }
 }

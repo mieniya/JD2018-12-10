@@ -13,7 +13,7 @@ public class TestGoods_flowerDao {
         Goods_flower goodsFlower = new Goods_flower(2,"sname","scolour",3,3.6);
         goodsFlower.setId(3);
         if (dao.goodsFlower.create(goodsFlower))
-            System.out.println("CREATE OK: " + goodsFlower);
+            System.out.println("CREATEGOODSFLOWER OK: " + goodsFlower);
         goodsFlower.setColour("TestAd");
         if (dao.goodsFlower.update(goodsFlower))
             System.out.println("UPDATE OK: " + goodsFlower);
