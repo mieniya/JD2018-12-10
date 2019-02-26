@@ -12,7 +12,7 @@ public class UsersTest {
         UsersCrud usersCRUD = new UsersCrud();
         Users user = new Users(0, "TestUser", "TestEmail", "TestPassword", 2);
         if (usersCRUD.create(user))
-            System.out.println("CREATE OK: " + user);
+            System.out.println("CREATEGOODSFLOWER OK: " + user);
         user.setLogin("TestUserUpdate");
         if (usersCRUD.update(user))
             System.out.println("UPDATE OK: " + user);

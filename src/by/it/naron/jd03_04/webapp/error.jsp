@@ -1,8 +1,10 @@
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
-<%@ include file="include/menu.htm" %>
-<p>ERROR: ${message}</p>
+<div class="container">
+    <%@ include file="include/menu.jsp" %>
+    <p>ERROR: ${message}</p>
+</div>
 </body>
 </html>
 

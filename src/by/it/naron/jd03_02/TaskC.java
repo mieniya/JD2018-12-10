@@ -1,7 +1,5 @@
 package by.it.naron.jd03_02;
 
-import by.it._examples_.jd01_11.Collections.Order;
-import by.it.naron.jd03_01.C_Reset;
 import by.it.naron.jd03_02.tools.Connect;
 import by.it.naron.jd03_02.beans.*;
 import by.it.naron.jd03_02.crudOperations.*;
@@ -12,12 +10,12 @@ import java.util.Scanner;
 public class TaskC {
     private static void deleteTables() {
         try (Statement statement = Connect.getConnection().createStatement()) {
-            statement.executeUpdate("DROP SCHEMA IF EXISTS `jd2TaskC` ;");
-//
-//            statement.executeUpdate("DROP TABLE IF EXISTS `orders`");
-//            statement.executeUpdate("DROP TABLE IF EXISTS `goods_flower`");
-//            statement.executeUpdate("DROP TABLE IF EXISTS `users`");
-//            statement.executeUpdate("DROP TABLE IF EXISTS `roles`");
+            statement.executeUpdate("DROP SCHEMA IF EXISTS `naron` ;");
+
+            statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`orders`;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`goods_flower`;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`users`;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`roles` ;");
             System.out.println("tables deleted");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -26,38 +24,40 @@ public class TaskC {
 
     private static void createTables() {
         try (Statement statement = Connect.getConnection().createStatement()) {
-            statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `jd2TaskC` DEFAULT CHARACTER SET utf8");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `jd2TaskC`.`roles` (" +
+            statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `naron` DEFAULT CHARACTER SET utf8");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `naron`.`roles` (" +
                     "  `id` int(15) NOT NULL AUTO_INCREMENT," +
                     "  `role` VARCHAR(100) NULL," +
                     "  PRIMARY KEY (`id`))" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `jd2TaskC`.`users` (\n" +
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `naron`.`users` (\n" +
                     "  `id` int(15) NOT NULL AUTO_INCREMENT,\n" +
-                    "  `logiiiiiiiin` VARCHAR(50) NULL,\n" +
+                    "  `login` VARCHAR(50) NULL,\n" +
                     "  `password` VARCHAR(50) NULL,\n" +
-                    "  `email` VARCHAR(50) NULL,\n" +
+                    "  `e-mail` VARCHAR(50) NULL,\n" +
                     "  `roles_id` int(15) NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
                     "  INDEX `fk_users_roles_idx` (`roles_id` ASC),\n" +
                     "  CONSTRAINT `fk_users_roles`\n" +
                     "    FOREIGN KEY (`roles_id`)\n" +
                     "    REFERENCES `naron`.`roles` (`id`)\n" +
-                    "    ON DELETE RESTRICT\n" +
-                    "    ON UPDATE RESTRICT)\n" +
+                    "    ON DELETE RESTRICT \n" +
+                    "    ON UPDATE RESTRICT )\n" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `jd2TaskC`.`goods_flower` (\n" +
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `naron`.`goods_flower` (\n" +
                     "  `id` int(15) NOT NULL AUTO_INCREMENT,\n" +
                     "  `name` VARCHAR(60) NULL,\n" +
-                    "  `color` VARCHAR(45) NULL,\n" +
+                    "  `colour` VARCHAR(45) NULL,\n" +
                     "  `size` int(15) NULL,\n" +
+                    "  `price` double NULL,\n" +
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `jd2TaskC`.`orders` (\n" +
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `naron`.`orders` (\n" +
                     "  `id` int(15) NOT NULL AUTO_INCREMENT,\n" +
                     "  `amount` int(15) NULL,\n" +
                     "  `time_delivery` int(15) NULL,\n" +
-                    "  `price` int(15) NULL,\n" +
+                    "  `date_orders` timestamp NULL,\n" +
+                    "  `total_price` double NULL,\n" +
                     "  `users_id` int(15) NOT NULL,\n" +
                     "  `goods_flower_id` int(15) NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
@@ -66,13 +66,13 @@ public class TaskC {
                     "  CONSTRAINT `fk_orders_users1`\n" +
                     "    FOREIGN KEY (`users_id`)\n" +
                     "    REFERENCES `naron`.`users` (`id`)\n" +
-                    "    ON DELETE restrict \n" +
-                    "    ON UPDATE restrict,\n" +
+                    "    ON DELETE cascade \n" +
+                    "    ON UPDATE cascade ,\n" +
                     "  CONSTRAINT `fk_orders_goods_flower1`\n" +
                     "    FOREIGN KEY (`goods_flower_id`)\n" +
                     "    REFERENCES `naron`.`goods_flower` (`id`)\n" +
-                    "    ON DELETE RESTRICT\n" +
-                    "    ON UPDATE RESTRICT)\n" +
+                    "    ON DELETE restrict \n" +
+                    "    ON UPDATE restrict )\n" +
                     "ENGINE = InnoDB;");
             System.out.println("tables created");
         } catch (SQLException e) {
@@ -149,29 +149,38 @@ public class TaskC {
     public static void main(String[] args) throws SQLException {
 //        String[] str=new String[]{"for","chek"};
 //        C_Reset.main(str);
-        try (Statement statement = Connect.getConnection().createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM roles");
-            System.out.println("tables created");
-        } catch (SQLException e) {
-            System.err.println("no table");
+//        try (Statement statement = Connect.getConnection().createStatement()) {
+//            ResultSet resultSet = statement.executeQuery("SELECT * FROM roles");
+//            System.out.println("tables created");
+//        } catch (SQLException e) {
+//            System.err.println("no table");
+//        }
+        try {
+
+
+            Scanner sc = new Scanner(System.in);
+            String in;
+            System.out.println("1 - delete tables\n2 - create  tables\n"
+                    //             "3 - fill tables\n"
+            );
+            in = sc.nextLine();
+            int op = Integer.parseInt(in);
+            switch (op) {
+                case 1:
+                    deleteTables();
+                    break;
+                case 2:
+                    createTables();
+                    break;
+//            case 3:
+//                fillTables();
+//                break;
+                default:
+                    System.out.println("wrong command");
+            }
+        }catch (Exception e){
+            System.out.println("not actions");
         }
-        Scanner sc = new Scanner(System.in);
-        String in;
-        System.out.println("1 - delete tables\n2 - create tables\n3 - fill tables\n");
-        in = sc.nextLine();
-        int op = Integer.parseInt(in);
-        switch (op) {
-            case 1:
-                deleteTables();
-                break;
-            case 2:
-                createTables();
-                break;
-            case 3:
-                fillTables();
-                break;
-            default:
-                System.out.println("wrong command");
-        }
+
     }
 }

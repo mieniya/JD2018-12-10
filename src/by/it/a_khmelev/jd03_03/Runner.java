@@ -14,7 +14,7 @@ public class Runner {
         Timestamp timestamp=Timestamp.valueOf("2019-02-20 11:45:00");
         ad.setData(timestamp);
         if (dao.ad.create(ad))
-            System.out.println("CREATE OK: " + ad);
+            System.out.println("CREATEGOODSFLOWER OK: " + ad);
         ad.setDescription("TestAd");
         if (dao.ad.update(ad))
             System.out.println("UPDATE OK: " + ad);

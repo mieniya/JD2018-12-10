@@ -1,4 +1,4 @@
-package by.it.naron.jd03_04.java;
+package by.it.naron.jd03_04.java.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ public class FrontController extends HttpServlet{
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp){
-        Action action=Action.define(req);
+        Action action= Action.define(req);
         try {
             Action nextAction = action.command.execute(req);
             if (nextAction == action) {

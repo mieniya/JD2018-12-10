@@ -32,7 +32,7 @@ public class DAO {
                     instance = new DAO();
 
 //                    user = new UserDao();
-//                    role = new RoleDao();
+//                    role = new RolesDao();
 //                    category = new CategoryDao();
 
                 }

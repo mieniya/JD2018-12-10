@@ -2,8 +2,8 @@ package by.it.dziomin.jd03_01.SQL_queries;
 
 public interface CreateTables {
     String DROP_TABLES = "DROP SCHEMA IF EXISTS `dziomin` ;";
-    String CREATE_SCHEMA = "CREATE SCHEMA IF NOT EXISTS `dziomin` DEFAULT CHARACTER SET utf8 ;";
-    String CREATE_USERS = "CREATE TABLE IF NOT EXISTS `dziomin`.`users` (\n" +
+    String CREATE_SCHEMA = "CREATEGOODSFLOWER SCHEMA IF NOT EXISTS `dziomin` DEFAULT CHARACTER SET utf8 ;";
+    String CREATE_USERS = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `dziomin`.`users` (\n" +
             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
             "  `name` VARCHAR(100) NULL,\n" +
             "  `passport` VARCHAR(100) NULL,\n" +
@@ -16,11 +16,11 @@ public interface CreateTables {
             "    REFERENCES `dziomin`.`roles` (`id`)\n" +
             "    ON DELETE RESTRICT\n" +
             "    ON UPDATE RESTRICT)";
-    String CREATE_ROLES = "CREATE TABLE IF NOT EXISTS `dziomin`.`roles` (\n" +
+    String CREATE_ROLES = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `dziomin`.`roles` (\n" +
             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
             "  `role` VARCHAR(100) NULL,\n" +
             "  PRIMARY KEY (`id`))";
-    String CREATE_RENTS = "CREATE TABLE IF NOT EXISTS `dziomin`.`rents` (\n" +
+    String CREATE_RENTS = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `dziomin`.`rents` (\n" +
             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
             "  `date` INT NULL,\n" +
             "  `price` DECIMAL(10,2) NULL,\n" +
@@ -40,7 +40,7 @@ public interface CreateTables {
             "    REFERENCES `dziomin`.`cars` (`id`)\n" +
             "    ON DELETE NO ACTION\n" +
             "    ON UPDATE NO ACTION)";
-    String CREATE_CARS = "CREATE TABLE IF NOT EXISTS `dziomin`.`cars` (\n" +
+    String CREATE_CARS = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `dziomin`.`cars` (\n" +
             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
             "  `name` VARCHAR(45) NULL,\n" +
             "  `number` VARCHAR(45) NULL,\n" +

@@ -15,7 +15,7 @@ public class RolesTest {
         Roles roles = new Roles(0, "TestRole");
 
         if (rolesCrud.create(roles))
-            System.out.println("CREATE OK: " + roles);
+            System.out.println("CREATEGOODSFLOWER OK: " + roles);
         roles.setRole("TestRoleUpdate");
         if (rolesCrud.update(roles))
             System.out.println("UPDATE OK: " + roles);
