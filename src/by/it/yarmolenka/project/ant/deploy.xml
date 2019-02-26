@@ -3,7 +3,7 @@
 Смотрите тут https://ant.apache.org/manual/
 -->
 
-<project name="Ant to yarmolenka project" default="10deploy" basedir="..">
+<project name="Ant to yarmolenka" default="10deploy" basedir="..">
 
     <!-- подключаем файл с настройками -->
     <property file="ant/deploy.properties"/>
@@ -38,7 +38,7 @@
     <!-- компиляция файлов проекта -->
     <target name="03compile" depends="02init">
         <echo>Compile the source files</echo>
-        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
+        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true" verbose="yes">
             <classpath refid="classpath"/>
         </javac>
     </target>
