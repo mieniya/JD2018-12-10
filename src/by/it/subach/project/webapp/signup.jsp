@@ -1,8 +1,8 @@
 <html>
-<@ include file="include/head.jsp" %>
+<%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-    <@ include file="include/menu.jsp" %>
+    <%@ include file="include/menu.jsp" %>
     <form class="form-horizontal" action="do?command=Signup" method="post">
         <fieldset>
 
@@ -11,7 +11,7 @@
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="email">email</label>
+              <label class="col-md-4 control-label" for="email">Email</label>
               <div class="col-md-4">
               <input id="email" name="email" type="text" placeholder="example@mail.com" class="form-control input-md">
               <span class="help-block">Enter your email</span>

@@ -1,4 +1,4 @@
-package by.it.subach.project.java;
+package by.it.subach.project.java.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

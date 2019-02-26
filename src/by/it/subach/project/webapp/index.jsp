@@ -1,10 +1,9 @@
 <html>
-<head></head>
 <%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-<%@ include file="include/menu.jsp" %>
-<p>INDEX: ${message}</p>
+    <%@ include file="include/menu.jsp" %>
+    <p>${users}</p>
 </div>
 </body>
 </html>

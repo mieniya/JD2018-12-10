@@ -1,4 +1,4 @@
-package by.it.subach.project.java;
+package by.it.subach.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,8 @@ public enum Action {
 
     INDEX(new CmdIndex()),
     ERROR(new CmdError()),
-    SIGNUP(new CmdSignup());
+    SIGNUP(new CmdSignup()),
+    LOGIN(new CmdLogin());
 
     Action(Cmd command) {
         this.command = command;
