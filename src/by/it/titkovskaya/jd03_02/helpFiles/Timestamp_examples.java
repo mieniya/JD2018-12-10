@@ -1,6 +1,8 @@
 package by.it.titkovskaya.jd03_02.helpFiles;
 
 import com.sun.jmx.snmp.Timestamp;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Timestamp_examples {
@@ -21,6 +23,10 @@ public class Timestamp_examples {
 
         java.sql.Timestamp payDate = new java.sql.Timestamp(timestamp.getDateTime());
         System.out.println("Getting current Timestamp for SQL: " +payDate);
+
+        System.out.println("\n******************** more suitable for SQL variant **********************");
+        java.sql.Timestamp currentDate = java.sql.Timestamp.valueOf(LocalDateTime.now());
+        System.out.println(currentDate);
     }
 }
 
