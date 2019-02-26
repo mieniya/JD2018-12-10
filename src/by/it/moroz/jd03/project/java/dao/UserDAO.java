@@ -1,6 +1,6 @@
-package by.it.moroz.jd03.jd03_03.dao;
+package by.it.moroz.jd03.project.java.dao;
 
-import by.it.moroz.jd03.jd03_03.beans.User;
+import by.it.moroz.jd03.project.java.beans.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

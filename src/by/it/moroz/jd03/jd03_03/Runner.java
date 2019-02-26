@@ -36,8 +36,6 @@ public class Runner {
             System.out.println("This is "+dao.role.read(secondUser.getRoles_id()).getRole());
             System.out.println(secondUser);
         }
-        Order order = new Order();
-        dao.order.getAll("");
 
 
 

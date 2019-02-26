@@ -1,4 +1,4 @@
-package by.it.moroz.jd03.progect.java;
+package by.it.moroz.jd03.project.java;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +18,8 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) {
-        resp.setHeader("Cache-Control", "no-store");
         Action action = Action.define(req);
+        //resp.setHeader("Cache-Control", "no-store");
         try{
             Action nextAction = action.command.execute(req);
             if(nextAction!=action)
