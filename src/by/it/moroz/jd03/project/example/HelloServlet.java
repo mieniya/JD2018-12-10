@@ -1,4 +1,4 @@
-package by.it.moroz.jd03.jd03_04.example;
+package by.it.moroz.jd03.project.example;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

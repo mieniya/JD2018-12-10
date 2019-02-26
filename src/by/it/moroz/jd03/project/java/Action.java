@@ -1,4 +1,4 @@
-package by.it.moroz.jd03.jd03_04.java;
+package by.it.moroz.jd03.project.java;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,8 @@ public enum Action {
 
     INDEX(new CmdIndex()),
     ERROR(new CmdError()),
-    SIGNUP(new CmdSighUp());
+    SIGNUP(new CmdSighUp()),
+    LOGIN(new CmdLogin());
 
     Action(Cmd command) {
         this.command = command;
@@ -16,7 +17,6 @@ public enum Action {
 
      static Action define(HttpServletRequest req){
         String command = req.getParameter("command").toUpperCase();
-
         try{
             return Action.valueOf(command);
         }catch (Exception e){
