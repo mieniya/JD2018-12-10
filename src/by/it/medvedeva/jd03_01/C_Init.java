@@ -5,84 +5,83 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_Init {
+public class C_init {
 
-    static {
+    public static void main(String[] args) throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Error loading driver: " + e);
-        }
-    }
-
-
-    public static void main(String[] args) {
-        try (Connection connection =
-                     DriverManager.getConnection(
-                             "jdbc:mysql://127.0.0.1:2016/"+
-                                     "?useUnicode=true&characterEncoding=UTF-8",
-                             "root",
-                             "");
-             Statement statement = connection.createStatement()
-        ) {
-            statement.executeUpdate("DROP SCHEMA IF EXISTS `medvedeva` ;");
-            statement.executeUpdate(
-                    "CREATE SCHEMA IF NOT EXISTS `medvedeva` " +
-                            "DEFAULT CHARACTER SET utf8 ;"
-            );
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`roles` (" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `role` VARCHAR(100) NULL," +
-                    "  PRIMARY KEY (`id`))" +
-                    "ENGINE = InnoDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`roles` (" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `role` VARCHAR(100) NULL," +
-                    "  PRIMARY KEY (`id`))" +
-                    "ENGINE = InnoDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`users` (" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `login` VARCHAR(100) NULL," +
-                    "  `email` VARCHAR(100) NULL," +
-                    "  `password` VARCHAR(100) NULL," +
-                    "  `roles_id` INT NOT NULL," +
-                    "  PRIMARY KEY (`id`)," +
-                    "  CONSTRAINT `fk_users_roles`" +
-                    "    FOREIGN KEY (`roles_id`)" +
-                    "    REFERENCES `akhmelev`.`roles` (`id`)" +
-                    "    ON DELETE RESTRICT" +
-                    "    ON UPDATE RESTRICT)" +
-                    "ENGINE = InnoDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`ads` (" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT," +
-                    "  `description` VARCHAR(3000) NULL," +
-                    "  `address` VARCHAR(555) NULL," +
-                    "  `floor` INT NULL," +
-                    "  `floors` INT NULL," +
-                    "  `rooms` INT NULL," +
-                    "  `area` DOUBLE NULL," +
-                    "  `price` DOUBLE NULL," +
-                    "  `users_id` INT NOT NULL," +
-                    "  PRIMARY KEY (`id`)," +
-                    "  CONSTRAINT `fk_ads_users1`" +
-                    "    FOREIGN KEY (`users_id`)" +
-                    "    REFERENCES `akhmelev`.`users` (`id`)" +
-                    "    ON DELETE CASCADE" +
-                    "    ON UPDATE CASCADE)" +
-                    "ENGINE = InnoDB;");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'administrator', 'administrator@mail.ru', 'administrator', 1);");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'user', 'user@mail.ru', 'user', 2);");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'petrov', 'petrov@mail.ru', 'petrov', 2);");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Good appartments', 'Minsk Lenina str., 10 app.12', 3, 5, 2, 55, 77777, 3);");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Маленький домик', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3);");
-        } catch (SQLException e) {
             e.printStackTrace();
         }
+       try (Connection connection=DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/", "root", ""))
+       {
+           Statement statement=connection.createStatement();
+           statement.executeUpdate("DROP SCHEMA IF EXISTS `medvedeva` ;");
+           statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `medvedeva` DEFAULT CHARACTER SET utf8");
+           statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`roles` (\n" +
+                   "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                   "  `role` VARCHAR(100) NULL,\n" +
+                   "  PRIMARY KEY (`id`))\n" +
+                   "ENGINE = InnoDB;");
+           statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`users` (\n" +
+                   "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                   "  `login` VARCHAR(45) NULL,\n" +
+                   "  `password` VARCHAR(45) NULL,\n" +
+                   "  `email` VARCHAR(45) NULL,\n" +
+                   "  `roles_id` INT NOT NULL,\n" +
+                   "  PRIMARY KEY (`id`),\n" +
+                   "  INDEX `fk_users_roles_idx` (`roles_id` ASC),\n" +
+                   "  CONSTRAINT `fk_users_roles`\n" +
+                   "    FOREIGN KEY (`roles_id`)\n" +
+                   "    REFERENCES `medvedeva`.`roles` (`id`)\n" +
+                   "    ON DELETE RESTRICT\n" +
+                   "    ON UPDATE RESTRICT)\n" +
+                   "ENGINE = InnoDB;");
+           statement.executeUpdate("CREATE TABLE IF NOT EXISTS `medvedeva`.`flats` (" + "" + "\n"+
+                   "           `id` INT UNSIGNED NOT NULL AUTO_INCREMENT," + "\n"+
+                   "           `description` VARCHAR(1000) NULL," + "\n"+
+                   "           `address` VARCHAR(100) NULL," + "\n"+
+                   "           `floor` INT NULL," + "\n"+
+                   "           `floors` INT NULL," + "\n"+
+                   "           `rooms` INT NULL," + "\n"+
+                   "           `area` DECIMAL(10,2) NULL," + "\n"+
+                   "               PRIMARY KEY (`id`))" + "\n"+
+                   "           ENGINE = InnoDB;" + "\n");
 
+           statement.executeUpdate("" +
+                   "       CREATE TABLE IF NOT EXISTS `medvedeva`.`ads` (" + "\n" +
+                   "      `id` INT NOT NULL AUTO_INCREMENT," + "\n" +
+                   "      `price` VARCHAR(45) NULL," + "\n" +
+                   "      `users_id` INT NOT NULL," + "\n" +
+                   "      `flats_id` INT UNSIGNED NOT NULL," + "\n" +
+                   "  PRIMARY KEY (`id`)," + "\n" +
+                   "      INDEX `fk_ads_users1_idx` (`users_id` ASC)," + "\n" +
+                   "  INDEX `fk_ads_flats1_idx` (`flats_id` ASC)," + "\n" +
+                   "  CONSTRAINT `fk_ads_users1`" + "\n" +
+                   "  FOREIGN KEY (`users_id`)" + "\n" +
+                   "  REFERENCES `medvedeva`.`users` (`id`)" + "\n" +
+                   "  ON DELETE NO ACTION" + "\n" +
+                   "  ON UPDATE NO ACTION," + "\n" +
+                   "  CONSTRAINT `fk_ads_flats1`" + "\n" +
+                   "  FOREIGN KEY (`flats_id`)" + "\n" +
+                   "  REFERENCES `medvedeva`.`flats` (`id`)" + "\n" +
+                   "  ON DELETE NO ACTION" + "\n" +
+                   "  ON UPDATE NO ACTION)" + "\n" +
+                   "ENGINE = InnoDB;");
+
+
+           statement.executeUpdate("INSERT INTO `medvedeva`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
+           statement.executeUpdate("INSERT INTO `medvedeva`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
+           statement.executeUpdate("INSERT INTO `medvedeva`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');\n");
+           statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'admin', 'admin@mail.ru', 1);");
+           statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user', 'user', 'user@mail.ru', 2);");
+           statement.executeUpdate("INSERT INTO `medvedeva`.`flats` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`) VALUES\n" +
+                   "(1, NULL, 'ул.Беломорская 5', 3, 9, 2, '56.50');");
+           statement.executeUpdate("INSERT INTO `medvedeva`.`ads` (`id`, `price`, `users_id`, `flats_id`) VALUES\n" +
+                   "(1, '180.2', 2, 1);");
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
 
     }
-
 }
