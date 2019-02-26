@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class UserCRUD {
 
-//    CREATE
+//    CREATEGOODSFLOWER
     boolean create(User user) throws SQLException {
         try (
                 Connection connection = ConnCreator.getConnection();

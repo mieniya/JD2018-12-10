@@ -19,8 +19,8 @@ public class CmdCreateGoodsflower implements Cmd {
     public Action execute(HttpServletRequest req) throws Exception {
         if (Form.isPost(req)) {
             Goods_flower goodsFlower = new Goods_flower();
-            goodsFlower.setName(Form.getString(req,"name"));
-            goodsFlower.setColour(Form.getString(req,"colour"));
+            goodsFlower.setName(Form.getString(req,"name","[a-zа-яA-Z-А-Я][a-zа-яA-ZА-Я0-9\\-!?,. ]{7,49}"));
+            goodsFlower.setColour(Form.getString(req,"colour","[a-zа-яA-Z-А-Я][a-zа-яA-ZА-Я0-9\\-!?,. ]{7,49}"));
             goodsFlower.setSize(Form.getInt(req,"size"));
             goodsFlower.setPrice(Form.getDouble(req,"price"));
          //   Timestamp date = Timestamp.valueOf(LocalDateTime.now());

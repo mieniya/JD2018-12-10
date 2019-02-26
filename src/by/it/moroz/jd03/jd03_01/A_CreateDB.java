@@ -19,13 +19,13 @@ class A_CreateDB {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/" +
                 "?useUnicode=true&characterEncoding=UTF-8", "root", "")) {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format("%s","CREATE SCHEMA IF NOT EXISTS moroz DEFAULT CHARACTER SET utf8 ;"));
-            statement.executeUpdate(String.format("%s","CREATE TABLE IF NOT EXISTS `moroz`.`roles` (" +
+            statement.executeUpdate(String.format("%s","CREATEGOODSFLOWER SCHEMA IF NOT EXISTS moroz DEFAULT CHARACTER SET utf8 ;"));
+            statement.executeUpdate(String.format("%s","CREATEGOODSFLOWER TABLE IF NOT EXISTS `moroz`.`roles` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
                     "  `role` VARCHAR(100) NULL," +
                     "  PRIMARY KEY (`id`))" +
                     "ENGINE = InnoDB;"));
-            statement.executeUpdate(String.format("%s","CREATE TABLE IF NOT EXISTS `moroz`.`users` (" +
+            statement.executeUpdate(String.format("%s","CREATEGOODSFLOWER TABLE IF NOT EXISTS `moroz`.`users` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
                     "  `login` VARCHAR(100) NULL," +
                     "  `password` VARCHAR(100) NULL," +
@@ -43,7 +43,7 @@ class A_CreateDB {
                     "    ON DELETE RESTRICT" +
                     "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;"));
-            statement.executeUpdate(String.format("%s","CREATE TABLE IF NOT EXISTS `moroz`.`orders` (" +
+            statement.executeUpdate(String.format("%s","CREATEGOODSFLOWER TABLE IF NOT EXISTS `moroz`.`orders` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
                     "  `name` VARCHAR(100) NULL," +
                     "  `count` INT NULL," +

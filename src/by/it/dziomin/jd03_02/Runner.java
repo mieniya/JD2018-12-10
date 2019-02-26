@@ -16,7 +16,7 @@ public class Runner {
         RolesCRUD roleCRUD = new RolesCRUD();
         Roles role = new Roles(0, "TestRole");
         if (roleCRUD.create(role)) {
-            System.out.println("CREATE OK: " + role);
+            System.out.println("CREATEGOODSFLOWER OK: " + role);
         }
         role.setRole("TestRoleUpdate");
         if (roleCRUD.update(role)) {
@@ -32,7 +32,7 @@ public class Runner {
         UsersCRUD usersCRUD = new UsersCRUD();
         Users user = new Users(0, "TestUser", "xx99999", "+37529994459235", 1);
         if (usersCRUD.create(user)) {
-            System.out.println("CREATE OK: " + user);
+            System.out.println("CREATEGOODSFLOWER OK: " + user);
         }
         user.setPassport("pp989898");
         user.setPhone("+37529111111111");
@@ -49,7 +49,7 @@ public class Runner {
         CarsCRUD carsCRUD = new CarsCRUD();
         Cars car = new Cars(0, "TestCar", "123456-7", "2.0", "manual");
         if (carsCRUD.create(car)) {
-            System.out.println("CREATE OK: " + car);
+            System.out.println("CREATEGOODSFLOWER OK: " + car);
         }
         car.setName("TestCarUpdate");
         car.setTransmission("auto");
@@ -66,7 +66,7 @@ public class Runner {
         RentsCRUD rentsCRUD = new RentsCRUD();
         Rents rent = new Rents(0, 999999999, 100.00, 1, 4,1);
         if (rentsCRUD.create(rent)) {
-            System.out.println("CREATE OK: " + rent);
+            System.out.println("CREATEGOODSFLOWER OK: " + rent);
         }
         rent.setPrice(20.52);
         rent.setOpen(0);
