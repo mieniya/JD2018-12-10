@@ -1,26 +1,28 @@
 package by.it.skosirskiy.jd03_02;
 
-import by.it.skosirskiy.jd03_02.beans.User;
+import by.it.skosirskiy.jd03_02.beans.Status;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UserCRUD {
-    boolean create(User user) throws SQLException {
+public class StatusCRUD {
+
+
+    boolean create(Status status) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
-                    "INSERT INTO `users`(`login`, `password`,`email`, `roles_id`) " +
-                            "VALUES ('%s','%s','%s','%d')",
-                    user.getLogin(),  user.getPassword(), user.getEmail(), user.getRoles_id());
-
+                    "INSERT INTO `statuses`(`id`,`status`) " +
+                            "VALUES ('%d','%s')",
+                    status.getId(), status.getStatus());
+            System.out.println(sql);
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    user.setId(generatedKeys.getLong(1));
+                    status.setId(generatedKeys.getLong(1));
                     return true;
                 }
             }
@@ -28,45 +30,44 @@ public class UserCRUD {
         return false;
     }
 
-    User read(long id) throws SQLException {
+    Status read(long id) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
-                    "SELECT * FROM `users` WHERE `id`='%d'",
-                    id);
+                    "SELECT * FROM `statuses` WHERE `id`='%d'", id);
+
             ResultSet resultSet = statement.executeQuery(sql);
+
+
             if (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getLong("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setEmail(resultSet.getString("email"));
-                user.setRoles_id(resultSet.getLong("roles_id"));
-                return user;
+                Status status= new Status();
+                status.setId(resultSet.getLong("id"));
+                status.setStatus(resultSet.getString("status"));
+                return status;
             }
+
         }
         return null;
     }
 
-    boolean update(User user) throws SQLException {
+
+    boolean update(Status status) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
-                    "UPDATE `users` " +
-                            "SET `login`='%s',`password`='%s',`email`='%s',`roles_id`='%d' " +
+                    "UPDATE `statuses` " +
+                            "SET `status`='%s'" +
                             "WHERE `id`='%d'",
-                    user.getLogin(),  user.getPassword(), user.getEmail(), user.getRoles_id(),
-                    user.getId());
+                    status.getStatus(), status.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }
-
-    boolean delete(User user) throws SQLException {
+    boolean delete(Status status) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
-                    "DELETE FROM `users` WHERE `id`='%d'",
-                    user.getId());
+                    "DELETE FROM `statuses` WHERE `id`='%d'",
+                    status.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }
