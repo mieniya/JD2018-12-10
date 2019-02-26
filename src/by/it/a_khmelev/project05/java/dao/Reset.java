@@ -33,7 +33,7 @@ public class Reset {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `akhmelev`.`users` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
                     "  `login` VARCHAR(100) NULL," +
-                    "  `email` VARCHAR(100) NULL," +
+                    "  `e-mail` VARCHAR(100) NULL," +
                     "  `password` VARCHAR(100) NULL," +
                     "  `roles_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
