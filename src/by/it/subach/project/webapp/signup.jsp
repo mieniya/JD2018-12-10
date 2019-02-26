@@ -1,48 +1,52 @@
-<form class="form-horizontal">
-<fieldset>
+<html>
+<@ include file="include/head.jsp" %>
+<body>
+<div class="container">
+    <@ include file="include/menu.jsp" %>
+    <form class="form-horizontal" action="do?command=Signup" method="post">
+        <fieldset>
 
-<!-- Form Name -->
-<legend>Form Name</legend>
+            <!-- Form Name -->
+            <legend>Registration</legend>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Login">Text Input</label>
-  <div class="col-md-4">
-  <input id="Login" name="Login" type="text" placeholder="placeholder" class="form-control input-md">
-  <span class="help-block">help</span>
-  </div>
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="email">email</label>
+              <div class="col-md-4">
+              <input id="email" name="email" type="text" placeholder="example@mail.com" class="form-control input-md">
+              <span class="help-block">Enter your email</span>
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="login">Login</label>
+              <div class="col-md-4">
+              <input id="login" name="login" type="text" placeholder="" class="form-control input-md">
+              <span class="help-block">Enter your login</span>
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="passwordinput">Password</label>
+              <div class="col-md-4">
+                <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+                <span class="help-block">Enter your password</span>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="registerbutton"></label>
+              <div class="col-md-4">
+                <button id="registerbutton" name="registerbutton" class="btn btn-primary">Registration</button>
+              </div>
+            </div>
+
+        </fieldset>
+    </form>
+
 </div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="passwordinput">Password Input</label>
-  <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder" class="form-control input-md">
-    <span class="help-block">help</span>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Text Input</label>
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
-  <span class="help-block">help</span>
-  </div>
-</div>
-
-<!-- Button (Double) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="button1id">Double Button</label>
-  <div class="col-md-8">
-    <button id="button1id" name="button1id" class="btn btn-success">Good Button</button>
-    <button id="button2id" name="button2id" class="btn btn-danger">Scary Button</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-
-
-
-
+</body>
+</html>
