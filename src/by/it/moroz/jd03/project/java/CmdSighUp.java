@@ -20,7 +20,7 @@ public class CmdSighUp implements Cmd {
             User user = new User(0, login, password, email, address, name, surname, number, 2);
             DAO dao = DAO.getDao();
             if (dao.user.create(user)) {
-                return Action.INDEX;
+                return Action.LOGIN;
             }
         }
         return Action.SIGNUP;
