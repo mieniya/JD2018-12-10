@@ -1,31 +1,11 @@
-package by.it.dziomin.jd03_02.beans;
+package by.it.dziomin.jd03_03.beans;
 
-public class Users {
-    private long id;
+public class User extends BaseEntity {
     private String name;
     private String passport;
     private String phone;
-    private long roleId;
+    private Long roleId;
 
-
-    public Users(long id, String name, String passport, String phone, long roleId) {
-        this.id = id;
-        this.name = name;
-        this.passport = passport;
-        this.phone = phone;
-        this.roleId = roleId;
-    }
-
-    public Users() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -51,18 +31,18 @@ public class Users {
         this.phone = phone;
     }
 
-    public long getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(long roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", passport='" + passport + '\'' +
                 ", phone='" + phone + '\'' +
