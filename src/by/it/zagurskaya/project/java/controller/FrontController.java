@@ -1,4 +1,4 @@
-package by.it.zagurskaya.jd03_04.java;
+package by.it.zagurskaya.project.java.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +19,10 @@ public class FrontController extends HttpServlet {
         process(req, resp);
     }
 
+    // HttpServletRequest req - информация о запросе - т.е. ВХОД - то что читать
+    // HttpServletResponse resp - информация о результате - т.е. ВЫХОД - то куда писать
     private void process(HttpServletRequest req, HttpServletResponse resp) {
         Action action = Action.define(req);
-        System.out.println(action);
         try {
             Action nextAction = action.command.execute(req);
             if (nextAction == action) {

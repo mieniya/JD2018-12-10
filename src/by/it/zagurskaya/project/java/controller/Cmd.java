@@ -1,4 +1,4 @@
-package by.it.zagurskaya.jd03_04.java;
+package by.it.zagurskaya.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
