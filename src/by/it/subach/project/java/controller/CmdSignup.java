@@ -13,12 +13,12 @@ public class CmdSignup implements Cmd {
             String email = Form.getString(req, "email");
             String login = Form.getString(req, "login");
             String password = Form.getString(req, "password");
-//            DAO dao = DAO.getInstance();
+            DAO dao = DAO.getInstance();
             User user = new User(0, login, email, password, 3);
-//            user.setLogin(login);
-//            user.setPassword(password);
-//            user.setEmail(email);
-//            user.setRole_id(3);
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setRole_id(3);
             if(DAO.getInstance().user.create(user)){
                 return Action.INDEX;
             }
