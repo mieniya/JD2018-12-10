@@ -6,7 +6,10 @@ public class Runner {
         C_Init init = new C_Init();
         C_Reset reset = new C_Reset();
 
-        reset.dropDB();
+//remove naron database
+      //  reset.dropDB();
+
+//create and insert naron database
         init.createDB();
 
 

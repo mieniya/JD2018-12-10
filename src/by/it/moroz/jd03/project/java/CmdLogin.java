@@ -4,6 +4,7 @@ import by.it.moroz.jd03.project.java.beans.User;
 import by.it.moroz.jd03.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class CmdLogin implements Cmd {
@@ -19,7 +20,8 @@ public class CmdLogin implements Cmd {
             List<User> users = dao.user.getAll(where);
             if (users.size() > 0) {
                 User user = users.get(0);
-                req.setAttribute("user", user);
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
                 return Action.INDEX;
             }
         }

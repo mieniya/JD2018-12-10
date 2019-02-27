@@ -1,7 +1,9 @@
 <html>
-<%@ include file="include/head.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
-<%@ include file="include/menu.htm" %>
-<p>Cmd Logout: ${message}</p>
+<div class="container">
+    <%@ include file="include/menu.jsp" %>
+    <p>Cmd Logout: ${message}</p>
+</div>
 </body>
 </html>
