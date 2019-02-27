@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_Init {
+public class Reset {
 
 //    static {
 //        try {
@@ -15,7 +15,8 @@ public class C_Init {
 //        }
 //    }
 
-    public static void initDB() {
+    public static void main(String[] args) {
+
         try(Connection connection =
                     DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/" +
                             "?useUnicode=true&characterEncoding=UTF-8",

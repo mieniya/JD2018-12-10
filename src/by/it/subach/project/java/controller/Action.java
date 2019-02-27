@@ -7,6 +7,8 @@ public enum Action {
     INDEX(new CmdIndex()),
     ERROR(new CmdError()),
     SIGNUP(new CmdSignup()),
+    RESETDB(new CmdResetDB()),
+    CHECKOUT(new CmdCheckout()),
     LOGIN(new CmdLogin());
 
     Action(Cmd command) {

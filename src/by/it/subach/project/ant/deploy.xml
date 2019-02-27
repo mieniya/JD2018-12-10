@@ -146,6 +146,7 @@
     <!-- аварийный вариант удаления. Нужен если ant не завершается нормально
     Вручную удаляем старое приложение. Аналог кнопки undeploy в
     -->
+
     <target name="09-Manual-Undeploy" depends="08check-if-deployed">
         <!-- TOMCAT undeploy-->
         <echo>Back bad deploy</echo>

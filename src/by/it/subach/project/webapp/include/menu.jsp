@@ -12,6 +12,8 @@
             <a class="nav-item nav-link" href="do?command=NewProduct">New Product</a>
             <a class="nav-item nav-link" href="do?command=NewCategory">New Category</a>
             <a class="nav-item nav-link" href="do?command=CreateUser">Create User</a>
+            <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
+
         </div>
     </div>
 </nav>
