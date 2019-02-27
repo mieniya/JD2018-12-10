@@ -30,7 +30,7 @@ public class Runner {
         user = new User(0, "TestUser", "TestPassword", "TestEmail",
                 "TestContacts", 1);
 
-        if (doUser.create(user)) System.out.println("UNIVERSAL DAO CREATE " + user);
+        if (doUser.create(user)) System.out.println("UNIVERSAL DAO CREATEGOODSFLOWER " + user);
         user.setLogin("TestUserUpdate");
 
         if (doUser.update(user)) System.out.println("UNIVERSAL DAO UPDATE " + user);

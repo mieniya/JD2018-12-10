@@ -2,15 +2,15 @@ package by.it.lyakhova.jd03_01.SqlRequest;
 
 public interface CreateTables {
 
-    String CREATE_SCHEMA = "CREATE SCHEMA IF NOT EXISTS `lyakhova` DEFAULT CHARACTER SET utf8 ;";
+    String CREATE_SCHEMA = "CREATEGOODSFLOWER SCHEMA IF NOT EXISTS `lyakhova` DEFAULT CHARACTER SET utf8 ;";
 
-    String CREATE_ROLES = "CREATE TABLE IF NOT EXISTS `lyakhova`.`roles` (" +
+    String CREATE_ROLES = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`roles` (" +
             "  `id` INT NOT NULL AUTO_INCREMENT," +
             "  `role` VARCHAR(100) NULL," +
             "  `description` VARCHAR(200) NULL," +
             "  PRIMARY KEY (`id`))";
 
-    String CREATE_USERS = "CREATE TABLE IF NOT EXISTS `lyakhova`.`users` (" +
+    String CREATE_USERS = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`users` (" +
             "  `id` INT NOT NULL AUTO_INCREMENT," +
             "  `login` VARCHAR(100) NULL," +
             "  `password` VARCHAR(100) NULL," +
@@ -24,23 +24,23 @@ public interface CreateTables {
             "    ON DELETE RESTRICT" +
             "    ON UPDATE RESTRICT)";
 
-    String CREATE_PLACE = "CREATE TABLE IF NOT EXISTS `lyakhova`.`place` (" +
+    String CREATE_PLACE = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`place` (" +
             "  `id` INT NOT NULL AUTO_INCREMENT," +
             "  `country` VARCHAR(100) NULL," +
             "  `town` VARCHAR(100) NULL," +
             "  PRIMARY KEY (`id`))";
 
-    String CREATE_TRANSPORT = "CREATE TABLE IF NOT EXISTS `lyakhova`.`transport` (" +
+    String CREATE_TRANSPORT = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`transport` (" +
             "  `id` INT NOT NULL AUTO_INCREMENT," +
             "  `type` VARCHAR(100) NULL," +
             "  PRIMARY KEY (`id`))";
 
-    String CREATE_HOUSING = "CREATE TABLE IF NOT EXISTS `lyakhova`.`housing` (" +
+    String CREATE_HOUSING = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`housing` (" +
             "  `id` INT NOT NULL AUTO_INCREMENT," +
             "  `type` VARCHAR(45) NULL," +
             "  PRIMARY KEY (`id`))";
 
-    String CREATE_TOURS = "CREATE TABLE IF NOT EXISTS `lyakhova`.`tours` (" +
+    String CREATE_TOURS = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`tours` (" +
             "  `id` INT NOT NULL AUTO_INCREMENT," +
             "  `name` VARCHAR(100) NULL," +
             "  `tour_type_id` VARCHAR(100) NOT NULL," +
@@ -69,7 +69,7 @@ public interface CreateTables {
             "    ON DELETE RESTRICT" +
             "    ON UPDATE RESTRICT)";
 
-    String CREATE_TOURS_USERS = "CREATE TABLE IF NOT EXISTS `lyakhova`.`tours_has_users` (\n" +
+    String CREATE_TOURS_USERS = "CREATEGOODSFLOWER TABLE IF NOT EXISTS `lyakhova`.`tours_has_users` (\n" +
             "  `id` INT NOT NULL AUTO_INCREMENT,"+
             "  `tours_id` INT NOT NULL," +
             "  `users_id` INT NOT NULL," +

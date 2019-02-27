@@ -23,7 +23,7 @@ public class C_Init {
         ) {
 //            statement.executeUpdate("DROP SCHEMA IF EXISTS `skosirskiy` ;");
 //            statement.executeUpdate(
-//                    "CREATE SCHEMA IF NOT EXISTS `skosirskiy` DEFAULT CHARACTER SET utf8 ;\n" +
+//                    "CREATEGOODSFLOWER SCHEMA IF NOT EXISTS `skosirskiy` DEFAULT CHARACTER SET utf8 ;\n" +
 //                            "USE `skosirskiy` ;"
 //                    );
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `skosirskiy`.`address` (\n" +

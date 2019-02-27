@@ -33,7 +33,7 @@ public class OrdersTest {
         Orders orders = new Orders
                 (0,2,500,date,2,2,2);
        if (ordersCrud.create(orders))
-            System.out.println("CREATE OK: " + orders);
+            System.out.println("CREATEGOODSFLOWER OK: " + orders);
         orders.setAmount(9000000);
         if (ordersCrud.update(orders))
             System.out.println("UPDATE OK: " + orders);

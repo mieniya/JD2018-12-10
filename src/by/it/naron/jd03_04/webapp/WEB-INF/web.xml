@@ -11,7 +11,7 @@
     -->
     <servlet>
         <servlet-name>FrontController</servlet-name>
-        <servlet-class>by.it.naron.jd03_04.java.FrontController</servlet-class>
+        <servlet-class>by.it.naron.jd03_04.java.controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
@@ -21,16 +21,18 @@
     <!--
     Подключим точно так же второй сервлета-контроллер с именем FrontControllerServlet
     -->
+
+    <!--
     <filter>
         <filter-name>SetCacheControl</filter-name>
-        <filter-class>by.it.naron.jd03_04.java.CacheControlFilter</filter-class>
+        <filter-class>by.it.naron.jd03_04.java.controller.CacheControlFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>SetCacheControl</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-
+-->
 
 
 
