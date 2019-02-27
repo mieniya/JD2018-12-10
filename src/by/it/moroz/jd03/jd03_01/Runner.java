@@ -19,6 +19,6 @@ public class Runner {
         addUser.addUsers();
         addData.addOrder();
         showUsers.showUsers();
-        init.initDB();
+        //init.initDB();
     }
 }

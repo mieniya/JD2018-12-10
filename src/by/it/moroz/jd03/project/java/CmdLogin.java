@@ -10,7 +10,7 @@ public class CmdLogin implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         if (Form.isPost(req)) {
-            String email = Form.getString(req, "email", "[a-zA-Z0-9_-]{5,}");
+            String email = Form.getString(req, "email");
             String password = Form.getString(req, "password");
             DAO dao = DAO.getDao();
             String where = String.format(
@@ -20,6 +20,7 @@ public class CmdLogin implements Cmd {
             if (users.size() > 0) {
                 User user = users.get(0);
                 req.setAttribute("user", user);
+                return Action.INDEX;
             }
         }
         return Action.LOGIN;

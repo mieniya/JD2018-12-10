@@ -20,9 +20,7 @@ public class ConnCreator {
             if (connection == null || connection.isClosed()) {
                 synchronized (ConnCreator.class) {
                     if (connection == null || connection.isClosed()) {
-                        connection = DriverManager.getConnection(
-                                CN.URL, CN.USER, CN.PASSWORD
-                        );
+                        connection = DriverManager.getConnection(CN.URL, CN.USER, CN.PASSWORD);
                     }
                 }
 

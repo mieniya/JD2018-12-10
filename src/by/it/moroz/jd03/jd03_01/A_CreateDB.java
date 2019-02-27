@@ -53,7 +53,7 @@ class A_CreateDB {
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
                     "  `menu_id` INT NOT NULL," +
                     "  `count` INT NULL," +
-                    "  `chek` DOUBLE NULL," +
+                    "  `check` DOUBLE NULL," +
                     "  `users_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  INDEX `fk_orders_users1_idx` (`users_id` ASC)," +

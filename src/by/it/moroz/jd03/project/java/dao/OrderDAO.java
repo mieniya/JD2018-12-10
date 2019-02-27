@@ -1,6 +1,6 @@
 package by.it.moroz.jd03.project.java.dao;
 
-import by.it.moroz.jd03.jd03_03.beans.Order;
+import by.it.moroz.jd03.project.java.beans.Order;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-class OrderDAO extends AbstractDAO implements InterfaceDAO<Order> {
+public class OrderDAO extends AbstractDAO implements InterfaceDAO<Order> {
 
 
     @Override
