@@ -25,11 +25,12 @@ public class C_Reset {
                              "");
              Statement statement = connection.createStatement()
         ) {
-  //          statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`users` ;");
-    //        statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`roles` ;");
-      //      statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`goods_flower` ;");
-        //    statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`orders` ;");
-            statement.executeUpdate("DROP SCHEMA IF EXISTS `naron` ;");
+
+  //          statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`orders` ;");
+//                 statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`users` ;");
+//            statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`roles` ;");
+ //         statement.executeUpdate("DROP TABLE IF EXISTS `naron`.`goods_flower` ;");
+            statement.executeUpdate("DROP DATABASE  IF EXISTS `naron` ;");
 
         } catch (SQLException e) {
             e.printStackTrace();

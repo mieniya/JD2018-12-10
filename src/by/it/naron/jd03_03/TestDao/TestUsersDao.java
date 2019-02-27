@@ -17,7 +17,7 @@ public class TestUsersDao {
     //    ad.setData(timestamp);
      //   users.setId(3);
         if (dao.users.create( users ))
-            System.out.println("CREATE OK: " + users);
+            System.out.println("CREATEGOODSFLOWER OK: " + users);
         users.setEmail("TestEm");
         if (dao.users.update(users))
             System.out.println("UPDATE OK: " + users);
