@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
@@ -22,9 +23,11 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu pull-right">
-          <li><a href="#">Option one</a></li>
-          <li><a href="#">Option two</a></li>
-          <li><a href="#">Option three</a></li>
+          <li><a href="#">Steak</a></li>
+          <li><a href="#">Pizza</a></li>
+          <li><a href="#">Spaghetti</a></li>
+          <li><a href="#">Salad</a></li>
+          <li><a href="#">Coffee</a></li>
         </ul>
       </div>
     </div>
@@ -42,9 +45,9 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for=""></label>
+  <label class="col-md-4 control-label" for="order"></label>
   <div class="col-md-4">
-    <button id="" name="" class="btn btn-primary">Order</button>
+    <button id="order" name="order" class="btn btn-primary">Order</button>
   </div>
 </div>
 

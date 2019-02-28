@@ -8,7 +8,9 @@ public enum Action {
     ERROR(new CmdError()),
     SIGNUP(new CmdSighUp()),
     LOGIN(new CmdLogin()),
-    ORDER(new CmdCreateOrder());
+    ORDER(new CmdOrder()),
+    PROFILE(new CmdProfile()),
+    RESET(new CmdReset());
 
     Action(Cmd command) {
         this.command = command;

@@ -40,7 +40,7 @@ public class MenuDAO extends AbstractDAO implements InterfaceDAO<Menu> {
 
     @Override
     public List<Menu> getAll() throws SQLException {
-        return null;
+        return getAll("");
     }
 
     @Override
@@ -50,14 +50,14 @@ public class MenuDAO extends AbstractDAO implements InterfaceDAO<Menu> {
              Statement statement = connection.createStatement()) {
             String read = "SELECT * FROM `menu` "+WHERE;
             ResultSet resultSet = statement.executeQuery(read);
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 Menu menu = new Menu();
                 menu.setId(resultSet.getLong("id"));
                 menu.setName(resultSet.getString("name"));
                 menu.setPrice(resultSet.getDouble("price"));
-                return result;
+                result.add(menu);
             }
+            return result;
         }
-        return null;
     }
 }
