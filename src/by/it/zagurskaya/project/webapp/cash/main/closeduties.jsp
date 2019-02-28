@@ -19,7 +19,7 @@
                </td>
                <td style="border: 1px solid black;  text-align: center ;width:70%" data-toggle="dropdown">
                   <p>duties: ${duties}</p>
-                  <p>massageOpenDuties: ${massageOpenDuties}</p>
+                  <p>massageCloseDuties: ${massageCloseDuties}</p>
                </td>
             </tr>
          </table>
