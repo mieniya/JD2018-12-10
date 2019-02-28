@@ -1,9 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal">
+    <form class="form-horizontal" action="do?command=Category" method="post">
     <fieldset>
 
     <!-- Form Name -->
@@ -11,18 +12,18 @@
 
     <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Category name</label>
+      <label class="col-md-4 control-label" for="name">Category name</label>
       <div class="col-md-4">
-      <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
+      <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
 
       </div>
     </div>
 
     <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Description</label>
+      <label class="col-md-4 control-label" for="description">Description</label>
       <div class="col-md-4">
-      <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
+      <input id="description" name="description" type="text" placeholder="" class="form-control input-md" required="">
 
       </div>
     </div>

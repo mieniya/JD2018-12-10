@@ -12,8 +12,8 @@ public class CmdLogin implements Cmd{
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         if(Form.isPost(req)){
-            String login = Form.getString(req, "login", "a-zA-z0-9_-");
-            String password = Form.getString(req, "password", "a-zA-z0-9_-");
+            String login = Form.getString(req, "login");
+            String password = Form.getString(req, "password");
             DAO dao = DAO.getInstance();
             String where = String.format(" WHERE `login`='%s' AND `password`='%s'",
                     login, password);
@@ -22,6 +22,7 @@ public class CmdLogin implements Cmd{
                 User user = users.get(0);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
+                return Action.PROFILE;
             }
         }
         return Action.LOGIN;

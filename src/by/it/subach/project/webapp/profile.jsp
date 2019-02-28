@@ -3,8 +3,8 @@
 <%@ include file="include/head.jsp" %>
 <body>
 <div class="container">
-<%@ include file="include/menu.jsp" %>
-<p>SUCCESS: ${message}</p>
+    <%@ include file="include/menu.jsp" %>
+    ${info}
 </div>
 </body>
 </html>
