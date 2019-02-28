@@ -12,6 +12,6 @@ public class CmdCheckout implements Cmd{
             String tel = Form.getString(req, "tel");
             String card = Form.getString(req, "cardnumber");
         }
-        return Action.CHECKOUT;
+        return Action.INDEX;
     }
 }
