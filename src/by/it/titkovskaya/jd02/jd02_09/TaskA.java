@@ -1,7 +1,7 @@
-package by.it.titkovskaya.jd02_09;
+package by.it.titkovskaya.jd02.jd02_09;
 
-import by.it.titkovskaya.jd02_09.beans.Client;
-import by.it.titkovskaya.jd02_09.beans.Clients;
+import by.it.titkovskaya.jd02.jd02_09.beans.Client;
+import by.it.titkovskaya.jd02.jd02_09.beans.Clients;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

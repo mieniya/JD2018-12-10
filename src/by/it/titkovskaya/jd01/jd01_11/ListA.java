@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_11;
+package by.it.titkovskaya.jd01.jd01_11;
 /*
 TaskA. Свой ListA. Напишите класс ListA<T>, который реализует 3 метода
 add(T e), remove(int index), get(int index) из интерфейса List<T> (реализация остальных –

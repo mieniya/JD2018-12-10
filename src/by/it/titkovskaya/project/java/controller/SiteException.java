@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.java;
+package by.it.titkovskaya.project.java.controller;
 
 public class SiteException extends Exception{
 

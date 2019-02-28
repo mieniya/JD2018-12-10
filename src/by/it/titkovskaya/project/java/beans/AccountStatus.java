@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.beans;
+package by.it.titkovskaya.project.java.beans;
 
 public class AccountStatus {
 

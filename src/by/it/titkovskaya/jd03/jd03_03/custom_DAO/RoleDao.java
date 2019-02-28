@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd03_03.custom_DAO;
+package by.it.titkovskaya.jd03.jd03_03.custom_DAO;
 
-import by.it.titkovskaya.jd03_03.beans.Role;
+import by.it.titkovskaya.jd03.jd03_03.beans.Role;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

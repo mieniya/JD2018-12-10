@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_07;
+package by.it.titkovskaya.jd02.jd02_07;
 
 import org.xml.sax.SAXException;
 

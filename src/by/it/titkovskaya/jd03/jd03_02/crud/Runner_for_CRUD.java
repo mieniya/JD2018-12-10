@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd03_02.crud;
+package by.it.titkovskaya.jd03.jd03_02.crud;
 
-import by.it.titkovskaya.jd03_02.beans.*;
+import by.it.titkovskaya.jd03.jd03_02.beans.*;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;

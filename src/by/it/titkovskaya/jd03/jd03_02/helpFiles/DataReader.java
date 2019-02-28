@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd03_02.helpFiles;
+package by.it.titkovskaya.jd03.jd03_02.helpFiles;
 
-import by.it.titkovskaya.jd03_01.Runner;
+import by.it.titkovskaya.jd03.jd03_01.Runner;
 
 import java.io.*;
 import java.util.regex.Matcher;

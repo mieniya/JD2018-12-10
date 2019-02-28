@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_02.helpFiles;
+package by.it.titkovskaya.jd03.jd03_02.helpFiles;
 
 import java.io.File;
 

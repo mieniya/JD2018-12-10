@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_09;
+package by.it.titkovskaya.jd01.jd01_09;
 
 abstract class Var implements Operation {
 

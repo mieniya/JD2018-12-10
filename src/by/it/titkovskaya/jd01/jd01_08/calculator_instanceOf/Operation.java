@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_08.calculator_instanceOf;
+package by.it.titkovskaya.jd01.jd01_08.calculator_instanceOf;
 
 interface Operation {
     Var add(Var other);

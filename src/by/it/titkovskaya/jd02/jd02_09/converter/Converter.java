@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_09.converter;
+package by.it.titkovskaya.jd02.jd02_09.converter;
 
 import java.io.*;
 

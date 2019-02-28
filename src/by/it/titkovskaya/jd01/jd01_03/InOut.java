@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_03;
+package by.it.titkovskaya.jd01.jd01_03;
 
 
 public class InOut {

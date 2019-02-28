@@ -1,9 +1,10 @@
-package by.it.titkovskaya.project.java;
+package by.it.titkovskaya.project.java.controller;
 
-import by.it.titkovskaya.project.beans.User;
-import by.it.titkovskaya.project.custom_DAO.Dao;
+import by.it.titkovskaya.project.java.beans.User;
+import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class CmdLogin implements Cmd {
@@ -18,7 +19,10 @@ public class CmdLogin implements Cmd {
             List<User> users = Dao.getDao().user.getAll(where);
             if (users.size() > 0) {
                 User user = users.get(0);
-                req.setAttribute("user", user);
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
+                session.setMaxInactiveInterval(30);
+                return Action.PROFILE;
             }
         }
         return Action.LOGIN;

@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.java;
+package by.it.titkovskaya.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

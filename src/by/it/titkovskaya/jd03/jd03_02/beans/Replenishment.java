@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_02.beans;
+package by.it.titkovskaya.jd03.jd03_02.beans;
 
 import java.sql.Timestamp;
 

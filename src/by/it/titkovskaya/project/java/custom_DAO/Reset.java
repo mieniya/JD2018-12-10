@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.custom_DAO;
+package by.it.titkovskaya.project.java.custom_DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 class Reset {
+
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver: " + e);
+        }
+    }
 
     static void resetDB() throws SQLException {
         try (Connection connection = DriverManager.getConnection(
@@ -61,7 +69,7 @@ class Reset {
                     "    FOREIGN KEY (`account_status_id`)" +
                     "    REFERENCES `titkovskaya`.`account status` (`id`)" +
                     "    ON DELETE RESTRICT" +
-                    "    ON UPDATE CASCADE)" +
+                    "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `titkovskaya`.`payments` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
@@ -98,9 +106,9 @@ class Reset {
             statement.executeUpdate("INSERT INTO `titkovskaya`.`users` (`id`, `login`, `password`, `email`, `name`, `roles_id`) VALUES (DEFAULT, 'janeDOUGH', '22222', 'janeDOUGH@it.by', 'Jane Dough', 2);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`account status` (`id`, `status`) VALUES (DEFAULT, 'active');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`account status` (`id`, `status`) VALUES (DEFAULT, 'locked');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 111111111, 'USD', 2, 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 222222222, 'BYN', 2, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 333333333, 'EUR', 3, 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000001, 'USD', 2, 2);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000002, 'BYN', 2, 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000003, 'EUR', 3, 1);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 16:50', 2000, 'llc rosting', 1);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-25 12:00', 10000, 'ue metrostroy', 2);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-02-15 13:30', 25000, 'corporation GNB', 3);");

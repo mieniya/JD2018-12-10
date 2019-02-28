@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_01;
+package by.it.titkovskaya.jd03.jd03_01;
 
 public class Runner {
 

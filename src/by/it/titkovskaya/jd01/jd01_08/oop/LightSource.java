@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_08.oop;
+package by.it.titkovskaya.jd01.jd01_08.oop;
 
 interface LightSource {
     void turnOn();

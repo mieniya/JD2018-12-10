@@ -1,10 +1,10 @@
-package by.it.titkovskaya.jd02_05;
+package by.it.titkovskaya.jd02.jd02_05;
 
 import java.io.*;
 
 public class NativeToASCII {
     public static void main(String[] args) {
-        File dir = new File(System.getProperty("user.dir")  + "/src/by/it/titkovskaya/jd02_05");
+        File dir = new File(System.getProperty("user.dir")  + "/src/by/it/titkovskaya/jd02/jd02_05");
         if (dir.exists() && dir.isDirectory()){
             File[] files = dir.listFiles();
             if (files != null) {

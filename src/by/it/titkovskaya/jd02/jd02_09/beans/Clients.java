@@ -6,7 +6,7 @@
 //
 
 
-package by.it.titkovskaya.jd02_09.beans;
+package by.it.titkovskaya.jd02.jd02_09.beans;
 
 import java.util.ArrayList;
 import java.util.List;

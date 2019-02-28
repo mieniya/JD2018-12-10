@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_12;
+package by.it.titkovskaya.jd01.jd01_12;
 
 import java.util.HashMap;
 import java.util.Map;

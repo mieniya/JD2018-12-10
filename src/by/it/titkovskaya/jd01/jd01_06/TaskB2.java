@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_06;
+package by.it.titkovskaya.jd01.jd01_06;
 
 /*
 Вывести через \n все предложения текста в порядке возрастания количества символов

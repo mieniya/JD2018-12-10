@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_03;
+package by.it.titkovskaya.jd02.jd02_03;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;

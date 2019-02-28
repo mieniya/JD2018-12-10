@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_08;
+package by.it.titkovskaya.jd02.jd02_08;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;

@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_01;
+package by.it.titkovskaya.jd01.jd01_01;
 
 class Args {
     private String[] args;

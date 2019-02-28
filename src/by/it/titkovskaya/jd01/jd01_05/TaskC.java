@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_05;
+package by.it.titkovskaya.jd01.jd01_05;
 
 import static java.lang.Math.*;
 

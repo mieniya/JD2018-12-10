@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd03_02.crud;
+package by.it.titkovskaya.jd03.jd03_02.crud;
 
-import by.it.titkovskaya.jd03_02.beans.*;
+import by.it.titkovskaya.jd03.jd03_02.beans.*;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -41,9 +41,9 @@ public class Runner_Reset_Init {
         System.out.println("Created successfully:\n" + user1 + "\n" + user2 + "\n" + user3 + "\n");
 
         AccountCRUD accountCRUD = new AccountCRUD();
-        Account account1 = new Account(0, 111111111, "USD", 2, 2);
-        Account account2 = new Account(0, 222222222, "BYN", 2, 1);
-        Account account3 = new Account(0, 333333333, "EUR", 3, 1);
+        Account account1 = new Account(0, 100000001, "USD", 2, 2);
+        Account account2 = new Account(0, 100000002, "BYN", 2, 1);
+        Account account3 = new Account(0, 100000003, "EUR", 3, 1);
         accountCRUD.create(account1);
         accountCRUD.create(account2);
         accountCRUD.create(account3);

@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd02_05;
+package by.it.titkovskaya.jd02.jd02_05;
 
-import by.it.titkovskaya.jd02_05.strings.*;
+import by.it.titkovskaya.jd02.jd02_05.strings.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -74,7 +74,7 @@ Date date = new Date();
  */
 
 /*
-String messages = "by.it.titkovskaya.jd02_05.messages";
+String messages = "by.it.titkovskaya.jd02.jd02_05.messages";
         Locale locale = new Locale("be","BY");
         ResourceBundle rb = ResourceBundle.getBundle(messages,locale);
         String test = rb.getString(Message.WELCOME);

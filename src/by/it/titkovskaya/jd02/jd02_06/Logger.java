@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_06;
+package by.it.titkovskaya.jd02.jd02_06;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

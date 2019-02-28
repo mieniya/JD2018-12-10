@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_06;
+package by.it.titkovskaya.jd01.jd01_06;
 
 /*
 Сформировать и вернуть в методе String slow (String text) из случайных слов

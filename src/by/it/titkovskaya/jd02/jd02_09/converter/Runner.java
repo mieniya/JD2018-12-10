@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd02_09.converter;
+package by.it.titkovskaya.jd02.jd02_09.converter;
 
-import by.it.titkovskaya.jd02_09.beans.Clients;
+import by.it.titkovskaya.jd02.jd02_09.beans.Clients;
 import java.io.File;
 
 public class Runner {

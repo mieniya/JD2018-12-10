@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd03_03.universal_DAO;
+package by.it.titkovskaya.jd03.jd03_03.universal_DAO;
 
-import by.it.titkovskaya.jd03_03.beans.*;
+import by.it.titkovskaya.jd03.jd03_03.beans.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;

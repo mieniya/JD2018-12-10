@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_08;
+package by.it.titkovskaya.jd01.jd01_08;
 
 interface Operation {
     Var add(Var other);

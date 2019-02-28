@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_02;
+package by.it.titkovskaya.jd02.jd02_02;
 
 public interface IBuyer {
 

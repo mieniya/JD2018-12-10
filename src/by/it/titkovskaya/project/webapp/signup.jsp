@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
@@ -7,14 +8,13 @@
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Signup</legend>
+            <legend>Welcome! Fill in the form & join TIT Co</legend>
 
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="login">Login</label>
               <div class="col-md-4">
-              <input id="login" name="login" type="text" placeholder="YourLogin" class="form-control input-md" required="">
-              <span class="help-block">Enter a login </span>
+              <input id="login" name="login" value="testLogin" type="text" placeholder="YourLogin" class="form-control input-md" required="">
               </div>
             </div>
 
@@ -22,8 +22,8 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="password">Password</label>
               <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="************" class="form-control input-md" required="">
-                <span class="help-block">Enter a password (at least 5 characters)</span>
+                <input id="password" name="password" value="testPassword" type="password" placeholder="************" class="form-control input-md" required="">
+                <span class="help-block">at least 5 characters required</span>
               </div>
             </div>
 
@@ -31,8 +31,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="name">Name</label>
               <div class="col-md-4">
-              <input id="name" name="name" type="text" placeholder="Your Name" class="form-control input-md">
-              <span class="help-block">How would you like to address you?</span>
+              <input id="name" name="name" value="Test Name" type="text" placeholder="Your Name" class="form-control input-md">
               </div>
             </div>
 
@@ -40,8 +39,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="email">Email</label>
               <div class="col-md-4">
-              <input id="email" name="email" type="text" placeholder="email@address.com" class="form-control input-md">
-              <span class="help-block">Enter your email for getting feedback</span>
+              <input id="email" name="email" value="test@email.com" type="text" placeholder="email@address.com" class="form-control input-md">
               </div>
             </div>
 

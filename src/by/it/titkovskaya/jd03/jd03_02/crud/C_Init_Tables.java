@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_02.crud;
+package by.it.titkovskaya.jd03.jd03_02.crud;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,7 +64,7 @@ class C_Init_Tables {
                     "    FOREIGN KEY (`users_id`)" +
                     "    REFERENCES `titkovskaya`.`users` (`id`)" +
                     "    ON DELETE CASCADE" +
-                    "    ON UPDATE RESTRICT," +
+                    "    ON UPDATE CASCADE," +
                     "  CONSTRAINT `fk_accounts_account status1`" +
                     "    FOREIGN KEY (`account_status_id`)" +
                     "    REFERENCES `titkovskaya`.`account status` (`id`)" +

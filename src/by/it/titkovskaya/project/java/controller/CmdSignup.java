@@ -1,7 +1,7 @@
-package by.it.titkovskaya.project.java;
+package by.it.titkovskaya.project.java.controller;
 
-import by.it.titkovskaya.project.beans.User;
-import by.it.titkovskaya.project.custom_DAO.Dao;
+import by.it.titkovskaya.project.java.beans.User;
+import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,8 +15,9 @@ public class CmdSignup implements Cmd {
             String email = Form.getString(req, "email");
             String name = Form.getString(req, "name");
             User user = new User(0, login, password, email, name, 2);
-            if (Dao.getDao().user.create(user)){
-                return Action.INDEX;
+            Dao dao = Dao.getDao();
+            if (dao.user.create(user)){
+                return Action.LOGIN;
             }
         }
         return Action.SIGNUP;

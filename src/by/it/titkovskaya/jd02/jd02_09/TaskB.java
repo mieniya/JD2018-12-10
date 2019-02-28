@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd02_09;
+package by.it.titkovskaya.jd02.jd02_09;
 
-import by.it.titkovskaya.jd02_09.beans.Clients;
+import by.it.titkovskaya.jd02.jd02_09.beans.Clients;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

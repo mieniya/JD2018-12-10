@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_10;
+package by.it.titkovskaya.jd01.jd01_10;
 /*
 TaskC1. Создайте класс BeanTester который в методе main с сигнатурой, допускающей Exception:
 public static void main(String[] args) throws Exception создает экземпляр класса Bean (оператор

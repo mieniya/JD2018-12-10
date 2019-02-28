@@ -1,6 +1,6 @@
-package by.it.titkovskaya.jd02_08;
+package by.it.titkovskaya.jd02.jd02_08;
 
-import by.it.titkovskaya.jd02_07.ClientsValidator;
+import by.it.titkovskaya.jd02.jd02_07.ClientsValidator;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;

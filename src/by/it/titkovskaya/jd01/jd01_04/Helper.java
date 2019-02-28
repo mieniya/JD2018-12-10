@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_04;
+package by.it.titkovskaya.jd01.jd01_04;
 
 public class Helper {
     static double findMin(double[] arr) {

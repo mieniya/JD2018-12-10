@@ -1,6 +1,6 @@
-package by.it.titkovskaya.project.custom_DAO;
+package by.it.titkovskaya.project.java.custom_DAO;
 
-import by.it.titkovskaya.project.beans.*;
+import by.it.titkovskaya.project.java.beans.*;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -39,13 +39,41 @@ public class Runner {
         List<Account> accounts = dao.account.getAll();
         if (accounts.size() > 0)
             System.out.println("\nREAD OK: " + accounts);
+
+        String where = " WHERE `number`='100000003'";
+        System.out.println("\n*********************************************************");
+        System.out.println("\n>>>>>>>>>>>>  <<<<<<<<<<<<" + dao.account.getAll(where));
+        String where1 = " WHERE `accounts_id`='3'";
+        System.out.println("\n>>>>>>>>>>>>  <<<<<<<<<<<<" + dao.replenishment.getAll(where1));
+        System.out.println("\n>>>>>>>>>>>>  <<<<<<<<<<<<" + dao.payment.getAll(where1));
+
+        List<Replenishment> allRep = dao.replenishment.getAll(where1);
+        double repSum = 0;
+        for (int i = 1; i < allRep.size(); i++) {
+            repSum+=allRep.get(i).getAmount();
+        }
+        List<Payment> allPay = dao.payment.getAll(where1);
+        double paySum = 0;
+        for (int i = 0; i < allRep.size()-1; i++) {
+            paySum+=allPay.get(i).getAmount();
+        }
+        double balance = repSum - paySum;
+        System.out.println("TOTAL replenishments: " + repSum);
+        System.out.println("TOTAL payments: " + paySum);
+        System.out.println("ACCOUNT BALANCE: " + balance);
+        System.out.println("\n**********************************************************\n");
+
         account.setUsers_id(3);
         account.setAccount_status_id(2);
-        if (dao.account.create(account))
-            System.out.println("CREATE OK: " + account);
-        account.setCurrency("BYN");
+        if (dao.account.create(account)){
+            account.setNumber(account.getId()+100000000);
+            dao.account.update(account);
+            System.out.println("***********CREATE OK: " + account);
+        }
+
+        account.setNumber(account.getId()+100000000);
         if (dao.account.update(account))
-            System.out.println("UPDATE OK: " + account);
+            System.out.println("*****UPDATE OK: " + account);
         if (dao.account.delete(account))
             System.out.println("DELETE OK: " + accounts);
 
@@ -90,6 +118,39 @@ public class Runner {
             System.out.println("UPDATE OK: " + status);
         if (dao.status.delete(status))
             System.out.println("DELETE OK: " + statuses);
+
+        String login = "login";
+        String password = "password";
+        String email = "email";
+        String name = "name";
+        User userT = new User(0, login, password, email, name, 2);
+        Dao daoT = Dao.getDao();
+        if (daoT.user.create(userT)){
+            System.out.println("TEST of PROJECT +++");;
+        }
+
+        String whereAccNumber = " WHERE `number`='100000004'";
+        List<Account> accByNumber = dao.account.getAll(whereAccNumber);
+        if (accByNumber.size() > 0) {
+            String state = "lock";
+            Account accounT = accByNumber.get(0);
+
+            //******************* НЕ ПАШЕТ >>> UPDATE <<<
+            if (state.equalsIgnoreCase("lock")) {
+                accounT.setAccount_status_id(2);
+            }
+            else if (state.equalsIgnoreCase("unlock"))
+                accounT.setAccount_status_id(1);
+            if (dao.account.update(accounT)) {
+                System.out.println("STATE: " + accounT);
+            }
+            System.out.println("STATE2: " + accounT);
+            //******************* НЕ ПАШЕТ
+        }
+
+
+
+ //       Dao.getDao().reset();
     }
 }
 

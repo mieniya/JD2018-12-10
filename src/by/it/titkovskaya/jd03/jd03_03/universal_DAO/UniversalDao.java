@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_03.universal_DAO;
+package by.it.titkovskaya.jd03.jd03_03.universal_DAO;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

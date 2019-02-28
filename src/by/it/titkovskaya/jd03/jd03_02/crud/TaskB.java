@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd03_02.crud;
+package by.it.titkovskaya.jd03.jd03_02.crud;
 
 import java.sql.*;
 

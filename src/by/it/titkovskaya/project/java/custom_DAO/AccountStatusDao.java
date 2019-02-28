@@ -1,6 +1,6 @@
-package by.it.titkovskaya.project.custom_DAO;
+package by.it.titkovskaya.project.java.custom_DAO;
 
-import by.it.titkovskaya.project.beans.AccountStatus;
+import by.it.titkovskaya.project.java.beans.AccountStatus;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

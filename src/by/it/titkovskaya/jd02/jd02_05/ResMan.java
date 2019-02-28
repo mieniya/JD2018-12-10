@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_05;
+package by.it.titkovskaya.jd02.jd02_05;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -8,7 +8,7 @@ public enum ResMan {
 
     INSTANCE;
 
-    private final String RESOURSE = "by.it.titkovskaya.jd02_05.messages";
+    private final String RESOURSE = "by.it.titkovskaya.jd02.jd02_05.messages";
     private Locale locale;
     private ResourceBundle resourceBundle;
 

@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_15;
+package by.it.titkovskaya.jd01.jd01_15;
 
 import java.io.*;
 

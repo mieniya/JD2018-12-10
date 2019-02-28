@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.custom_DAO;
+package by.it.titkovskaya.project.java.custom_DAO;
 
 import java.sql.SQLException;
 

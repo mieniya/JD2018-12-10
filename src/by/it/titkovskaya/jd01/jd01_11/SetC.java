@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_11;
+package by.it.titkovskaya.jd01.jd01_11;
 /*
 TaskC. Свой SetC. Напишите класс SetC<T>, который реализует toString() как в HashSet и 8 методов
 add(T e), remove(Object o), contains(Object o), size(), isEmpty(), addAll(List<?> c),

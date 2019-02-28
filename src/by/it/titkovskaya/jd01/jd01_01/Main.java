@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_01;
+package by.it.titkovskaya.jd01.jd01_01;
 
 public class Main {
     public static void main(String[] args) {

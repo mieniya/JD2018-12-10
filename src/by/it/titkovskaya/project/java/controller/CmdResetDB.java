@@ -1,6 +1,6 @@
-package by.it.titkovskaya.project.java;
+package by.it.titkovskaya.project.java.controller;
 
-import by.it.titkovskaya.project.custom_DAO.Dao;
+import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
 

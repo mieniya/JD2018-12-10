@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd02_05.strings;
+package by.it.titkovskaya.jd02.jd02_05.strings;
 
 public interface Programme {
     String TO_START = "message.to.start";

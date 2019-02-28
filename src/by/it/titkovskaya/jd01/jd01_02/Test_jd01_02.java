@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_02;
+package by.it.titkovskaya.jd01.jd01_02;
 
 import org.junit.Test;
 

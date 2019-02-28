@@ -1,4 +1,4 @@
-package by.it.titkovskaya.jd01_13;
+package by.it.titkovskaya.jd01.jd01_13;
 
 import java.util.Scanner;
 
