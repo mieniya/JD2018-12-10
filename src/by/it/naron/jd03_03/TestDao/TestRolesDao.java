@@ -18,7 +18,7 @@ public class TestRolesDao {
         //    ad.setData(timestamp);
         //   users.setId(3);
         if (dao.roles.create( roles ))
-            System.out.println("CREATE OK: " + roles);
+            System.out.println("CREATEGOODSFLOWER OK: " + roles);
         roles.setRole("TestRl");
         if (dao.roles.update(roles))
             System.out.println("UPDATE OK: " + roles);

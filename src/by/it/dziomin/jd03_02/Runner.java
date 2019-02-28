@@ -9,6 +9,10 @@ import by.it.dziomin.jd03_02.crud.RentsCRUD;
 import by.it.dziomin.jd03_02.crud.RolesCRUD;
 import by.it.dziomin.jd03_02.crud.UsersCRUD;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Runner {
     public static void main(String[] args) {
         new DBConnector();
@@ -16,9 +20,9 @@ public class Runner {
         RolesCRUD roleCRUD = new RolesCRUD();
         Roles role = new Roles(0, "TestRole");
         if (roleCRUD.create(role)) {
-            System.out.println("CREATE OK: " + role);
+            System.out.println("CREATEGOODSFLOWER OK: " + role);
         }
-        role.setRole("TestRoleUpdate");
+        role.setName("TestRoleUpdate");
         if (roleCRUD.update(role)) {
             System.out.println("UPDATE OK: " + role);
         }
@@ -32,7 +36,7 @@ public class Runner {
         UsersCRUD usersCRUD = new UsersCRUD();
         Users user = new Users(0, "TestUser", "xx99999", "+37529994459235", 1);
         if (usersCRUD.create(user)) {
-            System.out.println("CREATE OK: " + user);
+            System.out.println("CREATEGOODSFLOWER OK: " + user);
         }
         user.setPassport("pp989898");
         user.setPhone("+37529111111111");
@@ -49,7 +53,7 @@ public class Runner {
         CarsCRUD carsCRUD = new CarsCRUD();
         Cars car = new Cars(0, "TestCar", "123456-7", "2.0", "manual");
         if (carsCRUD.create(car)) {
-            System.out.println("CREATE OK: " + car);
+            System.out.println("CREATEGOODSFLOWER OK: " + car);
         }
         car.setName("TestCarUpdate");
         car.setTransmission("auto");
@@ -64,12 +68,12 @@ public class Runner {
 
         System.out.println("\n*****RentsCRUD***************");
         RentsCRUD rentsCRUD = new RentsCRUD();
-        Rents rent = new Rents(0, 999999999, 100.00, 1, 4,1);
+        Rents rent = new Rents(0, 999999999, 100.00, 1, 2,1);
         if (rentsCRUD.create(rent)) {
-            System.out.println("CREATE OK: " + rent);
+            System.out.println("CREATEGOODSFLOWER OK: " + rent);
         }
         rent.setPrice(20.52);
-        rent.setOpen(0);
+        rent.setIsOpen(0);
         if (rentsCRUD.update(rent)) {
             System.out.println("UPDATE OK: " + rent);
         }
@@ -78,5 +82,18 @@ public class Runner {
             System.out.println("READ OK: " + rent);
         if (rentsCRUD.delete(rent))
             System.out.println("DELETE OK: " + rent);
+               
+        setCorrectDate();
+               
     }
+    
+    public static void setCorrectDate() {
+        try {
+            DBConnector.getStatement().executeUpdate("UPDATE rent SET date = null WHERE 1;");
+            DBConnector.getStatement().executeUpdate("alter table rent modify date date null;");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
