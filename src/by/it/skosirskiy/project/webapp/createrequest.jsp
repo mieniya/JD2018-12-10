@@ -40,7 +40,7 @@
              <div class="form-group">
                  <label class="col-md-4 control-label" for="address_id">address_id</label>
                  <div class="col-md-4">
-                 <input id="address_id" name="user_id" value="2" type="text" placeholder="" class="form-control input-md" required="">
+                 <input id="address_id" name="address_id" value="2" type="text" placeholder="" class="form-control input-md" required="">
                  </div>
              </div>
 

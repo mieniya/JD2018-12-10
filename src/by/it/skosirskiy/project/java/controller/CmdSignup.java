@@ -15,7 +15,7 @@ public class CmdSignup implements Cmd {
             System.out.println(login);
             String password = Form.getString(req,"password");
             String email = Form.getString(req,"email");
-            User user= new User(0,login,email,password,1);
+            User user= new User(0,login,password,email,1);
             Dao dao= Dao.getDao();
             if(dao.user.create(user)){
                 return Action.CREATEREQUEST;

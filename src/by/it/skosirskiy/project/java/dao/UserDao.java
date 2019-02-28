@@ -14,7 +14,7 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
     @Override
     public List<User> getAll(String WHERE) throws SQLException {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users " + WHERE + " ;";
+        String sql = "SELECT * FROM `users` " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {

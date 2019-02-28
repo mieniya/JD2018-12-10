@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class CmdCreateRequest implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws SiteException, SQLException {
+
         if(Form.isPost(req)){
             String type = Form.getString(req, "type");
             Timestamp date_create = Timestamp.valueOf(LocalDateTime.now());
