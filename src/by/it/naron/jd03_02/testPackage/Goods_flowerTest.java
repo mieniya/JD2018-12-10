@@ -31,7 +31,7 @@ public class Goods_flowerTest {
         Goods_flowerCrud goods_flowerCrud = new Goods_flowerCrud();
 
        if (goods_flowerCrud.create(goods_flower))
-            System.out.println("CREATE OK: " + goods_flower);
+            System.out.println("CREATEGOODSFLOWER OK: " + goods_flower);
         goods_flower.setName("Testgoods_flowerUpdate");
         if (goods_flowerCrud.update(goods_flower))
             System.out.println("UPDATE OK: " + goods_flower);
