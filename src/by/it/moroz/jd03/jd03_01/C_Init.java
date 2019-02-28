@@ -50,7 +50,7 @@ class C_Init {
                     "  `name` VARCHAR(100) NULL," +
                     "  `count` INT NULL," +
                     "  `price` DOUBLE NULL," +
-                    "  `chek` DOUBLE NULL," +
+                    "  `check` DOUBLE NULL," +
                     "  `users_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  INDEX `fk_orders_users1_idx` (`users_id` ASC)," +
@@ -73,15 +73,15 @@ class C_Init {
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, `name`, " +
                     "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, NULL, NULL, NULL, 'Kedishko, 3-1', " +
                     "'Vladislau', 'Makarevich', 447568394, 3);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `chek`, `users_id`)" +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `check`, `users_id`)" +
                     " VALUES (DEFAULT, 'Pizza', 2, 28.35, 56.7, 1);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `chek`, `users_id`) " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `check`, `users_id`) " +
                     "VALUES (DEFAULT, 'Spaghetti pepperoni', 1, 18.26, 18.26, 1);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `chek`, `users_id`) " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `check`, `users_id`) " +
                     "VALUES (DEFAULT, 'Coffee', 2, 5.00, 5.00, 1);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `chek`, `users_id`) " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `check`, `users_id`) " +
                     "VALUES (DEFAULT, 'Steak', 1, 35.85, 35.85, 3);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `chek`, `users_id`) " +
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `name`, `count`, `price`, `check`, `users_id`) " +
                     "VALUES (DEFAULT, 'Salad', 1, 13.25, 13.25, 3);"));
 
         } catch (SQLException e) {
