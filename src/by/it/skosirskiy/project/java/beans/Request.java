@@ -8,13 +8,13 @@ public class Request {
     private String type;
     private Timestamp date_create;
     private Timestamp date_complete;
-    private int user_id;
+    private Long user_id;
     private int status_id;
     private int address_id;
     public Request() {
     }
 
-    public Request(long id, String type, Timestamp date_create, Timestamp date_complete, int user_id, int status_id, int address_id) {
+    public Request(long id, String type, Timestamp date_create, Timestamp date_complete, Long user_id, int status_id, int address_id) {
         this.id = id;
         this.type = type;
         this.date_create = date_create;
@@ -40,7 +40,7 @@ public class Request {
         this.date_complete = date_complete;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 
@@ -68,7 +68,7 @@ public class Request {
         return date_complete;
     }
 
-    public int getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 

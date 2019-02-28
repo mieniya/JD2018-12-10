@@ -10,6 +10,8 @@
             <a class="nav-item nav-link" href="do?command=SignUp">Signup</a>
             <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
             <a class="nav-item nav-link" href="do?command=createRequest">CreateRequest</a>
+            <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+
         </div>
     </div>
 </nav>

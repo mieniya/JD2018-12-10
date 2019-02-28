@@ -5,15 +5,7 @@
          version="3.0"
          metadata-complete="true">
     <display-name>Сервлет Controller</display-name>
-    <!--
-    Для любого сервлета нужно определить два тега servlet и servlet-mapping.
-    Важно чтобы внутри каждого из этих тегов были теги servlet-name
-    и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
-    -->
 
-    <!--
-    Подключим точно так же второй сервлета-контроллер с именем FrontControllerServlet
-    -->
     <servlet>
         <servlet-name>FrontController</servlet-name>
         <servlet-class>by.it.skosirskiy.project.java.controller.FrontController</servlet-class>
@@ -23,14 +15,28 @@
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
 
-    <!--<filter>-->
-    <!--<filter-name>NoCacheFilter</filter-name>-->
-    <!--<filter-class>by.it.skosirskiy.project.java.controller.NoCacheFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>NoCacheFilter</filter-name>-->
-        <!--<servlet-name>/*</servlet-name>-->
-    <!--</filter-mapping>-->
+    <filter>
+    <filter-name>NoCacheFilter</filter-name>
+    <filter-class>by.it.skosirskiy.project.java.controller.NoCacheFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>NoCacheFilter</filter-name>
+        <servlet-name>/*</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EncodingUTF8</filter-name>
+        <filter-class>by.it.skosirskiy.project.java.controller.UTF8</filter-class>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingUTF8</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 
 

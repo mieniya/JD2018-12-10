@@ -50,7 +50,7 @@ public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
     @Override
     public List<Request> getAll(String WHERE) throws SQLException {
         List<Request> requests = new ArrayList<>();
-        String sql = "SELECT * FROM requests " + WHERE + " ;";
+        String sql = "SELECT * FROM `requests` " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
@@ -61,7 +61,7 @@ public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
                 request.setType(rs.getString("type"));
                 request.setDate_create(rs.getTimestamp("date_create"));
                 request.setDate_complete(rs.getTimestamp("date_complete"));
-                request.setUser_id(rs.getInt("user_id"));
+                request.setUser_id(rs.getLong("user_id"));
                 request.setStatus_id(rs.getInt("status_id"));
                 request.setAddress_id(rs.getInt("address_id"));
 

@@ -8,6 +8,8 @@ public enum Action{
     INDEX(new CmdIndex()),
     ERROR(new CmdError()),
     LOGIN(new CmdLogin()),
+    LOGOUT(new CmdLogout()),
+    PROFILE(new CmdProfile()),
     CREATEREQUEST(new CmdCreateRequest()),
     RESETDB(new CmdResetDB()),
     SIGNUP(new CmdSignup());

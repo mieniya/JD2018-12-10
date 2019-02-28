@@ -24,6 +24,7 @@ public class CmdLogin implements Cmd {
                 HttpSession session= req.getSession(true);
                 User user = users.get(0);
                 session.setAttribute("user",user);
+
                 req.setAttribute("user",user);
 
 

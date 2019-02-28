@@ -57,7 +57,8 @@ public class StatusDao extends AbstractDao implements InterfaceDAO<Status> {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Status status = new Status();
-                status.setStatus(rs.getString("id"));
+                status.setId(rs.getInt("id"));
+                status.setStatus(rs.getString("status"));
                 statuses.add(status);
             }
         }

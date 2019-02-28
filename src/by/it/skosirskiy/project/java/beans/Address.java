@@ -1,7 +1,7 @@
 package by.it.skosirskiy.project.java.beans;
 
 public class Address {
-    private long id;
+    private int id;
     private String city;
     private String street;
     private String house;
@@ -10,7 +10,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(long id, String city, String street, String house, int flat) {
+    public Address(int id, String city, String street, String house, int flat) {
         this.id = id;
         this.city = city;
         this.street = street;
@@ -18,7 +18,7 @@ public class Address {
         this.flat = flat;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -38,7 +38,7 @@ public class Address {
         this.flat = flat;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
