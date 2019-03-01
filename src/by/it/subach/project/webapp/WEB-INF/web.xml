@@ -5,6 +5,9 @@
          version="3.0"
          metadata-complete="true">
     <display-name>Сервлет Controller</display-name>
+    <welcome-file-list>
+        <welcome-file>INDEX</welcome-file>
+    </welcome-file-list>
     <!--
     Для любого сервлета нужно определить два тега servlet и servlet-mapping.
     Важно чтобы внутри каждого из этих тегов были теги servlet-name
@@ -21,6 +24,7 @@
     <servlet-mapping>
         <servlet-name>FrontControllerServlet</servlet-name>
         <url-pattern>/do</url-pattern>
+        <url-pattern>/INDEX</url-pattern>
     </servlet-mapping>
 
     <filter>

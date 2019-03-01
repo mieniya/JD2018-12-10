@@ -31,7 +31,7 @@ public enum Action {
             return Action.valueOf(command);
         }
         catch (Exception e){
-            return Action.ERROR;
+            return Action.INDEX;
         }
     }
 

@@ -5,6 +5,10 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
     <p>${users}</p>
+
+    <div class="col-md-4">LOGIN</div>
+    <div class="col-md-4">PASSWORD</div>
+    <div class="col-md-4">EMAIL</div>
 </div>
 </body>
 </html>
