@@ -5,6 +5,10 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
     <p>${menu}</p>
+
+    <div class="row">
+        <div class="col-md-1">Dish</div>
+        <div class="col-md-2">Price</div>
 </div>
 </body>
 </html>
