@@ -38,6 +38,7 @@ public class CmdPayment implements Cmd {
 
                 //TODO Balance check + Account existence & ownership
 
+
                 if (dao.payment.create(payment)) {
                     return Action.ACCINFO;
                 }

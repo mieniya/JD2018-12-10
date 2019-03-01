@@ -50,7 +50,7 @@ public class Runner_for_CRUD {
         Account account = new Account(0, 999999999, "testCurrency", 3, 2);
         if (accountCRUD.create(account))
             System.out.println("CREATEGOODSFLOWER OK: " + account);
-        account.setCurrency("testCurrencyUpdate");
+        account.setAccount_status_id(2);
         if (accountCRUD.update(account))
             System.out.println("UPDATE OK: " + account);
         account = accountCRUD.read(account.getId());

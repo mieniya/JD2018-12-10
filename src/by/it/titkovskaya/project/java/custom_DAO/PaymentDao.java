@@ -29,9 +29,11 @@ public class PaymentDao extends AbstractDao implements InterfaceDao<Payment> {
 
     @Override
     public boolean update(Payment payment) throws SQLException {
-        String sql = String.format("UPDATE `payments` " +
-                        "SET `amount`='%d' WHERE `id`='%d'",
-                (int) payment.getAmount(), payment.getId());
+        String sql = String.format(Locale.ENGLISH, "UPDATE `payments` " +
+                        "SET `date`='%s', `amount`='%f', `recipient`='%s', " +
+                        "`accounts_id`='%d' WHERE `id`='%d'",
+                payment.getDate(), payment.getAmount(), payment.getRecipient(),
+                payment.getAccounts_id(), payment.getId());
         return executeUpdate(sql);
     }
 

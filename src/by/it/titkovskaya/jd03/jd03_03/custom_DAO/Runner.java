@@ -43,7 +43,7 @@ public class Runner {
         account.setAccount_status_id(2);
         if (dao.account.create(account))
             System.out.println("CREATEGOODSFLOWER OK: " + account);
-        account.setCurrency("BYN");
+        account.setAccount_status_id(2);
         if (dao.account.update(account))
             System.out.println("UPDATE OK: " + account);
         if (dao.account.delete(account))

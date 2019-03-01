@@ -13,7 +13,8 @@ class ReplenishmentCRUD {
     boolean create(Replenishment replenishment) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format(Locale.ENGLISH,"INSERT INTO `replenishments` (`date`, `amount`, `accounts_id`) " +
+            String sql = String.format(Locale.ENGLISH,"INSERT INTO `replenishments` " +
+                            "(`date`, `amount`, `accounts_id`) " +
                         "VALUES ('%s','%f','%d')",
                         replenishment.getDate(), replenishment.getAmount(), replenishment.getAccounts_id());
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
@@ -49,9 +50,10 @@ class ReplenishmentCRUD {
     boolean update(Replenishment replenishment) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("UPDATE `replenishments` " +
-                            "SET `amount`='%d' WHERE `id`='%d'",
-                    (int) replenishment.getAmount(), replenishment.getId());
+            String sql = String.format(Locale.ENGLISH, "UPDATE `replenishments` " +
+                            "SET `date`='%s', `amount`='%f', `accounts_id`='%d' WHERE `id`='%d'",
+                    replenishment.getDate(), replenishment.getAmount(),
+                    replenishment.getAccounts_id(), replenishment.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }

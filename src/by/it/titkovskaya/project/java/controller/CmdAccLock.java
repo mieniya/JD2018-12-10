@@ -24,8 +24,6 @@ public class CmdAccLock implements Cmd {
                 if (accByNumber.size() > 0) {
                     String status = Form.getString(req, "status");
                     Account account = accByNumber.get(0);
-
-                    //******************* НЕ ПАШЕТ >>> UPDATE <<<
                     if (status.equalsIgnoreCase("lock")) {
                         account.setAccount_status_id(2);
                     }
@@ -38,7 +36,6 @@ public class CmdAccLock implements Cmd {
                     if (dao.account.update(account)) {
                         return Action.ACCINFO;
                     }
-                    //******************* НЕ ПАШЕТ
                 }
             }
             return Action.ACCLOCK;

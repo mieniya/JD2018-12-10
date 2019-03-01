@@ -29,9 +29,10 @@ public class ReplenishmentDao extends AbstractDao implements InterfaceDao<Replen
 
     @Override
     public boolean update(Replenishment replenishment) throws SQLException {
-        String sql = String.format("UPDATE `replenishments` " +
-                        "SET `amount`='%d' WHERE `id`='%d'",
-                (int) replenishment.getAmount(), replenishment.getId());
+        String sql = String.format(Locale.ENGLISH, "UPDATE `replenishments` " +
+                        "SET `date`='%s', `amount`='%f', `accounts_id`='%d' WHERE `id`='%d'",
+                replenishment.getDate(), replenishment.getAmount(),
+                replenishment.getAccounts_id(), replenishment.getId());
         return executeUpdate(sql);
     }
 

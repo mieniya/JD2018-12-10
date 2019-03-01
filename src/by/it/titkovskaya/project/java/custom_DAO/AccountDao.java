@@ -1,6 +1,5 @@
 package by.it.titkovskaya.project.java.custom_DAO;
 
-
 import by.it.titkovskaya.project.java.beans.Account;
 
 import java.sql.Connection;
@@ -20,18 +19,20 @@ public class AccountDao extends AbstractDao implements InterfaceDao<Account> {
 
     @Override
     public boolean create(Account account) throws SQLException {
-        String sql = String.format("INSERT INTO `accounts` (`number`,`currency`,`users_id`,`account_status_id`) " +
-                        "VALUES ('%d','%s','%s', '%d')",
-                account.getNumber(), account.getCurrency(), account.getUsers_id(), account.getAccount_status_id());
+        String sql = String.format("INSERT INTO `accounts` (`number`,`currency`,`users_id`," +
+                        "`account_status_id`) VALUES ('%d','%s','%s', '%d')",
+                        account.getNumber(), account.getCurrency(), account.getUsers_id(),
+                        account.getAccount_status_id());
         account.setId(executeCreate(sql));
         return account.getId() > 0;
     }
 
     @Override
     public boolean update(Account account) throws SQLException {
-        String sql = String.format("UPDATE `accounts` " +
-                        "SET `currency`='%s' WHERE `id`='%d'",
-                account.getCurrency(), account.getId());
+        String sql = String.format("UPDATE `accounts` SET `number`='%d',`currency`='%s'," +
+                        "`users_id`='%d',`account_status_id`='%d' WHERE `id`='%d'",
+                account.getNumber(), account.getCurrency(), account.getUsers_id(),
+                account.getAccount_status_id(), account.getId());
         return executeUpdate(sql);
     }
 

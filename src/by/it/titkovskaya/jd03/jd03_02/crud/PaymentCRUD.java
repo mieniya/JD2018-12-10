@@ -50,9 +50,11 @@ class PaymentCRUD {
     boolean update(Payment payment) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("UPDATE `payments` " +
-                            "SET `amount`='%d' WHERE `id`='%d'",
-                    (int) payment.getAmount(), payment.getId());
+            String sql = String.format(Locale.ENGLISH, "UPDATE `payments` " +
+                            "SET `date`='%s', `amount`='%f', `recipient`='%s', " +
+                            "`accounts_id`='%d' WHERE `id`='%d'",
+                    payment.getDate(), payment.getAmount(), payment.getRecipient(),
+                    payment.getAccounts_id(), payment.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }

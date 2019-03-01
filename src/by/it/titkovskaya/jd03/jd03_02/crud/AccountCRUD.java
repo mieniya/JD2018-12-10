@@ -49,9 +49,10 @@ class AccountCRUD {
     boolean update(Account account) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("UPDATE `accounts` " +
-                            "SET `currency`='%s' WHERE `id`='%d'",
-                    account.getCurrency(), account.getId());
+            String sql = String.format("UPDATE `accounts` SET `number`='%d',`currency`='%s'," +
+                            "`users_id`='%d',`account_status_id`='%d' WHERE `id`='%d'",
+                    account.getNumber(), account.getCurrency(), account.getUsers_id(),
+                    account.getAccount_status_id(), account.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }
