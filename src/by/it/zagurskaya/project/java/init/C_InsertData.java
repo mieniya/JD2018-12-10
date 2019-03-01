@@ -30,6 +30,14 @@ public class C_InsertData {
 
         return path + filename;
     }
+//    private static String getPath(Class<?> clazz, String filename) {
+//        String path = clazz.getName();
+//        path = path.replace(clazz.getSimpleName(), "");
+//        path = path.replace(".", File.separator);
+//        path = System.getProperty("user.dir")
+//                + File.separator + "src" + File.separator + path;
+//        return path + filename;
+//    }
 
     private static StringBuilder readTextFile(String path, StringBuilder textFromFile) {
 
