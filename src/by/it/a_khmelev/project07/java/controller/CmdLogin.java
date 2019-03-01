@@ -2,6 +2,7 @@ package by.it.a_khmelev.project07.java.controller;
 
 import by.it.a_khmelev.project07.java.beans.User;
 import by.it.a_khmelev.project07.java.dao.Dao;
+import org.apache.commons.codec.digest.Md5Crypt;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,11 @@ public class CmdLogin implements Cmd {
             if (users.size() > 0) {
                 User user = users.get(0);
                 HttpSession session = req.getSession();
-                session.setAttribute("user",user);
-
+                session.setAttribute("user", user);
+                Cookie cookie = new Cookie("hash", Util.getHash(user));
+                Util.setCookie(req, cookie);
+                cookie = new Cookie("login", user.getLogin());
+                Util.setCookie(req, cookie);
                 return Action.PROFILE;
             }
         }
