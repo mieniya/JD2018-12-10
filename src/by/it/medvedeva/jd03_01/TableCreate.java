@@ -6,17 +6,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class C_Init {
+    public static void main(String[] args) {
 
-    static {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Error loading driver: " + e);
         }
-    }
 
 
-    public static void main(String[] args) {
+
         try (Connection connection =
                      DriverManager.getConnection(
                              "jdbc:mysql://127.0.0.1:2016/"+
@@ -49,7 +48,7 @@ public class C_Init {
                     "  PRIMARY KEY (`id`)," +
                     "  CONSTRAINT `fk_users_roles`" +
                     "    FOREIGN KEY (`roles_id`)" +
-                    "    REFERENCES `akhmelev`.`roles` (`id`)" +
+                    "    REFERENCES `medvedeva`.`roles` (`id`)" +
                     "    ON DELETE RESTRICT" +
                     "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;");
@@ -66,7 +65,7 @@ public class C_Init {
                     "  PRIMARY KEY (`id`)," +
                     "  CONSTRAINT `fk_ads_users1`" +
                     "    FOREIGN KEY (`users_id`)" +
-                    "    REFERENCES `akhmelev`.`users` (`id`)" +
+                    "    REFERENCES `medvedeva`.`users` (`id`)" +
                     "    ON DELETE CASCADE" +
                     "    ON UPDATE CASCADE)" +
                     "ENGINE = InnoDB;");
@@ -76,8 +75,9 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'administrator', 'administrator@mail.ru', 'administrator', 1);");
             statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'user', 'user@mail.ru', 'user', 2);");
             statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'petrov', 'petrov@mail.ru', 'petrov', 2);");
+            statement.executeUpdate("INSERT INTO `medvedeva`.`users` (`id`, `login`, `email`, `password`, `roles_id`) VALUES (DEFAULT, 'babochkin', 'babochkin@mail.ru', 'babochkin', 3);");
             statement.executeUpdate("INSERT INTO `medvedeva`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Good appartments', 'Minsk Lenina str., 10 app.12', 3, 5, 2, 55, 77777, 3);");
-            statement.executeUpdate("INSERT INTO `medvedeva`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Маленький домик', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3);");
+            statement.executeUpdate("INSERT INTO `medvedeva`.`ads` (`id`, `description`, `address`, `floor`, `floors`, `rooms`, `area`, `price`, `users_id`) VALUES (DEFAULT, 'Small house', 'Minsk Halturina, 14', 1, 1, 2, 44, 55555, 3);");
         } catch (SQLException e) {
             e.printStackTrace();
         }
