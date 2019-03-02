@@ -2,7 +2,6 @@ package by.it.a_khmelev.project07.java.controller;
 
 import by.it.a_khmelev.project07.java.beans.User;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.codec.digest.Md5Crypt;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
