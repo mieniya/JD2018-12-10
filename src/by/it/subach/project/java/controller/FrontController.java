@@ -24,7 +24,6 @@ public class FrontController extends HttpServlet{
         Action action= Action.define(req);
 
 
-
         try {
             Action nextAction = action.command.execute(req);
 
@@ -39,6 +38,7 @@ public class FrontController extends HttpServlet{
             }
         } catch (Exception e) {
             e.printStackTrace();
+
         }
 
     }

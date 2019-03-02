@@ -21,18 +21,19 @@ public enum Action {
 
     Cmd command;
 
-    String getJsp(){
-        return "/"+name().toLowerCase()+".jsp";
+    String getJsp() {
+        return "/" + name().toLowerCase() + ".jsp";
     }
 
-    static Action define(HttpServletRequest req){
+    static Action define(HttpServletRequest req) {
+
         String command = req.getParameter("command").toUpperCase();
         try {
             return Action.valueOf(command);
+        } catch (Exception e) {
+            return Action.ERROR;
         }
-        catch (Exception e){
-            return Action.INDEX;
-        }
+
     }
 
 
