@@ -1,4 +1,4 @@
-package by.it.a_khmelev.project05.java.dao;
+package by.it.a_khmelev.project07.java.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Reset {
+
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error loading driver: " + e);
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         try (Connection connection =
                      DriverManager.getConnection(
