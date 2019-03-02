@@ -7,6 +7,7 @@ public enum Action {
     INDEX(new CmdIndex()),
     ERROR(new CmdError()),
     LOGIN(new CmdLogin()),
+    EDITUSERS(new CmdEditUsers()),
     LOGOUT(new CmdLogout()),
     PROFILE(new CmdProfile()),
     CREATEAD(new CmdCreateAd()),
