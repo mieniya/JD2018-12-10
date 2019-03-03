@@ -1,5 +1,5 @@
-package by.it.skosirskiy.jd03_03.dao;
-import by.it.skosirskiy.jd03_03.beans.Status;
+package by.it.skosirskiy.project.java.dao;
+import by.it.skosirskiy.project.java.beans.Status;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -50,8 +50,7 @@ public class StatusDao extends AbstractDao implements InterfaceDAO<Status> {
     @Override
     public List<Status> getAll(String WHERE) throws SQLException {
         List<Status> statuses = new ArrayList<>();
-        String sql = "SELECT * FROM statuses" + WHERE + ";";
-        System.out.println(sql);
+        String sql = "SELECT * FROM statuses " + WHERE + " ;";
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
