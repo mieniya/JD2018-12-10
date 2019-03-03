@@ -14,7 +14,7 @@ public class CmdLogin implements Cmd {
 
         if (Form.isPost(req)) {
             String login = Form.getString(req, "login", "[a-zA-Z0-9_-]{5,}");
-            String password = Form.getString(req, "password");
+            String password = Form.getString(req, "password","[a-zA-Z0-9_-]{5,}");
             Dao dao = Dao.getDao();
             String where = String.format(
                     " WHERE `login`='%s' AND `password`='%s'",
@@ -22,9 +22,9 @@ public class CmdLogin implements Cmd {
             List<User> users = dao.user.getAll(where);
             if (users.size() > 0) {
                 HttpSession session= req.getSession(true);
+                session.setMaxInactiveInterval(30); // время жизни сессии(30 сек)
                 User user = users.get(0);
                 session.setAttribute("user",user);
-
                 req.setAttribute("user",user);
 
 
