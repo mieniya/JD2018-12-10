@@ -1,5 +1,6 @@
 package by.it.zagurskaya.project.java.beans;
 
+//import java.util.Date;
 import java.sql.Date;
 
 public class Kassa implements Entity {

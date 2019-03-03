@@ -17,7 +17,7 @@ public class KassaDao extends AbstractDao implements Dao<Kassa> {
     public boolean create(Kassa kassa) throws SQLException {
         String sql = String.format(
                 "INSERT INTO `kassa`(`currencyId`, `received`, `coming`, `spending`, `transmitted`, `balance`, `userId`, `date`, `dutiesNumber`) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s' )",
-                kassa.getId(), kassa.getReceived(), kassa.getComing(), kassa.getSpending(), kassa.getTransmitted(), kassa.getBalance(), kassa.getUserId(), kassa.getDate(), kassa.getDutiesNumber());
+                kassa.getCurrencyId(), kassa.getReceived(), kassa.getComing(), kassa.getSpending(), kassa.getTransmitted(), kassa.getBalance(), kassa.getUserId(), kassa.getDate(), kassa.getDutiesNumber());
         kassa.setId(executeCreate(sql));
         return kassa.getId() > 0;
     }
