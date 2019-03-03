@@ -33,15 +33,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>Auth</filter-name>
-        <filter-class>by.it.a_khmelev.project07.java.filters.Auth</filter-class>
-    </filter>
 
-    <filter-mapping>
-        <filter-name>Auth</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
 
 
