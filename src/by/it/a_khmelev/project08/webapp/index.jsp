@@ -6,6 +6,8 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
+    <h2>Все объявления</h2>
+
     <div class="row">
         <div class="col-md-1">Фото</div>
         <div class="col-md-1">Цена</div>
