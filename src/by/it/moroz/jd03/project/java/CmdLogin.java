@@ -24,6 +24,7 @@ public class CmdLogin implements Cmd {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
                 session.setMaxInactiveInterval(30);
+                //resp.addCookie("hash", Util.getHash(user));
                 return Action.INDEX;
             }
         }

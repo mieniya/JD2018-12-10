@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="do?command=Index">Restaurant</a>
@@ -6,9 +7,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="do?command=Login">Login</a>
-            <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
-            <a class="nav-item nav-link" href="do?command=SignUp">Signup</a>
+        <c:choose>
+            <c:when test="${user!=null}">
+                <a class="nav-item nav-link-right" href="do?command=Profile">Profile</a>
+            </c:when>
+            <c:otherwise>
+                <a class="nav-item nav-link-right" href="do?command=Login">Login</a>
+                <a class="nav-item nav-link-right" href="do?command=SignUp">Signup</a>
+            </c:otherwise>
+        </c:choose>
             <a class="nav-item nav-link" href="do?command=Order">Order</a>
             <a class="nav-item nav-link" href="do?command=Reset">ResetDB</a>
         </div>

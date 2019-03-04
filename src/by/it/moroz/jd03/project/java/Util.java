@@ -18,4 +18,8 @@ public class Util {
             return (User) oUser;
         }
     }
+
+    static String getHash(User user){
+        return null;
+    }
 }
