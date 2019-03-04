@@ -1,7 +1,8 @@
 package by.it.zagurskaya.project.java.controller;
 
-//import by.it.zagurskaya.project.java.beans.Ad;
-//import by.it.zagurskaya.project.java.dao.Dao;
+//import by.it.a_khmelev.project06.java.beans.Ad;
+//import by.it.a_khmelev.project06.java.beans.User;
+//import by.it.a_khmelev.project06.java.dao.Dao;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -17,7 +18,10 @@ public class CmdCreateAd implements Cmd {
 
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
-//        if (Form.isPost(req)) {
+//        User user = Util.findUser(req);
+//        if (user==null)
+//            return Action.LOGIN;
+//        if (Form.isPost(req) ) {
 //            Ad ad = new Ad();
 //            ad.setDescription(Form.getString(req, "description"));
 //            ad.setAddress(Form.getString(req, "address"));
@@ -28,12 +32,12 @@ public class CmdCreateAd implements Cmd {
 //            ad.setArea(Form.getInt(req, "area"));
 //            Timestamp date = Timestamp.valueOf(LocalDateTime.now());
 //            ad.setData(date);
-//            ad.setUsers_id(3);
+//            ad.setUsers_id(user.getId());
 //            if (Dao.getDao().ad.create(ad))
-//                return Action.INDEX;
+//                return Action.PROFILE;
 //
 //        }
 //        return Action.CREATEAD;
-        return Action.INDEX;
+        return null;
     }
 }
