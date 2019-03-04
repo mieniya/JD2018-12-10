@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h2>Профиль пользователя</h2>
+    <h2>Профиль пользователя: ${user.login}</h2>
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>
 
