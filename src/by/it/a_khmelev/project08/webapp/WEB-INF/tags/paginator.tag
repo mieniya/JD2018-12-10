@@ -7,6 +7,6 @@
 <%
     out.println("PAGE:");
     for (int i = 0; i <= (count - 1) / step; i++) {
-        out.println(String.format("&nbsp<a href='%s%d'>%d</a>", urlprefix, i * step, i));
+        out.println(String.format("&nbsp<a href='%s%d'>%d</a>", urlprefix, i * step, i+1));
     }
 %>

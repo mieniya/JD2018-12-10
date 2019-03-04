@@ -6,7 +6,6 @@
     <%@ include file="include/menu.jsp" %>
     <p>User ${user}</p>
     <h2>Объявления пользователя: </h2>
-    ${ads}
     <div class="row">
         <div class="col-md-1">Цена</div>
         <div class="col-md-2">Адрес</div>
@@ -31,6 +30,7 @@
         </div>
     </c:forEach>
 
+    <hr> <mytag:paginator count="${adsCount}" step="20" urlprefix="do?command=Profile&start="/>
 
 
     <form class="form-horizontal" action="do?command=Logout" method="post">

@@ -5,7 +5,7 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    <form class="form-horizontal" method="post" action="do?command=CreateAd">
+    <form class="form-horizontal" method="post" action="do?command=CreateAd" enctype="multipart/form-data">
         <fieldset>
 
             <!-- Form Name -->
@@ -74,6 +74,16 @@
                 </div>
             </div>
 
+
+            <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="fileimg">File Button</label>
+                <div class="col-md-4">
+                    <input id="fileimg" name="fileimg" class="input-file" type="file">
+                </div>
+            </div>
+
+
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="createad"></label>
@@ -81,6 +91,8 @@
                     <button id="createad" name="createad" class="btn btn-success">Create Ad</button>
                 </div>
             </div>
+
+
 
         </fieldset>
     </form>
