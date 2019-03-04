@@ -10,23 +10,28 @@ public class CmdEditUsers implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
-        if (Form.isPost(req)){
+        if (Form.isPost(req)) {
             long id = Form.getLong(req, "id");
             String login = Form.getString(req, "login");
             String password = Form.getString(req, "password");
             String email = Form.getString(req, "email");
             long roles_id = Form.getLong(req, "roles_id");
             User user = new User(id, login, email, password, roles_id);
-            if (req.getParameter("update")!=null){
+            User currentUser = Util.findUser(req);
+            if (req.getParameter("update") != null) {
                 dao.user.update(user);
-            }
-            else if (req.getParameter("delete")!=null){
+                if (currentUser != null && currentUser.getId() == user.getId()) {
+                    req.getSession().setAttribute("user", user);
+                }
+            } else if (req.getParameter("delete") != null) {
                 dao.user.delete(user);
+                if (currentUser != null && currentUser.getId() == user.getId())
+                    return Action.LOGOUT;
             }
         }
 
         List<User> users = Dao.getDao().user.getAll();
-        req.setAttribute("users",users);
+        req.setAttribute("users", users);
         return Action.EDITUSERS;
     }
 }

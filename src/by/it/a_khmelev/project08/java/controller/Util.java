@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Util {
 
@@ -41,23 +40,24 @@ public class Util {
         resp.addCookie(cookie);
     }
 
-    static void loadImage(HttpServletRequest req, String filename) {
-        String fileReal = req.getServletContext().getRealPath(filename);
-        try (InputStream fileimg = req.getPart("fileimg").getInputStream();
-             OutputStream fileout = new FileOutputStream(fileReal);
-        ) {
-            byte[] bytes=new byte[100000];
-            while (fileimg.available()>0){
-                int size = fileimg.read(bytes);
-                fileout.write(bytes,0,size);
+    static void loadImage(HttpServletRequest req, String filename) throws IOException, ServletException {
+        Part reqPart = req.getPart("fileimg");
+        if (reqPart.getSize() > 0) {
+            try (
+                    InputStream fileimg = reqPart.getInputStream();
+                    OutputStream fileout = new FileOutputStream(
+                            req.getServletContext().getRealPath(filename)
+                    );
+            ) {
+                byte[] bytes = new byte[
+                        Math.min(128 * 1024, fileimg.available())
+                        ];
+                while (fileimg.available() > 0) {
+                    int size = fileimg.read(bytes);
+                    fileout.write(bytes, 0, size);
+                }
+
             }
-
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
         }
-
-
     }
-
-
 }

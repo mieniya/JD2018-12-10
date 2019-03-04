@@ -26,6 +26,7 @@ public class FilterImages implements Filter {
         String[] partURI = requestURI.split("/");
         String filename = partURI[partURI.length - 1];
         String realPath = req.getServletContext().getRealPath("/images/" + filename);
+        resp.setContentType("image");
         if (new File(realPath).exists()){
             filterChain.doFilter(servletRequest,servletResponse);
         }

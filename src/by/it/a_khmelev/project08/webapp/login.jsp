@@ -5,14 +5,13 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    User: ${user}
     <br>
 
     <form class="form-horizontal" action="do?command=Login" method="post">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Signup</legend>
+            <legend>Авторизация</legend>
 
 
             <!-- Text input-->

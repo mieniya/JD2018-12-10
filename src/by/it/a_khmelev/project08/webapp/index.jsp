@@ -21,7 +21,11 @@
     <c:forEach items="${ads}" var="ad">
         <br>
         <div class="row">
-            <div class="col-md-1"><img src="images/ad${ad.id}" height="40px"></div>
+            <div class="col-md-1">
+                <a href="images/ad${ad.id}" target="_blank">
+                    <img src="images/ad${ad.id}" height="40px">
+                </a>
+            </div>
             <div class="col-md-1">${ad.price}</div>
             <div class="col-md-2">${ad.address}</div>
             <div class="col-md-2">${ad.description}</div>
