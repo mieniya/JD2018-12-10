@@ -40,26 +40,6 @@
             </div>
         </fieldset>
     </form>
-    <hr>
-    <form class="form-horizontal" action="do?command=Logout" method="post">
-        <fieldset>
-
-            <!-- Form Name -->
-            <legend>Завершение работы</legend>
-
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="logoutButton"></label>
-                <div class="col-md-4">
-                    <button id="logoutButton" name="logoutButton" class="btn btn-danger">Выйти</button>
-                </div>
-            </div>
-
-        </fieldset>
-    </form>
-
-
-    <hr>
     <h2>Объявления пользователя: ${user.login}</h2>
     <div class="row">
         <div class="col-md-1">Фото</div>
@@ -95,6 +75,19 @@
     <hr>
     <mytag:paginator count="${adsCount}" step="5" urlprefix="do?command=Profile&start="/>
 
+    <hr>
+    <form class="form-horizontal" action="do?command=Logout" method="post">
+        <fieldset>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="logoutButton"></label>
+                <div class="col-md-4">
+                    <button id="logoutButton" name="logoutButton" class="btn btn-danger">Завершить работу (выйти)</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
 
 </div>
 </body>

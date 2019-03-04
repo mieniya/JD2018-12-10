@@ -22,6 +22,7 @@
             <c:choose>
                 <c:when test="${user!=null}">
                     <mytag:menu command="Profile" text="Профиль"/>
+                    <mytag:menu command="Logout" text="Выйти"/>
                 </c:when>
                 <c:otherwise>
                     <mytag:menu command="Login" text="Войти"/>
