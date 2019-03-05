@@ -9,6 +9,10 @@ public enum Action {
     SIGNUP(new CmdSignup()),
     RESETDB(new CmdResetDB()),
     CHECKOUT(new CmdCheckout()),
+    CATEGORY(new CmdCategory()),
+    CREATEPRODUCT(new CmdNewProduct()),
+    PROFILE(new CmdProfile()),
+    LOGOUT(new CmdLogout()),
     LOGIN(new CmdLogin());
 
     Action(Cmd command) {
@@ -17,18 +21,19 @@ public enum Action {
 
     Cmd command;
 
-    String getJsp(){
-        return "/"+name().toLowerCase()+".jsp";
+    String getJsp() {
+        return "/" + name().toLowerCase() + ".jsp";
     }
 
-    static Action define(HttpServletRequest req){
+    static Action define(HttpServletRequest req) {
+
         String command = req.getParameter("command").toUpperCase();
         try {
             return Action.valueOf(command);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return Action.ERROR;
         }
+
     }
 
 

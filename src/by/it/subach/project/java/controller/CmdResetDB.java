@@ -1,16 +1,20 @@
 package by.it.subach.project.java.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import by.it.subach.project.java.dao.DAO;
 
-import static by.it.subach.project.java.dao.DAO.getInstance;
+import javax.servlet.http.HttpServletRequest;
 
 public class CmdResetDB implements Cmd {
 
 
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
-        getInstance().reset();
+//        getInstance().reset();
 
-        return Action.INDEX;
+        if(Form.isPost(req)){
+            DAO.getInstance().reset();
+        }
+
+        return Action.RESETDB;
     }
 }
