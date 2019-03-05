@@ -1,31 +1,31 @@
 package by.it.yarmolenka.project.java.controller;
 
 import by.it.yarmolenka.project.java.beans.Event;
-import by.it.yarmolenka.project.java.beans.Race;
 import by.it.yarmolenka.project.java.dao.Dao;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 class CmdCreateEvent implements Cmd {
     @Override
-    public Action execute(HttpServletRequest req) throws Exception {
+    public Action execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         if (req.getMethod().equalsIgnoreCase("post")) {
-            Event event = new Event();
-            event.setDescription(Form.getString(req, "description", Patterns.TEXT));
+            Event newEvent = new Event();
+            newEvent.setDescription(Form.getString(req, "description", Patterns.TEXT));
             double odds = Form.getDouble(req, "odds");
-            if (odds < 0) return Action.GETEVENTS;
-            event.setOdds(odds);
-            long fk_roles = Form.getLong(req, "selectrace");
-            event.setFk_races(fk_roles);
+            if (odds < 0) {
+                //todo
+                req.setAttribute("oddsInput", "");
+                return Action.GETEVENTS;
+            }
+            newEvent.setOdds(odds);
+            long fk_races = Form.getLong(req, "selectrace");
+            newEvent.setFk_races(fk_races);
             Dao dao = Dao.getDao();
-            if (event.getFk_races() > 0)
-                dao.event.create(event);
-            return Action.INDEX;
+            if (newEvent.getFk_races() > 0)
+                dao.event.create(newEvent);
+            return Action.CREATEEVENT;
         }
-        Dao dao = Dao.getDao();
-        List<Race> races = dao.race.getAll();
-        req.setAttribute("racesChoise", Utils.getRacesChoise(races));
         return Action.CREATEEVENT;
     }
 }

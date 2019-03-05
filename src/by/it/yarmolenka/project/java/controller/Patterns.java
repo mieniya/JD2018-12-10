@@ -6,5 +6,6 @@ interface Patterns {
     String LOGIN = "\\w+";
     String EMAIL = "\\w+@[a-z]{2,}\\.[a-z]{2,}";
     String PASSWORD = "\\w+";
-    String TEXT = "[A-Za-z\\. ]+";
+    //todo
+    String TEXT = "[0-9А_Яа-яЁёA-Za-z\\., ]+";
 }

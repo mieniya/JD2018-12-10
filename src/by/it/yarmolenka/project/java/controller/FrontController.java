@@ -1,11 +1,24 @@
 package by.it.yarmolenka.project.java.controller;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 
 public class FrontController extends HttpServlet {
+
+    @Override
+    public void init() throws ServletException {
+        ServletContext servletContext = getServletContext();
+        try {
+            Utils.setServletContextAttributes(servletContext);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)  {
@@ -18,10 +31,9 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) {
-   //     resp.setHeader("Cache-Control", "no-cache");
         Action action = Action.define(req);
         try {
-            Action nextAction = action.command.execute(req);
+            Action nextAction = action.command.execute(req, resp);
             if (nextAction == action) {
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher(action.getJsp());
                 requestDispatcher.forward(req, resp);

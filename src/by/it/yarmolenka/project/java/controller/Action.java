@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 enum Action {
 
     INDEX(new CmdIndex()),
-    SIGNIN(new CmdSignin()),
+    LOGIN(new CmdLogin()),
     ERROR(new CmdError()),
     LOGOUT(new CmdLogout()),
     RESET(new CmdReset()),
@@ -13,7 +13,11 @@ enum Action {
     GETEVENTS(new CmdGetEvents()),
     GETRACES(new CmdGetRaces()),
     CREATEEVENT(new CmdCreateEvent()),
-    CREATERACE(new CmdCreateRace());
+    CREATERACE(new CmdCreateRace()),
+    PROFILE(new CmdProfile()),
+    ADMINPANEL(new CmdAdminPanel()),
+    EDITUSERS(new CmdEditUsers()),
+    EDITRACE(new CmdEditRace());
 
     Cmd command;
 

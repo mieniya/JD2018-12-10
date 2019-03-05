@@ -1,18 +1,11 @@
 package by.it.yarmolenka.project.java.controller;
 
-import by.it.yarmolenka.project.java.beans.Event;
-import by.it.yarmolenka.project.java.dao.Dao;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 class CmdGetEvents implements Cmd {
     @Override
-    public Action execute(HttpServletRequest req) throws Exception {
-        Dao dao = Dao.getDao();
-        List<Event> events = dao.event.getAll();
-        StringBuilder table = Utils.getEventsTable(events);
-        req.setAttribute("events", table.toString());
+    public Action execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         return Action.GETEVENTS;
     }
 }
