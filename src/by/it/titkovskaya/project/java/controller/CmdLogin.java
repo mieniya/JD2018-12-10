@@ -21,8 +21,12 @@ public class CmdLogin implements Cmd {
                 User user = users.get(0);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
-                session.setMaxInactiveInterval(30);
+//                session.setMaxInactiveInterval(30);
                 return Action.PROFILE;
+            } else {
+                String message = "Wrong login or password. Please, check the correctness " +
+                        "of entered data or SIGN UP";
+                req.setAttribute("message", message);
             }
         }
         return Action.LOGIN;

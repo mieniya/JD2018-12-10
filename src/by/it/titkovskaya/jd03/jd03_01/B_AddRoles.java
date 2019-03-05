@@ -20,7 +20,7 @@ public class B_AddRoles {
                     "`role` VARCHAR(100) NULL," +
                     "PRIMARY KEY (`id`))" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'client');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
             statement.executeUpdate("UPDATE `titkovskaya`.`users` SET `roles_id` = '3' WHERE `users`.`id` = 4;");

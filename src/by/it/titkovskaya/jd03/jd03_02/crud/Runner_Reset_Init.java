@@ -16,7 +16,7 @@ public class Runner_Reset_Init {
         init.init();
 
         RoleCRUD roleCRUD = new RoleCRUD();
-        Role role1 = new Role(0, "administrator");
+        Role role1 = new Role(0, "admin");
         Role role2 = new Role(0, "client");
         Role role3 = new Role(0, "guest");
         roleCRUD.create(role1);
@@ -53,9 +53,9 @@ public class Runner_Reset_Init {
         Timestamp payDate1 = Timestamp.valueOf("2019-01-04 16:50:00");
         Timestamp payDate2 = Timestamp.valueOf("2019-01-25 12:00:00");
         Timestamp payDate3 = Timestamp.valueOf("2019-02-15 13:30:00");
-        Payment payment1 = new Payment(0, payDate1, 2000, "llc rosting", 1);
-        Payment payment2 = new Payment(0, payDate2, 10000, "ue metrostroy", 2);
-        Payment payment3 = new Payment(0, payDate3, 25000, "corporation GNB", 3);
+        Payment payment1 = new Payment(0, payDate1, 2000, "Thales Group", 1);
+        Payment payment2 = new Payment(0, payDate2, 10000, "BAE Systems", 2);
+        Payment payment3 = new Payment(0, payDate3, 25000, "Thales Group", 3);
         paymentCRUD.create(payment1);
         paymentCRUD.create(payment2);
         paymentCRUD.create(payment3);

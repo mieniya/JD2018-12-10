@@ -4,42 +4,49 @@
 <body>
     <div class="container">
     <%@ include file="include/menu.jsp" %>
+    <h5>${user.name}</h5>
 
-    <p>${user}</p>
-    <br>
+    <h3>WELCOME!</h3>
 
     <form class="form-horizontal" action="do?command=Login" method="post">
         <fieldset>
 
-            <!-- Form Name -->
-            <legend>Welcome!</legend>
-
             <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="login">Login</label>
-              <div class="col-md-4">
-              <input id="login" name="login" value="testLogin" type="text" placeholder="YourLogin" class="form-control input-md" required="">
-              </div>
+            <div class="row">
+                <label class="col-md-4 control-label" for="login">Login</label>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input id="login" name="login" value="testLogin" type="text" placeholder="YourLogin" class="form-control input-md" required="">
+                </div>
             </div>
 
             <!-- Password input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Password</label>
-              <div class="col-md-4">
-                <input id="password" name="password" value="testPassword" type="password" placeholder="************" class="form-control input-md" required="">
-              </div>
+            <div class="row">
+                <label class="col-md-4 control-label" for="password">Password</label>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input id="password" name="password" value="testPassword" type="password" placeholder="************" class="form-control input-md" required="">
+                </div>
             </div>
 
             <!-- Button -->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="loginButton"></label>
-              <div class="col-md-4">
-                <button id="loginButton" name="loginButton" class="btn btn-primary">SIGN IN</button>
-              </div>
+                <label class="col-md-4 control-label" for="loginButton"></label>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button id="loginButton" name="loginButton" class="btn btn-success">SIGN IN</button>
+                </div>
             </div>
 
         </fieldset>
     </form>
+
+    <div class="row">
+        <label class="col-md-4 control-label" for="message">${message}</label>
+    </div>
 
 </div>
 </body>

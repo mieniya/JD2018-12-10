@@ -22,7 +22,13 @@ public class CmdCreateAcc implements Cmd {
             if (dao.account.create(account)) {
                 account.setNumber(account.getId()+100000000);
                 dao.account.update(account);
-                return Action.PROFILE;
+                String message = "NOTIFICATION: Operation completed successfully. Account № "
+                        + account.getNumber() + " is opened.";
+                req.setAttribute("message", message);
+            }else {
+                String message = "NOTIFICATION: Operation failed. Please, check the correctness " +
+                        "of the entered data.";
+                req.setAttribute("message", message);
             }
         }
         return Action.CREATEACC;

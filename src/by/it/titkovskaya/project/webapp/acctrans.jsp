@@ -6,7 +6,7 @@
     <%@ include file="include/menu.jsp" %>
     <h5>${user.name}</h5>
 
-    <h3>ACCOUNT LOCK</h3>
+    <h3>ACCOUNT TRANSACTIONS </h3>
     <p>____________________________________________________________________________________________________</p>
     <div class="row">
         <div class="col-md-2">Number</div>
@@ -16,7 +16,7 @@
     </div>
     <p>____________________________________________________________________________________________________</p>
     <c:forEach items="${accounts}" var="account">
-        <form class="form-horizontal-${account.id}" action="do?command=AccLock" method="post">
+        <form class="form-horizontal-${account.id}" action="do?command=AccTrans" method="post">
             <div class="row">
                 <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                        required="" value="${account.id}">
@@ -32,8 +32,8 @@
 
                 <!-- Button (Double) -->
                 <div class="col-md-5">
-                    <button id="unlock" name="unlock" class="btn btn-success">Send UNLOCK request</button>
-                    <button id="lock" name="lock" class="btn btn-danger">LOCK account</button>
+                    <button id="replenish" name="replenish" class="btn btn-success">REPLENISH account</button>
+                    <button id="payment" name="payment" class="btn btn-danger">Make PAYMENT /money TRANSFER</button>
                 </div>
             </div>
         </form>
@@ -41,17 +41,12 @@
     <p>____________________________________________________________________________________________________</p>
 
 
-    <div class="row">
-        <label class="col-md-7 control-label" for="currency">${message}</label>
-    </div>
-
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>
             <!-- Button -->
             <div class="row">
                 <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Back
-                     to PERSONAL CABINET</button>
+                     <button id="profileButton" name="profileButton" class="btn btn-info">Back to PERSONAL CABINET</button>
                 </div>
             </div>
         </fieldset>
@@ -60,5 +55,3 @@
 </div>
 </body>
 </html>
-
-

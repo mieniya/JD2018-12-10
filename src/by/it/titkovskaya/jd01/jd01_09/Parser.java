@@ -11,7 +11,7 @@ class Parser {
         Var two = Var.createVar(operands[1]);
         if (one == null || two == null) {
             System.err.println("Операция " + expression + " невозможна");
-            return null;//TODO create error
+            return null;
         }
         Pattern p = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = p.matcher(expression);

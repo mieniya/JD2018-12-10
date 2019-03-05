@@ -9,11 +9,14 @@ public enum Action {
     LOGIN(new CmdLogin()),
     LOGOUT(new CmdLogout()),
     PROFILE(new CmdProfile()),
+    USERDATA(new CmdUserData()),
     CREATEACC(new CmdCreateAcc()),
     ACCINFO(new CmdAccInfo()),
-    ACCMANAGE(new CmdAccManage()),
+    ACCTRANS(new CmdAccTrans()),
     PAYMENT(new CmdPayment()),
     REPLENISH(new CmdReplenish()),
+    EDITUSERS(new CmdEditUsers()),
+    EDITACC(new CmdEditAcc()),
     ACCLOCK(new CmdAccLock()),
     RESETDB(new CmdResetDB()),
     SIGNUP(new CmdSignup());
@@ -29,11 +32,11 @@ public enum Action {
     }
 
     static Action define(HttpServletRequest req) {
-        String command = req.getParameter("command").toUpperCase();
         try {
+            String command = req.getParameter("command").toUpperCase();
             return Action.valueOf(command);
         } catch (Exception e) {
-            return Action.ERROR;
+            return Action.INDEX;
         }
     }
 }

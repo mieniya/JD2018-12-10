@@ -7,6 +7,9 @@ class Form {
     static boolean isPost(HttpServletRequest req) {
         return req.getMethod().equalsIgnoreCase("post");
     }
+    static boolean isGet(HttpServletRequest req) {
+        return req.getMethod().equalsIgnoreCase("get");
+    }
 
     static String getString(HttpServletRequest req, String name) throws SiteException {
         return getString(req, name, ".*");
@@ -30,4 +33,8 @@ class Form {
         return Double.parseDouble(value);
     }
 
+    static long getLong(HttpServletRequest req, String name) {
+        String value = req.getParameter(name);
+        return Long.parseLong(value);
+    }
 }

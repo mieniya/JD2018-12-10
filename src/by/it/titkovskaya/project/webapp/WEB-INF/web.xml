@@ -5,6 +5,9 @@
          version="3.0"
          metadata-complete="true">
     <display-name>Сервлеты titkovskaya</display-name>
+    <welcome-file-list>
+        <welcome-file>INDEX</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>FrontController</servlet-name>
         <servlet-class>by.it.titkovskaya.project.java.controller.FrontController</servlet-class>
@@ -13,6 +16,7 @@
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/do</url-pattern>
+        <url-pattern>/INDEX</url-pattern>
     </servlet-mapping>
 
     <filter>

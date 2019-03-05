@@ -5,9 +5,10 @@ import by.it.titkovskaya.project.java.beans.User;
 import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class CmdAccManage implements Cmd {
+public class CmdAccTrans implements Cmd {
 
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
@@ -17,17 +18,20 @@ public class CmdAccManage implements Cmd {
             Dao dao = Dao.getDao();
             List<Account> accounts = dao.account.getAll(where);
             req.setAttribute("accounts", accounts);
-
-            if (Form.isPost(req)) {
-                String operation = Form.getString(req, "operation");
-                if (operation.equalsIgnoreCase("Replenish"))
+            if (Form.isPost(req)){
+                long id = Form.getLong(req, "id");
+                Account account = dao.account.read(id);
+                HttpSession reqSession = req.getSession();
+                reqSession.setAttribute("account", account);
+                if (req.getParameter("replenish") != null){
                     return Action.REPLENISH;
-                if (operation.equalsIgnoreCase("Payment"))
+                } else if (req.getParameter("payment") != null){
                     return Action.PAYMENT;
-                if (operation.equalsIgnoreCase("AccLock"))
-                    return Action.ACCLOCK;
+                }
+                //TODO "Убедиться, что счет назаблокирован перед выполнением транзакций"
+
             }
-            return Action.ACCMANAGE;
+            return Action.ACCTRANS;
         }
         return Action.LOGIN;
     }

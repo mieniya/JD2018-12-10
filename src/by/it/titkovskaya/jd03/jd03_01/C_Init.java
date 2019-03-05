@@ -98,7 +98,7 @@ class C_Init {
                     "    ON DELETE CASCADE" +
                     "    ON UPDATE CASCADE)" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'client');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`users` (`id`, `login`, `password`, `email`, `name`, `roles_id`) VALUES (DEFAULT, 'admin', '00000', 'admin@it.by', 'Samanta Jones', 1);");
@@ -109,9 +109,9 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000001, 'USD', 2, 2);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000002, 'BYN', 2, 1);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000003, 'EUR', 3, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 16:50', 2000, 'llc rosting', 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-25 12:00', 10000, 'ue metrostroy', 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-02-15 13:30', 25000, 'corporation GNB', 3);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 16:50', 2000, 'Schneider Electric', 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-25 12:00', 10000, 'BAE Systems', 2);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-02-15 13:30', 25000, 'Thales Group', 3);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 15:25', 2000, 1);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-01-15 09:40', 30000, 2);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-02-02 11:30', 50000, 3);");
