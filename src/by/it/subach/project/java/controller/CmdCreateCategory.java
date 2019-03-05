@@ -5,7 +5,7 @@ import by.it.subach.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CmdCategory implements Cmd{
+public class CmdCreateCategory implements Cmd{
 
 
     @Override

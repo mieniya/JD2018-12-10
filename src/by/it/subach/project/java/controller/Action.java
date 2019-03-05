@@ -9,11 +9,12 @@ public enum Action {
     SIGNUP(new CmdSignup()),
     RESETDB(new CmdResetDB()),
     CHECKOUT(new CmdCheckout()),
-    CATEGORY(new CmdCategory()),
-    CREATEPRODUCT(new CmdNewProduct()),
+    CATEGORY(new CmdCreateCategory()),
+    CREATEPRODUCT(new CmdCreateProduct()),
     PROFILE(new CmdProfile()),
     EDITUSERS(new CmdEditUsers()),
     LOGOUT(new CmdLogout()),
+    CREATEUSER(new CmdCreateUser()),
     LOGIN(new CmdLogin());
 
     Action(Cmd command) {

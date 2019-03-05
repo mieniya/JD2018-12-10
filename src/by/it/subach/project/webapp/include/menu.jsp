@@ -16,6 +16,7 @@
             <a class="nav-item nav-link" href="do?command=CreateUser">Create User</a>
             <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
             <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+            <a class="nav-item nav-link" href="do?command=EditUsers">EditUsers</a>
 
         </div>
     </div>

@@ -6,7 +6,7 @@ import by.it.subach.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CmdNewProduct implements Cmd{
+public class CmdCreateProduct implements Cmd{
 
 
     @Override

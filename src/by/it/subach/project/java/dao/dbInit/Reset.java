@@ -109,7 +109,7 @@ public class Reset {
                     "    ON UPDATE NO ACTION)" +
                     "ENGINE = InnoDB;");
 
-            statement.executeUpdate("INSERT INTO `subach`.`roles` (`id`, `role`) VALUES (DEFAULT, '');");
+//            statement.executeUpdate("INSERT INTO `subach`.`roles` (`id`, `role`) VALUES (DEFAULT, '');");
             statement.executeUpdate("INSERT INTO `subach`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `subach`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `subach`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");

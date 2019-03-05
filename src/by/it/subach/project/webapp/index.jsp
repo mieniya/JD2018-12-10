@@ -6,7 +6,6 @@
 <body>
     <div class="container">
         <%@ include file="include/menu.jsp" %>
-
         <div class="row">
             <div class="col-md-3">NAME</div>
             <div class="col-md-3">PRICE</div>
