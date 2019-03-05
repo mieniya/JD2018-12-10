@@ -13,8 +13,9 @@ public class CmdPayment implements Cmd {
     public Action execute(HttpServletRequest req) throws Exception {
 
         SprOperationsDao sprOperationsDao = new SprOperationsDao();
-        List<SprOperations> sprOperationsAll = new ArrayList<SprOperations>();
-        sprOperationsAll.addAll(sprOperationsDao.getAll());
+//        List<SprOperations> sprOperationsAll = new ArrayList<SprOperations>();
+//        sprOperationsAll.addAll(sprOperationsDao.getAll());
+        List<SprOperations> sprOperationsAll = sprOperationsDao.getAll();
         req.setAttribute("sprOperationsAll", sprOperationsAll);
 
 
@@ -32,46 +33,22 @@ public class CmdPayment implements Cmd {
                     case "10":
                         Action.PAYMENT10.setPATH("/cash/operation/payment/");
                         return Action.PAYMENT10;
-//                    break;
                     case "20":
                         Action.PAYMENT20.setPATH("/cash/operation/payment/");
                         return Action.PAYMENT20;
-//                    break;
                     case "998":
                         Action.PAYMENT998.setPATH("/cash/operation/payment/");
                         return Action.PAYMENT998;
-//                    break;
                     case "1000":
                         Action.PAYMENT1000.setPATH("/cash/operation/payment/");
                         return Action.PAYMENT1000;
-//                    break;
                     case "1100":
                         Action.PAYMENT1100.setPATH("/cash/operation/payment/");
                         return Action.PAYMENT1100;
-//                    break;
                     default : //необязательно
                         Action.PAYMENT.setPATH("/cash/operation/");
                         return Action.PAYMENT;
                 }
-//                if (sprOperationsId == 10L) {
-//                    Action.PAYMENT10.setPATH("/cash/operation/payment/");
-//                    return Action.PAYMENT10;
-//                } else if (sprOperationsId == 20L) {
-//                    Action.PAYMENT20.setPATH("/cash/operation/payment/");
-//                    return Action.PAYMENT20;
-//                } else if (sprOperationsId == 998L) {
-//                    Action.PAYMENT998.setPATH("/cash/operation/payment/");
-//                    return Action.PAYMENT998;
-//                } else if (sprOperationsId == 1000L) {
-//                    Action.PAYMENT1000.setPATH("/cash/operation/payment/");
-//                    return Action.PAYMENT1000;
-//                } else if (sprOperationsId == 1100L) {
-//                    Action.PAYMENT1100.setPATH("/cash/operation/payment/");
-//                    return Action.PAYMENT1100;
-//                } else {
-//                    Action.PAYMENT.setPATH("/cash/operation/");
-//                    return Action.PAYMENT;
-//                }
             }
         }
         Action.PAYMENT.setPATH("/cash/operation/");

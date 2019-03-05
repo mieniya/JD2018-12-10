@@ -36,4 +36,26 @@ public class Form {
         String value = req.getParameter(name);
         return Double.parseDouble(value);
     }
+
+//    public static long[] getLongArray(HttpServletRequest req, String name){
+////        String[] value = req.getParameterValues(name);
+//        long[] longs = new long[req.getParameterValues(name).length];
+//        for (int i = 0 ; i < req.getParameterValues(name).length; i++) {
+//            longs[i] = Long.parseLong(req.getParameterValues(name)[i]);
+//        }
+//        return longs;
+//    }
+    public static long[] getLongArray(HttpServletRequest req, String name){
+        String[] value = req.getParameterValues(name);
+        long[] longs = new long[value.length];
+        for (int i = 0 ; i < value.length; i++) {
+            longs[i] = Long.parseLong(value[i]);
+        }
+        return longs;
+    }
+
+    public static String[] getStringArray(HttpServletRequest req, String name){
+        String[] value = req.getParameterValues(name);
+        return value;
+    }
 }

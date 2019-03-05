@@ -97,7 +97,7 @@ public class CmdDuties implements Cmd {
         return numberDuties;
     }
 
-    static List<Duties> OpenDutiesUserToday(User user, String today) throws SQLException {
+    public static List<Duties> OpenDutiesUserToday(User user, String today) throws SQLException {
         String where = String.format(" WHERE `userId`='%d' AND `timestamp` >= '%s' AND `isClose`=0", user.getId(), today);
         DutiesDao dutiesDao = new DutiesDao();
         List<Duties> duties = dutiesDao.getAll(where);

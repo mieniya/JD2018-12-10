@@ -21,9 +21,9 @@
 
             <!-- Button -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="loginButton"></label>
+                <label class="col-md-4 control-label" for="enterButton"></label>
                 <div class="col-md-4">
-                    <button id="loginButton" name="loginButton" class="btn btn-primary">Login</button>
+                    <button id="enterButton" name="enterButton" class="btn btn-primary">Вперед</button>
                 </div>
             </div>
         </fieldset>

@@ -4,10 +4,7 @@ package by.it.zagurskaya.project.java.dao;
 import by.it.zagurskaya.project.java.ConnCreator;
 import by.it.zagurskaya.project.java.beans.Kassa;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +25,12 @@ public class KassaDao extends AbstractDao implements Dao<Kassa> {
          return kassa.size() == 0 ? null : kassa.get(0);
     }
 
-    public Kassa readByUserNumber(int currencyId) throws SQLException {
+    public Kassa readByCurrencyIdAndDateAndDutiesNumber(long currencyId, Date date, long dutiesNumber) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
-                    "SELECT * FROM `kassa` WHERE `numberUser`='%d'",
-                    currencyId);
+                    "SELECT * FROM `kassa` WHERE `date`='%s' AND `dutiesNumber`='%d' AND `currencyId`='%d'",
+                    date, dutiesNumber, currencyId);
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
                 Kassa kassa = new Kassa();
