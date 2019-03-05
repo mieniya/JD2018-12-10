@@ -12,6 +12,7 @@ public enum Action {
     CATEGORY(new CmdCategory()),
     CREATEPRODUCT(new CmdNewProduct()),
     PROFILE(new CmdProfile()),
+    EDITUSERS(new CmdEditUsers()),
     LOGOUT(new CmdLogout()),
     LOGIN(new CmdLogin());
 
