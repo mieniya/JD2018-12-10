@@ -121,7 +121,7 @@ public class KassaDao extends AbstractDao implements Dao<Kassa> {
     //внекассовые операции
     public boolean updateKassaOutSideOperation(Date date, long dutiesNumber, long currencyId, long summ, long sprOperationsId) throws SQLException {
         SprEntriesDao sprEntriesDao = new SprEntriesDao();
-        List<SprEntries> sprEntries = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId + "AND `currencyId`=" + currencyId);
+        List<SprEntries> sprEntries = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId + " AND `currencyId`=" + currencyId);
 
         Kassa kassaUpdating = readByCurrencyIdAndDateAndDutiesNumber(date, dutiesNumber, currencyId);
         double kassasReceived = kassaUpdating.getReceived();

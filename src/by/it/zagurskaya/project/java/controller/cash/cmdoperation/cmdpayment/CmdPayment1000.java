@@ -19,6 +19,7 @@ public class CmdPayment1000 implements Cmd {
     public Action execute(HttpServletRequest req) throws Exception {
         User user = Util.findUser(req);
         LocalDate date = LocalDate.now();
+        Timestamp now = new Timestamp(System.currentTimeMillis());
         String today = Util.getFormattedLocalDateStartDateTime(date);
 //        "yyyy-MM-dd"
         String todaySQL = Util.getFormattedLocalDateOnlyDate(date);
@@ -38,24 +39,25 @@ public class CmdPayment1000 implements Cmd {
 
             long[] ids = Form.getLongArray(req, "id");
             long[] summs = Form.getLongArray(req, "summ");
-            String specification = Form.getString(req, "specification","[a-zA-Z0-9_-]{1,}");
+            String specification = Form.getString(req, "specification", "[a-zA-Z0-9_-]{1,}");
 
 
             UserOperationDao userOperationDao = new UserOperationDao();
-            UserOperation userOperation = new UserOperation(0, Timestamp.valueOf(date.toString()), 1 , ids[0], summs [0], user.getId(), sprOperationsId, specification, null);
+            UserOperation userOperation = new UserOperation(0, now, 1, summs[0], ids[0], user.getId(), sprOperationsId, specification, null);
             userOperationDao.create(userOperation);
 
 
-            for (int i = 0; i < ids.length; i++) {
+            for (int i = 0; i < ids.length-1; i++) {
 
                 SprEntriesDao sprEntriesDao = new SprEntriesDao();
-                List<SprEntries> sprEntries1000 = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId+ "`currencyId`=" + ids[i]);
+                List<SprEntries> sprEntries1000 = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId + " AND `currencyId`=" + ids[i]);
 
 //                Kassa kassa = kassaDao.readByCurrencyIdAndDateAndDutiesNumber(ids[i],  Date.valueOf(todaySQL), duties.get(0).getNumber());
-                kassaDao.updateKassaOutSideOperation( Date.valueOf(todaySQL), duties.get(0).getNumber(), ids[i],summs[i], sprOperationsId);
+                kassaDao.updateKassaOutSideOperation(Date.valueOf(todaySQL), duties.get(0).getNumber(), ids[i], summs[i], sprOperationsId);
 
+                RateNBDao rateNBDao = new RateNBDao();
                 UserEntryDao userEntryDao = new UserEntryDao();
-                UserEntry userEntrys1000 = new UserEntry(0, sprOperationsId,sprEntries1000.get(0).getId(), ids[i], sprEntries1000.get(0).getAccountDebit(), sprEntries1000.get(0).getAccountCredit(), summs[i], sprEntries1000.get(0).getIsSpending(), sprEntries1000.get(0).getRate());
+                UserEntry userEntrys1000 = new UserEntry(0, userOperation.getId(), sprEntries1000.get(0).getId(), ids[i], sprEntries1000.get(0).getAccountDebit(), sprEntries1000.get(0).getAccountCredit(), summs[i], sprEntries1000.get(0).getIsSpending(), rateNBDao.rateNBToday(Date.valueOf(todaySQL), ids[i]));
                 userEntryDao.create(userEntrys1000);
 
             }
