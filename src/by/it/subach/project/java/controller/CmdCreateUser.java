@@ -18,7 +18,7 @@ public class CmdCreateUser implements Cmd {
             User user = new User(0, login, email, password, role_id);
 
             if(dao.user.create(user))
-                return Action.INDEX;
+                return Action.VIEWUSERS;
         }
         return Action.CREATEUSER;
     }

@@ -15,6 +15,8 @@ public enum Action {
     EDITUSERS(new CmdEditUsers()),
     LOGOUT(new CmdLogout()),
     CREATEUSER(new CmdCreateUser()),
+    ADMIN(new CmdAdmin()),
+    VIEWUSERS(new CmdViewUsers()),
     LOGIN(new CmdLogin());
 
     Action(Cmd command) {

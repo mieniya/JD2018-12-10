@@ -6,7 +6,7 @@
 <body>
     <div class="container">
         <%@ include file="include/menu.jsp" %>
-<form class="form-horizontal">
+<form class="form-horizontal" action="do?command=CreateUser" method="post">
 <fieldset>
 
 <!-- Form Name -->
@@ -50,6 +50,14 @@
     </select>
   </div>
 </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="createuser"></label>
+                <div class="col-md-4">
+                    <button id="createuser" name="createuser" class="btn btn-primary">Create</button>
+                </div>
+            </div>
 
 </fieldset>
 </form>

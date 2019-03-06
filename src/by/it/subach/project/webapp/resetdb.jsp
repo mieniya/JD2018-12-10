@@ -14,9 +14,9 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="loginbutton"></label>
+  <label class="col-md-4 control-label" for="resetbutton"></label>
   <div class="col-md-4">
-    <button id="loginbutton" name="loginbutton" class="btn btn-primary">Reset</button>
+    <button id="resetbutton" name="resetbutton" class="btn btn-primary">Reset</button>
   </div>
 </div>
 
