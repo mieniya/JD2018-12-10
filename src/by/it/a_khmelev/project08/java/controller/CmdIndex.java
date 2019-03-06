@@ -9,8 +9,15 @@ import java.util.List;
 public class CmdIndex implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
-        List<Ad> ads = Dao.getDao().ad.getAll();
+        long start = 0;
+        if (req.getParameter("start")!=null)
+            start=Form.getLong(req, "start");
+
+        List<Ad> ads = Dao.getDao().ad.getAll(" LIMIT "+start+",12");
         req.setAttribute("ads",ads);
+
+        int adsCount=Dao.getDao().ad.getAll().size();
+        req.setAttribute("adsCount",adsCount);
         return Action.INDEX;
     }
 }

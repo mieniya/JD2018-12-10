@@ -19,9 +19,9 @@ public class CmdCreateAd implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         User user = Util.findUser(req);
-        if (user==null)
+        if (user == null)
             return Action.LOGIN;
-        if (Form.isPost(req) ) {
+        if (Form.isPost(req)) {
             Ad ad = new Ad();
             ad.setDescription(Form.getString(req, "description"));
             ad.setAddress(Form.getString(req, "address"));
@@ -32,10 +32,11 @@ public class CmdCreateAd implements Cmd {
             ad.setArea(Form.getInt(req, "area"));
             Timestamp date = Timestamp.valueOf(LocalDateTime.now());
             ad.setData(date);
-            //todo userid
             ad.setUsers_id(user.getId());
-            if (Dao.getDao().ad.create(ad))
+            if (Dao.getDao().ad.create(ad)) {
+                Util.loadImage(req, "images/ad" + ad.getId());
                 return Action.PROFILE;
+            }
 
         }
         return Action.CREATEAD;
