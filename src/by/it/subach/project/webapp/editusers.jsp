@@ -24,20 +24,19 @@
 
                 </div>
 
+                <div class="col-md-2">
+                    <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
+                           required="" value="${user.password}">
+
+                </div>
 
                 <div class="col-md-2">
                     <input id="email" name="email" type="text" placeholder="" class="form-control input-md"
                            required="" value="${user.email}">
                 </div>
 
-                                <div class="col-md-2">
-                                    <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
-                                           required="" value="${user.password}">
-
-                                </div>
-
                 <div class="col-md-2">
-                    <select id="roles_id" name="roles_id" class="form-control">
+                    <select id="role_id" name="role_id" class="form-control">
                         <c:forEach items="${roles}" var="role">
                         <option value="${role.id}" ${user.role_id==role.id?"selected":""}>${role.role}</option>
                         </c:forEach>

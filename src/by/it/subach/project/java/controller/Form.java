@@ -6,7 +6,8 @@ import java.util.Locale;
 public class Form {
 
     static boolean isPost(HttpServletRequest req){
-        return req.getMethod().equalsIgnoreCase("post");
+        return req.getMethod().
+                equalsIgnoreCase("post");
     }
 
     static String getString(HttpServletRequest req, String name, String pattern) throws SiteException {
@@ -14,7 +15,7 @@ public class Form {
         if(value.matches(pattern))
             return value;
         else
-            throw new SiteException("Value " + " incorrect");
+            throw new SiteException("Value " +value+ " incorrect");
     }
 
     static String getString(HttpServletRequest req, String name) throws SiteException {

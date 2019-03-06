@@ -17,6 +17,7 @@
             <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
             <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
             <a class="nav-item nav-link" href="do?command=EditUsers">EditUsers</a>
+            <a class="nav-item nav-link" href="do?command=ViewUsers">ViewUsers</a>
 
         </div>
     </div>
