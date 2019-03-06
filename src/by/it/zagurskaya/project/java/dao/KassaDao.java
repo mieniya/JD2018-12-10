@@ -3,6 +3,7 @@ package by.it.zagurskaya.project.java.dao;
 
 import by.it.zagurskaya.project.java.ConnCreator;
 import by.it.zagurskaya.project.java.beans.Kassa;
+import by.it.zagurskaya.project.java.beans.SprEntries;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ public class KassaDao extends AbstractDao implements Dao<Kassa> {
     @Override
     public Kassa read(long id) throws SQLException {
         List<Kassa> kassa = getAll(" WHERE id=" + id);
-         return kassa.size() == 0 ? null : kassa.get(0);
+        return kassa.size() == 0 ? null : kassa.get(0);
     }
 
-    public Kassa readByCurrencyIdAndDateAndDutiesNumber(long currencyId, Date date, long dutiesNumber) throws SQLException {
+    public Kassa readByCurrencyIdAndDateAndDutiesNumber(Date date, long dutiesNumber, long currencyId) throws SQLException {
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format(
@@ -54,7 +55,7 @@ public class KassaDao extends AbstractDao implements Dao<Kassa> {
     public boolean update(Kassa kassa) throws SQLException {
         String sql = String.format(
                 " UPDATE `kassa` SET `currencyId`='%d',`received`='%s', `coming`='%s', `spending`='%s', `transmitted`='%s', `balance`='%s', `userId`='%s', `date`='%s', `dutiesNumber`='%s' WHERE `id`='%d'",
-                kassa.getCurrencyId(),kassa.getReceived(), kassa.getComing(),kassa.getSpending(),kassa.getTransmitted(),kassa.getBalance(), kassa.getUserId(), kassa.getDate(), kassa.getDutiesNumber(), kassa.getId());
+                kassa.getCurrencyId(), kassa.getReceived(), kassa.getComing(), kassa.getSpending(), kassa.getTransmitted(), kassa.getBalance(), kassa.getUserId(), kassa.getDate(), kassa.getDutiesNumber(), kassa.getId());
         return executeUpdate(sql);
     }
 
@@ -95,6 +96,46 @@ public class KassaDao extends AbstractDao implements Dao<Kassa> {
             }
         }
         return result;
+    }
+
+    //внутрикассовые операции
+    public boolean updateKassaInSideOperation(Date date, long dutiesNumber, long currencyId, long summ, long sprOperationsId) throws SQLException {
+
+        SprEntriesDao sprEntriesDao = new SprEntriesDao();
+        List<SprEntries> sprEntries = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId + "AND `currencyId`=" + currencyId);
+        Kassa kassaUpdating = readByCurrencyIdAndDateAndDutiesNumber(date, dutiesNumber, currencyId);
+        double kassasComing = kassaUpdating.getComing();
+        double kassasSpending = kassaUpdating.getSpending();
+        double kassaBalance = kassaUpdating.getBalance();
+
+        if (sprEntries.get(0).getIsSpending()) {
+            kassaUpdating.setSpending(kassasSpending - summ);
+            kassaUpdating.setBalance(kassaBalance - summ);
+        } else {
+            kassaUpdating.setComing(kassasComing + summ);
+            kassaUpdating.setBalance(kassaBalance + summ);
+        }
+        return update(kassaUpdating);
+    }
+
+    //внекассовые операции
+    public boolean updateKassaOutSideOperation(Date date, long dutiesNumber, long currencyId, long summ, long sprOperationsId) throws SQLException {
+        SprEntriesDao sprEntriesDao = new SprEntriesDao();
+        List<SprEntries> sprEntries = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId + "AND `currencyId`=" + currencyId);
+
+        Kassa kassaUpdating = readByCurrencyIdAndDateAndDutiesNumber(date, dutiesNumber, currencyId);
+        double kassasReceived = kassaUpdating.getReceived();
+        double kassasTransmitted = kassaUpdating.getTransmitted();
+        double kassaBalance = kassaUpdating.getBalance();
+
+        if (sprEntries.get(0).getIsSpending()) {
+            kassaUpdating.setTransmitted(kassasTransmitted - summ);
+            kassaUpdating.setBalance(kassaBalance - summ);
+        } else {
+            kassaUpdating.setReceived(kassasReceived + summ);
+            kassaUpdating.setBalance(kassaBalance + summ);
+        }
+        return update(kassaUpdating);
     }
 
 }

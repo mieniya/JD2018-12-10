@@ -1,19 +1,16 @@
 package by.it.zagurskaya.project.java.controller.cash.cmdoperation.cmdpayment;
 
-import by.it.zagurskaya.project.java.beans.Currency;
-import by.it.zagurskaya.project.java.beans.Duties;
-import by.it.zagurskaya.project.java.beans.Kassa;
-import by.it.zagurskaya.project.java.beans.User;
+import by.it.zagurskaya.project.java.beans.*;
 import by.it.zagurskaya.project.java.controller.Action;
 import by.it.zagurskaya.project.java.controller.Cmd;
 import by.it.zagurskaya.project.java.controller.Form;
 import by.it.zagurskaya.project.java.controller.Util;
 import by.it.zagurskaya.project.java.controller.cash.CmdDuties;
-import by.it.zagurskaya.project.java.dao.CurrencyDao;
-import by.it.zagurskaya.project.java.dao.KassaDao;
+import by.it.zagurskaya.project.java.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -34,23 +31,37 @@ public class CmdPayment1000 implements Cmd {
         req.setAttribute("currencies", currencies);
 
         if (Form.isPost(req)) {
+
+            long sprOperationsId = 1000;
+            SprOperationsDao sprOperationsDao = new SprOperationsDao();
+            List<SprOperations> sprOperations1000 = sprOperationsDao.getAll("WHERE `id`=" + sprOperationsId);
+
             long[] ids = Form.getLongArray(req, "id");
             long[] summs = Form.getLongArray(req, "summ");
+            String specification = Form.getString(req, "specification","[a-zA-Z0-9_-]{1,}");
+
+
+            UserOperationDao userOperationDao = new UserOperationDao();
+            UserOperation userOperation = new UserOperation(0, Timestamp.valueOf(date.toString()), 1 , ids[0], summs [0], user.getId(), sprOperationsId, specification, null);
+            userOperationDao.create(userOperation);
+
 
             for (int i = 0; i < ids.length; i++) {
-                Kassa kassa = kassaDao.readByCurrencyIdAndDateAndDutiesNumber(ids[i],  Date.valueOf(todaySQL), duties.get(0).getNumber());
 
+                SprEntriesDao sprEntriesDao = new SprEntriesDao();
+                List<SprEntries> sprEntries1000 = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId+ "`currencyId`=" + ids[i]);
+
+//                Kassa kassa = kassaDao.readByCurrencyIdAndDateAndDutiesNumber(ids[i],  Date.valueOf(todaySQL), duties.get(0).getNumber());
+                kassaDao.updateKassaOutSideOperation( Date.valueOf(todaySQL), duties.get(0).getNumber(), ids[i],summs[i], sprOperationsId);
+
+                UserEntryDao userEntryDao = new UserEntryDao();
+                UserEntry userEntrys1000 = new UserEntry(0, sprOperationsId,sprEntries1000.get(0).getId(), ids[i], sprEntries1000.get(0).getAccountDebit(), sprEntries1000.get(0).getAccountCredit(), summs[i], sprEntries1000.get(0).getIsSpending(), sprEntries1000.get(0).getRate());
+                userEntryDao.create(userEntrys1000);
 
             }
 
-
-//            Long currencyId = Long.parseLong(Form.getString(req, "id","[0-9]{1,}"));
-//            String currencySumm = Form.getString(req, "summ", "[0-9]{1,}");
-
-//            for (Currency c : currencyDao.getAll()) {
-//                kassaDao.update(new Kassa(0, c.getId(), 0, 0, 0, 0, 0, user.getId(), java.sql.Date.valueOf(date), duties.get(0).getNumber()));
-//            }
-
+            Action.CHECK1000.setPATH("/cash/operation/check/");
+            return Action.CHECK1000;
         }
         Action.PAYMENT1000.setPATH("/cash/operation/payment/");
         return Action.PAYMENT1000;

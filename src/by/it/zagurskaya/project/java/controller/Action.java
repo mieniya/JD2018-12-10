@@ -1,11 +1,18 @@
 package by.it.zagurskaya.project.java.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import by.it.zagurskaya.project.java.controller.cash.*;
-import by.it.zagurskaya.project.java.controller.cash.cmdcurrency.*;
-import by.it.zagurskaya.project.java.controller.cash.cmdoperation.*;
+import by.it.zagurskaya.project.java.controller.cash.cmdcurrency.CmdAllCurrency;
+import by.it.zagurskaya.project.java.controller.cash.cmdcurrency.CmdRateCB;
+import by.it.zagurskaya.project.java.controller.cash.cmdcurrency.CmdRateNB;
+import by.it.zagurskaya.project.java.controller.cash.cmdoperation.CmdBalance;
+import by.it.zagurskaya.project.java.controller.cash.cmdoperation.CmdPayment;
+import by.it.zagurskaya.project.java.controller.cash.cmdoperation.CmdUseroperations;
+import by.it.zagurskaya.project.java.controller.cash.cmdoperation.cmdcheck.*;
 import by.it.zagurskaya.project.java.controller.cash.cmdoperation.cmdpayment.*;
-import by.it.zagurskaya.project.java.controller.cash.cmdreport.*;
+import by.it.zagurskaya.project.java.controller.cash.cmdreport.CmdEntries;
+import by.it.zagurskaya.project.java.controller.cash.cmdreport.CmdSprReports;
+
+import javax.servlet.http.HttpServletRequest;
 
 public enum Action {
 
@@ -43,7 +50,16 @@ public enum Action {
     PAYMENT20(new CmdPayment20()),
     PAYMENT998(new CmdPayment998()),
     PAYMENT1000(new CmdPayment1000()),
-    PAYMENT1100(new CmdPayment1000()),
+    PAYMENT1100(new CmdPayment1100()),
+
+//   CASH / CMDOPERATION/CMDCHECK
+    CHECK10(new CmdCheck10()),
+    CHECK20(new CmdCheck20()),
+    CHECK998(new CmdCheck998()),
+    CHECK1000(new CmdCheck1000()),
+    CHECK1100(new CmdCheck1100()),
+
+
 
     //    CASH / CMDREPORT
     SPRREPORTS(new CmdSprReports()),
@@ -77,7 +93,6 @@ public enum Action {
             String command = req.getParameter("command").toUpperCase();
             return Action.valueOf(command);
         } catch (Exception e) {
-//            return Action.ERROR;
             return Action.INDEX;
         }
     }

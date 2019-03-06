@@ -38,12 +38,6 @@
             </div>
         </c:forEach>
 
-        <div class="col-md-3">
-            <input id="specification" name="specification" type="text" placeholder="" class="form-control input-md"
-                   required="" value="aaaaaaaaaaaaa">
-
-        </div>
-
         <div class="form-group">
             <label class="col-md-4 control-label" for="payment1000Button"></label>
             <div class="col-md-4">
