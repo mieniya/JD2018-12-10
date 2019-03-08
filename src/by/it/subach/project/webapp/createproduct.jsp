@@ -39,7 +39,7 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="category">Select Basic</label>
+  <label class="col-md-4 control-label" for="category">Category</label>
   <div class="col-md-4">
     <select id="category" name="category" class="form-control">
       <option value="1">consoles</option>

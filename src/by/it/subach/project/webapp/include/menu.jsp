@@ -11,12 +11,8 @@
             <a class="nav-item nav-link" href="do?command=Signup">Signup</a>
             <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
             <a class="nav-item nav-link" href="do?command=Checkout">Checkout</a>
-            <a class="nav-item nav-link" href="do?command=createproduct">CreateProduct</a>
-            <a class="nav-item nav-link" href="do?command=Category">New Category</a>
-            <a class="nav-item nav-link" href="do?command=CreateUser">Create User</a>
             <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
             <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
-            <a class="nav-item nav-link" href="do?command=EditUsers">EditUsers</a>
             <a class="nav-item nav-link" href="do?command=Admin">Admin</a>
 
         </div>

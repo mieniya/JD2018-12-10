@@ -9,6 +9,7 @@
 
             <!-- Form Name -->
             <legend>Signup</legend>
+            <hr />
 
             <!-- Text input-->
             <div class="form-group">

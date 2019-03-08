@@ -20,7 +20,6 @@
         <tr>
           <th>${userCount.count}</th>
           <td>${user.login}</td>
-
           <td>${user.email}</td>
           <c:forEach items="${roles}" var="role">
           		<c:if test="${user.role_id==role.id}">
