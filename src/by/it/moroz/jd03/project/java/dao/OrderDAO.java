@@ -52,7 +52,7 @@ public class OrderDAO extends AbstractDAO implements InterfaceDAO<Order> {
     @Override
     public List<Order> getAll(String WHERE) throws SQLException {
         List<Order> result = new ArrayList<>();
-            String sql = "SELECT * FROM `orders` "+WHERE;
+            String sql = "SELECT * FROM `moroz`.`orders` "+WHERE;
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);

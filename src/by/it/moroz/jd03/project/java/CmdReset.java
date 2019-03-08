@@ -4,13 +4,12 @@ import by.it.moroz.jd03.project.java.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CmdReset implements Cmd {
     @Override
-    public Action execute(HttpServletRequest req) throws Exception {
+    public Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {
             resetDB();
             createDB();

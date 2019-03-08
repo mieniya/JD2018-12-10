@@ -48,7 +48,7 @@ public class MenuDAO extends AbstractDAO implements InterfaceDAO<Menu> {
         List<Menu> result = new ArrayList<>();
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String read = "SELECT * FROM `menu` "+WHERE;
+            String read = "SELECT * FROM `moroz`.`menu` "+WHERE;
             ResultSet resultSet = statement.executeQuery(read);
             while (resultSet.next()) {
                 Menu menu = new Menu();

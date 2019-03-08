@@ -5,17 +5,8 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    <div class="row">
-        <div class="col-md-2">Dish</div>
-        <div class="col-md-2">Price</div>
-    </div>
+        <h2>Welcome!</h2>
 
-    <c:forEach items="${menu}" var="menu">
-    <div class="row">
-        <div class="col-md-2">${menu.name}</div>
-        <div class="col-md-2">${menu.price}</div>
-    </div>
-    </c:forEach>
 </div>
 </body>
 </html>

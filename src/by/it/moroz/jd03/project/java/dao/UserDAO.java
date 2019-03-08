@@ -60,7 +60,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     public List<User> getAll(String WHERE) throws SQLException {
         List<User> result = new ArrayList<>();
             String sql = String.format(
-                    "SELECT * FROM `users` " + WHERE,
+                    "SELECT * FROM `moroz`.`users` " + WHERE,
                     WHERE);
         try (
                 Connection connection = ConnCreator.getConnection();
