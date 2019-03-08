@@ -3,6 +3,7 @@ package by.it.titkovskaya.project.java.controller;
 import by.it.titkovskaya.project.java.beans.User;
 import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +23,10 @@ public class CmdLogin implements Cmd {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
 //                session.setMaxInactiveInterval(30);
+                Cookie cookie = new Cookie("hash", Util.getHash(user));
+                Util.setCookie(req, cookie);
+                cookie = new Cookie("login", user.getLogin());
+                Util.setCookie(req, cookie);
                 return Action.PROFILE;
             } else {
                 String message = "Wrong login or password. Please, check the correctness " +
