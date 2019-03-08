@@ -31,7 +31,7 @@ public class Runner {
         if (roles.size() > 0)
             System.out.println("\nREAD OK: " + roles);
         if (daoRole.create(role))
-            System.out.println("CREATEGOODSFLOWER OK: " + role);
+            System.out.println("CREATE OK: " + role);
         role.setRole("moderator");
         if (daoRole.update(role))
             System.out.println("UPDATE OK: " + role);
@@ -47,7 +47,7 @@ public class Runner {
         account.setUsers_id(3);
         account.setAccount_status_id(2);
         if (daoAccount.create(account))
-            System.out.println("CREATEGOODSFLOWER OK: " + account);
+            System.out.println("CREATE OK: " + account);
         account.setCurrency("BYN");
         if (daoAccount.update(account))
             System.out.println("UPDATE OK: " + account);
@@ -63,7 +63,7 @@ public class Runner {
         replenishment.setAccounts_id(3);
         replenishment.setDate(Timestamp.valueOf("2019-02-21 18:00:00"));
         if (daoReplenishment.create(replenishment))
-            System.out.println("CREATEGOODSFLOWER OK: " + replenishment);
+            System.out.println("CREATE OK: " + replenishment);
         replenishment.setAmount(40000);
         if (daoReplenishment.update(replenishment))
             System.out.println("UPDATE OK: " + replenishment);
@@ -81,7 +81,7 @@ public class Runner {
         Timestamp payDate = new Timestamp(timestamp.getDateTime());
         payment.setDate(payDate);
         if (daoPayment.create(payment))
-            System.out.println("CREATEGOODSFLOWER OK: " + payment);
+            System.out.println("CREATE OK: " + payment);
         payment.setAmount(35000);
         if (daoPayment.update(payment))
             System.out.println("UPDATE OK: " + payment);
@@ -95,7 +95,7 @@ public class Runner {
         if (statuses.size() > 0)
             System.out.println("\nREAD OK: " + statuses);
         if (daoStatus.create(status))
-            System.out.println("CREATEGOODSFLOWER OK: " + status);
+            System.out.println("CREATE OK: " + status);
         status.setStatus("TESTstatus");
         if (daoStatus.update(status))
             System.out.println("UPDATE OK: " + status);

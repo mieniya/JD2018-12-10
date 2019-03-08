@@ -6,15 +6,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 class AccountCRUD {
 
     boolean create(Account account) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("INSERT INTO `accounts` (`number`,`currency`,`users_id`,`account_status_id`) " +
-                            "VALUES ('%d','%s','%s', '%d')",
-                    account.getNumber(), account.getCurrency(), account.getUsers_id(), account.getAccount_status_id());
+            String sql = String.format(Locale.ENGLISH, "INSERT INTO `accounts` (`number`," +
+                            "`currency`,`users_id`,`account_status_id`,`unlock_request`) " +
+                            "VALUES ('%d','%s','%d','%d','%d')",
+                    account.getNumber(), account.getCurrency(), account.getUsers_id(),
+                    account.getAccount_status_id(), account.getUnlock_request());
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -31,7 +34,7 @@ class AccountCRUD {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             String sql = String.format("SELECT * FROM `accounts` " +
-                                        "WHERE `id`='%d'", id);
+                    "WHERE `id`='%d'", id);
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
                 Account account = new Account();
@@ -40,6 +43,7 @@ class AccountCRUD {
                 account.setCurrency(resultSet.getString("currency"));
                 account.setUsers_id(resultSet.getLong("users_id"));
                 account.setAccount_status_id(resultSet.getLong("account_status_id"));
+                account.setUnlock_request(resultSet.getInt("unlock_request"));
                 return account;
             }
         }
@@ -49,10 +53,10 @@ class AccountCRUD {
     boolean update(Account account) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("UPDATE `accounts` SET `number`='%d',`currency`='%s'," +
-                            "`users_id`='%d',`account_status_id`='%d' WHERE `id`='%d'",
+            String sql = String.format(Locale.ENGLISH, "UPDATE `accounts` SET `number`='%d',`currency`='%s'," +
+                            "`users_id`='%d',`account_status_id`='%d', `unlock_request`='%d' WHERE `id`='%d'",
                     account.getNumber(), account.getCurrency(), account.getUsers_id(),
-                    account.getAccount_status_id(), account.getId());
+                    account.getAccount_status_id(), account.getUnlock_request(), account.getId());
             return 1 == statement.executeUpdate(sql);
         }
     }

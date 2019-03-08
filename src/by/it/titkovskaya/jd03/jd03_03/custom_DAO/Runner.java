@@ -16,7 +16,7 @@ public class Runner {
             System.out.println("\nREAD OK: " + users);
         user.setRoles_id(3);
         if (dao.user.create(user))
-            System.out.println("CREATEGOODSFLOWER OK: " + user);
+            System.out.println("CREATE OK: " + user);
         user.setEmail("test@user");
         if (dao.user.update(user))
             System.out.println("UPDATE OK: " + user);
@@ -28,7 +28,7 @@ public class Runner {
         if (roles.size() > 0)
             System.out.println("\nREAD OK: " + roles);
         if (dao.role.create(role))
-            System.out.println("CREATEGOODSFLOWER OK: " + role);
+            System.out.println("CREATE OK: " + role);
         role.setRole("moderator");
         if (dao.role.update(role))
             System.out.println("UPDATE OK: " + role);
@@ -42,7 +42,7 @@ public class Runner {
         account.setUsers_id(3);
         account.setAccount_status_id(2);
         if (dao.account.create(account))
-            System.out.println("CREATEGOODSFLOWER OK: " + account);
+            System.out.println("CREATE OK: " + account);
         account.setAccount_status_id(2);
         if (dao.account.update(account))
             System.out.println("UPDATE OK: " + account);
@@ -56,7 +56,7 @@ public class Runner {
         replenishment.setAccounts_id(3);
         replenishment.setDate(Timestamp.valueOf("2019-02-21 18:00:00"));
         if (dao.replenishment.create(replenishment))
-            System.out.println("CREATEGOODSFLOWER OK: " + replenishment);
+            System.out.println("CREATE OK: " + replenishment);
         replenishment.setAmount(40000);
         if (dao.replenishment.update(replenishment))
             System.out.println("UPDATE OK: " + replenishment);
@@ -72,7 +72,7 @@ public class Runner {
         Timestamp payDate = new Timestamp(timestamp.getDateTime());
         payment.setDate(payDate);
         if (dao.payment.create(payment))
-            System.out.println("CREATEGOODSFLOWER OK: " + payment);
+            System.out.println("CREATE OK: " + payment);
         payment.setAmount(35000);
         if (dao.payment.update(payment))
             System.out.println("UPDATE OK: " + payment);
@@ -84,7 +84,7 @@ public class Runner {
         if (statuses.size() > 0)
             System.out.println("\nREAD OK: " + statuses);
         if (dao.status.create(status))
-            System.out.println("CREATEGOODSFLOWER OK: " + status);
+            System.out.println("CREATE OK: " + status);
         status.setStatus("TESTstatus");
         if (dao.status.update(status))
             System.out.println("UPDATE OK: " + status);

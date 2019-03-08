@@ -4,7 +4,14 @@
 <body>
     <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name} (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}</h5>
+        </c:otherwise>
+    </c:choose>
 
     <h3>WELCOME!</h3>
 
@@ -17,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <input id="login" name="login" value="testLogin" type="text" placeholder="YourLogin" class="form-control input-md" required="">
+                    <input id="login" name="login" value="clientLOGIN" type="text" placeholder="YourLogin" class="form-control input-md" required="">
                 </div>
             </div>
 
@@ -27,7 +34,8 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <input id="password" name="password" value="testPassword" type="password" placeholder="************" class="form-control input-md" required="">
+                    <input id="password" name="password" value="12345" type="password"
+                    placeholder="*****" class="form-control input-md" required="">
                 </div>
             </div>
 

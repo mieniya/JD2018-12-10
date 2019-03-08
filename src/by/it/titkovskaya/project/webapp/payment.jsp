@@ -4,7 +4,14 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name} (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}</h5>
+        </c:otherwise>
+    </c:choose>
 
     <h3>PAYMENT / MONEY TRANSFER</h3>
 
@@ -27,7 +34,7 @@
             </div>
 
             <div class="col-md-3">
-                <input id="recipient" name="recipient" value="Test recipient" type="text" placeholder=""
+                <input id="recipient" name="recipient" value="Test Recipient" type="text" placeholder=""
                 class="form-control input-md" required="">
             </div>
 
@@ -38,7 +45,9 @@
         </div>
     </form>
 
-    <p>${message}</p>
+    <div class="row">
+        <label class="col-md-6 control-label" for="account">${message}</label>
+    </div>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>

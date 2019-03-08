@@ -7,16 +7,18 @@ public class Account {
     private String currency;
     private long users_id;
     private long account_status_id;
+    private int unlock_request;
 
     public Account() {
     }
 
-    public Account(long id, long number, String currency, long users_id, long account_status_id) {
+    public Account(long id, long number, String currency, long users_id, long account_status_id, int unlock_request) {
         this.id = id;
         this.number = number;
         this.currency = currency;
         this.users_id = users_id;
         this.account_status_id = account_status_id;
+        this.unlock_request = unlock_request;
     }
 
     public long getId() {
@@ -59,6 +61,14 @@ public class Account {
         this.account_status_id = account_status_id;
     }
 
+    public int getUnlock_request() {
+        return unlock_request;
+    }
+
+    public void setUnlock_request(int unlock_request) {
+        this.unlock_request = unlock_request;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -67,6 +77,7 @@ public class Account {
                 ", currency='" + currency + '\'' +
                 ", users_id=" + users_id +
                 ", account_status_id=" + account_status_id +
+                ", unlock_request=" + unlock_request +
                 '}';
     }
 }

@@ -4,7 +4,14 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name} (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}</h5>
+        </c:otherwise>
+    </c:choose>
 
     <h3>ACCOUNT LOCK</h3>
     <p>____________________________________________________________________________________________________</p>
@@ -30,6 +37,9 @@
                     </c:if>
                 </c:forEach>
 
+                <input id="unlock_request" name="unlock_request" type="hidden" placeholder="" class="form-control input-md"
+                       required="" value="${account.unlock_request}">
+
                 <!-- Button (Double) -->
                 <div class="col-md-5">
                     <button id="unlock" name="unlock" class="btn btn-success">Send UNLOCK request</button>
@@ -42,7 +52,7 @@
 
 
     <div class="row">
-        <label class="col-md-7 control-label" for="currency">${message}</label>
+        <label class="col-md-7 control-label" for="account">${message}</label>
     </div>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">

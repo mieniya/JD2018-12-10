@@ -7,8 +7,8 @@ import by.it.titkovskaya.project.java.beans.User;
 import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 public class CmdAccInfo implements Cmd {
 
@@ -20,7 +20,8 @@ public class CmdAccInfo implements Cmd {
             Dao dao = Dao.getDao();
             List<Account> accounts = dao.account.getAll(where);
             req.setAttribute("accounts", accounts);
-
+            HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
+            req.setAttribute("balances", balances);
             if (Form.isGet(req) && req.getParameter("accInfoButton")!=null) {
                 long id = Form.getLong(req, "id");
                 Account account = dao.account.read(id);
@@ -39,7 +40,6 @@ public class CmdAccInfo implements Cmd {
                 String paymentInfo = "Payments / Money transfers";
                 req.setAttribute("paymentInfo", paymentInfo);
             }
-
             return Action.ACCINFO;
         }
         return Action.LOGIN;

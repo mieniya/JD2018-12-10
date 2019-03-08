@@ -2,10 +2,7 @@ package by.it.titkovskaya.project.java.custom_DAO;
 
 import by.it.titkovskaya.project.java.beans.Replenishment;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -65,5 +62,19 @@ public class ReplenishmentDao extends AbstractDao implements InterfaceDao<Replen
             }
         }
         return replenishments;
+    }
+
+    public double getTotalReplenishmentForAccount(long id) throws SQLException {
+        double totalReplenishmentForAccount=0;
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()) {
+            String sql = String.format(Locale.ENGLISH,"SELECT sum(amount) FROM replenishments " +
+                    "WHERE accounts_id=%d", id);
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+                totalReplenishmentForAccount = resultSet.getDouble("sum(amount)");
+            }
+        }
+        return totalReplenishmentForAccount;
     }
 }

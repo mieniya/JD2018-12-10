@@ -23,7 +23,7 @@ class A_AddData {
                 "");
              Statement statement = connection.createStatement())
         {
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 444444444, 'USD', 4, 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`, `unlock_request`) VALUES (DEFAULT, 444444444, 'USD', 4, 1, false);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`replenishments` (`id`, `date`, `amount`, `accounts_id`) VALUES (DEFAULT, '2019-02-19 14:20', 75000, 4);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-02-19 15:05', 15000, 'gmbh XXX', 4);");
         } catch (SQLException e) {

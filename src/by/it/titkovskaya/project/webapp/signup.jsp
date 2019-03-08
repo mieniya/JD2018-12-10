@@ -4,7 +4,14 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name} (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}</h5>
+        </c:otherwise>
+    </c:choose>
     <h3>WELCOME! Fill in the form, please</h3>
 
     <form class="form-horizontal" action="do?command=Signup" method="post">
@@ -16,7 +23,7 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-              <input id="login" name="login" value="testLogin" type="text" placeholder="YourLogin" class="form-control input-md" required="">
+              <input id="login" name="login" value="clientLOGIN" type="text" placeholder="YourLogin" class="form-control input-md" required="">
               </div>
             </div>
 
@@ -26,7 +33,7 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <input id="password" name="password" value="testPassword" type="password" placeholder="************" class="form-control input-md" required="">
+                <input id="password" name="password" value="12345" type="password" placeholder="*****" class="form-control input-md" required="">
                 <span class="help-block">at least 5 characters required</span>
               </div>
             </div>
@@ -37,7 +44,7 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-              <input id="name" name="name" value="Test Name" type="text" placeholder="Your Name" class="form-control input-md">
+              <input id="name" name="name" value="Client NAME" type="text" placeholder="Your Name" class="form-control input-md">
               </div>
             </div>
 
@@ -47,7 +54,7 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-              <input id="email" name="email" value="test@email.com" type="text" placeholder="email@address.com" class="form-control input-md">
+              <input id="email" name="email" value="client@email.com" type="text" placeholder="email@address.com" class="form-control input-md">
               </div>
             </div>
 

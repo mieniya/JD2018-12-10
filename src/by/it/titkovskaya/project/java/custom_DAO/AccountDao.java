@@ -20,9 +20,9 @@ public class AccountDao extends AbstractDao implements InterfaceDao<Account> {
     @Override
     public boolean create(Account account) throws SQLException {
         String sql = String.format("INSERT INTO `accounts` (`number`,`currency`,`users_id`," +
-                        "`account_status_id`) VALUES ('%d','%s','%s', '%d')",
+                        "`account_status_id`,`unlock_request`) VALUES ('%d','%s','%s', '%d', '%d')",
                         account.getNumber(), account.getCurrency(), account.getUsers_id(),
-                        account.getAccount_status_id());
+                        account.getAccount_status_id(), account.getUnlock_request());
         account.setId(executeCreate(sql));
         return account.getId() > 0;
     }
@@ -30,9 +30,9 @@ public class AccountDao extends AbstractDao implements InterfaceDao<Account> {
     @Override
     public boolean update(Account account) throws SQLException {
         String sql = String.format("UPDATE `accounts` SET `number`='%d',`currency`='%s'," +
-                        "`users_id`='%d',`account_status_id`='%d' WHERE `id`='%d'",
+                        "`users_id`='%d',`account_status_id`='%d',`unlock_request`='%d' WHERE `id`='%d'",
                 account.getNumber(), account.getCurrency(), account.getUsers_id(),
-                account.getAccount_status_id(), account.getId());
+                account.getAccount_status_id(), account.getUnlock_request(), account.getId());
         return executeUpdate(sql);
     }
 
@@ -62,6 +62,7 @@ public class AccountDao extends AbstractDao implements InterfaceDao<Account> {
                 account.setCurrency(resultSet.getString("currency"));
                 account.setUsers_id(resultSet.getLong("users_id"));
                 account.setAccount_status_id(resultSet.getLong("account_status_id"));
+                account.setUnlock_request(resultSet.getInt("unlock_request"));
                 accounts.add(account);
             }
         }

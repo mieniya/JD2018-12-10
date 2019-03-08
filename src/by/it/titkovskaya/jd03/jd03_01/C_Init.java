@@ -56,6 +56,7 @@ class C_Init {
                     "  `currency` VARCHAR(45) NOT NULL," +
                     "  `users_id` INT NOT NULL," +
                     "  `account_status_id` INT NOT NULL," +
+                    "  `unlock_request` TINYINT(1) NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  INDEX `fk_Accounts_users1_idx` (`users_id` ASC)," +
                     "  INDEX `fk_accounts_account status1_idx` (`account_status_id` ASC)," +
@@ -106,9 +107,9 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `titkovskaya`.`users` (`id`, `login`, `password`, `email`, `name`, `roles_id`) VALUES (DEFAULT, 'janeDOUGH', '22222', 'janeDOUGH@it.by', 'Jane Dough', 2);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`account status` (`id`, `status`) VALUES (DEFAULT, 'active');");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`account status` (`id`, `status`) VALUES (DEFAULT, 'locked');");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000001, 'USD', 2, 2);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000002, 'BYN', 2, 1);");
-            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`) VALUES (DEFAULT, 100000003, 'EUR', 3, 1);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`, `unlock_request`) VALUES (DEFAULT, 100000001, 'USD', 2, 2, false);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`, `unlock_request`) VALUES (DEFAULT, 100000002, 'BYN', 2, 1, false);");
+            statement.executeUpdate("INSERT INTO `titkovskaya`.`accounts` (`id`, `number`, `currency`, `users_id`, `account_status_id`, `unlock_request`) VALUES (DEFAULT, 100000003, 'EUR', 3, 1, false);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-04 16:50', 2000, 'Schneider Electric', 1);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-01-25 12:00', 10000, 'BAE Systems', 2);");
             statement.executeUpdate("INSERT INTO `titkovskaya`.`payments` (`id`, `date`, `amount`, `recipient`, `accounts_id`) VALUES (DEFAULT, '2019-02-15 13:30', 25000, 'Thales Group', 3);");

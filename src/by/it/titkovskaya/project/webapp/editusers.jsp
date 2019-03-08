@@ -5,13 +5,14 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <h5>${user.name} (admin)</h5>
 
     <h3>USERS </h3>
     <div class="row">
         <div class=col-md-1>ID</div>
         <div class=col-md-2>Login</div>
-        <div class=col-md-3>Email</div>
+        <div class=col-md-1>Password</div>
+        <div class=col-md-2>Email</div>
         <div class=col-md-2>Name</div>
         <div class=col-md-2>Role</div>
     </div>
@@ -28,7 +29,12 @@
                            required="" value="${user.login}">
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-1">
+                    <input id="password" name="password" type="password" placeholder="" class="form-control input-md"
+                           required="" value="${user.password}">
+                </div>
+
+                <div class="col-md-2">
                     <input id="email" name="email" type="text" placeholder="" class="form-control input-md"
                            required="" value="${user.email}">
                 </div>
@@ -54,6 +60,10 @@
             </div>
         </form>
     </c:forEach>
+
+    <div class="row">
+        <label class="col-md-10 control-label" for="account">${message}</label>
+    </div>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>

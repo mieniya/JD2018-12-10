@@ -50,12 +50,12 @@ public class Runner {
         List<Replenishment> allRep = dao.replenishment.getAll(where1);
         double repSum = 0;
         for (int i = 1; i < allRep.size(); i++) {
-            repSum+=allRep.get(i).getAmount();
+            repSum += allRep.get(i).getAmount();
         }
         List<Payment> allPay = dao.payment.getAll(where1);
         double paySum = 0;
-        for (int i = 0; i < allRep.size()-1; i++) {
-            paySum+=allPay.get(i).getAmount();
+        for (int i = 0; i < allRep.size() - 1; i++) {
+            paySum += allPay.get(i).getAmount();
         }
         double balance = repSum - paySum;
         System.out.println("TOTAL replenishments: " + repSum);
@@ -65,13 +65,13 @@ public class Runner {
 
         account.setUsers_id(3);
         account.setAccount_status_id(2);
-        if (dao.account.create(account)){
-            account.setNumber(account.getId()+100000000);
+        if (dao.account.create(account)) {
+            account.setNumber(account.getId() + 100000000);
             dao.account.update(account);
             System.out.println("***********CREATE OK: " + account);
         }
 
-        account.setNumber(account.getId()+100000000);
+        account.setNumber(account.getId() + 100000000);
         if (dao.account.update(account))
             System.out.println("*****UPDATE OK: " + account);
         if (dao.account.delete(account))
@@ -125,8 +125,9 @@ public class Runner {
         String name = "name";
         User userT = new User(0, login, password, email, name, 2);
         Dao daoT = Dao.getDao();
-        if (daoT.user.create(userT)){
-            System.out.println("TEST of PROJECT +++");;
+        if (daoT.user.create(userT)) {
+            System.out.println("TEST of PROJECT +++");
+            ;
         }
 
         String whereAccNumber = " WHERE `number`='100000004'";
@@ -138,8 +139,7 @@ public class Runner {
             //******************* НЕ ПАШЕТ >>> UPDATE <<<
             if (state.equalsIgnoreCase("lock")) {
                 accounT.setAccount_status_id(2);
-            }
-            else if (state.equalsIgnoreCase("unlock"))
+            } else if (state.equalsIgnoreCase("unlock"))
                 accounT.setAccount_status_id(1);
             if (dao.account.update(accounT)) {
                 System.out.println("STATE: " + accounT);
@@ -148,9 +148,32 @@ public class Runner {
             //******************* НЕ ПАШЕТ
         }
 
+        List<Payment> totalPayment = dao.payment.getAll();
+        System.out.println(totalPayment);
+
+        List<Account> accountAll = dao.account.getAll();
+
+        String forBalance = "[ ";
+        String delimiter = "";
+
+        for (int i = 0; i < accountAll.size(); i++) {
+            double replenByAcc = dao.replenishment.getTotalReplenishmentForAccount(accountAll.get(i).getId());
+            System.out.println(accountAll.get(i).getNumber() + "=" +replenByAcc);
+            double paymentByAcc = dao.payment.getTotalPaymentForAccount(accountAll.get(i).getId());
+            System.out.println(accountAll.get(i).getNumber() + "=" +paymentByAcc);
+            double balance2 = replenByAcc - paymentByAcc;
+            System.out.println("Balance: " + accountAll.get(i).getNumber() + "=" +balance2);
+
+            long id = accountAll.get(i).getId();
+            forBalance = forBalance.concat(delimiter).
+                    concat(String.format("Balance{accounts_id=%d, balance=%.1f}",id,balance2));
+            delimiter=",";
+
+        }
+        System.out.println(forBalance.concat("]"));
 
 
- //       Dao.getDao().reset();
+        //       Dao.getDao().reset();
     }
 }
 

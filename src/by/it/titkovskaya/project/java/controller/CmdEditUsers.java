@@ -11,7 +11,12 @@ public class CmdEditUsers implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         Dao dao = Dao.getDao();
-        if (Form.isPost(req)) {
+        User userIn = Util.findUser(req);
+        if (userIn == null)
+            return Action.LOGIN;
+        else if (userIn.getRoles_id() != 1)
+            return Action.PROFILE;
+        else if (Form.isPost(req)) {
             long id = Form.getLong(req, "id");
             String login = Form.getString(req, "login");
             String password = Form.getString(req, "password");
@@ -20,10 +25,28 @@ public class CmdEditUsers implements Cmd {
             long roles_id = Form.getLong(req, "roles_id");
             User user = new User(id, login, password, email, name, roles_id);
             if (req.getParameter("update") != null){
-                dao.user.update(user);
+                if (dao.user.update(user)){
+                    String message = "NOTIFICATION: Operation completed successfully. Personal account " +
+                            "of user ID " + user.getId() + " is updated.";
+                    req.setAttribute("message", message);
+                    if (user.getId()==userIn.getId())
+                        return Action.LOGOUT;
+                } else {
+                    String message = "NOTIFICATION: Operation failed.";
+                    req.setAttribute("message", message);
+                }
             }
             else if (req.getParameter("delete")!=null){
-                dao.user.delete(user);
+                if (dao.user.delete(user)){
+                    String message = "NOTIFICATION: Operation completed successfully. Personal account " +
+                            "of user ID " + user.getId() + " is deleted.";
+                    req.setAttribute("message", message);
+                    if (user.getId()==userIn.getId())
+                        return Action.LOGOUT;
+                } else {
+                    String message = "NOTIFICATION: Operation failed.";
+                    req.setAttribute("message", message);
+                }
             }
         }
         List<User> users = dao.user.getAll();

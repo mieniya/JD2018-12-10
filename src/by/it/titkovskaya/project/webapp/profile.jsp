@@ -4,10 +4,45 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}'s</h5>
+
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name}'s (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}'s</h5>
+        </c:otherwise>
+    </c:choose>
 
     <h3>PERSONAL CABINET</h3>
     <p>____________________________________________</p>
+
+    <c:if test="${user.roles_id==1}">
+        <form class="form-horizontal" action="do?command=Profile" method="get">
+            <fieldset>
+                <!-- Button -->
+                <div class="row">
+                    <input id="command" name="command" type="hidden" placeholder=""
+                    class="form-control input-md" required="" value="Profile">
+                    <div class="col-md-6">
+                        <button id="editUsers" name="editUsers" class="btn btn-inverse"> >>> LIST OF USERS</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <form class="form-horizontal" action="do?command=Profile" method="get">
+            <fieldset>
+                <!-- Button -->
+                <div class="row">
+                    <input id="command" name="command" type="hidden" placeholder=""
+                    class="form-control input-md" required="" value="Profile">
+                    <div class="col-md-6">
+                        <button id="editAcc" name="editAcc" class="btn btn-inverse"> >>> LIST OF ACCOUNTS</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </c:if>
 
     <form class="form-horizontal" action="do?command=Profile" method="get">
         <fieldset>
@@ -35,9 +70,6 @@
         </fieldset>
     </form>
 
-
-
-
     <form class="form-horizontal" action="do" method="get">
         <fieldset>
             <!-- Button -->
@@ -51,18 +83,20 @@
         </fieldset>
     </form>
 
-    <form class="form-horizontal" action="do?command=Profile" method="get">
-        <fieldset>
-            <!-- Button -->
-            <div class="row">
-                <input id="command" name="command" type="hidden" placeholder=""
-                class="form-control input-md" required="" value="Profile">
-                <div class="col-md-6">
-                    <button id="accLock" name="accLock" class="btn btn-inverse"> >>> Account LOCK / UNLOCK</button>
+    <c:if test="${user.roles_id!=1}">
+        <form class="form-horizontal" action="do?command=Profile" method="get">
+            <fieldset>
+                <!-- Button -->
+                <div class="row">
+                    <input id="command" name="command" type="hidden" placeholder=""
+                    class="form-control input-md" required="" value="Profile">
+                    <div class="col-md-6">
+                        <button id="accLock" name="accLock" class="btn btn-inverse"> >>> Account LOCK / UNLOCK</button>
+                    </div>
                 </div>
-            </div>
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
+    </c:if>
 
     <p>____________________________________________</p>
 

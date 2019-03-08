@@ -68,4 +68,19 @@ public class PaymentDao extends AbstractDao implements InterfaceDao<Payment> {
         }
         return payments;
     }
+
+    public double getTotalPaymentForAccount(long id) throws SQLException {
+        double totalPaymentForAccount=0;
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()) {
+            String sql = String.format(Locale.ENGLISH,"SELECT sum(amount) FROM payments " +
+                    "WHERE accounts_id=%d", id);
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+                totalPaymentForAccount = resultSet.getDouble("sum(amount)");
+            }
+        }
+        return totalPaymentForAccount;
+    }
+
 }

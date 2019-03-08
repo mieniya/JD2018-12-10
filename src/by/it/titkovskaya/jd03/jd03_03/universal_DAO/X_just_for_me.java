@@ -1,12 +1,14 @@
 package by.it.titkovskaya.jd03.jd03_03.universal_DAO;
 
+import by.it.titkovskaya.jd03.jd03_03.beans.Account;
 import by.it.titkovskaya.jd03.jd03_03.beans.User;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
+
 public class X_just_for_me {
-    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
+    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException{
         String sql = "INSERT INTO `table` (";
         String values = "";
         String delimiter = "";
@@ -26,6 +28,7 @@ public class X_just_for_me {
 
         fields[0].setAccessible(true);
 
+
         String sql2 = "UPDATE `table` SET ";
         String delimiter2 = "";
         for (int i = 1; i < fields.length; i++) {
@@ -38,6 +41,13 @@ public class X_just_for_me {
 
         User user2 = User.class.getConstructor().newInstance();
         System.out.println("\nэкземпляр класса user2: " + user2);
+
+        Field[] accFields = Account.class.getDeclaredFields();
+        for (Field accField : accFields) {
+            System.out.println(accField);
+        }
+        Account acc = Account.class.getConstructor().newInstance();
+        System.out.println("\naccc2" + acc);
 
     }
 

@@ -5,7 +5,14 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name} (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}</h5>
+        </c:otherwise>
+    </c:choose>
 
     <p>_______________________________________________________________________________</p>
 

@@ -18,6 +18,7 @@ public class CmdCreateAcc implements Cmd {
             account.setCurrency(Form.getString(req, "currency"));
             account.setUsers_id(user.getId());
             account.setAccount_status_id(1);
+            account.setUnlock_request(0);
             Dao dao = Dao.getDao();
             if (dao.account.create(account)) {
                 account.setNumber(account.getId()+100000000);

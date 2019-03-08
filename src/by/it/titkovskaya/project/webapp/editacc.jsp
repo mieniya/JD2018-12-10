@@ -5,7 +5,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <h5>${user.name} (admin)</h5>
 
     <h3>ACCOUNTS </h3>
     <div class="row">
@@ -13,6 +13,8 @@
         <div class=col-md-2>Account Balance</div>
         <div class=col-md-1>Currency</div>
         <div class=col-md-1>User ID</div>
+
+        <div class=col-md-2>Unlock Request</div>
         <div class=col-md-2>Account Status</div>
     </div>
     <c:forEach items="${accounts}" var="account">
@@ -26,10 +28,14 @@
                            required="" value="${account.number}">
                 </div>
 
-                <div class="col-md-2">
-                    <input id="number" name="number" type="text" placeholder="" class="form-control input-md"
-                           required="" value="${account.number}">
-                </div>
+                <c:forEach items="${balances}" var="entry">
+                    <c:if test="${entry.key==account.id}">
+                        <div class="col-md-2">
+                            <input id="amount" name="amount" type="text" placeholder=""
+                            class="form-control input-md" required="" value="${entry.value}">
+                        </div>
+                    </c:if>
+                </c:forEach>
 
                 <div class="col-md-1">
                     <input id="currency" name="currency" type="text" placeholder="" class="form-control input-md"
@@ -39,6 +45,19 @@
                 <div class="col-md-1">
                     <input id="users_id" name="users_id" type="text" placeholder="" class="form-control input-md"
                            required="" value="${account.users_id}">
+                </div>
+
+                <div class="col-md-2">
+                    <c:choose>
+                        <c:when test="${account.unlock_request==1}">
+                            <input id="unlock_request" name="unlock_request" type="text" placeholder="" class="form-control input-md"
+                            required="" value=" >>> unlock <<< ">
+                        </c:when>
+                        <c:otherwise>
+                            <input id="unlock_request" name="unlock_request" type="text" placeholder="" class="form-control input-md"
+                            required="" value="no">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
                 <div class="col-md-2">
@@ -57,6 +76,10 @@
             </div>
         </form>
     </c:forEach>
+
+    <div class="row">
+        <label class="col-md-10 control-label" for="account">${message}</label>
+    </div>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>

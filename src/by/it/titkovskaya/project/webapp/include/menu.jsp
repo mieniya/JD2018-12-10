@@ -12,6 +12,7 @@
                 <c:when test="${user.roles_id==1}">
                     <a class="nav-item nav-link" href="do?command=EditUsers">List of Users</a>
                     <a class="nav-item nav-link" href="do?command=EditAcc">List of Accounts</a>
+                    <a class="nav-item nav-link" href="do?command=Profile">Personal Cabinet</a>
                     <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
                 </c:when>
                 <c:when test="${user.roles_id==2}">

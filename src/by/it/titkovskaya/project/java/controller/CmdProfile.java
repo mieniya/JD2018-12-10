@@ -14,6 +14,12 @@ public class CmdProfile implements Cmd {
         User user = Util.findUser(req);
         if (user != null) {
             if (Form.isGet(req)) {
+                if (req.getParameter("editAcc") != null){
+                    return Action.EDITACC;
+                }
+                if (req.getParameter("editUsers") != null){
+                    return Action.EDITUSERS;
+                }
                 if (req.getParameter("createAcc") != null){
                     return Action.CREATEACC;
                 }

@@ -4,7 +4,14 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name}</h5>
+    <c:choose>
+        <c:when test="${user.roles_id==1}">
+            <h5>${user.name} (admin)</h5>
+        </c:when>
+        <c:otherwise>
+            <h5>${user.name}</h5>
+        </c:otherwise>
+    </c:choose>
 
     <h3>ACCOUNT DETAILS</h3>
     <p>____________________________________________________________________________________________________</p>
@@ -25,7 +32,13 @@
                        required="" value="${account.id}">
 
                 <div class="col-md-2">${account.number}</div>
-                <div class="col-md-2">${account.number}</div>
+
+                <c:forEach items="${balances}" var="entry">
+                    <c:if test="${entry.key==account.id}">
+                        <div class="col-md-2">${entry.value}</div>
+                    </c:if>
+                </c:forEach>
+
                 <div class="col-md-2">${account.currency}</div>
                 <c:forEach items="${accstatuses}" var="status">
                     <c:if test="${account.account_status_id==status.id}">
@@ -33,6 +46,8 @@
                     </c:if>
                 </c:forEach>
 
+                <input id="unlock_request" name="unlock_request" type="hidden" placeholder="" class="form-control input-md"
+                       required="" value="${account.unlock_request}">
 
                 <!-- Button -->
                 <div class="col-md-4">

@@ -56,6 +56,7 @@ class C_Init_Tables {
                     "  `currency` VARCHAR(45) NOT NULL," +
                     "  `users_id` INT NOT NULL," +
                     "  `account_status_id` INT NOT NULL," +
+                    "  `unlock_request` TINYINT(1) NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
                     "  INDEX `fk_Accounts_users1_idx` (`users_id` ASC)," +
                     "  INDEX `fk_accounts_account status1_idx` (`account_status_id` ASC)," +

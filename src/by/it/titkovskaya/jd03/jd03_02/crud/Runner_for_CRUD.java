@@ -10,7 +10,7 @@ public class Runner_for_CRUD {
         UserCRUD userCRUD = new UserCRUD();
         User user = new User(0, "testUser", "testPassword", "testEmail", "testName", 2);
         if (userCRUD.create(user))
-            System.out.println("CREATEGOODSFLOWER OK: " + user);
+            System.out.println("CREATE OK: " + user);
         user.setLogin("testUserUpdate");
         if (userCRUD.update(user))
             System.out.println("UPDATE OK: " + user);
@@ -23,7 +23,7 @@ public class Runner_for_CRUD {
         RoleCRUD roleCRUD = new RoleCRUD();
         Role role = new Role(0, "testRole");
         if (roleCRUD.create(role))
-            System.out.println("CREATEGOODSFLOWER OK: " + role);
+            System.out.println("CREATE OK: " + role);
         role.setRole("testRoleUpdate");
         if (roleCRUD.update(role))
             System.out.println("UPDATE OK: " + role);
@@ -36,7 +36,7 @@ public class Runner_for_CRUD {
         AccountStatusCRUD statusCRUD = new AccountStatusCRUD();
         AccountStatus status = new AccountStatus(0, "testStatus");
         if (statusCRUD.create(status))
-            System.out.println("CREATEGOODSFLOWER OK: " + status);
+            System.out.println("CREATE OK: " + status);
         status.setStatus("testStatusUpdate");
         if (statusCRUD.update(status))
             System.out.println("UPDATE OK: " + status);
@@ -47,9 +47,9 @@ public class Runner_for_CRUD {
             System.out.println("DELETE OK: " + status);
 
         AccountCRUD accountCRUD = new AccountCRUD();
-        Account account = new Account(0, 999999999, "testCurrency", 3, 2);
+        Account account = new Account(0, 999999999, "testCurrency", 3, 2, 1);
         if (accountCRUD.create(account))
-            System.out.println("CREATEGOODSFLOWER OK: " + account);
+            System.out.println("CREATE OK: " + account);
         account.setAccount_status_id(2);
         if (accountCRUD.update(account))
             System.out.println("UPDATE OK: " + account);
@@ -63,7 +63,7 @@ public class Runner_for_CRUD {
         Timestamp date = new Timestamp(1550582031901L);
         Replenishment replenishment = new Replenishment(0, date, 10000, 3);
         if (replenishmentCRUD.create(replenishment))
-            System.out.println("CREATEGOODSFLOWER OK: " + replenishment);
+            System.out.println("CREATE OK: " + replenishment);
         replenishment.setAmount(12000);
         if (replenishmentCRUD.update(replenishment))
             System.out.println("UPDATE OK: " + replenishment);
@@ -77,7 +77,7 @@ public class Runner_for_CRUD {
         Timestamp payDate = new Timestamp(1550585710494L);
         Payment payment = new Payment(0, payDate, 8000, "stock company XXX", 3);
         if (paymentCRUD.create(payment))
-            System.out.println("CREATEGOODSFLOWER OK: " + payment);
+            System.out.println("CREATE OK: " + payment);
         payment.setAmount(12000);
         if (paymentCRUD.update(payment))
             System.out.println("UPDATE OK: " + payment);
