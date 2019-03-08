@@ -44,7 +44,6 @@ public class CmdPayment implements Cmd {
                             "appropriate amount or choose another account.";
                     req.setAttribute("message", message);
                 }
-                //TODO хеширование
                 //TODO русификацию
             }
             return Action.PAYMENT;

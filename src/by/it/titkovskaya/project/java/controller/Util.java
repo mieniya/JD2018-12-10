@@ -38,14 +38,8 @@ public class Util {
     }
 
     public static String getHash(User user){
-        String key = user.getEmail() + user.getLogin() + user.getPassword();
-        key = key +"qqqqqqqq";
-        byte[] hash = DigestUtils.md5(key);
-        StringBuilder sb = new StringBuilder();
-        for (byte aHash : hash) {
-            sb.append(aHash);
-        }
-        return sb.toString();
+        String key = user.getEmail() + user.getLogin() + user.getPassword() + "this is salt";
+        return DigestUtils.md5Hex(key);
     }
 
     static void setCookie(HttpServletRequest req, Cookie cookie){

@@ -24,8 +24,10 @@ public class CmdLogin implements Cmd {
                 session.setAttribute("user", user);
 //                session.setMaxInactiveInterval(30);
                 Cookie cookie = new Cookie("hash", Util.getHash(user));
+                cookie.setMaxAge(24*60*60);
                 Util.setCookie(req, cookie);
                 cookie = new Cookie("login", user.getLogin());
+                cookie.setMaxAge(24*60*60);
                 Util.setCookie(req, cookie);
                 return Action.PROFILE;
             } else {
