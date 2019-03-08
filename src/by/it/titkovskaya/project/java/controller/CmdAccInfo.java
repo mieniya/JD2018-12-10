@@ -19,6 +19,10 @@ public class CmdAccInfo implements Cmd {
             String where = String.format(" WHERE `users_id`='%d'", user.getId());
             Dao dao = Dao.getDao();
             List<Account> accounts = dao.account.getAll(where);
+            if (accounts.size() < 1){
+                String message = "NOTIFICATION: You have no open accounts.";
+                req.setAttribute("message", message);
+            }
             req.setAttribute("accounts", accounts);
             HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
             req.setAttribute("balances", balances);

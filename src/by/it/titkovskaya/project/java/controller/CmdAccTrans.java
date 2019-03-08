@@ -19,6 +19,10 @@ public class CmdAccTrans implements Cmd {
             Dao dao = Dao.getDao();
             List<Account> accounts = dao.account.getAll(where);
             req.setAttribute("accounts", accounts);
+            if (accounts.size() < 1){
+                String message1 = "NOTIFICATION: You have no open accounts.";
+                req.setAttribute("message1", message1);
+            }
             HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
             req.setAttribute("balances", balances);
             if (Form.isPost(req)) {

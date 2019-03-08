@@ -51,6 +51,11 @@
             </div>
         </form>
     </c:forEach>
+
+    <div class="row">
+        <label class="col-md-7 control-label" for="account">${message1}</label>
+    </div>
+
     <p>____________________________________________________________________________________________________</p>
 
     <div class="row">

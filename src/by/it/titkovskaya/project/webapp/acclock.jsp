@@ -50,7 +50,6 @@
     </c:forEach>
     <p>____________________________________________________________________________________________________</p>
 
-
     <div class="row">
         <label class="col-md-7 control-label" for="account">${message}</label>
     </div>

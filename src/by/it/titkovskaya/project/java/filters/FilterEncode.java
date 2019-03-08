@@ -5,10 +5,10 @@ import java.io.IOException;
 
 public class FilterEncode implements Filter {
 
-    String encode;
+    private String encode;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         encode = filterConfig.getInitParameter("encode");
     }
 
@@ -27,6 +27,5 @@ public class FilterEncode implements Filter {
 
     @Override
     public void destroy() {
-
     }
 }
