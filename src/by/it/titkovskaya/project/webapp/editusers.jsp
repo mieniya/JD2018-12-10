@@ -8,6 +8,7 @@
     <h5>${user.name} (admin)</h5>
 
     <h3>USERS </h3>
+    <hr>
     <div class="row">
         <div class=col-md-1>ID</div>
         <div class=col-md-2>Login</div>

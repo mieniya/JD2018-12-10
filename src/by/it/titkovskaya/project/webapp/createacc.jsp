@@ -26,6 +26,12 @@
                     <option value="BYN">BYN</option>
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
+                    <option value="RUB">RUB</option>
+                    <option value="UAH">UAH</option>
+                    <option value="KZT">KZT</option>
+                    <option value="PLN">PLN</option>
+                    <option value="CNY">CNY</option>
+                    <option value="JPY">JPY</option>
                 </select>
             </div>
             <!-- Button -->
