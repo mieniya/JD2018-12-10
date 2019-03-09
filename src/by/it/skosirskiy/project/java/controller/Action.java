@@ -12,6 +12,7 @@ public enum Action{
     PROFILE(new CmdProfile()),
     CREATEREQUEST(new CmdCreateRequest()),
     RESETDB(new CmdResetDB()),
+    EDITUSERS(new CmdEditUsers()),
     SIGNUP(new CmdSignup());
 
     Action(Cmd command) {

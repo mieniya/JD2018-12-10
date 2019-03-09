@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
@@ -32,18 +33,13 @@
              </div>
              -->
 
-             <div class="form-group">
-                              <label class="col-md-4 control-label" for="status_id">status_id</label>
-                                  <div class="col-md-4">
-                                  <input id="status_id" name="status_id" value="2" type="text" placeholder="" class="form-control input-md" required="">
-                                  </div>
-              </div>
 
 
-              <p>Выберите статус: ${statuses}</p>
-              <select name="statuses">
-                  <c:forEach var="status" items="${statuses}">
-                  <c:out value="${status.id}"/><br>
+
+              
+              <select name="status_id" id="status_id" class="form-control">
+                  <c:forEach  items="${statuses}" var="status">
+                  <option value="${status.id}" >${status.status}</option>
                   </c:forEach>
               </select>
 

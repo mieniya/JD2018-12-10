@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 public class Form {
 
     static boolean isPost(HttpServletRequest req){
+
+
         return req.getMethod().equalsIgnoreCase("post");
     }
 
@@ -27,5 +29,9 @@ public class Form {
     static double getDouble(HttpServletRequest req, String name){
         String value = req.getParameter(name);
         return Double.parseDouble(value);
+    }
+    static long getLong(HttpServletRequest req, String name){
+        String value = req.getParameter(name);
+        return Long.parseLong(value);
     }
 }

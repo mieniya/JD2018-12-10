@@ -11,6 +11,7 @@
             <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
             <a class="nav-item nav-link" href="do?command=createRequest">CreateRequest</a>
             <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+            <a class="nav-item nav-link" href="do?command=Editusers">Editusers</a>
 
         </div>
     </div>
