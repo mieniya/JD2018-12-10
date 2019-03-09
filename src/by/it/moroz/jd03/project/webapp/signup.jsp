@@ -7,46 +7,43 @@
 <form class="form-horizontal" action="do?command=SignUp" method="post">
 <fieldset>
 
-<!-- Form Name -->
 <legend>Sign up</legend>
 
-<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="login">Login</label>
   <div class="col-md-4">
-  <input id="login" name="login" value="TestUser" type="text" placeholder="" class="form-control input-md">
+  <input id="login" name="login" value="TestUser" type="text" placeholder="" class="form-control input-md"
+  required="">
 
   </div>
 </div>
 
-<!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-4">
-    <input id="password" name="password" value="testPassword" type="password" placeholder="" class="form-control input-md">
+    <input id="password" name="password" value="testPassword" type="password" placeholder=""
+    class="form-control input-md" required="">
 
   </div>
 </div>
 
-<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Email</label>
   <div class="col-md-4">
-  <input id="email" name="email" value="testEmail@gmail.com" type="text" placeholder="" class="form-control input-md">
+  <input id="email" name="email" value="testEmail@gmail.com" type="text" placeholder=""
+  class="form-control input-md" required="">
 
   </div>
 </div>
 
-<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="address">Address</label>
   <div class="col-md-4">
-  <input id="address" name="address" value="TestAddress" type="text" placeholder="" class="form-control input-md">
+  <input id="address" name="address" value="TestAddress, 1-2" type="text" placeholder="" class="form-control input-md">
 
   </div>
 </div>
 
-<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="name">Name</label>
   <div class="col-md-4">
@@ -55,7 +52,6 @@
   </div>
 </div>
 
-<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="surname">Surname</label>
   <div class="col-md-4">
@@ -64,16 +60,14 @@
   </div>
 </div>
 
-<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="numberphone">Phone Number</label>
   <div class="col-md-4">
-  <input id="numberphone" name="numberphone" value="6483064" type="text" placeholder="" class="form-control input-md">
+  <input id="numberphone" name="numberphone" value="336483064" type="text" placeholder="" class="form-control input-md">
 
   </div>
 </div>
 
-<!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="signup"></label>
   <div class="col-md-4">

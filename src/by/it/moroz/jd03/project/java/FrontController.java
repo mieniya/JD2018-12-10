@@ -27,12 +27,7 @@ public class FrontController extends HttpServlet {
         Action action = Action.define(req);
         resp.setHeader("Cache-Control", "no-store");
         try{
-            User user = Util.findUser(req);
-            if(user!=null){
-                Cookie cookie = new Cookie(user.getLogin(), user.getPassword());
-                cookie.setMaxAge(60);
-                resp.addCookie(cookie);}
-            Action nextAction = action.command.execute(req);
+            Action nextAction = action.command.execute(req, resp);
             if(nextAction!=action)
                 resp.sendRedirect("do?command="+nextAction.name().toLowerCase());
             else {

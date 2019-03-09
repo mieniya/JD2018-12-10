@@ -5,11 +5,12 @@ import by.it.moroz.jd03.project.java.beans.User;
 import by.it.moroz.jd03.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class CmdOrder implements Cmd {
 
     @Override
-    public Action execute(HttpServletRequest req) throws Exception {
+    public Action execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         User user = Util.findUser(req);
         if(user==null)
             return Action.LOGIN;
@@ -23,6 +24,10 @@ public class CmdOrder implements Cmd {
             if(DAO.getDao().order.create(order))
                 return Action.PROFILE;
         }
+        String dish = Form.getString(req, "dish");
+        double price = Form.getDouble(req, "price");
+        System.out.println(dish);
+        System.out.println(price);
         return Action.ORDER;
     }
 }
