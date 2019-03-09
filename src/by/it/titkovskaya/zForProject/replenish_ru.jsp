@@ -13,12 +13,12 @@
         </c:otherwise>
     </c:choose>
 
-    <h3>REPLENISHMENT</h3>
+    <h3>ПОПОЛНЕНИЕ СЧЕТА</h3>
 
     <form class="form-horizontal-${account.id}">
         <div class="row">
-            <div class="col-md-3">Enter amount in ${account.currency} for refilling
-            your account № ${account.number}</div>
+            <div class="col-md-4"> Для пополнения счета № ${account.number} введите
+            сумму в ${account.currency} </div>
         </div>
     </form>
 
@@ -28,12 +28,12 @@
             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                    required="" value="${account.id}">
 
-            <div class="col-md-3">
+            <div class="col-md-4">
             <input id="amount" name="amount" value="10000" type="text" placeholder=""
             class="form-control input-md" required="">
             </div>
             <!-- Button -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                  <button id="confirmTransfeButton" name="confirmTransfeButton" class="btn btn-success">CONFIRM MONEY TRANSFER</button>
             </div>
         </div>
@@ -41,15 +41,18 @@
 
 
     <div class="row">
-        <label class="col-md-6 control-label" for="currency">${message}</label>
+        <label class="col-md-4 control-label" for="currency">${message}</label>
     </div>
 
-    <form class="form-horizontal" action="do?command=Profile" method="post">
+
+    <form class="form-horizontal" action="do?command=Profile" method="get">
         <fieldset>
             <!-- Button -->
             <div class="row">
-                <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Вернуться в ЛИЧНЫЙ КАБИНЕТ</button>
+                <input id="command" name="command" type="hidden" placeholder=""
+                class="form-control input-md" required="" value="Profile">
+                <div class="col-md-6">
+                     <button id="accTrans" name="accTrans" class="btn btn-info">Вернуться к ОПЕРАЦИЯМ СО СЧЕТАМИ</button>
                 </div>
             </div>
         </fieldset>

@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-3">Enter payment (transfer) amount in ${account.currency}
             which will be transferred from your account № ${account.number}</div>
-            <div class="col-md-3">Enter recipient data</div>
+            <div class="col-md-4">Enter recipient data</div>
         </div>
     </form>
 
@@ -33,28 +33,30 @@
                 class="form-control input-md" required="">
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <input id="recipient" name="recipient" value="Test Recipient" type="text" placeholder=""
                 class="form-control input-md" required="">
             </div>
 
             <!-- Button -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                  <button id="confirmTransfeButton" name="confirmTransfeButton" class="btn btn-success">CONFIRM MONEY TRANSFER</button>
             </div>
         </div>
     </form>
 
     <div class="row">
-        <label class="col-md-6 control-label" for="account">${message}</label>
+        <label class="col-md-7 control-label" for="account">${message}</label>
     </div>
 
-    <form class="form-horizontal" action="do?command=Profile" method="post">
+    <form class="form-horizontal" action="do?command=Profile" method="get">
         <fieldset>
             <!-- Button -->
             <div class="row">
-                <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Back to PERSONAL CABINET</button>
+                <input id="command" name="command" type="hidden" placeholder=""
+                class="form-control input-md" required="" value="Profile">
+                <div class="col-md-6">
+                     <button id="accTrans" name="accTrans" class="btn btn-info">Back to ACCOUNT TRANSACTIONS</button>
                 </div>
             </div>
         </fieldset>
