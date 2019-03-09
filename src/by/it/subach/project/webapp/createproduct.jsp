@@ -14,7 +14,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="name">Product Name</label>
   <div class="col-md-4">
-  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
 
   </div>
 </div>
@@ -23,7 +23,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="price">Price</label>
   <div class="col-md-4">
-  <input id="price" name="price" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="price" name="price" type="text" placeholder="" class="form-control input-md">
 
   </div>
 </div>
@@ -53,8 +53,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="okButton"></label>
   <div class="col-md-8">
-    <button id="okButton" name="okButton" class="btn btn-success">Ok</button>
-    <button id="cancelButton" name="cancelButton" class="btn btn-danger">Cancel</button>
+    <button id="ok" name="ok" class="btn btn-success">Ok</button>
+    <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
   </div>
 </div>
 

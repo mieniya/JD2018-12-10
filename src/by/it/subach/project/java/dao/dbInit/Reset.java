@@ -65,8 +65,8 @@ public class Reset {
                     "  CONSTRAINT `fk_products_categories1`" +
                     "    FOREIGN KEY (`categories_id`)" +
                     "    REFERENCES `subach`.`categories` (`id`)" +
-                    "    ON DELETE NO ACTION" +
-                    "    ON UPDATE NO ACTION)" +
+                    "    ON DELETE CASCADE" +       // no action
+                    "    ON UPDATE CASCADE)" +      // no action
                     "ENGINE = InnoDB;");
 
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `subach`.`orders` (" +
@@ -77,13 +77,13 @@ public class Reset {
                     "  CONSTRAINT `fk_orders_users1`" +
                     "    FOREIGN KEY (`user_id`)" +
                     "    REFERENCES `subach`.`users` (`id`)" +
-                    "    ON DELETE NO ACTION" +
-                    "    ON UPDATE NO ACTION," +
+                    "    ON DELETE CASCADE" +       //no action
+                    "    ON UPDATE CASCADE," +
                     "  CONSTRAINT `fk_orders_products1`" +
                     "    FOREIGN KEY (`product_id`)" +
                     "    REFERENCES `subach`.`products` (`id`)" +
-                    "    ON DELETE NO ACTION" +
-                    "    ON UPDATE NO ACTION)" +
+                    "    ON DELETE CASCADE" +       //
+                    "    ON UPDATE CASCADE)" +      //no action
                     "ENGINE = InnoDB;");
 
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `subach`.`blacklist` (" +

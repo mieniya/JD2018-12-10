@@ -14,6 +14,7 @@
             <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
             <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
             <a class="nav-item nav-link" href="do?command=Admin">Admin</a>
+            <a class="nav-item nav-link" href="do?command=Catalog">Catalog</a>
 
         </div>
     </div>

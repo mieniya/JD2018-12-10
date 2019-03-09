@@ -17,7 +17,7 @@
       <tbody>
         <tr>
           <td><a href = "<c:url value = "do?command=ViewUsers"/>">VIEW USERS</a></td>
-          <td><a href = "<c:url value = "do?command=Category"/>">VIEW PRODUCTS</a></td>
+          <td><a href = "<c:url value = "do?command=EditProducts"/>">EDIT PRODUCTS</a></td>
         </tr>
                 <tr>
                   <td><a href = "<c:url value = "do?command=CreateUser"/>">CREATE USER</a></td>

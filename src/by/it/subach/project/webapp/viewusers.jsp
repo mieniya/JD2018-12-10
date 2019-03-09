@@ -5,7 +5,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p><H1>Пользователи</H1></p>
+    <p><H3>Пользователи</H3></p>
 	<table class="table">
       <thead>
         <tr>

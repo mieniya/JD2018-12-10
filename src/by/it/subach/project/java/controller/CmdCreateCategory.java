@@ -20,6 +20,6 @@ public class CmdCreateCategory implements Cmd{
             if(dao.category.create(category))
                 return Action.INDEX;
         }
-        return Action.CATEGORY;
+        return Action.CREATECATEGORY;
     }
 }
