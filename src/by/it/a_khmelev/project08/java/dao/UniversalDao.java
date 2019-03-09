@@ -1,16 +1,15 @@
-package by.it.zagurskaya.jd03_03.dao;
-
-import by.it.a_khmelev.jd03_03.dao.InterfaceDao;
-import by.it.zagurskaya.jd03_03.ConnCreator;
+package by.it.a_khmelev.project08.java.dao;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 // Изучите чуть более сложный пример с Generics.
 // Потенциально способен обработать произольный bean со стандартными полями.
@@ -28,7 +27,7 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
     private String table; //это его таблица в базе
     private Field[] fields; //это поля bean
 
-    //конструктор DAO
+    //конструктор Dao
     public UniversalDao(Class<TypeBean> aClass, String sqlTableName) {
         this.aClass = aClass;
         this.table = sqlTableName;
@@ -48,46 +47,9 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
                 Statement statement = connection.createStatement()
         ) {
             ResultSet rs = statement.executeQuery(sql);
-
-
-//            rs.getMetaData().
-//            rs.getMetaData().
-            ResultSetMetaData metaData = rs.getMetaData();
-            IntStream.range(0, metaData.getColumnCount()).mapToObj(value -> {
-                try {
-                    return metaData.getColumnName(value);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }).collect(Collectors.toList());
-
-            // 1) выгрузить метадату ResultSet'а, т.е. номер колонки - имя колонки - тип колонки(????)
-            // мар<номеру_колонки,имя_колонки>
-            // 2) найти соответствие между именами колокок и полями объектов(бины). Т.е. имя колонки - сеттер
-            // рефлексия, поиск всех публичных методов у класса начинающихся с set*()
-            // Map<имя_колонки,метод(сетер)>
-            // 3) из сеттера вытянуть пит поля, => найти пит колонки
-            // setимя_колонки -> найти тип аргументов
-            // Map<имя_колонки,тип_поля>
-            // последнее) переходя ип записи к записи итерируясь по номерам колонок, доставать значения в типе поля и
-            //            используя сеттеры назначить значения в объекте
-            while (rs.next()) {
-                // сделать новый объект по классу
-                // итерация по номеру_колонки
-                // из 1 го Мар -Ю имя_колонки
-                // из 3 Мар -Ю тип_колонки = тип_поля
-                // из rs по номерe_колонки и типу_колонки получить значением_колонки
-                // из 2 Мар -Ю сеттер.
-                // вызвать на объекте сеттер с значением_колонки
-
-
-
-
-
-
             //            for (int i = 0; i < fields.length; i++) {
             //                System.out.println(fields[i]+":"+fields[i].getType());}
-
+            while (rs.next()) {
                 //создаем копию бина, в который будем складывать запись из Recordset
                 TypeBean newBean = newBean();
                 for (int i = 1; i < fields.length + 1; i++) {
@@ -185,7 +147,7 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
             e.printStackTrace();
         }
         String sql = "insert INTO " + table + " (" + names + ") values(" + values + ")";
-        //System.out.println(sql);
+        System.out.println(sql);
         int id = executeUpdate(sql, true);
         if (id > 0) try {
             fields[0].setAccessible(true);
