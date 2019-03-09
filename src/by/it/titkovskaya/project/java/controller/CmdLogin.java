@@ -32,7 +32,7 @@ public class CmdLogin implements Cmd {
                 return Action.PROFILE;
             } else {
                 String message = "Wrong login or password. Please, check the correctness " +
-                        "of entered data or SIGN UP";
+                        "of the entered data or SIGN UP.";
                 req.setAttribute("message", message);
             }
         }

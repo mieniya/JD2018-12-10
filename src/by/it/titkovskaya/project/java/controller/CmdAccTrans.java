@@ -28,8 +28,8 @@ public class CmdAccTrans implements Cmd {
                         return Action.PAYMENT;
                     }
                 } else {
-                    String message = "NOTIFICATION: Operation impossible. Account № "
-                            + account.getNumber() + " is locked. To perform this operation unlock " +
+                    String message = "NOTIFICATION: Operation failed. Account" + " № "
+                            + account.getNumber() + " " + "is locked. To perform this operation unlock " +
                             "previously current account or choose another one.";
                     req.setAttribute("message", message);
                 }

@@ -16,7 +16,7 @@
     <h3>ACCOUNT TRANSACTIONS </h3>
     <p>____________________________________________________________________________________________________</p>
     <div class="row">
-        <div class="col-md-2">Number</div>
+        <div class="col-md-2">Account №</div>
         <div class="col-md-2">Account Balance</div>
         <div class="col-md-2">Currency</div>
         <div class="col-md-1">Status</div>
@@ -58,11 +58,11 @@
 
     <p>____________________________________________________________________________________________________</p>
 
-    <p><mytag:paginator count="${accCount}" step="3" urlprefix="do?command=AccTrans&start="/></p>
-
     <div class="row">
         <label class="col-md-7 control-label" for="account">${message}</label>
     </div>
+
+    <p><mytag:paginator count="${accCount}" step="3" urlprefix="do?command=AccTrans&start="/></p>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>

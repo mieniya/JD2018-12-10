@@ -6,25 +6,28 @@
     <%@ include file="include/menu.jsp" %>
     <c:choose>
         <c:when test="${user.roles_id==1}">
-            <h5>${user.name} (admin)</h5>
+            <h5>${user.name} (админ)</h5>
         </c:when>
         <c:otherwise>
             <h5>${user.name}</h5>
         </c:otherwise>
     </c:choose>
 
-    <h3>ACCOUNT LOCK</h3>
+    <h3>ИНФОРМАЦИЯ ПО СЧЕТАМ</h3>
     <p>____________________________________________________________________________________________________</p>
     <div class="row">
-        <div class="col-md-2">Account №</div>
-        <div class="col-md-2">Account Balance</div>
-        <div class="col-md-2">Currency</div>
-        <div class="col-md-1">Status</div>
+        <div class="col-md-2">№ счета</div>
+        <div class="col-md-2">Остаток средств</div>
+        <div class="col-md-2">Валюта</div>
+        <div class="col-md-2">Статус</div>
     </div>
     <p>____________________________________________________________________________________________________</p>
     <c:forEach items="${accounts}" var="account">
-        <form class="form-horizontal-${account.id}" action="do?command=AccLock" method="post">
+        <form class="form-horizontal-${account.id}" action="do" method="get">
             <div class="row">
+                <input id="command" name="command" type="hidden" placeholder="" class="form-control input-md"
+                       required="" value="AccInfo">
+
                 <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                        required="" value="${account.id}">
 
@@ -46,10 +49,9 @@
                 <input id="unlock_request" name="unlock_request" type="hidden" placeholder="" class="form-control input-md"
                        required="" value="${account.unlock_request}">
 
-                <!-- Button (Double) -->
-                <div class="col-md-5">
-                    <button id="unlock" name="unlock" class="btn btn-success">Send UNLOCK request</button>
-                    <button id="lock" name="lock" class="btn btn-danger">LOCK account</button>
+                <!-- Button -->
+                <div class="col-md-4">
+                    <button id="accInfoButton" name="accInfoButton" class="btn btn-success">Получить ВЫПИСКУ ПО СЧЕТУ</button>
                 </div>
             </div>
         </form>
@@ -61,19 +63,41 @@
 
     <p>____________________________________________________________________________________________________</p>
 
-    <div class="row">
-        <label class="col-md-7 control-label" for="account">${message}</label>
-    </div>
+    <p><mytag:paginator count="${accCount}" step="3" urlprefix="do?command=AccInfo&start="/></p>
 
-    <p><mytag:paginator count="${accCount}" step="3" urlprefix="do?command=AccLock&start="/></p>
+    <h5>${messageInfo}</h5>
+    <p>${headInfo}</p>
+    <h6>${replenInfo}</h6>
+    <c:forEach items="${replenishments}" var="replenishment">
+        <form class="form-horizontal-${account.id}">
+            <div class="row">
+                <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
+                       required="" value="${replenishment.id}">
+                <div class="col-md-1">${replenishment.amount}</div>
+                <div class="col-md-2">${replenishment.date}</div>
+            </div>
+        </form>
+    </c:forEach>
+
+    <h6>${paymentInfo}</h6>
+    <c:forEach items="${payments}" var="payment">
+        <form class="form-horizontal-${account.id}">
+            <div class="row">
+                <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
+                       required="" value="${payment.id}">
+                <div class="col-md-1">${payment.amount}</div>
+                <div class="col-md-2">${payment.date}</div>
+                <div class="col-md-3">${payment.recipient}</div>
+            </div>
+        </form>
+    </c:forEach>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>
             <!-- Button -->
             <div class="row">
                 <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Back
-                     to PERSONAL CABINET</button>
+                     <button id="profileButton" name="profileButton" class="btn btn-info">Вернуться в ЛИЧНЫЙ КАБИНЕТ</button>
                 </div>
             </div>
         </fieldset>
@@ -82,5 +106,3 @@
 </div>
 </body>
 </html>
-
-

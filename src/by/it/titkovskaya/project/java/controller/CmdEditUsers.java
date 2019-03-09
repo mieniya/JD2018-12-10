@@ -26,8 +26,8 @@ public class CmdEditUsers implements Cmd {
             User user = new User(id, login, password, email, name, roles_id);
             if (req.getParameter("update") != null){
                 if (dao.user.update(user)){
-                    String message = "NOTIFICATION: Operation completed successfully. Personal account " +
-                            "of user with ID" + user.getId() + " is updated.";
+                    String message = "NOTIFICATION: Operation completed successfully. Data of user with ID"
+                            + user.getId() + " " + "is updated.";
                     req.setAttribute("message", message);
                     if (currentUser.getId()==user.getId())
                         req.getSession().setAttribute("user", user);
@@ -39,7 +39,7 @@ public class CmdEditUsers implements Cmd {
             else if (req.getParameter("delete")!=null){
                 if (dao.user.delete(user)){
                     String message = "NOTIFICATION: Operation completed successfully. Personal account " +
-                            "of user ID " + user.getId() + " is deleted.";
+                            "of user with ID" + user.getId() + " " + "is deleted.";
                     req.setAttribute("message", message);
                     if (user.getId()==currentUser.getId())
                         return Action.LOGOUT;

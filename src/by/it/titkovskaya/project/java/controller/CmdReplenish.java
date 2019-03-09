@@ -25,8 +25,8 @@ public class CmdReplenish implements Cmd {
                 replenishment.setAmount(Form.getDouble(req, "amount"));
                 replenishment.setAccounts_id(account.getId());
                 if (dao.replenishment.create(replenishment)) {
-                    String message = "NOTIFICATION: Operation completed successfully. Account № "
-                            + account.getNumber() + " was replenished by " + replenishment.getAmount()
+                    String message = "NOTIFICATION: Operation completed successfully. Account" + " № "
+                            + account.getNumber() + " " + "was replenished by" + " " + replenishment.getAmount()
                             + " " + account.getCurrency() + ".";
                     req.setAttribute("message", message);
                 } else {

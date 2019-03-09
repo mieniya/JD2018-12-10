@@ -5,18 +5,18 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name} (admin)</h5>
+    <h5>${user.name} (администратор)</h5>
 
-    <h3>ACCOUNTS </h3>
+    <h3>СПИСОК СЧЕТОВ</h3>
     <hr>
     <div class="row">
-        <div class=col-md-2>Account №</div>
-        <div class=col-md-2>Account Balance</div>
-        <div class=col-md-1>Currency</div>
-        <div class=col-md-1>User ID</div>
+        <div class=col-md-2>№ счета</div>
+        <div class=col-md-2>Остаток средств</div>
+        <div class=col-md-1>Валюта</div>
+        <div class=col-md-1>ID клиента</div>
 
-        <div class=col-md-2>Unlock Request</div>
-        <div class=col-md-2>Account Status</div>
+        <div class=col-md-2>Запрос на разблокировку</div>
+        <div class=col-md-2>Статус</div>
     </div>
     <c:forEach items="${accounts}" var="account">
         <form class="form-horizontal-${account.id}" action="do?command=EditAcc" method="post">
@@ -52,7 +52,7 @@
                     <c:choose>
                         <c:when test="${account.unlock_request==1}">
                             <input id="unlock_request" name="unlock_request" type="text" placeholder="" class="form-control input-md"
-                            required="" value=" >>> unlock <<< ">
+                            required="" value=" >>разблокировать<< ">
                         </c:when>
                         <c:otherwise>
                             <input id="unlock_request" name="unlock_request" type="text" placeholder="" class="form-control input-md"
@@ -72,7 +72,7 @@
 
                 <!-- Button -->
                 <div class="col-md-2">
-                    <button id="update" name="update" class="btn btn-success">Update status</button>
+                    <button id="update" name="update" class="btn btn-success">Обновить статус</button>
                 </div>
             </div>
         </form>
@@ -91,7 +91,7 @@
             <!-- Button -->
             <div class="row">
                 <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Back to PERSONAL CABINET</button>
+                     <button id="profileButton" name="profileButton" class="btn btn-info">Вернуться в ЛИЧНЫЙ КАБИНЕТ</button>
                 </div>
             </div>
         </fieldset>

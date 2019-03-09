@@ -5,17 +5,17 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name} (admin)</h5>
+    <h5>${user.name} (администратор)</h5>
 
-    <h3>USERS </h3>
+    <h3>СПИСОК КЛИЕНТОВ </h3>
     <hr>
     <div class="row">
         <div class=col-md-1>ID</div>
-        <div class=col-md-2>Login</div>
-        <div class=col-md-1>Password</div>
+        <div class=col-md-2>Логин</div>
+        <div class=col-md-1>Пароль</div>
         <div class=col-md-2>Email</div>
-        <div class=col-md-2>Name</div>
-        <div class=col-md-2>Role</div>
+        <div class=col-md-2>ФИО</div>
+        <div class=col-md-2>Роль</div>
     </div>
     <c:forEach items="${users}" var="user">
         <form class="form-horizontal-${user.id}" action="do?command=EditUsers" method="post">
@@ -55,8 +55,8 @@
 
                 <!-- Button (Double) -->
                 <div class="col-md-2">
-                    <button id="update" name="update" class="btn btn-success">Update</button>
-                    <button id="delete" name="delete" class="btn btn-danger">Delete</button>
+                    <button id="update" name="update" class="btn btn-success">Обновить</button>
+                    <button id="delete" name="delete" class="btn btn-danger">Удалить</button>
                 </div>
             </div>
         </form>
@@ -75,7 +75,7 @@
             <!-- Button -->
             <div class="row">
                 <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Back to PERSONAL CABINET</button>
+                     <button id="profileButton" name="profileButton" class="btn btn-info">Вернуться в ЛИЧНЫЙ КАБИНЕТ</button>
                 </div>
             </div>
         </fieldset>

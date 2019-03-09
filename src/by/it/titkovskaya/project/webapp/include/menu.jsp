@@ -9,7 +9,8 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="do?command=ChangeLang">
-            <img src="images/globus.png" height="25px">RU</a>
+                <img src="images/globus.png" height="25px">RU
+            </a>
             <a class="nav-item nav-link" href="do?command=ResetDB">Reset Database</a>
             <c:choose>
                 <c:when test="${user.roles_id==1}">

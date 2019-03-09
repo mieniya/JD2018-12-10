@@ -16,7 +16,7 @@
     <h3>ACCOUNT DETAILS</h3>
     <p>____________________________________________________________________________________________________</p>
     <div class="row">
-        <div class="col-md-2">Number</div>
+        <div class="col-md-2">Account №</div>
         <div class="col-md-2">Account Balance</div>
         <div class="col-md-2">Currency</div>
         <div class="col-md-2">Status</div>
@@ -106,5 +106,3 @@
 </div>
 </body>
 </html>
-
-

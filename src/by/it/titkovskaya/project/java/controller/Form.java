@@ -20,7 +20,7 @@ class Form {
         if (value.matches(pattern))
             return value;
         else
-            throw new SiteException("Value " + value + " is incorrect");
+            throw new SiteException("Value" + " " + value + " is incorrect");
     }
 
     static int getInt(HttpServletRequest req, String name) {

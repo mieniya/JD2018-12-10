@@ -29,8 +29,8 @@ public class CmdPayment implements Cmd {
                     payment.setRecipient(Form.getString(req, "recipient"));
                     payment.setAccounts_id(account.getId());
                     if (dao.payment.create(payment)) {
-                        String message = "NOTIFICATION: Operation completed successfully. From account № "
-                                + account.getNumber() + " was transferred " + payment.getAmount()
+                        String message = "NOTIFICATION: Operation completed successfully. From account" + " № "
+                                + account.getNumber() + " " + "was transferred" + " " + payment.getAmount()
                                 + " " + account.getCurrency() + ".";
                         req.setAttribute("message", message);
                     } else {
@@ -40,7 +40,7 @@ public class CmdPayment implements Cmd {
                     }
                 } else {
                     String message = "NOTIFICATION: Operation failed. There are no sufficient funds in " +
-                            "the account № " + account.getNumber() + ". Replenish the account on the " +
+                            "the account" + " № " + account.getNumber() + ". Replenish the account on the " +
                             "appropriate amount or choose another account.";
                     req.setAttribute("message", message);
                 }

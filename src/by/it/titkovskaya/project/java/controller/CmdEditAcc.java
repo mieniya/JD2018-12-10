@@ -29,8 +29,8 @@ public class CmdEditAcc implements Cmd {
                     account.setUnlock_request(0);
                 }
                 if (dao.account.update(account)) {
-                    String message = "NOTIFICATION: Operation completed successfully. Account № "
-                            + account.getNumber() + " status is updated.";
+                    String message = "NOTIFICATION: Operation completed successfully. Account" + " № "
+                            + account.getNumber() + " " + "status is updated.";
                     req.setAttribute("message", message);
                 } else {
                     String message = "NOTIFICATION: Operation failed.";

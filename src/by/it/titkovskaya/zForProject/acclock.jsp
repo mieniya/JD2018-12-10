@@ -6,20 +6,20 @@
     <%@ include file="include/menu.jsp" %>
     <c:choose>
         <c:when test="${user.roles_id==1}">
-            <h5>${user.name} (admin)</h5>
+            <h5>${user.name} (администратор)</h5>
         </c:when>
         <c:otherwise>
             <h5>${user.name}</h5>
         </c:otherwise>
     </c:choose>
 
-    <h3>ACCOUNT LOCK</h3>
+    <h3>БЛОКИРОВКА СЧЕТА</h3>
     <p>____________________________________________________________________________________________________</p>
     <div class="row">
-        <div class="col-md-2">Account №</div>
-        <div class="col-md-2">Account Balance</div>
-        <div class="col-md-2">Currency</div>
-        <div class="col-md-1">Status</div>
+        <div class="col-md-2">№ счета</div>
+        <div class="col-md-2">Остаток средств</div>
+        <div class="col-md-2">Валюта</div>
+        <div class="col-md-1">Статус</div>
     </div>
     <p>____________________________________________________________________________________________________</p>
     <c:forEach items="${accounts}" var="account">
@@ -48,8 +48,8 @@
 
                 <!-- Button (Double) -->
                 <div class="col-md-5">
-                    <button id="unlock" name="unlock" class="btn btn-success">Send UNLOCK request</button>
-                    <button id="lock" name="lock" class="btn btn-danger">LOCK account</button>
+                    <button id="unlock" name="unlock" class="btn btn-success">Отправить запрос на РАЗБЛОКИРОВКУ</button>
+                    <button id="lock" name="lock" class="btn btn-danger">ЗАБЛОКИРОВАТЬ счет</button>
                 </div>
             </div>
         </form>
@@ -72,8 +72,7 @@
             <!-- Button -->
             <div class="row">
                 <div class="col-md-4">
-                     <button id="profileButton" name="profileButton" class="btn btn-info">Back
-                     to PERSONAL CABINET</button>
+                     <button id="profileButton" name="profileButton" class="btn btn-info">Вернуться в ЛИЧНЫЙ КАБИНЕТ</button>
                 </div>
             </div>
         </fieldset>

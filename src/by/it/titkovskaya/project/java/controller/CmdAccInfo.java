@@ -19,7 +19,7 @@ public class CmdAccInfo implements Cmd {
         if (user != null) {
             Dao dao = Dao.getDao();
             getAccInfo(req, user, dao);
-            if (Form.isGet(req) && req.getParameter("accInfoButton")!=null) {
+            if (Form.isGet(req) && req.getParameter("accInfoButton") != null) {
                 long id = Form.getLong(req, "id");
                 Account account = dao.account.read(id);
                 String whereAccId = String.format(" WHERE `accounts_id`='%d'", account.getId());
@@ -30,7 +30,7 @@ public class CmdAccInfo implements Cmd {
                 List<Payment> payments = dao.payment.getAll(whereAccId);
                 req.setAttribute("payments", payments);
 
-                String messageInfo = "ACCOUNT № " +account.getNumber() + " STATEMENT";
+                String messageInfo = "ACCOUNT №" + " " + account.getNumber() + " " + "STATEMENT";
                 req.setAttribute("messageInfo", messageInfo);
                 String replenInfo = "Replenishments";
                 req.setAttribute("replenInfo", replenInfo);
@@ -45,10 +45,10 @@ public class CmdAccInfo implements Cmd {
     void getAccInfo(HttpServletRequest req, User user, Dao dao) throws SQLException {
         long start = 0;
         if (req.getParameter("start") != null)
-            start= Form.getLong(req, "start");
+            start = Form.getLong(req, "start");
         String where = String.format(" WHERE `users_id`='%d' LIMIT %d,3", user.getId(), start);
         List<Account> accounts = dao.account.getAll(where);
-        if (accounts.size() < 1){
+        if (accounts.size() < 1) {
             String message1 = "NOTIFICATION: You have no open accounts.";
             req.setAttribute("message1", message1);
         }

@@ -7,21 +7,21 @@
     <%@ include file="include/menu.jsp" %>
     <c:choose>
         <c:when test="${user.roles_id==1}">
-            <h5>${user.name} (admin)</h5>
+            <h5>${user.name} (администратор)</h5>
         </c:when>
         <c:otherwise>
             <h5>${user.name}</h5>
         </c:otherwise>
     </c:choose>
 
-    <h3>PERSONAL DATA</h3>
+    <h3>ЛИЧНЫЕ ДАННЫЕ</h3>
     <p>_____________________________________________________</p>
 
     <form class="form-horizontal" action="do?command=UserData" method="post">
         <fieldset>
 
             <div class="row">
-              <label class="col-md-1 control-label" for="login">Login</label>
+              <label class="col-md-1 control-label" for="login">Логин</label>
               <div class="col-md-3">
               <input id="login" name="login" value="${user.login}" type="text"
               placeholder="" class="form-control input-md" required="">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="row">
-              <label class="col-md-1 control-label" for="password">Password</label>
+              <label class="col-md-1 control-label" for="password">Пароль</label>
               <div class="col-md-3">
                 <input id="password" name="password" value="${user.password}" type="password"
                 placeholder="" class="form-control input-md" required="">
@@ -45,7 +45,7 @@
             </div>
 
             <div class="row">
-              <label class="col-md-1 control-label" for="name">Name</label>
+              <label class="col-md-1 control-label" for="name">Имя</label>
               <div class="col-md-3">
               <input id="name" name="name" value="${user.name}" type="text"
               placeholder="" class="form-control input-md">
@@ -61,8 +61,8 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <button id="update" name="update" class="btn btn-success">UPDATE data</button>
-                <button id="profileButton" name="profileButton" class="btn btn-info">Back to PERSONAL CABINET</button>
+                <button id="update" name="update" class="btn btn-success">ОБНОВИТЬ данные</button>
+                <button id="profileButton" name="profileButton" class="btn btn-info">Вернуться в ЛИЧНЫЙ КАБИНЕТ</button>
               </div>
             </div>
 

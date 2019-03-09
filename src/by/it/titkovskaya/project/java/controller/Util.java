@@ -38,6 +38,19 @@ public class Util {
         }
     }
 
+    static String findLanguage(HttpServletRequest req) {
+        HttpSession session = req.getSession(false);
+        if (session == null) {
+            return null;
+        }
+        String language = (String) session.getAttribute("language");
+        if (language == null) {
+            return null;
+        } else {
+            return language;
+        }
+    }
+
     public static String getHash(User user){
         String key = user.getEmail() + user.getLogin() + user.getPassword() + "this is salt";
         return DigestUtils.md5Hex(key);

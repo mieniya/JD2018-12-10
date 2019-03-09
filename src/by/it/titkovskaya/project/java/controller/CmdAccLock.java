@@ -5,7 +5,6 @@ import by.it.titkovskaya.project.java.beans.User;
 import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 public class CmdAccLock implements Cmd {
 
@@ -22,34 +21,33 @@ public class CmdAccLock implements Cmd {
                     if (account.getAccount_status_id() != 2) {
                         account.setAccount_status_id(2);
                         if (dao.account.update(account)) {
-                            String message = "NOTIFICATION: Operation completed successfully. Account № "
-                                    + account.getNumber() + " is locked.";
+                            String message = "NOTIFICATION: Operation completed successfully. " +
+                                    "Account" + " № " + account.getNumber() + " " + "is locked.";
                             req.setAttribute("message", message);
                         }
                     } else {
-                        String message = "NOTIFICATION: Operation failed. Account № "
-                                + account.getNumber() + " has already been locked.";
+                        String message = "NOTIFICATION: Operation failed. Account" + " № "
+                                + account.getNumber() + " " + "has already been locked.";
                         req.setAttribute("message", message);
                     }
                 } else if (req.getParameter("unlock") != null) {
                     if (account.getAccount_status_id() != 1) {
                         account.setUnlock_request(1);
                         if (dao.account.update(account)) {
-                            String message = "NOTIFICATION: Request to unlock account № "
-                                    + account.getNumber() + " accepted for processing. As soon as it is " +
+                            String message = "NOTIFICATION: Request to unlock account" + " № "
+                                    + account.getNumber() + " " + "accepted for processing. As soon as it is " +
                                     "completed you will see updated account status on pages of PERSONAL CABINET";
                             req.setAttribute("message", message);
                         }
                     } else {
-                        String message = "NOTIFICATION: Operation failed. Account № "
-                                + account.getNumber() + " is not locked.";
+                        String message = "NOTIFICATION: Operation failed. Account" + " № "
+                                + account.getNumber() + " " + "is not locked.";
                         req.setAttribute("message", message);
                     }
                 }
             }
-            String where = String.format(" WHERE `users_id`='%d'", user.getId());
-            List<Account> accounts = dao.account.getAll(where);
-            req.setAttribute("accounts", accounts);
+            CmdAccInfo info = new CmdAccInfo();
+            info.getAccInfo(req, user, dao);
             return Action.ACCLOCK;
         }
         return Action.LOGIN;
