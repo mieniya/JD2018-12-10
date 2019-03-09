@@ -65,6 +65,9 @@
         <label class="col-md-10 control-label" for="account">${message}</label>
     </div>
 
+    <hr><mytag:paginator count="${usersCount}" step="5" urlprefix="do?command=EditUsers&start="/>
+    <p> </p>
+
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>
             <!-- Button -->

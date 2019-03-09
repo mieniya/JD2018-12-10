@@ -4,10 +4,11 @@ import by.it.titkovskaya.project.java.beans.Account;
 import by.it.titkovskaya.project.java.beans.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Util {
 
@@ -45,6 +46,21 @@ public class Util {
     static void setCookie(HttpServletRequest req, Cookie cookie){
         HttpServletResponse resp = (HttpServletResponse) req.getAttribute("resp");
         resp.addCookie(cookie);
+    }
+
+    static void loadImage(HttpServletRequest req, String filename) throws IOException, ServletException {
+        Part reqPart = req.getPart("fileimg");
+        if (reqPart.getSize() >0){
+            try (InputStream fileimg = reqPart.getInputStream();
+                 FileOutputStream fileout = new FileOutputStream(
+                         req.getServletContext().getRealPath(filename));) {
+                byte[] bytes = new byte[Math.min(128*1024, fileimg.available())];
+                while (fileimg.available() > 0){
+                    int size = fileimg.read(bytes);
+                    fileout.write(bytes, 0, size);
+                }
+            }
+        }
     }
 
 }

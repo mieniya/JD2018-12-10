@@ -58,10 +58,12 @@
     </c:forEach>
 
     <div class="row">
-        <label class="col-md-7 control-label" for="account">${message}</label>
+        <label class="col-md-7 control-label" for="account">${message1}</label>
     </div>
 
     <p>____________________________________________________________________________________________________</p>
+
+    <p><mytag:paginator count="${accCount}" step="3" urlprefix="do?command=AccInfo&start="/></p>
 
     <h5>${messageInfo}</h5>
     <p>${headInfo}</p>

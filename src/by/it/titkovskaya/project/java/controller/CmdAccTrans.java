@@ -6,8 +6,6 @@ import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
 
 public class CmdAccTrans implements Cmd {
 
@@ -15,16 +13,9 @@ public class CmdAccTrans implements Cmd {
     public Action execute(HttpServletRequest req) throws Exception {
         User user = Util.findUser(req);
         if (user != null) {
-            String where = String.format(" WHERE `users_id`='%d'", user.getId());
             Dao dao = Dao.getDao();
-            List<Account> accounts = dao.account.getAll(where);
-            req.setAttribute("accounts", accounts);
-            if (accounts.size() < 1){
-                String message1 = "NOTIFICATION: You have no open accounts.";
-                req.setAttribute("message1", message1);
-            }
-            HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
-            req.setAttribute("balances", balances);
+            CmdAccInfo info = new CmdAccInfo();
+            info.getAccInfo(req, user, dao);
             if (Form.isPost(req)) {
                 long id = Form.getLong(req, "id");
                 Account account = dao.account.read(id);

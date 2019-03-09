@@ -58,6 +58,8 @@
 
     <p>____________________________________________________________________________________________________</p>
 
+    <p><mytag:paginator count="${accCount}" step="3" urlprefix="do?command=AccTrans&start="/></p>
+
     <div class="row">
         <label class="col-md-7 control-label" for="account">${message}</label>
     </div>

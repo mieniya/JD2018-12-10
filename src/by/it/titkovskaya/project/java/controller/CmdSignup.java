@@ -17,7 +17,8 @@ public class CmdSignup implements Cmd {
             User user = new User(0, login, password, email, name, 2);
             Dao dao = Dao.getDao();
             if (dao.user.create(user)){
-                return Action.LOGIN;
+                req.getSession().setAttribute("user", user);
+                return Action.PROFILE;
             }
         }
         return Action.SIGNUP;

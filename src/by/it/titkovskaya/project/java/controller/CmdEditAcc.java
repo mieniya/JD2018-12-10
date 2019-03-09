@@ -38,10 +38,16 @@ public class CmdEditAcc implements Cmd {
                 }
             }
         }
-        List<Account> accounts = dao.account.getAll();
+        long start = 0;
+        if (req.getParameter("start") != null)
+            start= Form.getLong(req, "start");
+        String where = String.format(" LIMIT %d,5", start);
+        List<Account> accounts = dao.account.getAll(where);
         req.setAttribute("accounts", accounts);
         HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
         req.setAttribute("balances", balances);
+        int accCount = dao.account.getAll().size();
+        req.setAttribute("accCount", accCount);
         return Action.EDITACC;
     }
 

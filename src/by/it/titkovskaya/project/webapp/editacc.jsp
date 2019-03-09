@@ -8,6 +8,7 @@
     <h5>${user.name} (admin)</h5>
 
     <h3>ACCOUNTS </h3>
+    <hr>
     <div class="row">
         <div class=col-md-2>Account №</div>
         <div class=col-md-2>Account Balance</div>
@@ -80,6 +81,9 @@
     <div class="row">
         <label class="col-md-10 control-label" for="account">${message}</label>
     </div>
+
+    <hr><mytag:paginator count="${accCount}" step="5" urlprefix="do?command=EditAcc&start="/>
+    <p> </p>
 
     <form class="form-horizontal" action="do?command=Profile" method="post">
         <fieldset>

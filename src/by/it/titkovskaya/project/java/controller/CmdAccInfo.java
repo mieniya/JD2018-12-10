@@ -7,6 +7,7 @@ import by.it.titkovskaya.project.java.beans.User;
 import by.it.titkovskaya.project.java.custom_DAO.Dao;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,16 +17,8 @@ public class CmdAccInfo implements Cmd {
     public Action execute(HttpServletRequest req) throws Exception {
         User user = Util.findUser(req);
         if (user != null) {
-            String where = String.format(" WHERE `users_id`='%d'", user.getId());
             Dao dao = Dao.getDao();
-            List<Account> accounts = dao.account.getAll(where);
-            if (accounts.size() < 1){
-                String message = "NOTIFICATION: You have no open accounts.";
-                req.setAttribute("message", message);
-            }
-            req.setAttribute("accounts", accounts);
-            HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
-            req.setAttribute("balances", balances);
+            getAccInfo(req, user, dao);
             if (Form.isGet(req) && req.getParameter("accInfoButton")!=null) {
                 long id = Form.getLong(req, "id");
                 Account account = dao.account.read(id);
@@ -47,5 +40,23 @@ public class CmdAccInfo implements Cmd {
             return Action.ACCINFO;
         }
         return Action.LOGIN;
+    }
+
+    void getAccInfo(HttpServletRequest req, User user, Dao dao) throws SQLException {
+        long start = 0;
+        if (req.getParameter("start") != null)
+            start= Form.getLong(req, "start");
+        String where = String.format(" WHERE `users_id`='%d' LIMIT %d,3", user.getId(), start);
+        List<Account> accounts = dao.account.getAll(where);
+        if (accounts.size() < 1){
+            String message1 = "NOTIFICATION: You have no open accounts.";
+            req.setAttribute("message1", message1);
+        }
+        req.setAttribute("accounts", accounts);
+        HashMap<Long, Double> balances = AccBalance.getAccBalances(accounts);
+        req.setAttribute("balances", balances);
+        where = String.format(" WHERE `users_id`='%d'", user.getId());
+        int accCount = dao.account.getAll(where).size();
+        req.setAttribute("accCount", accCount);
     }
 }
