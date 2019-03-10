@@ -1,6 +1,6 @@
-package by.it.medvedeva.jd03_03.dao;
+package by.it.medvedeva.project4.java.dao;
 
-import by.it.medvedeva.jd03_03.beans.User;
+import by.it.medvedeva.project4.java.beans.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class UserDao extends AbstractDao implements InterfaceDao <User> {
+public class UserDao extends AbstractDao implements InterfaceDao<User> {
 
 
 
@@ -65,8 +64,8 @@ public class UserDao extends AbstractDao implements InterfaceDao <User> {
     @Override
     public List<User> getAll(String where) throws SQLException {
         List<User> result= new ArrayList<>();
-        try (Connection connection=Connect.getConnection();
-        Statement statement = connection.createStatement()){
+        try (Connection connection= Connect.getConnection();
+             Statement statement = connection.createStatement()){
             String sql=String.format(
                     "SELECT * FROM 'users' "+where);
             ResultSet resultSet= statement.executeQuery(sql);

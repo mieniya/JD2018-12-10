@@ -1,6 +1,10 @@
-package by.it.medvedeva.jd03_03.dao;
+package by.it.medvedeva.project.java.dao;
 
 
+import by.it.medvedeva.project.java.dao.AdDao;
+import by.it.medvedeva.project.java.dao.HouseadDao;
+import by.it.medvedeva.project.java.dao.RoleDao;
+import by.it.medvedeva.project.java.dao.UserDao;
 
 public class Dao {
 

@@ -1,12 +1,11 @@
-package by.it.medvedeva.jd03_03.dao;
+package by.it.medvedeva.project.java.dao;
+
+import by.it.medvedeva.project.java.dao.Connect;
+import by.it.medvedeva.project.java.dao.InterfaceDao;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,7 +42,7 @@ public class UniversalDao<TypeBean> implements InterfaceDao<TypeBean> {
         List<TypeBean> beans = new ArrayList<>();
         String sql = String.format("SELECT * FROM %s %s ;", table, WHERE);
         try (
-                Connection connection = Connect.getConnection();
+                Connection connection = by.it.medvedeva.project.java.dao.Connect.getConnection();
                 Statement statement = connection.createStatement()
         ) {
             ResultSet rs = statement.executeQuery(sql);

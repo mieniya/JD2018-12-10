@@ -1,5 +1,4 @@
-package by.it.medvedeva.jd03_03.dao;
-
+package by.it.medvedeva.project4.java.dao;
 
 
 public class Dao {
@@ -10,6 +9,10 @@ public class Dao {
     public UserDao user;
     public AdDao ad;
     public HouseadDao housead;
+
+    public void reset(){
+        Connect.reset();
+    }
 
     private Dao() {
         role=new RoleDao();

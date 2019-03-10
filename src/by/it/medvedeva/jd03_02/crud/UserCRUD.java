@@ -12,8 +12,8 @@ public class UserCRUD {
     public boolean create(User user) throws SQLException {
         String sql = String.format(
                 "INSERT INTO `users` (`id`,`login`, `password`, `email`, `roles_id`) " +
-                        "VALUES ('%s', '%s', '%s', '%d')",
-                user.getRoles_id(), user.getLogin(), user.getEmail(),user.getPassword()
+                        "VALUES ('%s', '%s', '%s', '%s', '%d')",
+                user.getId(), user.getLogin(), user.getEmail(),user.getPassword(), user.getRoles_id()
         );
         try (Connection connection = Connect.getConnection();
              Statement statement = connection.createStatement()) {

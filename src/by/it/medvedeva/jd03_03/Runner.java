@@ -9,22 +9,17 @@ import java.sql.SQLException;
 public class Runner {
     public static void main(String[] args) throws SQLException {
 
-        Dao dao= Dao.getDao();
-        dao.reset();
-
-        User user=new User();
-        user.setLogin("LLLLLL");
-        user.setPassword("PPPPPP");
-        user.setEmail("EEEEEE");
-     //  user.Roles_Id(2);
-        if (dao.user.create(user))
-            System.out.println("CREATE: "+user);
-        user.setLogin("LLLL22222222");
+        Dao dao = Dao.getDao();
+        User user = new User(0, "Ltest", "Ptest", "Etest", 2);
+        if(dao.user.create(user))
+            System.out.println("CREATE OK: "+user);
+        user.setLogin ("TestUserUpdate");
         if (dao.user.update(user))
-            System.out.println("UPDATE: "+user);
+            System.out.println("UPDATE OK: "+user);
         user=dao.user.read(user.getId());
-        System.out.println("READ: "+user);
-       if (dao.user.delete(user))
-          System.out.println("DELETE: "+user);
+        if (user !=null)
+            System.out.println("READ OK" +user);
+
     }
-}
+
+    }

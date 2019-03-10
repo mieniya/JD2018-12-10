@@ -1,6 +1,9 @@
-package by.it.medvedeva.jd03_03.dao;
+package by.it.medvedeva.project.java.dao;
 
-import by.it.medvedeva.jd03_03.beans.User;
+import by.it.medvedeva.project.java.beans.User;
+import by.it.medvedeva.project.java.dao.AbstractDao;
+import by.it.medvedeva.project.java.dao.Connect;
+import by.it.medvedeva.project.java.dao.InterfaceDao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class UserDao extends AbstractDao implements InterfaceDao <User> {
+public class UserDao extends AbstractDao implements InterfaceDao<User> {
 
 
 
@@ -41,7 +43,7 @@ public class UserDao extends AbstractDao implements InterfaceDao <User> {
 
     @Override
     public boolean delete(User user) throws SQLException {
-        try (Connection connection = Connect.getConnection();
+        try (Connection connection = by.it.medvedeva.project.java.dao.Connect.getConnection();
              Statement statement = connection.createStatement ()) {
             String sql = String.format(
                     "DELETE FROM 'users' WHERE 'id'='%id'",
@@ -65,8 +67,8 @@ public class UserDao extends AbstractDao implements InterfaceDao <User> {
     @Override
     public List<User> getAll(String where) throws SQLException {
         List<User> result= new ArrayList<>();
-        try (Connection connection=Connect.getConnection();
-        Statement statement = connection.createStatement()){
+        try (Connection connection= Connect.getConnection();
+             Statement statement = connection.createStatement()){
             String sql=String.format(
                     "SELECT * FROM 'users' "+where);
             ResultSet resultSet= statement.executeQuery(sql);
