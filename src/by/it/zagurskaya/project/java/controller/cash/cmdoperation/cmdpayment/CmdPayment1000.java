@@ -5,7 +5,6 @@ import by.it.zagurskaya.project.java.controller.Action;
 import by.it.zagurskaya.project.java.controller.Cmd;
 import by.it.zagurskaya.project.java.controller.Form;
 import by.it.zagurskaya.project.java.controller.Util;
-import by.it.zagurskaya.project.java.controller.cash.CmdDuties;
 import by.it.zagurskaya.project.java.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,7 @@ public class CmdPayment1000 implements Cmd {
         String today = Util.getFormattedLocalDateStartDateTime(date);
 //        "yyyy-MM-dd"
         String todaySQL = Util.getFormattedLocalDateOnlyDate(date);
-        List<Duties> duties = CmdDuties.OpenDutiesUserToday(user, today);
+        List<Duties> duties = new DutiesDao().OpenDutiesUserToday(user, today);
         KassaDao kassaDao = new KassaDao();
 
 
@@ -38,26 +37,26 @@ public class CmdPayment1000 implements Cmd {
             List<SprOperations> sprOperations1000 = sprOperationsDao.getAll("WHERE `id`=" + sprOperationsId);
 
             long[] ids = Form.getLongArray(req, "id");
-            long[] summs = Form.getLongArray(req, "summ");
-            String specification = Form.getString(req, "specification", "[a-zA-Z0-9_-]{1,}");
+            double[] sums = Form.getDoubleArray(req, "sum");
+            String specification = Form.getString(req, "specification");
 
 
             UserOperationDao userOperationDao = new UserOperationDao();
-            UserOperation userOperation = new UserOperation(0, now, 1, summs[0], ids[0], user.getId(), sprOperationsId, specification, null);
+            UserOperation userOperation = new UserOperation(0, now, 1, sums[0], ids[0], user.getId(), duties.get(0).getId(), sprOperationsId, specification, null,null);
             userOperationDao.create(userOperation);
 
 
-            for (int i = 0; i < ids.length-1; i++) {
+            for (int i = 0; i < ids.length; i++) {
 
                 SprEntriesDao sprEntriesDao = new SprEntriesDao();
                 List<SprEntries> sprEntries1000 = sprEntriesDao.getAll("WHERE `sprOperationsId`=" + sprOperationsId + " AND `currencyId`=" + ids[i]);
 
 //                Kassa kassa = kassaDao.readByCurrencyIdAndDateAndDutiesNumber(ids[i],  Date.valueOf(todaySQL), duties.get(0).getNumber());
-                kassaDao.updateKassaOutSideOperation(Date.valueOf(todaySQL), duties.get(0).getNumber(), ids[i], summs[i], sprOperationsId);
+                kassaDao.updateKassaOutSideOperation(Date.valueOf(todaySQL), duties.get(0).getId(), ids[i], sums[i], sprOperationsId);
 
                 RateNBDao rateNBDao = new RateNBDao();
                 UserEntryDao userEntryDao = new UserEntryDao();
-                UserEntry userEntrys1000 = new UserEntry(0, userOperation.getId(), sprEntries1000.get(0).getId(), ids[i], sprEntries1000.get(0).getAccountDebit(), sprEntries1000.get(0).getAccountCredit(), summs[i], sprEntries1000.get(0).getIsSpending(), rateNBDao.rateNBToday(Date.valueOf(todaySQL), ids[i]));
+                UserEntry userEntrys1000 = new UserEntry(0, userOperation.getId(), sprEntries1000.get(0).getId(), ids[i], sprEntries1000.get(0).getAccountDebit(), sprEntries1000.get(0).getAccountCredit(), sums[i], sprEntries1000.get(0).getIsSpending(), rateNBDao.rateNBToday(Date.valueOf(todaySQL), ids[i]));
                 userEntryDao.create(userEntrys1000);
 
             }

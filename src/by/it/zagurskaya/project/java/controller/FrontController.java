@@ -6,7 +6,6 @@ import by.it.zagurskaya.project.java.dao.RoleDao;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +23,6 @@ public class FrontController extends HttpServlet {
         List<Role> roles = new ArrayList<Role>();
 
         try {
-//            List<Role> roles = Dao.getDao().role.getAll();
             roles.addAll(roleDao.getAll());
             servletContext.setAttribute("roles", roles);
         } catch (SQLException e) {

@@ -9,8 +9,7 @@ import by.it.zagurskaya.project.java.controller.cash.cmdoperation.CmdPayment;
 import by.it.zagurskaya.project.java.controller.cash.cmdoperation.CmdUseroperations;
 import by.it.zagurskaya.project.java.controller.cash.cmdoperation.cmdcheck.*;
 import by.it.zagurskaya.project.java.controller.cash.cmdoperation.cmdpayment.*;
-import by.it.zagurskaya.project.java.controller.cash.cmdreport.CmdEntries;
-import by.it.zagurskaya.project.java.controller.cash.cmdreport.CmdSprReports;
+import by.it.zagurskaya.project.java.controller.cash.cmdreport.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,11 +45,14 @@ public enum Action {
 
 //   CASH / CMDOPERATION/CMDPAYMENT
     SELECTPAYMENT(new CmdSelectPayment()),
-    PAYMENT10(new CmdPayment10()),
-    PAYMENT20(new CmdPayment20()),
+    PAYMENT10_01(new CmdPayment10_01()),
+    PAYMENT10_02(new CmdPayment10_02()),
+    PAYMENT20_01(new CmdPayment20_01()),
+    PAYMENT20_02(new CmdPayment20_02()),
     PAYMENT998(new CmdPayment998()),
     PAYMENT1000(new CmdPayment1000()),
     PAYMENT1100(new CmdPayment1100()),
+    PAYMENT1100BALANCE(new CmdPayment1100Balance()),
 
 //   CASH / CMDOPERATION/CMDCHECK
     CHECK10(new CmdCheck10()),
@@ -63,6 +65,9 @@ public enum Action {
 
     //    CASH / CMDREPORT
     SPRREPORTS(new CmdSprReports()),
+    REPORT1(new CmdReport1()),
+    REPORT2(new CmdReport2()),
+    REPORT3(new CmdReport3()),
     ENTRIES(new CmdEntries());
 
     Cmd command;

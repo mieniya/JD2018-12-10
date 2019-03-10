@@ -16,9 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Auth implements Filter {
 
@@ -30,7 +28,7 @@ public class Auth implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
-        List<Cookie> cookieList = Arrays.asList(req.getCookies());
+        List<Cookie> cookieList = Optional.ofNullable(req.getCookies()).map(Arrays::asList).orElse(Collections.emptyList());
         String login = cookieList.stream().filter(c -> "login".equals(c.getName())).findAny().map(Cookie::getValue).orElse(null);
         String hash = cookieList.stream().filter(c -> "hash".equals(c.getName())).findAny().map(Cookie::getValue).orElse(null);
 

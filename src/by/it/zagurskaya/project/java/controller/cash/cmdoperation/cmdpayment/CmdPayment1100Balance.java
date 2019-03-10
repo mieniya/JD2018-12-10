@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
-public class CmdPayment1100 implements Cmd {
+public class CmdPayment1100Balance implements Cmd {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         User user = Util.findUser(req);
@@ -29,6 +29,9 @@ public class CmdPayment1100 implements Cmd {
         CurrencyDao currencyDao = new CurrencyDao();
         List<Currency> currencies = currencyDao.getAll();
         req.setAttribute("currencies", currencies);
+
+        List<Kassa> balanceList = kassaDao.getAll("WHERE `userId`=" + user.getId() + " AND `dutiesId`=" + duties.get(duties.size()-1).getId());
+        req.setAttribute("balanceList", balanceList);
 
         if (Form.isPost(req)) {
             if (req.getParameter("enter") != null) {
@@ -63,16 +66,9 @@ public class CmdPayment1100 implements Cmd {
 
                 Action.CHECK1100.setPATH("/cash/operation/check/");
                 return Action.CHECK1100;
-
-            } else if (req.getParameter("balance") != null) {
-
-
-                Action.PAYMENT1100BALANCE.setPATH("/cash/operation/payment/");
-                return Action.PAYMENT1100BALANCE;
-
             }
         }
-        Action.PAYMENT1100.setPATH("/cash/operation/payment/");
-        return Action.PAYMENT1100;
+        Action.PAYMENT1100BALANCE.setPATH("/cash/operation/payment/");
+        return Action.PAYMENT1100BALANCE;
     }
 }
