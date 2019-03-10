@@ -16,8 +16,6 @@ public class CmdEditRequests implements Cmd {
     public Action execute(HttpServletRequest req) throws SiteException, SQLException {
         Dao dao = Dao.getDao();
 
-
-        System.out.println("req::: "+req.getMethod());
         if (Form.isPost(req)) {
             long id = Form.getLong(req, "id");
             String type = Form.getString(req, "type");
