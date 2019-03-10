@@ -33,7 +33,7 @@ public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
     @Override
     public boolean update(Request request) {
         String sql = String.format(
-                "UPDATE `requests` SET `type` = '%s', `date_create` = '%s', `date_complete` = '%s', `user_id` = '%d', `status_id` = '%d', `address_id` = '%d' WHERE `users`.`id` = %d",
+                "UPDATE `requests` SET `type` = '%s', `date_create` = '%s', `date_complete` = '%s', `user_id` = '%d', `status_id` = '%d', `address_id` = '%d' WHERE `users`.`id` = '%d'",
                 request.getType(), request.getDate_create(), request.getDate_complete(), request.getUser_id(), request.getStatus_id(), request.getAddress_id(), request.getId()
         );
         return (0 < executeUpdate(sql));

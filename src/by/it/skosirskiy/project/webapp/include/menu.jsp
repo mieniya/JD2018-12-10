@@ -10,9 +10,11 @@
         <div class="navbar-nav">
             <c:choose>
                 <c:when test="${user!=null}">
-                    <mytag:menu command="EditUsers" text="Администрирование"/>
+                    <mytag:menu command="EditUsers" text="Администрирование пользователей"/>
+                    <mytag:menu command="EditRequests" text="Администрирование заявок"/>
                     <mytag:menu command="CreateRequest" text="Создать объявление"/>
                     <mytag:menu command="ResetDB" text="Сброс базы данных"/>
+
                 </c:when>
                 <c:otherwise>
 

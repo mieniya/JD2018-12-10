@@ -21,7 +21,6 @@
                 <div class="col-md-2">
                     <input id="login" name="login" type="text" placeholder="" class="form-control input-md"
                            required="" value="${user.login}">
-
                 </div>
 
                 <div class="col-md-2">

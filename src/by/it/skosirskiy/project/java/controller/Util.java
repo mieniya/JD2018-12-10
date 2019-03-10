@@ -1,6 +1,7 @@
 package by.it.skosirskiy.project.java.controller;
 
 
+import by.it.skosirskiy.project.java.beans.Request;
 import by.it.skosirskiy.project.java.beans.Status;
 import by.it.skosirskiy.project.java.beans.User;
 import by.it.skosirskiy.project.java.dao.Dao;
@@ -25,6 +26,18 @@ public class Util {
             return null;
         } else {
             return (User) oUser;
+        }
+    }
+
+    static Request findRequest(HttpServletRequest req) {
+        HttpSession session = req.getSession(false);
+        if (session==null)
+            return null;
+        Object oRequest = session.getAttribute("request");
+        if (oRequest == null) {
+            return null;
+        } else {
+            return (Request) oRequest;
         }
     }
     static List<Status> getStatuses(HttpServletRequest req) throws SQLException {

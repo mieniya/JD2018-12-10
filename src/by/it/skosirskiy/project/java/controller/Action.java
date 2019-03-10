@@ -11,6 +11,7 @@ public enum Action{
     LOGOUT(new CmdLogout()),
     PROFILE(new CmdProfile()),
     CREATEREQUEST(new CmdCreateRequest()),
+    EDITREQUESTS(new CmdEditRequests()),
     RESETDB(new CmdResetDB()),
     EDITUSERS(new CmdEditUsers()),
     SIGNUP(new CmdSignup());

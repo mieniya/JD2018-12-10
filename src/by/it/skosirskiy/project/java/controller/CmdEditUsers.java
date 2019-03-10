@@ -18,7 +18,7 @@ public class CmdEditUsers implements Cmd {
             String password = Form.getString(req, "password");
             String email = Form.getString(req, "email");
             long roles_id = Form.getLong(req, "roles_id");
-            User user = new User(id, login, email, password, roles_id);
+            User user = new User(id, login,  password, email, roles_id);
             User currentUser = Util.findUser(req);
             if (req.getParameter("update") != null) {
                 dao.user.update(user);

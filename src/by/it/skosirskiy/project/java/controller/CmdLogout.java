@@ -9,7 +9,6 @@ public class CmdLogout implements Cmd {
         req.getSession().invalidate();
         HttpServletResponse resp =
                 (HttpServletResponse) req.getAttribute("resp");
-
         return Action.LOGIN;
     }
 }
