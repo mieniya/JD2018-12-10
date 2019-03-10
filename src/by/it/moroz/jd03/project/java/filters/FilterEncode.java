@@ -1,4 +1,4 @@
-package by.it.moroz.jd03.project.java;
+package by.it.moroz.jd03.project.java.filters;
 
 import javax.servlet.*;
 import java.io.IOException;

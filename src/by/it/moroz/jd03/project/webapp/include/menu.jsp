@@ -9,7 +9,12 @@
         <div class="navbar-nav">
             <c:choose>
                 <c:when test="${user!=null}">
-                    <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+                    <c:if test="${user.roles_id==1}">
+                        <a class="nav-item nav-link" href="do?command=Admin">Admin</a>
+                    </c:if>
+                    <c:if test="${user.roles_id!=1}">
+                        <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+                    </c:if>
                 </c:when>
                 <c:otherwise>
                     <a class="nav-item nav-link" href="do?command=Login">Login</a>

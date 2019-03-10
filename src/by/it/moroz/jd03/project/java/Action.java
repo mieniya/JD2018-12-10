@@ -11,7 +11,8 @@ public enum Action {
     ORDER(new CmdOrder()),
     PROFILE(new CmdProfile()),
     RESET(new CmdReset()),
-    RESTAURANT(new CmdRestaurant());
+    RESTAURANT(new CmdRestaurant()),
+    ADMIN(new CmdAdmin());
 
     Action(Cmd command) {
         this.command = command;

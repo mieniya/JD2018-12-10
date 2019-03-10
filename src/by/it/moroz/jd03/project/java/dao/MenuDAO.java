@@ -27,14 +27,14 @@ public class MenuDAO extends AbstractDAO implements InterfaceDAO<Menu> {
 
     @Override
     public boolean update(Menu menu) throws SQLException {
-        String sql = String.format("UPDATE `menu` SET `name`='%s', `price`='%f', " +
+        String sql = String.format("UPDATE `moroz`.`menu` SET `name`='%s', `price`='%f', " +
                 "WHERE `id`='%d'", menu.getName(), menu.getPrice(), menu.getId());
         return executeUpdate(sql);
     }
 
     @Override
     public boolean delete(Menu menu) throws SQLException {
-        String sql = String.format("DELETE FROM `menu` WHERE `id`='%d'", menu.getId());
+        String sql = String.format("DELETE FROM `moroz`.`menu` WHERE `id`='%d'", menu.getId());
         return executeUpdate(sql);
     }
 

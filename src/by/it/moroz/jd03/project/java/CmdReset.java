@@ -33,8 +33,8 @@ public class CmdReset implements Cmd {
     }
 
     private void createDB() {
-        try (Connection connection = ConnCreator.getConnection()) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = ConnCreator.getConnection();
+            Statement statement = connection.createStatement()){
             statement.executeUpdate(String.format("%s","CREATE SCHEMA IF NOT EXISTS `moroz` DEFAULT CHARACTER SET utf8 ;"));
             statement.executeUpdate(String.format("%s","CREATE TABLE IF NOT EXISTS `moroz`.`roles` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
@@ -82,8 +82,8 @@ public class CmdReset implements Cmd {
                     "  CONSTRAINT `fk_orders_Menu1`" +
                     "    FOREIGN KEY (`menu_id`)" +
                     "    REFERENCES `moroz`.`menu` (`id`)" +
-                    "    ON DELETE NO ACTION" +
-                    "    ON UPDATE NO ACTION)" +
+                    "    ON DELETE RESTRICT" +
+                    "    ON UPDATE RESTRICT)" +
                     "ENGINE = InnoDB;"));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,8 +91,8 @@ public class CmdReset implements Cmd {
     }
 
     private void addMenu() {
-        try (Connection connection = ConnCreator.getConnection()) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = ConnCreator.getConnection();
+            Statement statement = connection.createStatement()){
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'steak', 29.6);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'pizza', 13.4);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'spaghetti', 11.6);"));
@@ -104,8 +104,8 @@ public class CmdReset implements Cmd {
     }
 
     private void addRoles() {
-        try (Connection connection = ConnCreator.getConnection()) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = ConnCreator.getConnection();
+            Statement statement = connection.createStatement()){
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');"));
@@ -115,17 +115,17 @@ public class CmdReset implements Cmd {
     }
 
     private void addUsers(){
-        try(Connection connection = ConnCreator.getConnection())  {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, " +
+        try(Connection connection = ConnCreator.getConnection();
+            Statement statement = connection.createStatement()){
+             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, " +
                     "`name`, `surname`, `numberphone`, `roles_id`) " +
                     "VALUES (DEFAULT, 'TrinzoA', 'qwerty123', 'trizzzno@gmail.com', 'Nezavisimosti, 54-84', " +
                     "'Andrei', 'Trizno', 298563456, 2);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, `name`, " +
                     "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, 'BorokhaM', 'borokha', " +
-                    "NULL, NULL, 'Maria', 'Borokha', NULL, 1);"));
+                    "'borokhaM@gmail.com', NULL, 'Maria', 'Borokha', NULL, 1);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, `name`, " +
-                    "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, NULL, NULL, NULL, 'Kedishko, 3-1', " +
+                    "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, 'Vlad', NULL, NULL, 'Kedishko, 3-1', " +
                     "'Vladislau', 'Makarevich', 447568394, 3);"));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,8 +134,8 @@ public class CmdReset implements Cmd {
     }
 
     private void addOrder() {
-        try (Connection connection = ConnCreator.getConnection()) {
-            Statement statement = connection.createStatement();
+        try (Connection connection = ConnCreator.getConnection();
+            Statement statement = connection.createStatement()){
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `menu_id`, `count`, `check`, `users_id`) " +
                     "VALUES (DEFAULT, 1, 2, 59.2, 1);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`orders` (`id`, `menu_id`, `count`, `check`, `users_id`) " +

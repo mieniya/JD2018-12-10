@@ -12,7 +12,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="login">Login</label>
   <div class="col-md-4">
-  <input id="login" name="login" value="TestUser" type="text" placeholder="" class="form-control input-md"
+  <input id="login" name="login" type="text" placeholder="" class="form-control input-md"
   required="">
 
   </div>
@@ -21,7 +21,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-4">
-    <input id="password" name="password" value="testPassword" type="password" placeholder=""
+    <input id="password" name="password" type="password" placeholder=""
     class="form-control input-md" required="">
 
   </div>
@@ -30,7 +30,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Email</label>
   <div class="col-md-4">
-  <input id="email" name="email" value="testEmail@gmail.com" type="text" placeholder=""
+  <input id="email" name="email" type="text" placeholder="youremail@gmail.com"
   class="form-control input-md" required="">
 
   </div>
@@ -39,7 +39,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="address">Address</label>
   <div class="col-md-4">
-  <input id="address" name="address" value="TestAddress, 1-2" type="text" placeholder="" class="form-control input-md">
+  <input id="address" name="address" type="text" placeholder="Независимости, 5-15" class="form-control input-md">
 
   </div>
 </div>
@@ -47,7 +47,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="name">Name</label>
   <div class="col-md-4">
-  <input id="name" name="name" value="TestName" type="text" placeholder="" class="form-control input-md">
+  <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
 
   </div>
 </div>
@@ -55,7 +55,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="surname">Surname</label>
   <div class="col-md-4">
-  <input id="surname" name="surname" value="TestSurname" type="text" placeholder="" class="form-control input-md">
+  <input id="surname" name="surname" type="text" placeholder="" class="form-control input-md">
 
   </div>
 </div>
@@ -63,7 +63,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="numberphone">Phone Number</label>
   <div class="col-md-4">
-  <input id="numberphone" name="numberphone" value="336483064" type="text" placeholder="" class="form-control input-md">
+  <input id="numberphone" name="numberphone" type="text" placeholder="336483064" class="form-control input-md">
 
   </div>
 </div>

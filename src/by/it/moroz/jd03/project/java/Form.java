@@ -20,8 +20,8 @@ public class Form {
         return getString(req, name, ".*");
     }
 
-    static int getInt(HttpServletRequest req, String numberphone, String pattern) throws SiteException {
-        String number = req.getParameter(numberphone);
+    static int getInt(HttpServletRequest req, String name, String pattern) throws SiteException {
+        String number = req.getParameter(name);
         if(number.matches(pattern))
             return Integer.parseInt(number);
         else
@@ -37,8 +37,4 @@ public class Form {
         return Long.parseLong(number);
     }
 
-    static double getDouble(HttpServletRequest req, String name) {
-        String str = req.getParameter(name);
-        return Double.parseDouble(str);
-    }
 }

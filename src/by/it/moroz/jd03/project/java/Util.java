@@ -6,7 +6,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-class Util {
+public class Util {
 
     static User findUser(HttpServletRequest req) {
         HttpSession session = req.getSession(false);
@@ -20,7 +20,7 @@ class Util {
         }
     }
 
-    static String getHash(User user) {
+    public static String getHash(User user) {
         String key = user.getEmail() + user.getLogin() + user.getPassword() + "SHA1PRNG";
         return DigestUtils.md5Hex(key);
     }

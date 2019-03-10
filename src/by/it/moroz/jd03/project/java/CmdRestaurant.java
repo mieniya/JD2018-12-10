@@ -14,6 +14,7 @@ public class CmdRestaurant implements Cmd {
         if(Form.isPost(req)){
             return Action.ORDER;
         }
+        req.getSession().setMaxInactiveInterval(10*60);
         List<Menu> menu = DAO.getDao().menu.getAll();
         req.setAttribute("menu", menu);
         User user = Util.findUser(req);
