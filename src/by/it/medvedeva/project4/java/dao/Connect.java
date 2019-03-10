@@ -83,7 +83,7 @@ public class Connect {
                     "  `price` DOUBLE NULL," +
                     "  `users_id` INT NOT NULL," +
                     "  PRIMARY KEY (`id`)," +
-                    "  CONSTRAINT `fk_ads_users1`" +
+                    "  CONSTRAINT `users_id_users1`" +
                     "    FOREIGN KEY (`users_id`)" +
                     "    REFERENCES `medvedeva`.`users` (`id`)" +
                     "    ON DELETE CASCADE" +

@@ -30,10 +30,10 @@ enum Action {
             jsp ="/login.jsp";
         }
     },
-    LOGOUT {
+    PROFILE {
         {
-            cmd = new CmdLogout();
-            jsp ="/logout.jsp";
+            cmd = new CmdProfile();
+            jsp ="/profile.jsp";
         }
     },
     ERROR {

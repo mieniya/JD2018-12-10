@@ -19,7 +19,7 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                     String sql = String.format("INSERT INTO 'users' ('login', 'email', 'password', roles_id')" +
                     "VALUES ('%s','%s','%s','%d')",
                     user.getLogin(), user.getEmail(),
-                    user.getPassword(), user.getFk_roles());
+                    user.getPassword(), user.getroles_id());
 
            user.setId(executeCreate(sql));
 
@@ -32,7 +32,7 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                     "UPDATE `users` " +
                             "SET `login`='%s',`email`='%s',`password`='%s',`roles_id`='%d' " +
                             "WHERE `id`='%d'",
-                    user.getLogin(), user.getEmail(), user.getPassword(), user.getFk_roles(),
+                    user.getLogin(), user.getEmail(), user.getPassword(), user.getroles_id(),
                     user.getId());
 
         return executeUpdate(sql);
@@ -75,7 +75,7 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                 user.setLogin(resultSet.getString("login"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
-                user.setFk_roles(resultSet.getInt("roles_id"));
+                user.setroles_id(resultSet.getInt("roles_id"));
                 result.add(user);
             }
         }

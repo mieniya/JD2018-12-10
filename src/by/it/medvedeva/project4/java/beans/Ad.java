@@ -5,13 +5,13 @@ import java.util.Objects;
 public class Ad {
     private int id;
     private String description ;
-    private  String  adress;
+    private  String  address;
     private int floor;
     private  int floors;
     private int rooms;
     private  double area;
     private double price;
-    private int fk_ads;
+    private int users_id;
 
     public int getId() {
         return id;
@@ -29,12 +29,12 @@ public class Ad {
         this.description = description;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getaddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setaddress(String address) {
+        this.address = address;
     }
 
     public int getFloor() {
@@ -77,12 +77,12 @@ public class Ad {
         this.price = price;
     }
 
-    public int getFk_ads() {
-        return fk_ads;
+    public int getusers_id() {
+        return users_id;
     }
 
-    public void setFk_ads(int fk_ads) {
-        this.fk_ads = fk_ads;
+    public void setusers_id(int users_id) {
+        this.users_id = users_id;
     }
 
 
@@ -97,26 +97,26 @@ public class Ad {
                 rooms == ad.rooms &&
                 Double.compare(ad.area, area) == 0 &&
                 Double.compare(ad.price, price) == 0 &&
-                fk_ads == ad.fk_ads &&
+                users_id == ad.users_id &&
                 Objects.equals(description, ad.description) &&
-                Objects.equals(adress, ad.adress);
+                Objects.equals(address, ad.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, adress, floor, floors, rooms, area, price, fk_ads);
+        return Objects.hash(id, description, address, floor, floors, rooms, area, price, users_id);
     }
 
-    public Ad(int id, String description, String adress, int floor, int floors, int rooms, double area, double price, int fk_ads) {
+    public Ad(int id, String description, String address, int floor, int floors, int rooms, double area, double price, int users_id) {
         this.id = id;
         this.description = description;
-        this.adress = adress;
+        this.address = address;
         this.floor = floor;
         this.floors = floors;
         this.rooms = rooms;
         this.area = area;
         this.price = price;
-        this.fk_ads = fk_ads;
+        this.users_id = users_id;
     }
 
     public Ad() {
@@ -127,13 +127,13 @@ public class Ad {
         return "Ad{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 ", floor=" + floor +
                 ", floors=" + floors +
                 ", rooms=" + rooms +
                 ", area=" + area +
                 ", price=" + price +
-                ", fk_ads=" + fk_ads +
+                ", users_id=" + users_id +
                 '}';
     }
 }

@@ -7,7 +7,7 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private int fk_roles;
+    private int roles_id;
 
     public int getId() {
         return id;
@@ -41,12 +41,12 @@ public class User {
         this.email = email;
     }
 
-    public int getFk_roles() {
-        return fk_roles;
+    public int getroles_id() {
+        return roles_id;
     }
 
-    public void setFk_roles(int fk_roles) {
-        this.fk_roles = fk_roles;
+    public void setroles_id(int roles_id) {
+        this.roles_id = roles_id;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                fk_roles == user.fk_roles &&
+                roles_id == user.roles_id &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email);
@@ -63,15 +63,15 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, email, fk_roles);
+        return Objects.hash(id, login, password, email, roles_id);
     }
 
-    public User(int i, String login, String password, String email, int fk_roles) {
+    public User(int i, String login, String password, String email, int roles_id) {
         this.id =  id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.fk_roles = fk_roles;
+        this.roles_id = roles_id;
     }
 
     public User() {
@@ -84,7 +84,7 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", fk_roles=" + fk_roles +
+                ", roles_id=" + roles_id +
                 "}";
     }
 }

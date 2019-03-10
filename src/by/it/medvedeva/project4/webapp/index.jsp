@@ -4,7 +4,10 @@
 <div class="container">
 
 <%@ include file="include/menu.htm" %>
-<p>INDEX: ${message}</p>
+<p>ALL ADS: <br> ${ads}
+ALL HOUSEADS: <br> ${houseads}
+
+</p>
 </div>
 </body>
 </html>

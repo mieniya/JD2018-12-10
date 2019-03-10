@@ -6,7 +6,7 @@ public class Housead {
 
         private int id;
         private String description;
-        private String adress;
+        private String address;
         private int floors;
         private double groundsquare;
         private int rooms;
@@ -29,12 +29,12 @@ public class Housead {
                 this.description = description;
         }
 
-        public String getAdress() {
-                return adress;
+        public String getaddress() {
+                return address;
         }
 
-        public void setAdress(String adress) {
-                this.adress = adress;
+        public void setaddress(String address) {
+                this.address = address;
         }
 
         public int getFloors() {
@@ -89,18 +89,18 @@ public class Housead {
                         Double.compare(housead.price, price) == 0 &&
                         users_id == housead.users_id &&
                         Objects.equals(description, housead.description) &&
-                        Objects.equals(adress, housead.adress);
+                        Objects.equals(address, housead.address);
         }
 
         @Override
         public int hashCode() {
-                return Objects.hash(id, description, adress, floors, groundsquare, rooms, price, users_id);
+                return Objects.hash(id, description, address, floors, groundsquare, rooms, price, users_id);
         }
 
-        public Housead(int id, String description, String adress, int floors, double groundsquare, int rooms, double price, int users_id) {
+        public Housead(int id, String description, String address, int floors, double groundsquare, int rooms, double price, int users_id) {
                 this.id = id;
                 this.description = description;
-                this.adress = adress;
+                this.address = address;
                 this.floors = floors;
                 this.groundsquare = groundsquare;
                 this.rooms = rooms;
@@ -116,7 +116,7 @@ public class Housead {
                 return "Housead{" +
                         "id=" + id +
                         ", description='" + description + '\'' +
-                        ", adress='" + adress + '\'' +
+                        ", address='" + address + '\'' +
                         ", floors=" + floors +
                         ", groundsquare=" + groundsquare +
                         ", rooms=" + rooms +
