@@ -3,13 +3,13 @@
 <%@ include file="/../include/head.jsp" %>
 <body>
     <div class="container">
-        <%@ include file="/../include/menucash.jsp" %>
         <%@ include file="/../include/menucashnew.jsp" %>
-        <br>
-        <p>Cash MAIN ${message}</p>
-         <h5> Пользователь ${user.login}</h5>
-         <p>duties: ${duties}</p>
-         <p>notduties: ${notduties}</p>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <H4> ${messageDuties}</H4>
     </div>
 </body>
 </html>

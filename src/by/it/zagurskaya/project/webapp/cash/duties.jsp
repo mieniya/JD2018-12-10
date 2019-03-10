@@ -5,28 +5,40 @@
 <div class="container">
     <%@ include file="/../include/menucashnew.jsp" %>
     <br>
-    <p>Cash DUTIES ${message}</p>
-     <p>User: ${user}</p>
-     <p>User: ${user.login}</p>
-     <p>User: ${user.id}</p>
-     <p>duties: ${duties}</p>
-     <p>duties: ${duties.timestamp}</p>
-     <p>duties: ${duties.id}</p>
-           <form class="form-horizontal" action="do?command=Duties" method="post">
+    <br>
+    <br>
+    <br>
+    <br>
+     <H4> ${messageDuties}</H4>
+        --------------------------------------------------------------------------------------------------------------------------------------
+        <div class="row">   <div class=col-md-2>|Пользователь</div>
+                            <div class=col-md-3>|Время открытия</div>
+                            <div class=col-md-2>|Номер смены</div>
+                            <div class=col-md-2>|Признак закрытия</div>
+                            <div class=col-md-1>|</div></div>
+        --------------------------------------------------------------------------------------------------------------------------------------
+                <div class="row">
+                    <div class="col-md-2"> <c:forEach items="${users}" var="users">
+                    <c:if test="${duties.userId==users.id}" >|${users.login} </c:if>
+                    </c:forEach></div>
+                    <div class="col-md-3">|${duties.timestamp}</div>
+                    <div class="col-md-2">|${duties.number}</div>
+                    <div class="col-md-2">|${duties.isClose}</div>
+                    <div class="col-md-1">|</div>
+                </div>
+        --------------------------------------------------------------------------------------------------------------------------------------
+    <br>
+    <br>
+        <form class="form-horizontal" action="do?command=Duties" method="post">
            <fieldset>
-
-           <legend>Form Name</legend>
-
                <div class="form-group">
-                 <label class="col-md-4 control-label" for="button1id">Duties</label>
                  <div class="col-md-8">
-                   <button id="open" name="open" class="btn btn-success">Open</button>
-                   <button id="close" name="close" class="btn btn-danger">Close</button>
+                   <button id="open" name="open" class="btn btn-success">Открыть смену</button>
+                   <button id="close" name="close" class="btn btn-danger">Закрыть смену</button>
                  </div>
                </div>
-
            </fieldset>
-           </form>
+        </form>
 </div>
 </body>
 </html>

@@ -36,7 +36,9 @@
 
 .menu-nav ul {
     list-style:none;
+    padding-left: 0px;
     color: #FFF;
+
 }
 
 .menu-nav ul li {
@@ -63,6 +65,16 @@
    -khtml-border-radius: 8px 0 0 8px;
    -webkit-border-radius: 8px 0 0 8px;
 }
+.menu-nav li.last{
+    float: right;
+}
+.menu-nav li.last a {
+    border-radius: 0 8px 8px 0;
+   -moz-border-radius: 0 8px 8px 0;
+   -khtml-border-radius: 0 8px 8px 0;
+   -webkit-border-radius: 0 8px 8px 0;
+}
+
 .menu-nav ul li a:hover {
     background: #647db5;
     background: -moz-linear-gradient(top, #395593, #647db5);

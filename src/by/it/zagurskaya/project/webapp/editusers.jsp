@@ -5,7 +5,8 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p>Users: ${users}</p>
+    <br>
+    <H4>Пользователи</H4>
     <div class="row">
         <div class=col-md-2>Логин</div>
         <div class=col-md-2>Пароль</div>

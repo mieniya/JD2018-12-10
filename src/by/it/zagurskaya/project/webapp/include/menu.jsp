@@ -11,7 +11,7 @@
             <a class="nav-item nav-link" href="do?command=EditUsers">Админка</a>
              <c:choose>
                  <c:when test="${user!=null}">
-                     <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+                     <a class="nav-item nav-link" href="do?command=Profile">Профайл</a>
                      <a class="nav-item nav-link" href="do?command=Main">Cash</a>
                  </c:when>
                  <c:otherwise>

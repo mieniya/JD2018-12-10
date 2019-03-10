@@ -7,10 +7,13 @@
     <br>
     <br>
     <br>
-    <p>Cash Operation ${message}</p>
+     <H4 style="color:#ff0000">${message}</H4>
+    <br>
+    <br>
      <form class="form-horizontal" action="do?command=Payment" method="post">
         <fieldset>
-        <legend>Select Operation</legend>
+        <legend>Выберите операцию </legend>
+        <br>
             <div class="col-md-4">
                 <select id="SprOperationsId" name="SprOperationsId" class="form-control">
                     <c:forEach items="${sprOperationsAll}" var="sprOperationsAll">
@@ -18,7 +21,8 @@
                     </c:forEach>
                 </select>
             </div>
-
+            <br>
+            <br>
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="enterButton"></label>

@@ -6,7 +6,7 @@
     <%@ include file="/../include/menucashnew.jsp" %>
     <br>
     <H4>Инкассация</H4>
-    <form class="form-horizontal" action="do?command=Payment1100" method="post">
+    <form class="form-horizontal" action="do?command=Payment1100Balance" method="post">
         <fieldset>
         <div class="row">
             <div class=col-md-2>Код валюты</div>
@@ -14,6 +14,8 @@
             <div class=col-md-2>Сумма</div>
         </div>
         <c:forEach items="${currencies}" var="currencies">
+            <c:forEach items="${balanceList}" var="balance">
+            <c:if test="${balance.currencyId==currencies.id}" >
                 <div class="row">
                     <div class="col-md-2">
                         <input id="id" name="id" type="text" placeholder="" class="form-control input-md"
@@ -27,10 +29,12 @@
 
                     <div class="col-md-2">
                         <input id="sum" name="sum" type="text" placeholder="" class="form-control input-md"
-                               required="" value="500">
+                               required="" value="${balance.balance}">
                     </div>
 
                 </div>
+            </c:if>
+            </c:forEach>
         </c:forEach>
         <br>
             <p>Описание:</p>
@@ -43,7 +47,6 @@
         <div class="form-group">
             <div class="col-md-8">
                 <button id="enter" name="enter" class="btn btn-primary">Провести</button>
-                <button id="balance" name="balance" class="btn btn-primary">Получить остатки</button>
             </div>
         </div>
         </fieldset>
