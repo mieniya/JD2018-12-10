@@ -33,7 +33,7 @@ public class Util {
     }
 
     public static String getHash(User user){
-        String key=user.getEmail()+user.getLogin()+user.getPassword()+"это как бы соль";
+        String key=user.getEmail()+user.getLogin()+user.getPassword()+"asffasfxcz/*-+xcФымФЫВ";
         return DigestUtils.md5Hex(key);
     }
 

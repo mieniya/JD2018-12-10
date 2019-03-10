@@ -27,13 +27,14 @@ public enum Action{
 
     static Action define(HttpServletRequest req){
 
-            String command= req.getParameter("command").toUpperCase();
+
         //System.out.println(command);
         try {
+            String command= req.getParameter("command").toUpperCase();
             return Action.valueOf(command);
 
         }
-        catch (Exception e){return Action.ERROR;}
+        catch (Exception e){return Action.INDEX;}
 
 
     }

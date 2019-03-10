@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 public class Form {
 
     static boolean isPost(HttpServletRequest req){
-
-
         return req.getMethod().equalsIgnoreCase("post");
     }
 

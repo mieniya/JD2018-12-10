@@ -18,9 +18,6 @@ public class CmdCreateRequest implements Cmd {
 //        HttpSession httpSession= req.getSession(false);
 //        if(httpSession==null){ return Action.LOGIN;} почему-то всегде не null
         HttpSession httpSession= req.getSession();
-        User user=(User) httpSession.getAttribute("user");
-//        String log=user.getLogin();
-//        String pas=user.getPassword();
 
         if(httpSession.getAttribute("user")==null){ return Action.LOGIN;}
 
@@ -37,34 +34,20 @@ public class CmdCreateRequest implements Cmd {
             String where=String.format(" WHERE `city`='%s' AND `street`='%s' AND `house`='%s' AND `flat`='%d'",city,street,house,flat);
             List<Address> addressForId = Dao.getDao().address.getAll(where);
             int address_id= addressForId.get(0).getId();
-
-
             String type = Form.getString(req, "type",".{3,160}"); // от 3 до 160 символов
             Timestamp date_create = Timestamp.valueOf(LocalDateTime.now());
             Timestamp date_complete = new Timestamp(0L);
             date_complete.setTime(date_create.getTime()+259200000L);  // прибавляем 3 дня
             Long user_id =Util.findUser(req).getId();
-
-
             Integer status_id = Form.getInt(req,"status_id");
-
-
-
             Request request= new Request(0,type,date_create,date_complete,user_id,status_id,address_id);
-
             if(dao.request.create(request)){
                 return Action.INDEX;
             }
         }
+
         List<Status> statuses = Dao.getDao().status.getAll("");
         req.setAttribute("statuses",statuses);
         return Action.CREATEREQUEST;
     }
 }
-//    User user = Util.findUser(req);
-//        if (user != null) {
-//                String where=String.format(" WHERE `user_id`='%d'",user.getId());
-//                List<Request> requests = Dao.getDao().request.getAll(where);
-//        req.setAttribute("requests",requests);
-//        return Action.PROFILE;
-//        }

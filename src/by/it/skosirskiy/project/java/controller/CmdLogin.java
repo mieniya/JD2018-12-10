@@ -3,6 +3,7 @@ package by.it.skosirskiy.project.java.controller;
 import by.it.skosirskiy.project.java.beans.User;
 import by.it.skosirskiy.project.java.dao.Dao;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
@@ -26,8 +27,13 @@ public class CmdLogin implements Cmd {
                 User user = users.get(0);
                 session.setAttribute("user",user);
                 req.setAttribute("user",user);
-
-
+                Cookie cookie = new Cookie("hash", Util.getHash(user));
+                cookie.setMaxAge(60);
+                Util.setCookie(req, cookie);
+                cookie = new Cookie("login", user.getLogin());
+                cookie.setMaxAge(60);
+                Util.setCookie(req, cookie);
+                return Action.PROFILE;
             }
 
         }
