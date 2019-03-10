@@ -8,9 +8,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="do?command=ChangeLang">
-                <img src="images/globus.png" height="25px">RU
-            </a>
+            <mytag:menu command="ResetDB" text=" Reset Database"/>
             <c:choose>
                 <c:when test="${user.roles_id==1}">
                     <mytag:menu command="EditUsers" text=" List of Clients"/>
@@ -21,9 +19,6 @@
                     <mytag:menu command="AccTrans" text="Account Transactions"/>
                     <mytag:menu command="AccInfo" text="Account Info"/>
                 </c:when>
-                <c:otherwise>
-                    <mytag:menu command="ResetDB" text=" Reset Database"/>
-                </c:otherwise>
             </c:choose>
         </div>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">

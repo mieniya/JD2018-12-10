@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.java.controller;
+package by.it.titkovskaya.zForProject;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -8,7 +8,7 @@ public enum ResMan {
 
     INSTANCE;
 
-    private final String RESOURSE = "by.it.titkovskaya.project.java.internationalization.messages";
+    private final String RESOURSE = "by.it.titkovskaya.zForProject.internationalization.messages";
     private Locale locale;
     private ResourceBundle resourceBundle;
 

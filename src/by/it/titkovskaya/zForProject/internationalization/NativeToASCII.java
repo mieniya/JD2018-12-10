@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.java.internationalization;
+package by.it.titkovskaya.zForProject.internationalization;
 
 import java.io.*;
 

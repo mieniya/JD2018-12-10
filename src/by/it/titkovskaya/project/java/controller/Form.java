@@ -23,11 +23,6 @@ class Form {
             throw new SiteException("Value" + " " + value + " is incorrect");
     }
 
-    static int getInt(HttpServletRequest req, String name) {
-        String value = req.getParameter(name);
-        return Integer.parseInt(value);
-    }
-
     static double getDouble(HttpServletRequest req, String name) {
         String value = req.getParameter(name);
         return Double.parseDouble(value);

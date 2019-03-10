@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.java.controller;
+package by.it.titkovskaya.zForProject;
 
 import by.it.titkovskaya.project.java.beans.Account;
 import by.it.titkovskaya.project.java.beans.User;
@@ -35,6 +35,19 @@ public class Util {
             return null;
         } else {
             return account;
+        }
+    }
+
+    static String findLanguage(HttpServletRequest req) {
+        HttpSession session = req.getSession(false);
+        if (session == null) {
+            return null;
+        }
+        String language = (String) session.getAttribute("language");
+        if (language == null) {
+            return null;
+        } else {
+            return language;
         }
     }
 

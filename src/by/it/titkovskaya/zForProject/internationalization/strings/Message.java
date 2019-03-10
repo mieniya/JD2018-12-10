@@ -1,4 +1,4 @@
-package by.it.titkovskaya.project.java.internationalization.strings;
+package by.it.titkovskaya.zForProject.internationalization.strings;
 
 public interface Message {
 

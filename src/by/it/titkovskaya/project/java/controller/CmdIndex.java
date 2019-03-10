@@ -12,9 +12,6 @@ public class CmdIndex implements Cmd {
             } else if (req.getParameter("login") != null){
                 return Action.LOGIN;
             }
-            else if (req.getParameter("changeLang") != null){
-                return Action.CHANGELANG;
-            }
         }
         return Action.INDEX;
     }

@@ -8,7 +8,6 @@ public enum Action {
     ERROR(new CmdError()),
     LOGIN(new CmdLogin()),
     LOGOUT(new CmdLogout()),
-    CHANGELANG(new CmdChangeLang()),
     PROFILE(new CmdProfile()),
     USERDATA(new CmdUserData()),
     CREATEACC(new CmdCreateAcc()),

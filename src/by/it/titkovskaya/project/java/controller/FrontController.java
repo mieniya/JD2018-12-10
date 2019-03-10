@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class FrontController extends HttpServlet {
@@ -27,11 +26,6 @@ public class FrontController extends HttpServlet {
             servletContext.setAttribute("roles", roles);
             List<AccountStatus> accstatuses = dao.status.getAll();
             servletContext.setAttribute("accstatuses", accstatuses);
-
-            HashMap<Integer,String> languages = new HashMap<>();
-            languages.put(1,"ru");
-            languages.put(2,"en");
-            servletContext.setAttribute("languages", languages);
         } catch (SQLException e) {
             e.printStackTrace();
         }
