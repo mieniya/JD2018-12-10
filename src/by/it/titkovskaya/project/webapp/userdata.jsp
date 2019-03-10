@@ -7,7 +7,10 @@
     <%@ include file="include/menu.jsp" %>
     <c:choose>
         <c:when test="${user.roles_id==1}">
-            <h5>${user.name} (admin)</h5>
+            <h5><img src="images/user${user.id}" height="30px"> ${user.name} (admin)</h5>
+        </c:when>
+        <c:when test="${user.roles_id==2}">
+            <h5><img src="images/user${user.id}" height="30px"> ${user.name}</h5>
         </c:when>
         <c:otherwise>
             <h5>${user.name}</h5>
@@ -17,7 +20,7 @@
     <h3>PERSONAL DATA</h3>
     <p>_____________________________________________________</p>
 
-    <form class="form-horizontal" action="do?command=UserData" method="post">
+    <form class="form-horizontal" action="do?command=UserData" method="post" enctype="multipart/form-data">
         <fieldset>
 
             <div class="row">
@@ -51,6 +54,15 @@
               placeholder="" class="form-control input-md">
               </div>
             </div>
+
+            <!-- File Button -->
+            <div class="row">
+                <label class="col-md-1 control-label" for="fileimg"></label>
+                <div class="col-md-3">
+                    <input id="fileimg" name="fileimg" class="input-file" type="file">
+              </div>
+            </div>
+
     <p>_____________________________________________________</p>
 
     <p>${message}</p>

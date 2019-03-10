@@ -7,7 +7,10 @@
     <%@ include file="include/menu.jsp" %>
     <c:choose>
         <c:when test="${user.roles_id==1}">
-            <h5>${user.name} (admin)</h5>
+            <h5><img src="images/user${user.id}" height="30px"> ${user.name} (admin)</h5>
+        </c:when>
+        <c:when test="${user.roles_id==2}">
+            <h5><img src="images/user${user.id}" height="30px"> ${user.name}</h5>
         </c:when>
         <c:otherwise>
             <h5>${user.name}</h5>
@@ -18,7 +21,7 @@
 
     <form class="form-horizontal">
         <fieldset>
-            <h1> TIT Co Payment System </h1>
+            <h1> <img src="images/main.png" height="55px">  TIT Co Payment System </h1>
         </fieldset>
     </form>
 

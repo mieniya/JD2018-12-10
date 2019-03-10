@@ -7,10 +7,13 @@
 
     <c:choose>
         <c:when test="${user.roles_id==1}">
-            <h5>${user.name}'s (admin)</h5>
+            <h5><img src="images/user${user.id}" height="30px"> ${user.name} (admin)</h5>
+        </c:when>
+        <c:when test="${user.roles_id==2}">
+            <h5><img src="images/user${user.id}" height="30px"> ${user.name}</h5>
         </c:when>
         <c:otherwise>
-            <h5>${user.name}'s</h5>
+            <h5>${user.name}</h5>
         </c:otherwise>
     </c:choose>
 

@@ -51,29 +51,28 @@ public class Util {
         }
     }
 
-    public static String getHash(User user){
+    public static String getHash(User user) {
         String key = user.getEmail() + user.getLogin() + user.getPassword() + "this is salt";
         return DigestUtils.md5Hex(key);
     }
 
-    static void setCookie(HttpServletRequest req, Cookie cookie){
+    static void setCookie(HttpServletRequest req, Cookie cookie) {
         HttpServletResponse resp = (HttpServletResponse) req.getAttribute("resp");
         resp.addCookie(cookie);
     }
 
     static void loadImage(HttpServletRequest req, String filename) throws IOException, ServletException {
         Part reqPart = req.getPart("fileimg");
-        if (reqPart.getSize() >0){
+        if (reqPart.getSize() > 0) {
             try (InputStream fileimg = reqPart.getInputStream();
                  FileOutputStream fileout = new FileOutputStream(
                          req.getServletContext().getRealPath(filename));) {
-                byte[] bytes = new byte[Math.min(128*1024, fileimg.available())];
-                while (fileimg.available() > 0){
+                byte[] bytes = new byte[Math.min(128 * 1024, fileimg.available())];
+                while (fileimg.available() > 0) {
                     int size = fileimg.read(bytes);
                     fileout.write(bytes, 0, size);
                 }
             }
         }
     }
-
 }

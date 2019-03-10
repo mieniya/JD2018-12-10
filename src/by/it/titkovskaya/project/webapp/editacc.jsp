@@ -5,7 +5,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <h5>${user.name} (admin)</h5>
+    <h5><img src="images/user${user.id}" height="30px"> ${user.name} (admin)</h5>
 
     <h3>ACCOUNTS </h3>
     <hr>

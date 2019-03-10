@@ -20,6 +20,7 @@ public class CmdUserData implements Cmd{
                     String name = Form.getString(req, "name");
                     user = new User(user.getId(),login,password,email,name,user.getRoles_id());
                     if (Dao.getDao().user.update(user)){
+                        Util.loadImage(req, "images/user" + user.getId());
                         String message = "NOTIFICATION: Operation completed successfully.";
                         req.setAttribute("message", message);
                     } else {
