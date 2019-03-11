@@ -93,11 +93,11 @@ public class CmdReset implements Cmd {
     private void addMenu() {
         try (Connection connection = ConnCreator.getConnection();
             Statement statement = connection.createStatement()){
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'steak', 29.6);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'pizza', 13.4);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'spaghetti', 11.6);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'salad', 9.3);"));
-            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'coffe', 5.0);"));
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'Steak', 29.6);"));
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'Pizza', 13.4);"));
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'Spaghetti', 11.6);"));
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'Salad', 9.3);"));
+            statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`menu` (`id`, `name`, `price`) VALUES (DEFAULT, 'Coffee', 5.0);"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -125,7 +125,7 @@ public class CmdReset implements Cmd {
                     "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, 'BorokhaM', 'borokha', " +
                     "'borokhaM@gmail.com', NULL, 'Maria', 'Borokha', NULL, 1);"));
             statement.executeUpdate(String.format("%s","INSERT INTO `moroz`.`users` (`id`, `login`, `password`, `email`, `address`, `name`, " +
-                    "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, 'Vlad', NULL, NULL, 'Kedishko, 3-1', " +
+                    "`surname`, `numberphone`, `roles_id`) VALUES (DEFAULT, 'Vladik', '321ytrewq', 'supervlad@gmail.com', 'Kedishko, 3-1', " +
                     "'Vladislau', 'Makarevich', 447568394, 3);"));
         } catch (SQLException e) {
             e.printStackTrace();

@@ -15,23 +15,25 @@ public class CmdOrder implements Cmd {
     public Action execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         User user = Util.findUser(req);
         DAO dao = DAO.getDao();
-        if(user==null)
+        if (user == null)
             return Action.LOGIN;
-        if(Form.isPost(req)){
-            req.getSession().setMaxInactiveInterval(10*60);
+        if (Form.isPost(req)) {
+            req.getSession().setMaxInactiveInterval(10 * 60);
             Order order = new Order();
             order.setMenu_id(dao.menu.getAll(" WHERE `name`='" + Form.getString(req, "dish") +
-                             "'").get(0).getId());
+                    "'").get(0).getId());
             order.setCount(Form.getInt(req, "count"));
-            order.setCheck(Form.getInt(req, "count")*dao.menu.getAll(" WHERE `name`='" + Form.getString(req, "dish") +
-                           "'").get(0).getPrice());
+            order.setCheck(Form.getInt(req, "count") * dao.menu.getAll(" WHERE `name`='" + Form.getString(req, "dish") +
+                    "'").get(0).getPrice());
             order.setUsers_id(user.getId());
-            if(DAO.getDao().order.create(order))
+            if (DAO.getDao().order.create(order))
                 return Action.RESTAURANT;
         }
-        req.getSession().setMaxInactiveInterval(10*60);
+
+        req.getSession().setMaxInactiveInterval(10 * 60);
         List<Menu> menu = dao.menu.getAll();
         req.setAttribute("menu", menu);
+
         return Action.ORDER;
     }
 }

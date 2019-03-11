@@ -47,7 +47,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-0.5">
-           <button id="save" name="save" class="btn btn-primary">Save</button>
+           <button id="save" name="save" class="btn btn-success">Save</button>
         </div>
     </div>
 
@@ -80,6 +80,10 @@
                 </div>
             </div>
          </c:forEach>
+
+         <hr>
+             <mytag:paginator count="${ordersCount}" step="5" urlprefix="do?command=Profile&start="/>
+         <hr>
 
             <!-- Button -->
             <div class="form-group">

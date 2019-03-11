@@ -11,11 +11,13 @@ import java.util.List;
 
 public class CmdAdmin implements Cmd {
     @Override
-    public Action execute(HttpServletRequest req, HttpServletResponse pesp) throws Exception {
+    public Action execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         DAO dao = DAO.getDao();
         if (Form.isPost(req)) {
             if(req.getParameter("logout")!=null) {
                 req.getSession().invalidate();
+                Cookie cookie = new Cookie("login", "none");
+                resp.addCookie(cookie);
                 return Action.INDEX;
             } else {
                 req.getSession().setMaxInactiveInterval(10 * 60);
@@ -52,11 +54,17 @@ public class CmdAdmin implements Cmd {
                 }
             }
         }
+        long start = 0;
+        if (req.getParameter("start") != null)
+            start = Form.getLong(req, "start");
         req.getSession().setMaxInactiveInterval(10*60);
         User admin = Util.findUser(req);
         req.setAttribute("admin", admin);
-        List<User> users = dao.user.getAll();
+        String limit = String.format(" LIMIT %d,5", start);
+        List<User> users = dao.user.getAll(limit);
         req.setAttribute("users", users);
+        int usersCount = dao.user.getAll().size();
+        req.setAttribute("usersCount", usersCount);
         List<Role> roles = dao.role.getAll();
         req.setAttribute("roles", roles);
         return Action.ADMIN;

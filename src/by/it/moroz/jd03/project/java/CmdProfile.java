@@ -5,6 +5,7 @@ import by.it.moroz.jd03.project.java.beans.Order;
 import by.it.moroz.jd03.project.java.beans.User;
 import by.it.moroz.jd03.project.java.dao.DAO;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -16,6 +17,8 @@ public class CmdProfile implements Cmd{
         if(Form.isPost(req)){
             if(req.getParameter("logout")!=null) {
                 req.getSession().invalidate();
+                Cookie cookie = new Cookie("login", "none");
+                resp.addCookie(cookie);
                 return Action.INDEX;
             }
             else{
@@ -40,13 +43,19 @@ public class CmdProfile implements Cmd{
         }
         User user = Util.findUser(req);
         if(user!=null){
+            long start = 0;
+            if (req.getParameter("start") != null)
+                start = Form.getLong(req, "start");
             req.setAttribute("user", user);
             req.getSession().setMaxInactiveInterval(10*60);
-            String where=String.format("WHERE `users_id`='%d'",user.getId());
+            String where=String.format("WHERE `users_id`='%d' LIMIT %d,5",user.getId(), start);
             List<Order> orders = dao.order.getAll(where);
             List<Menu> menu = dao.menu.getAll();
             req.setAttribute("orders",orders);
             req.setAttribute("menu", menu);
+            where = String.format(" WHERE `users_id`='%d'", user.getId());
+            int ordersCount = dao.order.getAll(where).size();
+            req.setAttribute("ordersCount", ordersCount);
             return Action.PROFILE;
         }
         return Action.LOGIN;

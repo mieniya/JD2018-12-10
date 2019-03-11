@@ -6,6 +6,8 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
+    <p><h3>${admin.login}</h3></p>
+
     <form class="form-horizontal" action="do?command=Admin" method="post">
     <div class="form-group">
         <label class="col-md-4 control-label" for="logout"></label>
@@ -67,6 +69,10 @@
             </div>
         </form>
     </c:forEach>
+
+    <hr>
+        <mytag:paginator count="${usersCount}" step="5" urlprefix="do?command=Profile&start="/>
+    <hr>
 
 
 </div>

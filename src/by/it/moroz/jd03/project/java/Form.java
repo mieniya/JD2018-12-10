@@ -32,9 +32,9 @@ public class Form {
         return getInt(req, name, ".*");
     }
 
-    public static long getLong(HttpServletRequest req, String num) {
+    static long getLong(HttpServletRequest req, String num) {
         String number = req.getParameter(num);
         return Long.parseLong(number);
     }
-
+    
 }

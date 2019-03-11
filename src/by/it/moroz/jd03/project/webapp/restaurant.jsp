@@ -7,10 +7,10 @@
 
 <form class="form-horizontal" action="do?command=Restaurant" method="post">
 <fieldset>
-        <p>MENU</p>
+        <p><h3>MENU</h3></p>
         <div class="row">
-                <div class="col-md-2"><h3>Dish</h3></div>
-                <div class="col-md-2"><h3>Price</h3></div>
+                <div class="col-md-2"><h6>Dish</h6></div>
+                <div class="col-md-2"><h6>Price</h6></div>
         </div>
 
             <c:forEach items="${menu}" var="menu">

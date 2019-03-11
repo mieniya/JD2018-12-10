@@ -21,7 +21,7 @@
                     <a class="nav-item nav-link" href="do?command=SignUp">Signup</a>
                 </c:otherwise>
             </c:choose>
-            <a class="nav-item nav-link" href="do?command=Order">Order</a>
+             <a class="nav-item nav-link" href="do?command=Order">Order</a>
             <a class="nav-item nav-link" href="do?command=Reset">ResetDB</a>
         </div>
     </div>
