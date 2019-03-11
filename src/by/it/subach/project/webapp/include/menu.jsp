@@ -7,15 +7,28 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+            <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
+            <c:choose>
+                <c:when test="${user==null}">
             <a class="nav-item nav-link" href="do?command=Login">Login</a>
             <a class="nav-item nav-link" href="do?command=Signup">Signup</a>
-            <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
-            <a class="nav-item nav-link" href="do?command=Checkout">Checkout</a>
-            <a class="nav-item nav-link" href="do?command=ResetDB">ResetDB</a>
-            <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
-            <a class="nav-item nav-link" href="do?command=Admin">Admin</a>
             <a class="nav-item nav-link" href="do?command=Catalog">Catalog</a>
+                </c:when>
+                <c:when test="${user.id>1}">
+            <a class="nav-item nav-link" href="do?command=Catalog">Catalog</a>
+            <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+            <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
+            <a class="nav-item nav-link" href="do?command=Cart">Cart</a>
+                </c:when>
+                <c:when test="${user.id==1}">
+            <a class="nav-item nav-link" href="do?command=Catalog">Catalog</a>
+            <a class="nav-item nav-link" href="do?command=Profile">Profile</a>
+            <a class="nav-item nav-link" href="do?command=Logout">Logout</a>
+            <a class="nav-item nav-link" href="do?command=Cart">Cart</a>
+            <a class="nav-item nav-link" href="do?command=Admin">Admin</a>
+                </c:when>
 
+            </c:choose>
         </div>
     </div>
 </nav>

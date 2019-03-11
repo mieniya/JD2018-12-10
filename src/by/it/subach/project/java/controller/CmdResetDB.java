@@ -9,10 +9,15 @@ public class CmdResetDB implements Cmd {
 
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
-//        getInstance().reset();
+
+        if(req.getParameter("reset") != null){
+            String message = "DataBase successfully reset!";
+            req.setAttribute("message", message);
+        }
 
         if(Form.isPost(req)){
             DAO.getInstance().reset();
+
         }
 
         return Action.RESETDB;

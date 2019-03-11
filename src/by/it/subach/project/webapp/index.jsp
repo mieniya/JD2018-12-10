@@ -17,19 +17,11 @@
                 <div class="col-md-3">${product.name}</div>
                 <div class="col-md-3">${product.price}</div>
                 <div class="col-md-3">${product.description}</div>
-                <c:choose>
-                    <c:when test="${product.categories_id == 1}">
-                        <div class="col-md-3">consoles</div>
-                    </c:when>
-                    <c:when test="${product.categories_id == 2}">
-                        <div class="col-md-3">games</div>
-                    </c:when>
-                    <c:when test="${product.categories_id == 3}">
-                        <div class="col-md-3">assessorise</div>
-                    </c:when>
-                    <c:otherwise>
-                    </c:otherwise>
-                </c:choose>
+                    <c:forEach items="${categories}" var="category">
+                        <c:if test="${product.categories_id==category.id}">
+                             <div class="col-md-3">${category.name}</div>
+                        </c:if>
+                    </c:forEach>
             </div>
         </c:forEach>
     </div>

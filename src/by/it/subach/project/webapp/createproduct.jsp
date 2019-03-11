@@ -42,9 +42,9 @@
   <label class="col-md-4 control-label" for="category">Category</label>
   <div class="col-md-4">
     <select id="category" name="category" class="form-control">
-      <option value="1">consoles</option>
-      <option value="2">games</option>
-      <option value="3">accessorise</option>
+    	<c:forEach items="${categories}" var="category" varStatus="categoryCount">
+            <option value="${category.id}">${category.name}</option>
+    	</c:forEach>
     </select>
   </div>
 </div>

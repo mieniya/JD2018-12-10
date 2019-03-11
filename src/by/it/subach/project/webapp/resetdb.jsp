@@ -5,7 +5,7 @@
 <div class="container">
 <%@ include file="include/menu.jsp" %>
 
-
+<p>${message}</p>
 <form class="form-horizontal" action="do?command=ResetDB" method="post">
 <fieldset>
 
@@ -14,9 +14,9 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="resetbutton"></label>
+  <label class="col-md-4 control-label" for="reset"></label>
   <div class="col-md-4">
-    <button id="resetbutton" name="resetbutton" class="btn btn-primary">Reset</button>
+    <button id="reset" name="reset" class="btn btn-primary">Reset</button>
   </div>
 </div>
 

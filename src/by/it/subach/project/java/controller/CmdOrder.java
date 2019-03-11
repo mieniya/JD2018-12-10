@@ -17,15 +17,15 @@ public class CmdOrder implements Cmd {
             if(user == null){
                 return Action.LOGIN;
             }
-            else if(user != null) {
+            else {
                 long user_id = user.getId();
                 Order order = new Order(0, user_id, product_id);
                 if(dao.order.create(order))
                     req.setAttribute("order", order);
-                    return Action.ORDER;
+                    return Action.CART;
             }
         }
 
-        return Action.ORDER;
+        return Action.CART;
     }
 }

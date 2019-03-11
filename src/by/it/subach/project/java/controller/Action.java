@@ -11,6 +11,7 @@ public enum Action {
     PRODUCTSLIST(new CmdProductsList()),
     RESETDB(new CmdResetDB()),
     ORDER(new CmdOrder()),
+    CART(new CmdCart()),
     CHECKOUT(new CmdCheckout()),
     CREATECATEGORY(new CmdCreateCategory()),
     CREATEPRODUCT(new CmdCreateProduct()),

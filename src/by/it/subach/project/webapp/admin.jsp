@@ -25,7 +25,7 @@
                 </tr>
                         <tr>
                           <td><a href = "<c:url value = "do?command=EditUsers"/>">EDIT USERS</a></td>
-                          <td><a href = "<c:url value = "do?command=Category"/>">NEW CATEGORY</a></td>
+                          <td><a href = "<c:url value = "do?command=CreateCategory"/>">NEW CATEGORY</a></td>
                         </tr>
 
 

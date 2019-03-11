@@ -3,6 +3,7 @@ package by.it.subach.project.java.controller;
 import by.it.subach.project.java.beans.User;
 import by.it.subach.project.java.dao.DAO;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +23,12 @@ public class CmdLogin implements Cmd{
                 User user = users.get(0);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
+                Cookie cookie = new Cookie("hash", Util.getHash(user));
+                cookie.setMaxAge(24*60*60);
+                Util.setCookie(req, cookie);
+                cookie = new Cookie("login", user.getLogin());
+                cookie.setMaxAge(24*60*60);
+                Util.setCookie(req, cookie);
                 return Action.PROFILE;
             }
         }
