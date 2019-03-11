@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<%@ include file="include/head.jsp" %>
 	<body>
 		<div class="container">
@@ -10,7 +10,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="login">Login</label>
 						<div class="col-md-4">
-							<input id="login" name="login" type="text" placeholder="enter login" class="form-control input-md" required="" pattern="\w+">
+							<input id="login" name="login" type="text" value="gambler7" class="form-control input-md" required="" pattern="\w+">
 							<font color="red">${loginExists}</font>
 							<span class="help-block" style="color:green">Use latin letters, numbers and underline</span>
 						</div>
@@ -19,22 +19,23 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="email">Email</label>
 						<div class="col-md-4">
-							<input id="email" name="email" type="email" placeholder="enter email" class="form-control input-md" required="" pattern="\w+@[a-z]{2,}\.[a-z]{2,}">
+							<input id="email" name="email" type="email" value="gambler7@mail.ru" class="form-control input-md" required="" pattern="\w+@[a-z]{2,}\.[a-z]{2,}">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="password">Password</label>
 						<div class="col-md-4">
-							<input id="password" name="password" type="password" placeholder="enter password" class="form-control input-md" required="" pattern="\w+">
+							<input id="password" name="password" type="password" value="gambler7pass" class="form-control input-md" required="" pattern="\w+">
 							<span class="help-block" style="color:green">Use latin letters, numbers and underline</span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label" for="confirmpassword">Confirm password</label>
+						<label class="col-md-4 control-label" for="confirmPassword">Confirm password</label>
 						<div class="col-md-4">
-							<input id="confirmpassword" name="confirmpassword" type="password" placeholder="confirm password" class="form-control input-md" required="" pattern="\w+">
+							<input id="confirmPassword" name="confirmPassword" type="password" value="gambler7pass" placeholder="confirm password" class="form-control input-md" required="" pattern="\w+">
+							<font color="red">${passNotMatch}</font>
 							<span class="help-block" style="color:green">Use latin letters, numbers and underline</span>
 						</div>
 					</div>

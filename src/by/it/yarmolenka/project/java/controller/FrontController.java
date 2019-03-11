@@ -2,7 +2,6 @@ package by.it.yarmolenka.project.java.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,7 @@ import java.sql.SQLException;
 public class FrontController extends HttpServlet {
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         ServletContext servletContext = getServletContext();
         try {
             Utils.setServletContextAttributes(servletContext);

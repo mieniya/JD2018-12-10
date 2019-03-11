@@ -11,13 +11,15 @@ enum Action {
     RESET(new CmdReset()),
     REGISTER(new CmdRegister()),
     GETEVENTS(new CmdGetEvents()),
-    GETRACES(new CmdGetRaces()),
-    CREATEEVENT(new CmdCreateEvent()),
-    CREATERACE(new CmdCreateRace()),
     PROFILE(new CmdProfile()),
-    ADMINPANEL(new CmdAdminPanel()),
+    ADMINPANELPROFILE(new CmdAdminPanelProfile()),
     EDITUSERS(new CmdEditUsers()),
-    EDITRACE(new CmdEditRace());
+    EDITRACES(new CmdEditRaces()),
+    EDITEVENTS(new CmdEditEvents()),
+    EDITBETS(new CmdEditBets()),
+    CHANGEPASS(new CmdChangePass()),
+    BET(new CmdBet());
+
 
     Cmd command;
 
@@ -26,11 +28,11 @@ enum Action {
     }
 
     public static Action define(HttpServletRequest req) {
-        String cmd = req.getParameter("command").toUpperCase();
         try {
+            String cmd = req.getParameter("command").toUpperCase();
             return Action.valueOf(cmd);
         } catch (Exception e){
-            return Action.ERROR;
+            return Action.INDEX;
         }
     }
 

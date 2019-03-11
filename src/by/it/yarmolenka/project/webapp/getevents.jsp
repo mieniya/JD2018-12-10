@@ -1,4 +1,4 @@
-<html>
+﻿<html>
     <%@ include file="include/head.jsp" %>
     <body>
         <div class="container">
@@ -35,7 +35,7 @@
 							<td>${event.description}</td>
 							<td>${event.odds}</td>
 							<td>
-								<button id="bet" name="bet" class="btn btn-success">Bet</button>
+								<a href="do?command=Bet&EventId=${event.id}" class="btn btn-success" role="button">Bet</a>
 							</td>
 						</tr>
 					</c:forEach>

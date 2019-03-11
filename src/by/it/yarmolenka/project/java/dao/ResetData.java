@@ -52,7 +52,7 @@ class ResetData {
                     "    FOREIGN KEY (`fk_races`)\n" +
                     "    REFERENCES `yarmolenka`.`races` (`id`)\n" +
                     "    ON DELETE RESTRICT\n" +
-                    "    ON UPDATE RESTRICT)\n" +
+                    "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB");
             statement.executeUpdate("DROP TABLE IF EXISTS `yarmolenka`.`bets`");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `yarmolenka`.`bets` (\n" +
@@ -67,8 +67,8 @@ class ResetData {
                     "  CONSTRAINT `fk_bets_users1`\n" +
                     "    FOREIGN KEY (`fk_users`)\n" +
                     "    REFERENCES `yarmolenka`.`users` (`id`)\n" +
-                    "    ON DELETE RESTRICT\n" +
-                    "    ON UPDATE RESTRICT,\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE,\n" +
                     "  CONSTRAINT `fk_bets_events1`\n" +
                     "    FOREIGN KEY (`fk_events`)\n" +
                     "    REFERENCES `yarmolenka`.`events` (`id`)\n" +

@@ -20,13 +20,19 @@ class CmdLogin implements Cmd {
             List<User> users = dao.user.getAll(sqlWhere);
             if (users.size() > 0) {
                 User user = users.get(0);
-                if (user.getPassword().equalsIgnoreCase(password)) {
-                    Cookie cookie = new Cookie("user", user.getLogin());
+                if (user.getPassword().equals(password)) {
+                    Cookie cookie = new Cookie("login", user.getLogin());
+                    cookie.setMaxAge(24*60*60);
+                    resp.addCookie(cookie);
+                    cookie = new Cookie("hash", Utils.getHash(user));
+                    cookie.setMaxAge(24*60*60);
                     resp.addCookie(cookie);
                     HttpSession session = req.getSession();
                     session.setAttribute("user", user);
-                    if (user.getFk_roles() == 1) return Action.ADMINPANEL;
-                    if (user.getFk_roles() == 2) return Action.PROFILE;
+                    if (user.getFk_roles() == 1)
+                        return Action.ADMINPANELPROFILE;
+                    if (user.getFk_roles() == 2)
+                        return Action.PROFILE;
                     else return Action.ERROR;
                 } else {
                     req.setAttribute("incorrectPass", "Password is incorrect");

@@ -11,6 +11,7 @@ class Form {
 
     public static String getString(HttpServletRequest req, String field, String pattern) throws ProjectException {
         String result = req.getParameter(field);
+        if (result == null) return null;
         if (result.matches(pattern)) return result;
         else throw new ProjectException(field + result + " incorrect");
     }
