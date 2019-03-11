@@ -50,10 +50,11 @@ public class RequestDao extends AbstractDao implements InterfaceDAO<Request> {
     @Override
     public List<Request> getAll(String WHERE) throws SQLException {
         List<Request> requests = new ArrayList<>();
-        String sql = "SELECT * FROM `requests` " + WHERE + " ;";
+
         try (Connection connection = ConnCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
+            String sql = "SELECT * FROM `requests` " + WHERE + " ;";
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Request request = new Request();

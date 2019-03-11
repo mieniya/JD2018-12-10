@@ -17,7 +17,7 @@
 
                 </c:when>
                 <c:otherwise>
-
+                <mytag:menu command="ResetDB" text="Сброс базы данных"/>
                 </c:otherwise>
             </c:choose>
         </div>

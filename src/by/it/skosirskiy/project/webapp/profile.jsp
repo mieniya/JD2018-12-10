@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="logoutButton"></label>
                 <div class="col-md-4">
-                    <button id="logoutButton" name="logoutButton" class="btn btn-primary">Logout</button>
+                    <button id="logoutButton" name="logoutButton" class="btn btn-primary">выйти</button>
                 </div>
             </div>
 
