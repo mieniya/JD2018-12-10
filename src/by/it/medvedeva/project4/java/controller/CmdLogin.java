@@ -4,6 +4,7 @@ import by.it.medvedeva.project4.java.beans.User;
 import by.it.medvedeva.project4.java.dao.Dao;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,6 +19,7 @@ class CmdLogin implements Cmd {
             if (users.size() == 1) {
 
                 User user = users.get(0);
+                HttpSession session = req.getSession();
                 req.getSession().setAttribute("user", user);
                 return Action.PROFILE;
             }
