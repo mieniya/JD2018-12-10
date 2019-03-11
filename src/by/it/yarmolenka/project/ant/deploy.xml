@@ -3,7 +3,7 @@
 Смотрите тут https://ant.apache.org/manual/
 -->
 
-<project name="Ant to yarmolenka project" default="10deploy" basedir="..">
+<project name="Ant to yarmolenka" default="10deploy" basedir="..">
 
     <!-- подключаем файл с настройками -->
     <property file="ant/deploy.properties"/>
@@ -13,6 +13,7 @@
          компилятор считает, что это как бы отдельный каталог -->
     <path id="classpath">
         <fileset dir="${local.lib.dir}" includes="jstl-1.2.jar"/>
+        <fileset dir="${local.lib.dir}" includes="commons-codec-1.12.jar"/>
         <fileset dir="${local.lib.dir}" includes="mysql-connector-java.jar"/>
         <fileset dir="${global.lib.dir}" includes="servlet-api.jar"/>
     </path>
@@ -38,7 +39,7 @@
     <!-- компиляция файлов проекта -->
     <target name="03compile" depends="02init">
         <echo>Compile the source files</echo>
-        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
+        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true" verbose="yes">
             <classpath refid="classpath"/>
         </javac>
     </target>

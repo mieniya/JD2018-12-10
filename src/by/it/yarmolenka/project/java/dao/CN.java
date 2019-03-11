@@ -1,4 +1,4 @@
-package by.it.yarmolenka.project_bookmaker;
+package by.it.yarmolenka.project.java.dao;
 
 interface CN {
 
