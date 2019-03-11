@@ -19,10 +19,10 @@
         <div class=col-md-1>Login</div>
         <div class=col-md-2>Email</div>
         <div class=col-md-2>Address</div>
-        <div class=col-md-2>Name</div>
+        <div class=col-md-1>Name</div>
         <div class=col-md-2>Surname</div>
         <div class=col-md-2>NumberPhone</div>
-        <div class=col-md-1>Role</div>
+        <div class=col-md-2>Role</div>
     </div>
     <c:forEach items="${users}" var="user">
         <form class="form-horizontal-${user.id}" action="do?command=Admin" method="post">

@@ -25,10 +25,10 @@ public class CmdLogin implements Cmd {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
                 Cookie cookie = new Cookie("hash", Util.getHash(user));
-                cookie.setMaxAge(24*60*60);
+                cookie.setMaxAge(-1);
                 resp.addCookie(cookie);
                 cookie = new Cookie("login", user.getLogin());
-                cookie.setMaxAge(24*60*60);
+                cookie.setMaxAge(-1);
                 resp.addCookie(cookie);
                 return Action.RESTAURANT;
             }

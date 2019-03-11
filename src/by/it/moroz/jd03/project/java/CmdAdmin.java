@@ -3,6 +3,8 @@ package by.it.moroz.jd03.project.java;
 import by.it.moroz.jd03.project.java.beans.Role;
 import by.it.moroz.jd03.project.java.beans.User;
 import by.it.moroz.jd03.project.java.dao.DAO;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
