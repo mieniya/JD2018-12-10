@@ -21,7 +21,6 @@ class ListA<E> implements List<E> {
         elements[size++] = e;
         return true;
     }
-
     @Override
     public E get(int index) {
         return elements[index];
